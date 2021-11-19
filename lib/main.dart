@@ -98,6 +98,9 @@ class _MyHomePageState extends State<MyHomePage> {
             const Text(
               'You have pushed the button this many times:',
             ),
+            SizedBox(
+              width: 200.0,
+            ),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
