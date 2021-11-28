@@ -42,7 +42,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 100,
-        title: Text("Shopili",
+        title: Text("Shopily",
             style: TextStyle(
               fontWeight: FontWeight.bold,
               color: Colors.white,
