@@ -1,24 +1,39 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
         toolbarHeight: 80,
-        backgroundColor: Color(0xff880e4f),
-        leading: Icon(
-          Icons.arrow_back_ios_new_outlined,
-          color: Colors.white,
-          size: 50,
+        backgroundColor: Colors.transparent, //Color(0xff880e4f)
+        elevation: 0.0,
+        title: Text("Profile",
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+              fontSize: 25,
+            )),
+        leading: new IconButton(
+          icon: new Icon(
+            Icons.arrow_back_ios,
+            color: Colors.white,
+            size: 40,
+          ),
+          onPressed: () => Navigator.of(context).pop(),
         ),
+        leadingWidth: 30,
+
         actions: [
           Container(
             width: 80,
             child: IconButton(
               alignment: Alignment.center,
               icon: const Icon(
-                Icons.account_circle_rounded,
+                Icons.more_vert,
                 size: 50,
               ),
               onPressed: () {
@@ -30,75 +45,113 @@ class Profile extends StatelessWidget {
         ],
       ),
       body: Column(
-        children: [
+        children: <Widget>[
           Container(
-              decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: <Color>[Color(0xff880e4f), Color(0xffb71c1c)])),
-              child: Container(
-                width: double.infinity,
-                height: 350.0,
-                child: Center(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      CircleAvatar(
-                        backgroundImage: NetworkImage(
-                          "https://www.trendrr.net/wp-content/uploads/2017/06/Deepika-Padukone-1.jpg",
-                        ),
-                        radius: 70.0,
+            height: size.height * 0.45,
+            child: Stack(
+              children: <Widget>[
+                Container(
+                  height: size.height * 0.4 - 50,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(36),
+                        bottomRight: Radius.circular(36),
                       ),
-                      SizedBox(
-                        height: 10.0,
-                      ),
-                      Text(
-                        "Jacob Gonzales",
-                        style: TextStyle(
-                          fontSize: 22.0,
-                          color: Colors.white,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10.0,
-                      ),
-                    ],
-                  ),
+                      gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: <Color>[
+                            Color(0xff880e4f),
+                            Color(0xffb71c1c)
+                          ])),
+                  width: double.infinity,
                 ),
-              )),
-          Container(
-            child: Padding(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 30.0, horizontal: 16.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Info:",
-                    style: TextStyle(
-                        color: Colors.redAccent,
-                        fontStyle: FontStyle.normal,
-                        fontSize: 28.0),
-                  ),
-                  SizedBox(
-                    height: 10.0,
-                  ),
-                  Text(
-                    'My name is Natasha and I am  a freelance mobile app developper.\n'
-                    'Having Experiece in Flutter and Android',
-                    style: TextStyle(
-                      fontSize: 22.0,
-                      fontStyle: FontStyle.italic,
-                      fontWeight: FontWeight.w300,
-                      color: Colors.black,
-                      letterSpacing: 2.0,
+                Positioned(
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    child: Container(
+                      margin: EdgeInsets.symmetric(horizontal: 110),
+                      //height: 100,
+                      child: CircleAvatar(
+                        backgroundImage: NetworkImage(
+                          "https://www.ff-bz.com/imagetypes/article-detail/photo.jpg",
+                        ),
+                        radius: 100.0,
+                      ),
+                    )),
+              ],
+            ),
+          ),
+          Padding(
+            padding:
+                const EdgeInsets.symmetric(vertical: 30.0, horizontal: 16.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              //crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Jacob Gonzales",
+                  style: TextStyle(
+                      color: Colors.redAccent,
+                      fontStyle: FontStyle.normal,
+                      fontSize: 28.0),
+                ),
+                SizedBox(
+                  height: 30.0,
+                ),
+                Row(
+                  children: <Widget>[
+                    Text(
+                      '1',
+                      style: TextStyle(
+                        fontSize: 22.0,
+                        fontStyle: FontStyle.italic,
+                        fontWeight: FontWeight.w300,
+                        color: Colors.black,
+                        letterSpacing: 2.0,
+                      ),
                     ),
-                  ),
-                ],
-              ),
+                    Icon(Icons.edit_location_outlined),
+                  ],
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  children: <Widget>[
+                    Text(
+                      '2',
+                      style: TextStyle(
+                        fontSize: 22.0,
+                        fontStyle: FontStyle.italic,
+                        fontWeight: FontWeight.w300,
+                        color: Colors.black,
+                        letterSpacing: 2.0,
+                      ),
+                    ),
+                    Icon(Icons.mail),
+                  ],
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  children: <Widget>[
+                    Text(
+                      '3',
+                      style: TextStyle(
+                        fontSize: 22.0,
+                        fontStyle: FontStyle.italic,
+                        fontWeight: FontWeight.w300,
+                        color: Colors.black,
+                        letterSpacing: 2.0,
+                      ),
+                    ),
+                    Icon(Icons.attach_money_sharp),
+                  ],
+                ),
+              ],
             ),
           ),
           SizedBox(
@@ -117,7 +170,10 @@ class Profile extends StatelessWidget {
                     gradient: LinearGradient(
                         begin: Alignment.centerRight,
                         end: Alignment.centerLeft,
-                        colors: [Colors.pink, Colors.pinkAccent]),
+                        colors: <Color>[
+                          Color(0xff880e4f),
+                          Color(0xffb71c1c)
+                        ]), //colors: <Color>[Color(0xff880e4f), Color(0xffb71c1c)])),
                     borderRadius: BorderRadius.circular(30.0),
                   ),
                   child: Container(
@@ -125,7 +181,7 @@ class Profile extends StatelessWidget {
                         BoxConstraints(maxWidth: 300.0, minHeight: 50.0),
                     alignment: Alignment.center,
                     child: Text(
-                      "Contact me",
+                      "Edit profile",
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 26.0,

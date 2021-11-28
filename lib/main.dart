@@ -88,14 +88,7 @@ class _HomeState extends State<Home> {
                     color: Colors.blue,
                     fontSize: 20,
                   )),
-              SizedBox(
-                width: 700,
-              ),
-              Text("28/11/2021",
-                  style: TextStyle(
-                    color: Colors.grey,
-                    fontSize: 18,
-                  )),
+
             ],
           ),
           Container(
