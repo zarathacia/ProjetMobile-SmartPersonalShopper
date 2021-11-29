@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'home.dart';
 
 class Profile extends StatelessWidget {
   @override
@@ -43,6 +44,56 @@ class Profile extends StatelessWidget {
             ),
           ),
         ],
+      ),
+      bottomNavigationBar: BottomAppBar(
+        shape: CircularNotchedRectangle(),
+        color: Colors.white,
+        child: IconTheme(
+          data: IconThemeData(color: Theme.of(context).colorScheme.onPrimary),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              IconButton(
+                icon: const Icon(
+                  Icons.home_outlined,
+                  color: Colors.black,
+                  size: 40,
+                ),
+                onPressed: () {
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (context) => Home()));
+                },
+              ),
+              IconButton(
+                icon: const Icon(
+                  Icons.shopping_cart_outlined,
+                  color: Colors.black,
+                  size: 40,
+                ),
+                onPressed: () {},
+              ),
+              IconButton(
+                icon: const Icon(
+                  Icons.chat_bubble_outline_outlined,
+                  color: Colors.black,
+                  size: 40,
+                ),
+                onPressed: () {},
+              ),
+              IconButton(
+                icon: const Icon(
+                  Icons.account_circle_outlined,
+                  color: Colors.black,
+                  size: 40,
+                ),
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Profile()));
+                },
+              ),
+            ],
+          ),
+        ),
       ),
       body: Column(
         children: <Widget>[
@@ -102,17 +153,20 @@ class Profile extends StatelessWidget {
                 ),
                 Row(
                   children: <Widget>[
-                    Text(
-                      '1',
-                      style: TextStyle(
-                        fontSize: 22.0,
-                        fontStyle: FontStyle.italic,
-                        fontWeight: FontWeight.w300,
-                        color: Colors.black,
-                        letterSpacing: 2.0,
-                      ),
-                    ),
                     Icon(Icons.edit_location_outlined),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Text(
+                      'Las vegas, USA',
+                      style: TextStyle(
+                        fontSize: 18.0,
+                        fontStyle: FontStyle.italic,
+                        fontWeight: FontWeight.w300,
+                        color: Colors.black,
+                        letterSpacing: 2.0,
+                      ),
+                    ),
                   ],
                 ),
                 SizedBox(
@@ -120,17 +174,20 @@ class Profile extends StatelessWidget {
                 ),
                 Row(
                   children: <Widget>[
-                    Text(
-                      '2',
-                      style: TextStyle(
-                        fontSize: 22.0,
-                        fontStyle: FontStyle.italic,
-                        fontWeight: FontWeight.w300,
-                        color: Colors.black,
-                        letterSpacing: 2.0,
-                      ),
-                    ),
                     Icon(Icons.mail),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Text(
+                      'Jacob.Gonzales@gmail.com',
+                      style: TextStyle(
+                        fontSize: 18.0,
+                        fontStyle: FontStyle.italic,
+                        fontWeight: FontWeight.w300,
+                        color: Colors.black,
+                        letterSpacing: 2.0,
+                      ),
+                    ),
                   ],
                 ),
                 SizedBox(
@@ -138,17 +195,20 @@ class Profile extends StatelessWidget {
                 ),
                 Row(
                   children: <Widget>[
+                    Icon(Icons.attach_money_sharp),
+                    SizedBox(
+                      width: 20,
+                    ),
                     Text(
-                      '3',
+                      '180.50',
                       style: TextStyle(
-                        fontSize: 22.0,
+                        fontSize: 18.0,
                         fontStyle: FontStyle.italic,
                         fontWeight: FontWeight.w300,
                         color: Colors.black,
                         letterSpacing: 2.0,
                       ),
                     ),
-                    Icon(Icons.attach_money_sharp),
                   ],
                 ),
               ],

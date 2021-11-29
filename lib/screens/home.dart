@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'screens/profile.dart';
+import 'profile.dart';
 
 void main() {
   runApp(MyApp());
@@ -42,7 +42,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 100,
-        title: Text("Shopily",
+        title: Text("Shopili",
             style: TextStyle(
               fontWeight: FontWeight.bold,
               color: Colors.white,
