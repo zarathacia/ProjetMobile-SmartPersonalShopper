@@ -140,6 +140,9 @@ class _HomeState extends State<Home> {
               borderRadius: BorderRadius.circular(30.0),
             ),
           ),
+          SizedBox(
+            height: 10,
+          ),
           RaisedButton(
             onPressed: () {
               Navigator.push(

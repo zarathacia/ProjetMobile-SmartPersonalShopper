@@ -1,8 +1,6 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:smart_personal_shopper/constants.dart';
+import '../widget/button.dart' show buttonCustome;
 import 'home.dart';
-import 'profile.dart';
 
 class Pay extends StatelessWidget {
   @override
@@ -98,36 +96,7 @@ class Pay extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.all(15.0),
-                child: RaisedButton(
-                    onPressed: () {},
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(80.0)),
-                    elevation: 5.0,
-                    padding: EdgeInsets.all(0.0),
-                    child: Ink(
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                            begin: Alignment.centerRight,
-                            end: Alignment.centerLeft,
-                            colors: <Color>[
-                              Color(0xff880e4f),
-                              Color(0xffb71c1c)
-                            ]), //colors: <Color>[Color(0xff880e4f), Color(0xffb71c1c)])),
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                      child: Container(
-                        constraints:
-                            BoxConstraints(maxWidth: 150.0, minHeight: 50.0),
-                        alignment: Alignment.center,
-                        child: Text(
-                          "Pay",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 24.0,
-                              fontWeight: FontWeight.w300),
-                        ),
-                      ),
-                    )),
+                child: buttonCustome('pay', const Home(), context),
               ),
               SizedBox(height: 20.0),
               GestureDetector(

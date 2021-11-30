@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_personal_shopper/widget/button.dart';
 import 'home.dart';
 
 class Profile extends StatelessWidget {
@@ -217,36 +218,7 @@ class Profile extends StatelessWidget {
           ),
           Container(
             width: 300.00,
-            child: RaisedButton(
-                onPressed: () {},
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(80.0)),
-                elevation: 0.0,
-                padding: EdgeInsets.all(0.0),
-                child: Ink(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        begin: Alignment.centerRight,
-                        end: Alignment.centerLeft,
-                        colors: <Color>[
-                          Color(0xff880e4f),
-                          Color(0xffb71c1c)
-                        ]), //colors: <Color>[Color(0xff880e4f), Color(0xffb71c1c)])),
-                    borderRadius: BorderRadius.circular(30.0),
-                  ),
-                  child: Container(
-                    constraints:
-                        BoxConstraints(maxWidth: 300.0, minHeight: 50.0),
-                    alignment: Alignment.center,
-                    child: Text(
-                      "Edit profile",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 26.0,
-                          fontWeight: FontWeight.w300),
-                    ),
-                  ),
-                )),
+            child: buttonCustome('Edit Profile', Profile(), context),
           ),
         ],
       ),
