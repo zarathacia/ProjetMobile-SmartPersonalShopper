@@ -5,8 +5,6 @@ import 'package:smart_personal_shopper/main.dart';
 import 'package:smart_personal_shopper/screens/Market/Market_items.dart';
 
 import 'Market_items.dart';
-import 'Market_items.dart';
-
 class marketScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -36,42 +34,75 @@ class marketScreen extends StatelessWidget {
           )
         ],
       ),
-      body:
-      Container(
-          padding:EdgeInsets.all(20),
-          child: Column(
-            children: <Widget>[
-              Text(
-                'choose your market',
-                textAlign: TextAlign.center,
-                style: TextStyle(height: 2, fontSize: 30, color:Colors.grey,),
+      body:Column(
+        children: <Widget>[
+          Text(
+            'choose your market',
+            textAlign: TextAlign.center,
+            style: TextStyle(height: 2, fontSize: 30, color: Colors.grey,),
 
+          ),
+        Expanded(
+        child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+        child: GridView.builder(
+        itemCount: markets.length,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        mainAxisSpacing: 20.0,
+        crossAxisSpacing: 20.0,
+        childAspectRatio: 0.75,
+        ),
+        itemBuilder: (context, index) => ItemCard(
+        market: markets[index],
+        press: () {},
+        )),
+        )),
+        ],
+      ),
+    );
+  }
+}
+class ItemCard extends StatelessWidget {
+  final Market market;
+  final Function press;
+  const ItemCard({
+    Key ,
+    required this.market,
+    required this.press
+  }) : super (key:Key) ;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        padding: EdgeInsets.all(20),
+        child: Column(
+          children: <Widget>[
+            Container(
+              padding: EdgeInsets.all(16),
+              height: 250,
+              width: 250,
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Colors.black,
+                  width: 1,
+                ),
+                borderRadius: BorderRadius.circular(16),
               ),
-              Container(
-                padding:EdgeInsets.all(16),
-                height:250,
-                width:250,
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Colors.black,
-                    width: 1,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Image.asset(market.image),
+                  Text(market.title,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 25),
                   ),
-                  borderRadius : BorderRadius.circular(16),
-                ),
-                child:Column(
-                  children: <Widget>[
-                    Image.asset(markets[0].image),
-                    Text(markets[0].title,
-                      style: TextStyle(fontSize: 25),
-                    ),
-                  ],
-                ),
+                ],
               ),
+            ),
 
-            ],
+          ],
 
-          )
-      )
+        )
     );
   }
 }
