@@ -1,33 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'profile.dart';
-
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.red,
-      ),
-      home: Home(),
-    );
-  }
-}
+import 'pay.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -42,7 +16,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 100,
-        title: Text("Shopili",
+        title: Text("Shopily",
             style: TextStyle(
               fontWeight: FontWeight.bold,
               color: Colors.white,
@@ -86,10 +60,7 @@ class _HomeState extends State<Home> {
                   color: Colors.black,
                   size: 40,
                 ),
-                onPressed: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => Home()));
-                },
+                onPressed: () {},
               ),
               IconButton(
                 icon: const Icon(
@@ -101,9 +72,9 @@ class _HomeState extends State<Home> {
               ),
               IconButton(
                 icon: const Icon(
-                  Icons.chat_bubble_outline_outlined,
+                  Icons.chat_outlined,
                   color: Colors.black,
-                  size: 40,
+                  size: 35,
                 ),
                 onPressed: () {},
               ),
@@ -156,6 +127,23 @@ class _HomeState extends State<Home> {
             color: Colors.red,
             child: Text(
               'go to profile',
+              style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 25),
+            ),
+            shape: new RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(30.0),
+            ),
+          ),
+          RaisedButton(
+            onPressed: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Pay()));
+            },
+            color: Colors.red,
+            child: Text(
+              'go to pay',
               style: TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.bold,

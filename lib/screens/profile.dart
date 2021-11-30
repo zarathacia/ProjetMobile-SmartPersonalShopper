@@ -5,7 +5,7 @@ import 'home.dart';
 class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    Size size = MediaQuery.of(context).size; //responsive sized
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -86,10 +86,7 @@ class Profile extends StatelessWidget {
                   color: Colors.black,
                   size: 40,
                 ),
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Profile()));
-                },
+                onPressed: () {},
               ),
             ],
           ),
@@ -125,8 +122,9 @@ class Profile extends StatelessWidget {
                       margin: EdgeInsets.symmetric(horizontal: 110),
                       //height: 100,
                       child: CircleAvatar(
-                        backgroundImage: NetworkImage(
-                          "https://www.ff-bz.com/imagetypes/article-detail/photo.jpg",
+                        child: ClipRRect(
+                          child: Image.asset('images/pouya.jfif'),
+                          borderRadius: BorderRadius.circular(150),
                         ),
                         radius: 100.0,
                       ),
@@ -142,7 +140,7 @@ class Profile extends StatelessWidget {
               //crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Jacob Gonzales",
+                  "Pouya Ramirez",
                   style: TextStyle(
                       color: Colors.redAccent,
                       fontStyle: FontStyle.normal,
@@ -158,7 +156,7 @@ class Profile extends StatelessWidget {
                       width: 20,
                     ),
                     Text(
-                      'Las vegas, USA',
+                      'Florida, USA',
                       style: TextStyle(
                         fontSize: 18.0,
                         fontStyle: FontStyle.italic,
@@ -179,7 +177,7 @@ class Profile extends StatelessWidget {
                       width: 20,
                     ),
                     Text(
-                      'Jacob.Gonzales@gmail.com',
+                      'pouya.ramirez56@gmail.com',
                       style: TextStyle(
                         fontSize: 18.0,
                         fontStyle: FontStyle.italic,
