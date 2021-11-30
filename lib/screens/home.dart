@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_personal_shopper/screens/Market/Market_screen.dart';
 import 'profile.dart';
 import 'pay.dart';
 
@@ -68,7 +69,10 @@ class _HomeState extends State<Home> {
                   color: Colors.black,
                   size: 40,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => marketScreen()));
+                },
               ),
               IconButton(
                 icon: const Icon(
