@@ -1,6 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/screens/Market/Market_screen.dart';
+import 'package:smart_personal_shopper/widget/button.dart';
+import 'Confirm_receival.dart';
+import 'choose_your_personal_shopper.dart';
 import 'profile.dart';
 import 'pay.dart';
 
@@ -151,6 +154,46 @@ class _HomeState extends State<Home> {
             color: Colors.red,
             child: Text(
               'go to pay',
+              style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 25),
+            ),
+            shape: new RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(30.0),
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          RaisedButton(
+            onPressed: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Choose()));
+            },
+            color: Colors.red,
+            child: Text(
+              'choose your delivrer',
+              style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 25),
+            ),
+            shape: new RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(30.0),
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          RaisedButton(
+            onPressed: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Confirm()));
+            },
+            color: Colors.red,
+            child: Text(
+              'Rate',
               style: TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.bold,

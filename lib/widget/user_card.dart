@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_personal_shopper/data/user.dart';
+import 'package:smart_personal_shopper/screens/provider/feedback.dart';
 
-/*class UserCardWidget extends StatelessWidget {
+class UserCardWidget extends StatelessWidget {
   final User user;
   final bool isUserInFocus;
 
@@ -121,4 +122,4 @@ import 'package:smart_personal_shopper/data/user.dart';
           ],
         ),
       );
-}*/
+}

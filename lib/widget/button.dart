@@ -12,9 +12,9 @@ Widget buttonCustome(String txt, Widget page, context) {
           return page;
         }));
       },
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(80.0)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(200)),
       elevation: 0.0,
-      padding: const EdgeInsets.all(0.0),
+      padding: const EdgeInsets.all(0),
       child: Ink(
         decoration: BoxDecoration(
           gradient: const LinearGradient(

@@ -1,6 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_personal_shopper/screens/Chat_With_Personal_shopper.dart';
+import 'package:smart_personal_shopper/screens/Market/Market_screen.dart';
 import 'package:smart_personal_shopper/widget/button.dart';
+import 'package:smart_personal_shopper/widget/navbar.dart';
 import 'home.dart';
 
 class Profile extends StatelessWidget {
@@ -19,8 +22,8 @@ class Profile extends StatelessWidget {
               color: Colors.white,
               fontSize: 25,
             )),
-        leading: new IconButton(
-          icon: new Icon(
+        leading: IconButton(
+          icon: const Icon(
             Icons.arrow_back_ios,
             color: Colors.white,
             size: 40,
@@ -46,53 +49,8 @@ class Profile extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar: BottomAppBar(
-        shape: CircularNotchedRectangle(),
-        color: Colors.white,
-        child: IconTheme(
-          data: IconThemeData(color: Theme.of(context).colorScheme.onPrimary),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              IconButton(
-                icon: const Icon(
-                  Icons.home_outlined,
-                  color: Colors.black,
-                  size: 40,
-                ),
-                onPressed: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => Home()));
-                },
-              ),
-              IconButton(
-                icon: const Icon(
-                  Icons.shopping_cart_outlined,
-                  color: Colors.black,
-                  size: 40,
-                ),
-                onPressed: () {},
-              ),
-              IconButton(
-                icon: const Icon(
-                  Icons.chat_bubble_outline_outlined,
-                  color: Colors.black,
-                  size: 40,
-                ),
-                onPressed: () {},
-              ),
-              IconButton(
-                icon: const Icon(
-                  Icons.account_circle_outlined,
-                  color: Colors.black,
-                  size: 40,
-                ),
-                onPressed: () {},
-              ),
-            ],
-          ),
-        ),
-      ),
+      bottomNavigationBar:
+          navbar(Home(), marketScreen(), Chat(), Profile(), context),
       body: Column(
         children: <Widget>[
           Container(
