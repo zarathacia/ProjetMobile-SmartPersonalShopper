@@ -87,8 +87,7 @@ class _HomeState extends State<Home> {
                   size: 40,
                 ),
                 onPressed: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => Home()));
+
                 },
               ),
               IconButton(
