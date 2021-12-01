@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_personal_shopper/screens/Confirm_receival.dart';
 import '../widget/button.dart' show buttonCustome;
 import 'home.dart';
 
@@ -96,7 +97,7 @@ class Pay extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.all(15.0),
-                child: buttonCustome('pay', const Home(), context),
+                child: buttonCustome('pay', Confirm(), context),
               ),
               SizedBox(height: 20.0),
               GestureDetector(

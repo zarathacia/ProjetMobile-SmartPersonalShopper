@@ -1,8 +1,11 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
 Widget buttonCustome(String txt, Widget page, context) {
+  assert(txt != null);
   return RaisedButton(
       onPressed: () {
         Navigator.push(context, MaterialPageRoute(builder: (context) {
@@ -26,8 +29,8 @@ Widget buttonCustome(String txt, Widget page, context) {
         child: Container(
           constraints: const BoxConstraints(maxWidth: 300.0, minHeight: 50.0),
           alignment: Alignment.center,
-          child: const Text(
-            "Edit profile",
+          child: Text(
+            txt,
             style: TextStyle(
                 color: Colors.white,
                 fontSize: 26.0,
