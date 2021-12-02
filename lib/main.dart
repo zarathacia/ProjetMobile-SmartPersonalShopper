@@ -1,5 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_personal_shopper/screens/Landing/LandingParticles.dart';
+import 'package:smart_personal_shopper/screens/Landing/try.dart';
+import 'package:smart_personal_shopper/screens/login.dart';
 import 'screens/profile.dart';
 
 void main() {
@@ -24,7 +27,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.red,
       ),
-      home: Home(),
+      home:login(),
     );
   }
 }
