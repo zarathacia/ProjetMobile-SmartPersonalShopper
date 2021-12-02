@@ -3,6 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:smart_personal_shopper/data/user.dart';
 import 'package:smart_personal_shopper/screens/provider/feedback.dart';
 
+import 'mytooltip.dart';
+
 class UserCardWidget extends StatelessWidget {
   final User user;
   final bool isUserInFocus;
@@ -47,7 +49,7 @@ class UserCardWidget extends StatelessWidget {
             Positioned(
               right: 10,
               left: 10,
-              bottom: 10,
+              bottom: 15,
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -55,8 +57,11 @@ class UserCardWidget extends StatelessWidget {
                   buildUserInfo(user: user),
                   Padding(
                     padding: EdgeInsets.only(bottom: 16, right: 8),
-                    child: Icon(Icons.info, color: Colors.white),
-                  )
+                    child: MyTooltip(
+                      message: user.bio,
+                      child: Icon(Icons.info, color: Colors.white),
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -69,7 +74,7 @@ class UserCardWidget extends StatelessWidget {
 
   Widget buildLikeBadge(SwipingDirection swipingDirection) {
     final isSwipingRight = swipingDirection == SwipingDirection.right;
-    final color = isSwipingRight ? Colors.green : Colors.pink;
+    final color = isSwipingRight ? Colors.red : Colors.grey;
     final angle = isSwipingRight ? -0.5 : 0.5;
 
     if (swipingDirection == SwipingDirection.none) {
@@ -87,7 +92,7 @@ class UserCardWidget extends StatelessWidget {
               border: Border.all(color: color, width: 2),
             ),
             child: Text(
-              isSwipingRight ? 'LIKE' : 'NOPE',
+              isSwipingRight ? 'Choose' : 'Next',
               style: TextStyle(
                 color: color,
                 fontSize: 20,
@@ -116,9 +121,18 @@ class UserCardWidget extends StatelessWidget {
             ),
             SizedBox(height: 8),
             Text(
-              user.designation,
-              style: TextStyle(color: Colors.white),
+              '${user.rating}',
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
             ),
+            /*SizedBox(height: 8),
+            Text(
+              user.rating,
+              style: TextStyle(color: Colors.white),
+            ),*/
           ],
         ),
       );

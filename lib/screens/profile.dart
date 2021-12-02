@@ -4,7 +4,7 @@ import 'package:smart_personal_shopper/screens/Chat_With_Personal_shopper.dart';
 import 'package:smart_personal_shopper/screens/Market/Market_screen.dart';
 import 'package:smart_personal_shopper/widget/button.dart';
 import 'package:smart_personal_shopper/widget/navbar.dart';
-import 'Market/List_of_Past_discussions.dart';
+import 'List_of_Past_discussions.dart';
 import 'home.dart';
 
 class Profile extends StatelessWidget {
@@ -32,23 +32,6 @@ class Profile extends StatelessWidget {
           onPressed: () => Navigator.of(context).pop(),
         ),
         leadingWidth: 30,
-
-        actions: [
-          Container(
-            width: 80,
-            child: IconButton(
-              alignment: Alignment.center,
-              icon: const Icon(
-                Icons.more_vert,
-                size: 50,
-              ),
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Profile()));
-              },
-            ),
-          ),
-        ],
       ),
       bottomNavigationBar:
           navbar(Home(), marketScreen(), Listof(), Profile(), context),

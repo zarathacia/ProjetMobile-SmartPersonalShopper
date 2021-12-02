@@ -3,7 +3,7 @@ import 'user.dart';
 final dummyUsers = [
   User(
       name: 'Lauren Turner',
-      designation: 'Content Writer',
+      rating: '5 stars',
       bio:
           'Psychology, science, and art are what helps me to learn the outside world and myself.',
       age: 24,
@@ -11,7 +11,7 @@ final dummyUsers = [
       location: 'North London'),
   User(
     name: 'Lori Perez',
-    designation: 'UI Designer ',
+    rating: '4 stars ',
     bio:
         'Travelling, adventures, extreme sports are also an integral part of me, but I like watching and admiring extreme sports rather than doing it ?',
     location: 'Leeds',
@@ -20,7 +20,7 @@ final dummyUsers = [
   ),
   User(
     name: 'Christine Wallace',
-    designation: 'News Reporter',
+    rating: '4.5 stars',
     bio:
         'Psychology, science, and art are what helps me to learn the outside world and myself.',
     location: 'Liverpool',
@@ -29,7 +29,7 @@ final dummyUsers = [
   ),
   User(
     name: 'Rachel Green',
-    designation: 'Architect',
+    rating: '3 stars',
     bio:
         'Psychology, science, and art are what helps me to learn the outside world and myself.',
     location: 'Nottingham',
@@ -38,7 +38,7 @@ final dummyUsers = [
   ),
   User(
     name: 'Emma',
-    designation: 'Software Developer',
+    rating: '2 stars',
     bio:
         'Psychology, science, and art are what helps me to learn the outside world and myself.',
     location: 'Manchester',
@@ -47,7 +47,7 @@ final dummyUsers = [
   ),
   User(
     name: 'Kim Wexler',
-    designation: 'Accountant',
+    rating: '3.5 stars',
     bio:
         'Psychology, science, and art are what helps me to learn the outside world and myself.',
     location: 'Birmingham',

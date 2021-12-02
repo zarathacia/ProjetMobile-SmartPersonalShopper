@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 
 class User {
   final String name;
-  final String designation;
+  final String rating;
 
   final int age;
   final String imgUrl;
@@ -12,7 +12,7 @@ class User {
   bool isSwipedOff;
 
   User({
-    @required this.designation = 't',
+    @required this.rating = 't',
     @required this.name = 't',
     @required this.age = 18,
     @required this.imgUrl = 'x',

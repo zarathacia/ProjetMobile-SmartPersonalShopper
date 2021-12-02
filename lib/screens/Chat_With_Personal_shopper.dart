@@ -4,7 +4,7 @@ import 'package:smart_personal_shopper/screens/home.dart';
 import 'package:smart_personal_shopper/screens/profile.dart';
 
 import '../widget/navbar.dart';
-import 'Market/List_of_Past_discussions.dart';
+import 'List_of_Past_discussions.dart';
 
 class Chat extends StatelessWidget {
   @override
@@ -14,7 +14,7 @@ class Chat extends StatelessWidget {
       title: 'chat',
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.red,
+          backgroundColor: Colors.red[900],
           title: const Text('Jackie Chong'),
           leading: IconButton(
             icon: const Icon(
@@ -45,9 +45,13 @@ class Chat extends StatelessWidget {
                   Text('Jaki CHinj'),
                 ],
               ),
-              SizedBox(height: 5,),
+              SizedBox(
+                height: 5,
+              ),
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                SizedBox(width: 10,),
+                SizedBox(
+                  width: 10,
+                ),
                 Container(
                   decoration: BoxDecoration(
                     border: Border.all(
@@ -200,7 +204,7 @@ class Chat extends StatelessWidget {
           )),
         ),
         bottomNavigationBar:
-        navbar(Home(), marketScreen(), Listof(), Profile(), context),
+            navbar(Home(), marketScreen(), Listof(), Profile(), context),
       ),
     );
   }
