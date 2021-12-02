@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
 import 'package:smart_personal_shopper/widget/rating.dart';
 
 class Confirm extends StatelessWidget {
