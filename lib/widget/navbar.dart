@@ -37,7 +37,7 @@ Widget navbar(Widget page1, Widget page2, Widget page3, Widget page4, context) {
           ),
           IconButton(
             icon: const Icon(
-              Icons.chat_bubble_outline_outlined,
+              Icons.chat_outlined,
               color: Colors.black,
               size: 40,
             ),

@@ -1,6 +1,12 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_personal_shopper/screens/profile.dart';
 import 'package:smart_personal_shopper/widget/rating.dart';
+
+import '../widget/navbar.dart';
+import 'Market/List_of_Past_discussions.dart';
+import 'Market/Market_screen.dart';
+import 'home.dart';
 
 class Confirm extends StatelessWidget {
   late double _ratingValue;
@@ -83,6 +89,8 @@ class Confirm extends StatelessWidget {
           ],
         ),
       ),
+      bottomNavigationBar:
+      navbar(Home(), marketScreen(), Listof(), Profile(), context),
     );
   }
 

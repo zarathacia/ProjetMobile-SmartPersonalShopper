@@ -1,13 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:smart_personal_shopper/screens/Market/Market_screen.dart';
+import 'package:smart_personal_shopper/screens/home.dart';
+import 'package:smart_personal_shopper/screens/profile.dart';
+
+import '../widget/navbar.dart';
+import 'Market/List_of_Past_discussions.dart';
 
 class Chat extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Welcome to Flutter',
+      debugShowCheckedModeBanner: false,
+      title: 'chat',
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Welcome to Flutter'),
+          backgroundColor: Colors.red,
+          title: const Text('Jackie Chong'),
+          leading: IconButton(
+            icon: const Icon(
+              Icons.arrow_back_ios,
+              color: Colors.white,
+              size: 40,
+            ),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
         ),
         body: Center(
           child: Container(
@@ -29,17 +45,13 @@ class Chat extends StatelessWidget {
                   Text('Jaki CHinj'),
                 ],
               ),
-              SizedBox(
-                height: 50,
-              ),
+              SizedBox(height: 5,),
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                SizedBox(
-                  width: 10,
-                ),
+                SizedBox(width: 10,),
                 Container(
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: Colors.blue,
+                      color: Colors.red,
                     ),
                     borderRadius: BorderRadius.circular(10.0),
                   ),
@@ -50,7 +62,7 @@ class Chat extends StatelessWidget {
                           Column(
                             children: [
                               SizedBox(
-                                height: 100,
+                                height: 10,
                               ),
                               Row(
                                 children: [
@@ -71,7 +83,7 @@ class Chat extends StatelessWidget {
                                 width: 300,
                                 decoration: BoxDecoration(
                                   border: Border.all(
-                                    color: Colors.blue,
+                                    color: Colors.red,
                                   ),
                                   borderRadius: BorderRadius.circular(10.0),
                                 ),
@@ -106,7 +118,7 @@ class Chat extends StatelessWidget {
                                     width: 300,
                                     decoration: BoxDecoration(
                                       border: Border.all(
-                                        color: Colors.blue,
+                                        color: Colors.red,
                                       ),
                                       borderRadius: BorderRadius.circular(10.0),
                                     ),
@@ -134,7 +146,7 @@ class Chat extends StatelessWidget {
                                 width: 300,
                                 decoration: BoxDecoration(
                                   border: Border.all(
-                                    color: Colors.blue,
+                                    color: Colors.red,
                                   ),
                                   borderRadius: BorderRadius.circular(10.0),
                                 ),
@@ -162,7 +174,7 @@ class Chat extends StatelessWidget {
                 width: 300,
                 decoration: BoxDecoration(
                   border: Border.all(
-                    color: Colors.blue,
+                    color: Colors.red,
                   ),
                   borderRadius: BorderRadius.circular(10.0),
                 ),
@@ -187,6 +199,8 @@ class Chat extends StatelessWidget {
             ],
           )),
         ),
+        bottomNavigationBar:
+        navbar(Home(), marketScreen(), Listof(), Profile(), context),
       ),
     );
   }
