@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:smart_personal_shopper/screens/provider/feedback.dart';
 import 'package:smart_personal_shopper/data/user.dart';
 import 'package:smart_personal_shopper/data/users.dart';
-import 'package:smart_personal_shopper/screens/provider/feedback.dart';
+
 import 'package:smart_personal_shopper/widget/user_card.dart';
 
 class Choose extends StatefulWidget {
