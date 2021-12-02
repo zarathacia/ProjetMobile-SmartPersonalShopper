@@ -6,7 +6,7 @@ import 'package:smart_personal_shopper/widget/rating.dart';
 import 'package:smart_personal_shopper/screens/Market/Market_screen.dart';
 
 
-import '../Chat_With_Personal_shopper.dart';
+import 'Chat_With_Personal_shopper.dart';
 
 class Listof extends StatelessWidget {
 
@@ -227,7 +227,7 @@ class Listof extends StatelessWidget {
                                                   ClipRRect(
                                                     borderRadius: BorderRadius.circular(100.0),
                                                     child:
-                                                    Image.asset('images/user3.jpg', width: 60,height: 60,),
+                                                    Image.asset('images/kim1.jpg', width: 60,height: 60,),
                                                   ),
                                                 ),
 

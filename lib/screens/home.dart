@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/screens/Market/Market_screen.dart';
 import 'package:smart_personal_shopper/widget/button.dart';
 import 'Confirm_receival.dart';
-import 'Market/List_of_Past_discussions.dart';
+import 'List_of_Past_discussions.dart';
 import 'choose_your_personal_shopper.dart';
 import 'profile.dart';
 import 'pay.dart';

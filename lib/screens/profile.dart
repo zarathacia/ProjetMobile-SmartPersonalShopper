@@ -4,7 +4,7 @@ import 'package:smart_personal_shopper/screens/Chat_With_Personal_shopper.dart';
 import 'package:smart_personal_shopper/screens/Market/Market_screen.dart';
 import 'package:smart_personal_shopper/widget/button.dart';
 import 'package:smart_personal_shopper/widget/navbar.dart';
-import 'Market/List_of_Past_discussions.dart';
+import 'List_of_Past_discussions.dart';
 import 'home.dart';
 
 class Profile extends StatelessWidget {

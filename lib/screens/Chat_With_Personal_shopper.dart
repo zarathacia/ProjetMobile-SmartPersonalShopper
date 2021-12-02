@@ -4,7 +4,7 @@ import 'package:smart_personal_shopper/screens/home.dart';
 import 'package:smart_personal_shopper/screens/profile.dart';
 
 import '../widget/navbar.dart';
-import 'Market/List_of_Past_discussions.dart';
+import 'List_of_Past_discussions.dart';
 
 class Chat extends StatelessWidget {
   @override
