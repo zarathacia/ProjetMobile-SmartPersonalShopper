@@ -251,7 +251,7 @@ class Listof extends StatelessWidget {
 
                                                       ],
                                                     ),
-                                                    Text('Lorem Ipsum is simply dummy .')
+                                                    Text('Lorem Ipsum is simply dumy .')
                                                   ],
                                                 )
                                               ],
