@@ -31,9 +31,11 @@ class Confirm extends StatelessWidget {
           children: <Widget>[
             Text(
               'Confirm receival of goods',
-              style: TextStyle(color: Colors.grey, fontSize: 40),
+              style: TextStyle(color: Colors.grey, fontSize: 30),
             ),
-            SizedBox(height: 50,),
+            SizedBox(
+              height: 50,
+            ),
             RaisedButton(
                 onPressed: () {},
                 child: Text('Confirm receipt'),
@@ -45,7 +47,10 @@ class Confirm extends StatelessWidget {
             ),
             Text(
               'Review personal shopper',
-              style: TextStyle(fontSize: 20,decoration: TextDecoration.underline,fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  fontSize: 20,
+                  decoration: TextDecoration.underline,
+                  fontWeight: FontWeight.bold),
             ),
             SizedBox(
               height: 50,
@@ -64,7 +69,11 @@ class Confirm extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Text('Jakie chong',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                    Text(
+                      'Jakie chong',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
                   ],
                 ),
                 SizedBox(

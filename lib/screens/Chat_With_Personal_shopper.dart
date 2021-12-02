@@ -30,17 +30,20 @@ class Chat extends StatelessWidget {
               child: Column(
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
+                  SizedBox(
+                    width: 20,
+                  ),
                   ClipRRect(
-                    borderRadius: BorderRadius.circular(100.0),
+                    borderRadius: BorderRadius.circular(80.0),
                     child: Image.asset(
                       'images/shopper1.png',
-                      width: 150,
+                      width: 80,
                     ),
                   ),
                   SizedBox(
-                    width: 50,
+                    width: 20,
                   ),
                   Text('Jaki CHinj'),
                 ],
@@ -74,7 +77,7 @@ class Chat extends StatelessWidget {
                                     'You',
                                   ),
                                   SizedBox(
-                                    width: 300,
+                                    width: 200,
                                   ),
                                   Text('18.52'),
                                 ],
@@ -84,7 +87,7 @@ class Chat extends StatelessWidget {
                               ),
                               Container(
                                 height: 50,
-                                width: 300,
+                                width: 280,
                                 decoration: BoxDecoration(
                                   border: Border.all(
                                     color: Colors.red,
@@ -103,7 +106,7 @@ class Chat extends StatelessWidget {
                                   ),
                                   Text('Jakki'),
                                   SizedBox(
-                                    width: 300,
+                                    width: 200,
                                   ),
                                   Text('18.52'),
                                 ],
@@ -119,7 +122,7 @@ class Chat extends StatelessWidget {
                                   ),
                                   Container(
                                     height: 50,
-                                    width: 300,
+                                    width: 280,
                                     decoration: BoxDecoration(
                                       border: Border.all(
                                         color: Colors.red,
@@ -140,14 +143,14 @@ class Chat extends StatelessWidget {
                                 children: [
                                   Text('You'),
                                   SizedBox(
-                                    width: 300,
+                                    width: 200,
                                   ),
                                   Text('18.52'),
                                 ],
                               ),
                               Container(
                                 height: 50,
-                                width: 300,
+                                width: 280,
                                 decoration: BoxDecoration(
                                   border: Border.all(
                                     color: Colors.red,
