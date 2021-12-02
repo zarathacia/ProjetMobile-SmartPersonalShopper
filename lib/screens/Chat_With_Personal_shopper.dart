@@ -14,7 +14,7 @@ class Chat extends StatelessWidget {
       title: 'chat',
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.red,
+          backgroundColor: Colors.red.shade900,
           title: const Text('Jackie Chong'),
           leading: IconButton(
             icon: const Icon(
@@ -51,7 +51,7 @@ class Chat extends StatelessWidget {
                 Container(
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: Colors.red,
+                      color: Colors.red.shade500,
                     ),
                     borderRadius: BorderRadius.circular(10.0),
                   ),
@@ -83,7 +83,7 @@ class Chat extends StatelessWidget {
                                 width: 300,
                                 decoration: BoxDecoration(
                                   border: Border.all(
-                                    color: Colors.red,
+                                    color: Colors.red.shade900,
                                   ),
                                   borderRadius: BorderRadius.circular(10.0),
                                 ),
@@ -118,7 +118,7 @@ class Chat extends StatelessWidget {
                                     width: 300,
                                     decoration: BoxDecoration(
                                       border: Border.all(
-                                        color: Colors.red,
+                                        color: Colors.red.shade900,
                                       ),
                                       borderRadius: BorderRadius.circular(10.0),
                                     ),
@@ -146,7 +146,7 @@ class Chat extends StatelessWidget {
                                 width: 300,
                                 decoration: BoxDecoration(
                                   border: Border.all(
-                                    color: Colors.red,
+                                    color: Colors.red.shade900,
                                   ),
                                   borderRadius: BorderRadius.circular(10.0),
                                 ),
@@ -170,11 +170,11 @@ class Chat extends StatelessWidget {
                 height: 50,
               ),
               Container(
-                height: 50,
+                height: 70,
                 width: 300,
                 decoration: BoxDecoration(
                   border: Border.all(
-                    color: Colors.red,
+                    color: Colors.red.shade900,
                   ),
                   borderRadius: BorderRadius.circular(10.0),
                 ),
@@ -186,7 +186,17 @@ class Chat extends StatelessWidget {
                     ),
                     Icon(Icons.add_circle_outline_outlined),
                     Expanded(
-                      child: Text('Type here .... '),
+                      child:
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+                        child: TextField(
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(),
+                            hintText: 'Type here',
+                          ),
+                    ),
+                      ),
+
                     ),
                     Icon((Icons.mic_outlined)),
                     Icon(Icons.emoji_emotions_outlined),

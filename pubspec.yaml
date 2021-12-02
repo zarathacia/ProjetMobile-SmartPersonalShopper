@@ -69,6 +69,8 @@ flutter:
     - images/user4.jpg
     - images/user5.jpg
     - images/user6.jpg
+    - images/kim.png
+    - images/kim1.jpg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

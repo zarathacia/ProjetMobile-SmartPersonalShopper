@@ -12,13 +12,13 @@ class Listof extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
+    final size = MediaQuery.of(context).size;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'chat list',
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.red,
+          backgroundColor: Colors.red[900],
           elevation: 0,
           leading: IconButton(
             icon: const Icon(
@@ -33,7 +33,7 @@ class Listof extends StatelessWidget {
           child: Column (
               children: [
                 Container(
-                  color: Colors.red,
+                  color: Colors.red[900],
                   child:
                   Column(
                     children: [
@@ -57,337 +57,351 @@ class Listof extends StatelessWidget {
                           ),),
                       ),
                       ),
+                      SizedBox(height:10)
 
 
                     ],
                   ),
                 ),
-                Column(
-                children: [
+                Container(
+                  height: size.height*0.7 ,
+                  width: size.width*0.9,
+                  child: Column(
+                  children: [
 
-                  SizedBox(
-                    height: 50,
-                  ),
-                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                     SizedBox(
-                      width: 10,
+                      height: 50,
                     ),
-                    Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Colors.red,
-                        ),
-                        borderRadius: BorderRadius.circular(0.0),
+                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                      SizedBox(
+                        width: 10,
                       ),
-                      child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              Column(
-                                children: [
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      border: Border.all(
-                                        color: Colors.red,
+                      Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Colors.red.shade900,
+                          ),
+                          borderRadius: BorderRadius.circular(0.0),
+                        ),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Column(
+                                  children: [
+                                    InkWell(
+                                      child:
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                          color: Colors.red.shade900,
+                                        ),
+                                        borderRadius: BorderRadius.circular(0.0),
                                       ),
-                                      borderRadius: BorderRadius.circular(0.0),
-                                    ),
-                                    child:
-                                    Row(
-                                      children: [
-                                        InkWell(
-                                          child:
-                                          Container(
-                                            child:
-                                              ClipRRect(
-                                             borderRadius: BorderRadius.circular(100.0),
-                                            child:
-                                            Image.asset(
-                                              'images/shopper1.png',
-                                              width: 60,
-
+                                      child:
+                                      Container(
+                                        width: size.width*0.8,
+                                        child: Row(
+                                          children: [
+                                              Container(
+                                                child:
+                                                  ClipRRect(
+                                                 borderRadius: BorderRadius.circular(100.0),
+                                                child:
+                                                Image.asset(
+                                                  'images/user1.jpg',
+                                                  width: 60,
+                                                ),
+                                              ),
                                             ),
 
 
+                                            Column(
+                                              children: [
+                                                Row(
+                                                  children: [
+                                                    Text('Lauren Turner',textAlign: TextAlign.left,style: TextStyle(fontSize: 20,color:Colors.red.shade900,fontWeight:FontWeight.bold)),
+                                                    SizedBox(width: 50,),
+                                                    Text('12.25')
+                                                  ],
+                                                ),
+                                                Row(
+                                                  children: [
+                                                    const Icon(Icons.star, color: Colors.blue,size: 30),
+                                                    const Icon(Icons.star, color: Colors.blue,size: 30),
+                                                    const Icon(Icons.star_outline, color: Colors.blue,size: 30),
+                                                    const Icon(Icons.star_outline, color: Colors.blue, size: 30,),
+                                                    const Icon(Icons.star_outline, color: Colors.blue, size: 30,),
+
+                                                  ],
+                                                ),
+                                                Text('Lorem Ipsum is simply dummy .')
+                                              ],
+                                            )
+                                          ],
+                                        ),
+                                      ),
+
+                                      ),
+                                        onTap:(){
+                                          Navigator.push(
+                                              context, MaterialPageRoute(builder: (context) => Chat()));
+                                        }
+                                    ),
+                                    InkWell(
+                                        child:
+                                        Container(
+                                          decoration: BoxDecoration(
+                                            border: Border.all(
+                                              color: Colors.red.shade900,
+                                            ),
+                                            borderRadius: BorderRadius.circular(0.0),
+                                          ),
+                                          child:
+                                          Container(
+                                            width: size.width*0.8,
+                                            child: Row(
+                                              children: [
+                                                Container(
+                                                  child:
+                                                  ClipRRect(
+                                                    borderRadius: BorderRadius.circular(100.0),
+                                                    child:
+                                                    Image.asset(
+                                                      'images/user4.jpg',
+                                                      width: 60,
+                                                    ),
+                                                  ),
+                                                ),
+
+
+                                                Column(
+                                                  children: [
+                                                    Row(
+                                                      children: [
+                                                        Text('Lori Perez',style: TextStyle(fontSize: 20,color:Colors.red.shade900,fontWeight:FontWeight.bold)),
+                                                        SizedBox(width: 100,),
+                                                        Text('12.25')
+                                                      ],
+                                                    ),
+                                                    Row(
+                                                      children: [
+                                                        const Icon(Icons.star, color: Colors.blue,size: 30),
+                                                        const Icon(Icons.star, color: Colors.blue,size: 30),
+                                                        const Icon(Icons.star_outline, color: Colors.blue,size: 30),
+                                                        const Icon(Icons.star_outline, color: Colors.blue, size: 30,),
+                                                        const Icon(Icons.star_outline, color: Colors.blue, size: 30,),
+
+                                                      ],
+                                                    ),
+                                                    Text('Lorem Ipsum is simply dummy .')
+                                                  ],
+                                                )
+                                              ],
+                                            ),
                                           ),
 
                                         ),
-                                            onTap:(){
-                                              Navigator.push(
-                                                  context, MaterialPageRoute(builder: (context) => Chat()));
-                                            }
-                                        ),
-
-                                        Column(
-                                          children: [
-                                            Row(
-                                              children: [
-                                                Text('Jaki chong',style: TextStyle(fontSize: 20,color:Colors.red,fontWeight:FontWeight.bold)),
-                                                SizedBox(width: 250,),
-                                                Text('12.25')
-                                              ],
-                                            ),
-                                            Row(
-                                              children: [
-                                                const Icon(Icons.star, color: Colors.blue,size: 30),
-                                                const Icon(Icons.star, color: Colors.blue,size: 30),
-                                                const Icon(Icons.star_outline, color: Colors.blue,size: 30),
-                                                const Icon(Icons.star_outline, color: Colors.blue, size: 30,),
-                                                const Icon(Icons.star_outline, color: Colors.blue, size: 30,),
-
-                                              ],
-                                            ),
-                                            Text('Lorem Ipsum is simply dummy text of the printing and typesettingindustry.')
-                                          ],
-                                        )
-                                      ],
+                                        onTap:(){
+                                          Navigator.push(
+                                              context, MaterialPageRoute(builder: (context) => Chat()));
+                                        }
                                     ),
-                                  ),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      border: Border.all(
-                                        color: Colors.red,
-                                      ),
-                                      borderRadius: BorderRadius.circular(0.0),
-                                    ),
-                                    child:
-                                    Row(
-                                      children: [
-                                        InkWell(
-                                            child:
-                                            Container(
-                                              child:
-                                              ClipRRect(
-                                                borderRadius: BorderRadius.circular(100.0),
-                                                child:
-                                                Image.asset(
-                                                  'images/shopper1.png',
-                                                  width: 60,
+                                    InkWell(
+                                        child:
+                                        Container(
+                                          decoration: BoxDecoration(
+                                            border: Border.all(
+                                              color: Colors.red.shade900,
+                                            ),
+                                            borderRadius: BorderRadius.circular(0.0),
+                                          ),
+                                          child:
+                                          Container(
+                                            width: size.width*0.8,
 
+                                            child: Row(
+                                              children: [
+                                                Container(
+                                                  child:
+                                                  ClipRRect(
+                                                    borderRadius: BorderRadius.circular(100.0),
+                                                    child:
+                                                    Image.asset('images/user3.jpg', width: 60,height: 60,),
+                                                  ),
                                                 ),
 
 
-                                              ),
+                                                Column(
+                                                  children: [
+                                                    Row(
+                                                      children: [
+                                                        Text('Kim Wexler',style: TextStyle(fontSize: 20,color:Colors.red.shade900,fontWeight:FontWeight.bold)),
+                                                        SizedBox(width: 100,),
+                                                        Text('12.25')
+                                                      ],
+                                                    ),
+                                                    Row(
+                                                      children: [
+                                                        const Icon(Icons.star, color: Colors.blue,size: 30),
+                                                        const Icon(Icons.star, color: Colors.blue,size: 30),
+                                                        const Icon(Icons.star_outline, color: Colors.blue,size: 30),
+                                                        const Icon(Icons.star_outline, color: Colors.blue, size: 30,),
+                                                        const Icon(Icons.star_outline, color: Colors.blue, size: 30,),
 
+                                                      ],
+                                                    ),
+                                                    Text('Lorem Ipsum is simply dummy .')
+                                                  ],
+                                                )
+                                              ],
                                             ),
-                                            onTap:(){
-                                              Navigator.push(
-                                                  context, MaterialPageRoute(builder: (context) => Chat()));
-                                            }
+                                          ),
+
                                         ),
-                                        Column(
-                                          children: [
-                                            Row(
-                                              children: [
-                                                Text('Jaki chong',style: TextStyle(fontSize: 20,color:Colors.red,fontWeight:FontWeight.bold)),
-                                                SizedBox(width: 250,),
-                                                Text('12.25')
-                                              ],
-                                            ),
-                                            Row(
-                                              children: [
-                                                const Icon(Icons.star, color: Colors.blue,size: 30),
-                                                const Icon(Icons.star, color: Colors.blue,size: 30),
-                                                const Icon(Icons.star_outline, color: Colors.blue,size: 30),
-                                                const Icon(Icons.star_outline, color: Colors.blue, size: 30,),
-                                                const Icon(Icons.star_outline, color: Colors.blue, size: 30,),
-
-                                              ],
-                                            ),
-                                            Text('Lorem Ipsum is simply dummy text of the printing and typesettingindustry.')
-                                          ],
-                                        )
-                                      ],
+                                        onTap:(){
+                                          Navigator.push(
+                                              context, MaterialPageRoute(builder: (context) => Chat()));
+                                        }
                                     ),
-                                  ),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      border: Border.all(
-                                        color: Colors.red,
-                                      ),
-                                      borderRadius: BorderRadius.circular(0.0),
-                                    ),
-                                    child:
-                                    Row(
-                                      children: [
-                                        InkWell(
-                                            child:
-                                            Container(
-                                              child:
-                                              ClipRRect(
-                                                borderRadius: BorderRadius.circular(100.0),
-                                                child:
-                                                Image.asset(
-                                                  'images/shopper1.png',
-                                                  width: 60,
+                                    InkWell(
+                                        child:
+                                        Container(
+                                          decoration: BoxDecoration(
+                                            border: Border.all(
+                                              color: Colors.red.shade900,
+                                            ),
+                                            borderRadius: BorderRadius.circular(0.0),
+                                          ),
+                                          child:
+                                          Container(
+                                            width: size.width*0.8,
 
+                                            child: Row(
+                                              children: [
+                                                Container(
+                                                  child:
+                                                  ClipRRect(
+                                                    borderRadius: BorderRadius.circular(100.0),
+                                                    child:
+                                                    Image.asset(
+                                                      'images/profile.jpg',
+                                                      width: 60,
+                                                    ),
+                                                  ),
                                                 ),
 
 
-                                              ),
+                                                Column(
+                                                  children: [
+                                                    Row(
+                                                      children: [
+                                                        Text('Maria bria',style: TextStyle(fontSize: 20,color:Colors.red.shade900,fontWeight:FontWeight.bold)),
+                                                        SizedBox(width: 100,),
+                                                        Text('12.25')
+                                                      ],
+                                                    ),
+                                                    Row(
+                                                      children: [
+                                                        const Icon(Icons.star, color: Colors.blue,size: 30),
+                                                        const Icon(Icons.star, color: Colors.blue,size: 30),
+                                                        const Icon(Icons.star_outline, color: Colors.blue,size: 30),
+                                                        const Icon(Icons.star_outline, color: Colors.blue, size: 30,),
+                                                        const Icon(Icons.star_outline, color: Colors.blue, size: 30,),
 
+                                                      ],
+                                                    ),
+                                                    Text('Lorem Ipsum is simply dummy .')
+                                                  ],
+                                                )
+                                              ],
                                             ),
-                                            onTap:(){
-                                              Navigator.push(
-                                                  context, MaterialPageRoute(builder: (context) => Chat()));
-                                            }
+                                          ),
+
                                         ),
-                                        Column(
-                                          children: [
-                                            Row(
-                                              children: [
-                                                Text('Jaki chong',style: TextStyle(fontSize: 20,color:Colors.red,fontWeight:FontWeight.bold)),
-                                                SizedBox(width: 250,),
-                                                Text('12.25')
-                                              ],
-                                            ),
-                                            Row(
-                                              children: [
-                                                const Icon(Icons.star, color: Colors.blue,size: 30),
-                                                const Icon(Icons.star, color: Colors.blue,size: 30),
-                                                const Icon(Icons.star_outline, color: Colors.blue,size: 30),
-                                                const Icon(Icons.star_outline, color: Colors.blue, size: 30,),
-                                                const Icon(Icons.star_outline, color: Colors.blue, size: 30,),
-
-                                              ],
-                                            ),
-                                            Text('Lorem Ipsum is simply dummy text of the printing and typesettingindustry.')
-                                          ],
-                                        )
-                                      ],
+                                        onTap:(){
+                                          Navigator.push(
+                                              context, MaterialPageRoute(builder: (context) => Chat()));
+                                        }
                                     ),
-                                  ),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      border: Border.all(
-                                        color: Colors.red,
-                                      ),
-                                      borderRadius: BorderRadius.circular(0.0),
-                                    ),
-                                    child:
-                                    Row(
-                                      children: [
-                                        InkWell(
-                                            child:
-                                            Container(
-                                              child:
-                                              ClipRRect(
-                                                borderRadius: BorderRadius.circular(100.0),
-                                                child:
-                                                Image.asset(
-                                                  'images/shopper1.png',
-                                                  width: 60,
+                                    InkWell(
+                                        child:
+                                        Container(
+                                          decoration: BoxDecoration(
+                                            border: Border.all(
+                                              color: Colors.red.shade900,
+                                            ),
+                                            borderRadius: BorderRadius.circular(0.0),
+                                          ),
+                                          child:
+                                          Container(
+                                            width: size.width*0.8,
 
+                                            child: Row(
+                                              children: [
+                                                Container(
+                                                  child:
+                                                  ClipRRect(
+                                                    borderRadius: BorderRadius.circular(100.0),
+                                                    child:
+                                                    Image.asset(
+                                                      'images/shopper1.png',
+                                                      width: 60,
+                                                    ),
+                                                  ),
                                                 ),
 
 
-                                              ),
+                                                Column(
+                                                  children: [
+                                                    Row(
+                                                      children: [
+                                                        Text('Jaki chong',textAlign: TextAlign.left ,style: TextStyle(fontSize: 20,color:Colors.red.shade900,fontWeight:FontWeight.bold)),
+                                                        SizedBox(width: 100,),
+                                                        Text('12.25', textAlign: TextAlign.left)
+                                                      ],
+                                                    ),
+                                                    Row(
+                                                      children: [
+                                                        const Icon(Icons.star, color: Colors.blue,size: 30),
+                                                        const Icon(Icons.star, color: Colors.blue,size: 30),
+                                                        const Icon(Icons.star_outline, color: Colors.blue,size: 30),
+                                                        const Icon(Icons.star_outline, color: Colors.blue, size: 30,),
+                                                        const Icon(Icons.star_outline, color: Colors.blue, size: 30,),
 
+                                                      ],
+                                                    ),
+                                                    Text('Lorem Ipsum is simply dummy .')
+                                                  ],
+                                                )
+                                              ],
                                             ),
-                                            onTap:(){
-                                              Navigator.push(
-                                                  context, MaterialPageRoute(builder: (context) => Chat()));
-                                            }
+                                          ),
+
                                         ),
-                                        Column(
-                                          children: [
-                                            Row(
-                                              children: [
-                                                Text('Jaki chong',style: TextStyle(fontSize: 20,color:Colors.red,fontWeight:FontWeight.bold)),
-                                                SizedBox(width: 250,),
-                                                Text('12.25')
-                                              ],
-                                            ),
-                                            Row(
-                                              children: [
-                                                const Icon(Icons.star, color: Colors.blue,size: 30),
-                                                const Icon(Icons.star, color: Colors.blue,size: 30),
-                                                const Icon(Icons.star, color: Colors.blue,size: 30),
-                                                const Icon(Icons.star, color: Colors.blue, size: 30,),
-                                                const Icon(Icons.star_outline, color: Colors.blue, size: 30,),
-
-                                              ],
-                                            ),
-                                            Text('Lorem Ipsum is simply dummy text of the printing and typesettingindustry.')
-                                          ],
-                                        )
-                                      ],
+                                        onTap:(){
+                                          Navigator.push(
+                                              context, MaterialPageRoute(builder: (context) => Chat()));
+                                        }
                                     ),
-                                  ),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      border: Border.all(
-                                        color: Colors.red,
-                                      ),
-                                      borderRadius: BorderRadius.circular(0.0),
-                                    ),
-                                    child:
-                                    Row(
-                                      children: [
-                                        InkWell(
-                                            child:
-                                            Container(
-                                              child:
-                                              ClipRRect(
-                                                borderRadius: BorderRadius.circular(100.0),
-                                                child:
-                                                Image.asset(
-                                                  'images/shopper1.png',
-                                                  width: 60,
-
-                                                ),
-
-
-                                              ),
-
-                                            ),
-                                            onTap:(){
-                                              Navigator.push(
-                                                  context, MaterialPageRoute(builder: (context) => Chat()));
-                                            }
-                                        ),
-                                        Column(
-                                          children: [
-                                            Row(
-                                              children: [
-                                                Text('Jaki chong',style: TextStyle(fontSize: 20,color:Colors.red,fontWeight:FontWeight.bold)),
-                                                SizedBox(width: 250,),
-                                                Text('12.25')
-                                              ],
-                                            ),
-                                            Row(
-                                              children: [
-                                                const Icon(Icons.star, color: Colors.blue,size: 30),
-                                                const Icon(Icons.star, color: Colors.blue,size: 30),
-                                                const Icon(Icons.star, color: Colors.blue,size: 30),
-                                                const Icon(Icons.star_outline, color: Colors.blue, size: 30,),
-                                                const Icon(Icons.star_outline, color: Colors.blue, size: 30,),
-
-                                              ],
-                                            ),
-                                            Text('Lorem Ipsum is simply dummy text of the printing and typesettingindustry.')
-                                          ],
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              )
-                            ],
-                          ),
-                        ],
+                                  ],
+                                )
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
-                    ),    
 
 
-                                        
 
-                    
-                  ]),
-                  Text('More...',style: TextStyle(color:Colors.red , fontSize: 15)),
 
-                ],
-              )]
+
+                    ]),
+                    Text('More...',style: TextStyle(color:Colors.red.shade900 , fontSize: 15)),
+
+                  ],
+              ),
+                )]
           ),
         ),
         bottomNavigationBar:
