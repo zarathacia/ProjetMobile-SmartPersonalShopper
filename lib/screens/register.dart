@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_personal_shopper/screens/login.dart';
 void main()=> runApp(MaterialApp(
   home:register(),
 ));
@@ -167,7 +168,10 @@ class _register extends State<register>{
                           borderRadius: BorderRadius.circular(200)),
                       elevation: 0.0,
                       padding: const EdgeInsets.all(0),
-                      onPressed: () {  },
+                      onPressed: () {
+                        Navigator.push(
+                            context, MaterialPageRoute(builder: (context) => login()));
+                      },
                       child: Ink(
                         decoration: BoxDecoration(
                           gradient: const LinearGradient(

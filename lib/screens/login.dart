@@ -14,7 +14,7 @@ class _login extends State<login>{
       Stack(
         children: [
             Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage('images/Background.png'),
                     fit: BoxFit.cover
@@ -26,7 +26,7 @@ class _login extends State<login>{
           backgroundColor: Colors.transparent,
           body: Column(
             children: <Widget>[
-              Center(
+              const Center(
                 child:
               Image(image: AssetImage('assets/images/logo.png'),width:300,height:300),
               ),
@@ -54,24 +54,24 @@ class _login extends State<login>{
     ),
 
     ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Container(
-                padding: EdgeInsets.all(16),
+                padding: const EdgeInsets.all(16),
                 height:70,
                 decoration:BoxDecoration(
                   color:Colors.grey.withOpacity(0.5),
                   borderRadius: BorderRadius.circular(16),
                 ),
-                child: TextField(
+                child: const TextField(
                   obscureText: true,
                   enableSuggestions: false,
                   autocorrect: false,
                   decoration:InputDecoration(
                     border: InputBorder.none,
                     prefixIcon: Padding(
-                      padding:const EdgeInsets.symmetric(
+                      padding:EdgeInsets.symmetric(
                           horizontal: 20.0
                       ),
                       child:Icon (
@@ -93,7 +93,10 @@ class _login extends State<login>{
                         borderRadius: BorderRadius.circular(200)),
                     elevation: 0.0,
                     padding: const EdgeInsets.all(0),
-                    onPressed: () {  },
+                    onPressed: () {
+                      Navigator.push(
+                          context, MaterialPageRoute(builder: (context) => const Home()));
+                    },
                     child: Ink(
                       decoration: BoxDecoration(
                         gradient: const LinearGradient(
@@ -109,7 +112,7 @@ class _login extends State<login>{
                         constraints: const BoxConstraints(
                             maxWidth: 300.0, minHeight: 50.0),
                         alignment: Alignment.center,
-                        child: Text(
+                        child: const Text(
                           'Login',
                           style: TextStyle(
                               color: Colors.white,
