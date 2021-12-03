@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:smart_personal_shopper/screens/Market/Market_screen.dart';
+import 'package:smart_personal_shopper/screens/home_screen.dart';
+import 'Productscreen.dart';
 import 'package:smart_personal_shopper/screens/register.dart';
 import 'package:smart_personal_shopper/widget/button.dart';
 import 'Confirm_receival.dart';
@@ -67,7 +68,8 @@ class _HomeState extends State<Home> {
                   color: Colors.black,
                   size: 40,
                 ),
-                onPressed: () {},
+                onPressed: () {Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => homeinterface()));},
               ),
               IconButton(
                 icon: const Icon(
@@ -77,7 +79,7 @@ class _HomeState extends State<Home> {
                 ),
                 onPressed: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => marketScreen()));
+                      MaterialPageRoute(builder: (context) => ProductScreen()));
                 },
               ),
               IconButton(

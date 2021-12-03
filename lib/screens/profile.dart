@@ -6,6 +6,7 @@ import 'package:smart_personal_shopper/widget/button.dart';
 import 'package:smart_personal_shopper/widget/navbar.dart';
 import 'List_of_Past_discussions.dart';
 import 'home.dart';
+import 'home_screen.dart';
 
 class Profile extends StatelessWidget {
   @override
@@ -34,7 +35,7 @@ class Profile extends StatelessWidget {
         leadingWidth: 30,
       ),
       bottomNavigationBar:
-          navbar(Home(), marketScreen(), Listof(), Profile(), context),
+          navbar(Home(), homeinterface(), Listof(), Profile(), context),
       body: Column(
         children: <Widget>[
           Container(

@@ -74,6 +74,15 @@ flutter:
     - images/kim1.jpg
     - images/Background.png
     - assets/images/logo.png
+    - images/profile.jpg
+    - images/aziza.jfif
+    - images/geant.jpg
+    - images/mg.jpg
+    - images/carrefour.png
+    - images/hrissa.jpg
+    - images/boga1.jpg
+    - images/pizza.jfif
+    - images/tomate.jfif
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

@@ -14,21 +14,21 @@ List<Market> markets = [
   Market(
       id: 1,
       title: "Magazin General",
-      image: "images/profile.jpg",
+      image: "images/mg.jpg",
 ),
   Market(
     id: 2,
-    title: "Carfour",
-    image: "images/profile.jpg",
+    title: "Carrefour",
+    image: "images/carrefour.png",
   ),
   Market(
     id: 3,
     title: "Aziza",
-    image: "images/profile.jpg",
+    image: "images/aziza.jfif",
   ),
   Market(
     id: 4,
     title: "Géant",
-    image: "images/profile.jpg",
+    image: "images/geant.jpg",
   ),
 ];
