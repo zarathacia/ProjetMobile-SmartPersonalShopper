@@ -69,13 +69,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.4"
-  flutter_particles:
+  flutter_rating_bar:
     dependency: "direct main"
     description:
-      name: flutter_particles
+      name: flutter_rating_bar
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.0+7"
+    version: "4.0.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -102,13 +102,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.7.0"
-  particles_flutter:
-    dependency: "direct main"
+  nested:
+    dependency: transitive
     description:
-      name: particles_flutter
+      name: nested
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.1.4"
+    version: "1.0.0"
   path:
     dependency: transitive
     description:
@@ -116,6 +116,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.0"
+  provider:
+    dependency: "direct main"
+    description:
+      name: provider
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "6.0.1"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -149,6 +156,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.0"
+  super_tooltip:
+    dependency: "direct main"
+    description:
+      name: super_tooltip
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.1"
   term_glyph:
     dependency: transitive
     description:
@@ -179,3 +193,4 @@ packages:
     version: "2.1.0"
 sdks:
   dart: ">=2.15.0-116.0.dev <3.0.0"
+  flutter: ">=1.16.0"

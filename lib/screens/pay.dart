@@ -1,8 +1,7 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:smart_personal_shopper/constants.dart';
+import 'package:smart_personal_shopper/screens/Confirm_receival.dart';
+import '../widget/button.dart' show buttonCustome;
 import 'home.dart';
-import 'profile.dart';
 
 class Pay extends StatelessWidget {
   @override
@@ -71,25 +70,31 @@ class Pay extends StatelessWidget {
               SizedBox(
                 height: 30.0,
               ),
-              TextField(
-                decoration: InputDecoration(
-                  hintText: 'Card number',
-                  suffixIcon: Icon(Icons.payment),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20.0),
+              Container(
+                width: 350,
+                child: TextField(
+                  decoration: InputDecoration(
+                    hintText: 'Card number',
+                    suffixIcon: Icon(Icons.payment),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
                   ),
                 ),
               ),
               SizedBox(
                 height: 20.0,
               ),
-              TextField(
-                obscureText: true,
-                decoration: InputDecoration(
-                  hintText: 'Password',
-                  suffixIcon: Icon(Icons.visibility_off),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20.0),
+              Container(
+                width: 350,
+                child: TextField(
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    hintText: 'Password',
+                    suffixIcon: Icon(Icons.visibility_off),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
                   ),
                 ),
               ),
@@ -99,31 +104,63 @@ class Pay extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(15.0),
                 child: RaisedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text("Do you confirm?"),
+                            actions: [
+                              ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: Text("Disagree")),
+                              ElevatedButton(
+                                  onPressed: () {
+                                    showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return AlertDialog(
+                                          title: Text("Payment done"),
+                                          actions: [
+                                            buttonCustome(
+                                                'Go Home', Home(), context)
+                                          ],
+                                        );
+                                      },
+                                    );
+                                  },
+                                  child: Text("Agree")),
+                            ],
+                          );
+                        },
+                      );
+                    },
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(80.0)),
-                    elevation: 5.0,
-                    padding: EdgeInsets.all(0.0),
+                        borderRadius: BorderRadius.circular(200)),
+                    elevation: 0.0,
+                    padding: const EdgeInsets.all(0),
                     child: Ink(
                       decoration: BoxDecoration(
-                        gradient: LinearGradient(
+                        gradient: const LinearGradient(
                             begin: Alignment.centerRight,
                             end: Alignment.centerLeft,
                             colors: <Color>[
                               Color(0xff880e4f),
                               Color(0xffb71c1c)
                             ]), //colors: <Color>[Color(0xff880e4f), Color(0xffb71c1c)])),
-                        borderRadius: BorderRadius.circular(20.0),
+                        borderRadius: BorderRadius.circular(30.0),
                       ),
                       child: Container(
-                        constraints:
-                            BoxConstraints(maxWidth: 150.0, minHeight: 50.0),
+                        constraints: const BoxConstraints(
+                            maxWidth: 300.0, minHeight: 50.0),
                         alignment: Alignment.center,
                         child: Text(
-                          "Pay",
+                          'pay',
                           style: TextStyle(
                               color: Colors.white,
-                              fontSize: 24.0,
+                              fontSize: 26.0,
                               fontWeight: FontWeight.w300),
                         ),
                       ),

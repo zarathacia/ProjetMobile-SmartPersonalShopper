@@ -1,5 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_personal_shopper/screens/Chat_With_Personal_shopper.dart';
+import 'package:smart_personal_shopper/screens/Market/Market_screen.dart';
+import 'package:smart_personal_shopper/widget/button.dart';
+import 'package:smart_personal_shopper/widget/navbar.dart';
+import 'List_of_Past_discussions.dart';
 import 'home.dart';
 
 class Profile extends StatelessWidget {
@@ -18,8 +23,8 @@ class Profile extends StatelessWidget {
               color: Colors.white,
               fontSize: 25,
             )),
-        leading: new IconButton(
-          icon: new Icon(
+        leading: IconButton(
+          icon: const Icon(
             Icons.arrow_back_ios,
             color: Colors.white,
             size: 40,
@@ -27,71 +32,9 @@ class Profile extends StatelessWidget {
           onPressed: () => Navigator.of(context).pop(),
         ),
         leadingWidth: 30,
-
-        actions: [
-          Container(
-            width: 80,
-            child: IconButton(
-              alignment: Alignment.center,
-              icon: const Icon(
-                Icons.more_vert,
-                size: 50,
-              ),
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Profile()));
-              },
-            ),
-          ),
-        ],
       ),
-      bottomNavigationBar: BottomAppBar(
-        shape: CircularNotchedRectangle(),
-        color: Colors.white,
-        child: IconTheme(
-          data: IconThemeData(color: Theme.of(context).colorScheme.onPrimary),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              IconButton(
-                icon: const Icon(
-                  Icons.home_outlined,
-                  color: Colors.black,
-                  size: 40,
-                ),
-                onPressed: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => Home()));
-                },
-              ),
-              IconButton(
-                icon: const Icon(
-                  Icons.shopping_cart_outlined,
-                  color: Colors.black,
-                  size: 40,
-                ),
-                onPressed: () {},
-              ),
-              IconButton(
-                icon: const Icon(
-                  Icons.chat_bubble_outline_outlined,
-                  color: Colors.black,
-                  size: 40,
-                ),
-                onPressed: () {},
-              ),
-              IconButton(
-                icon: const Icon(
-                  Icons.account_circle_outlined,
-                  color: Colors.black,
-                  size: 40,
-                ),
-                onPressed: () {},
-              ),
-            ],
-          ),
-        ),
-      ),
+      bottomNavigationBar:
+          navbar(Home(), marketScreen(), Listof(), Profile(), context),
       body: Column(
         children: <Widget>[
           Container(
@@ -217,36 +160,7 @@ class Profile extends StatelessWidget {
           ),
           Container(
             width: 300.00,
-            child: RaisedButton(
-                onPressed: () {},
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(80.0)),
-                elevation: 0.0,
-                padding: EdgeInsets.all(0.0),
-                child: Ink(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        begin: Alignment.centerRight,
-                        end: Alignment.centerLeft,
-                        colors: <Color>[
-                          Color(0xff880e4f),
-                          Color(0xffb71c1c)
-                        ]), //colors: <Color>[Color(0xff880e4f), Color(0xffb71c1c)])),
-                    borderRadius: BorderRadius.circular(30.0),
-                  ),
-                  child: Container(
-                    constraints:
-                        BoxConstraints(maxWidth: 300.0, minHeight: 50.0),
-                    alignment: Alignment.center,
-                    child: Text(
-                      "Edit profile",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 26.0,
-                          fontWeight: FontWeight.w300),
-                    ),
-                  ),
-                )),
+            child: buttonCustome('Edit Profile', Profile(), context),
           ),
         ],
       ),
