@@ -1,10 +1,12 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/screens/Market/Market_screen.dart';
+import 'package:smart_personal_shopper/screens/register.dart';
 import 'package:smart_personal_shopper/widget/button.dart';
 import 'Confirm_receival.dart';
 import 'List_of_Past_discussions.dart';
 import 'choose_your_personal_shopper.dart';
+import 'login.dart';
 import 'profile.dart';
 import 'pay.dart';
 
@@ -207,6 +209,49 @@ class _HomeState extends State<Home> {
               borderRadius: BorderRadius.circular(30.0),
             ),
           ),
+          SizedBox(
+            height: 10,
+          ),
+          RaisedButton(
+            onPressed: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => login()));
+            },
+            color: Colors.red,
+            child: Text(
+              'Login',
+              style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 25),
+            ),
+            shape: new RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(30.0),
+            ),
+          ),
+
+          SizedBox(
+            height: 10,
+          ),
+          RaisedButton(
+            onPressed: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => register()));
+            },
+            color: Colors.red,
+            child: const Text(
+              'Register',
+              style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 25),
+            ),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(30.0),
+            ),
+          ),
+
+
         ],
       )),
     );
