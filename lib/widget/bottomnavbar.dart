@@ -1,25 +1,24 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
-import 'package:smart_personal_shopper/constants.dart';
-import 'package:smart_personal_shopper/screens/home1.dart';
-import 'Market/Market_screen.dart';
-import 'List_of_Past_discussions.dart';
-import 'profile.dart';
+import 'package:smart_personal_shopper/screens/List_of_Past_discussions.dart';
+import 'package:smart_personal_shopper/screens/Market/Market_screen.dart';
+import 'package:smart_personal_shopper/screens/home.dart';
+import 'package:smart_personal_shopper/screens/profile.dart';
 
-class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
-
+class HomePage extends StatefulWidget {
   @override
-  _HomeState createState() => _HomeState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _HomeState extends State<Home> {
+class _HomePageState extends State<HomePage> {
   int selectedPage = 0;
-  final _pageOptions = [Home1(), marketScreen(), Listof(), Profile()];
+
+  final _pageOptions = [Home(), marketScreen(), Listof(), Profile()];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: _pageOptions[selectedPage],
       bottomNavigationBar: SalomonBottomBar(
         currentIndex: selectedPage,
@@ -32,27 +31,26 @@ class _HomeState extends State<Home> {
           SalomonBottomBarItem(
             icon: Icon(Icons.home),
             title: Text("Home"),
-            //selectedColor: Colors.pink,
+            selectedColor: Colors.purple,
           ),
           SalomonBottomBarItem(
             icon: Icon(Icons.shopping_cart_outlined),
             title: Text("Market"),
-            //selectedColor: Colors.pink,
+            selectedColor: Colors.pink,
           ),
           SalomonBottomBarItem(
             icon: Icon(
               Icons.chat_outlined,
             ),
             title: Text("Chat"),
-            //selectedColor: Colors.pink,
+            selectedColor: Colors.orange,
           ),
           SalomonBottomBarItem(
             icon: Icon(Icons.person),
             title: Text("Profile"),
-            //selectedColor: Colors.pink,
+            selectedColor: Colors.teal,
           ),
         ],
-        selectedItemColor: PrimaryRed,
       ),
     );
   }

@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:smart_personal_shopper/provider/feedback.dart';
+import 'package:smart_personal_shopper/screens/Confirm_receival.dart';
 import 'package:smart_personal_shopper/screens/profile.dart';
-import 'package:smart_personal_shopper/screens/provider/feedback.dart';
+
 import 'package:smart_personal_shopper/data/user.dart';
 import 'package:smart_personal_shopper/data/users.dart';
 import 'package:smart_personal_shopper/widget/navbar.dart';
@@ -97,8 +99,7 @@ class _ChooseState extends State<Choose> {
             ],
           ),
         ),
-        bottomNavigationBar:
-            navbar(Home(), marketScreen(), Listof(), Profile(), context),
+        //bottomNavigationBar: navbar(Home(), marketScreen(), Listof(), Profile(), context),
       );
 
   Widget buildUser(User user) {
@@ -136,9 +137,11 @@ class _ChooseState extends State<Choose> {
   void onDragEnd(DraggableDetails details, User user) {
     final minimumDrag = 10;
     if (details.offset.dx > minimumDrag) {
-      user.isSwipedOff = true;
-    } else if (details.offset.dx < -minimumDrag) {
       user.isLiked = true;
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => Confirm()));
+    } else if (details.offset.dx < -minimumDrag) {
+      user.isSwipedOff = true;
     }
 
     setState(() => users.remove(user));

@@ -502,8 +502,6 @@ class Listof extends StatelessWidget {
             )
           ]),
         ),
-        bottomNavigationBar:
-            navbar(Home(), marketScreen(), Listof(), Profile(), context),
       ),
     );
   }

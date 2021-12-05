@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/screens/Confirm_receival.dart';
-import '../widget/button.dart' show buttonCustome;
-import 'home.dart';
+
+import '../home.dart';
 
 class Pay extends StatelessWidget {
   @override
@@ -124,8 +124,15 @@ class Pay extends StatelessWidget {
                                         return AlertDialog(
                                           title: Text("Payment done"),
                                           actions: [
-                                            buttonCustome(
-                                                'Go Home', Home(), context)
+                                            ElevatedButton(
+                                                onPressed: () {
+                                                  Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              Home()));
+                                                },
+                                                child: Text("Go Home")),
                                           ],
                                         );
                                       },

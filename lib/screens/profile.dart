@@ -5,6 +5,7 @@ import 'package:smart_personal_shopper/screens/Market/Market_screen.dart';
 import 'package:smart_personal_shopper/widget/button.dart';
 import 'package:smart_personal_shopper/widget/navbar.dart';
 import 'List_of_Past_discussions.dart';
+import 'edit_profile.dart';
 import 'home.dart';
 import 'home_screen.dart';
 
@@ -34,8 +35,6 @@ class Profile extends StatelessWidget {
         ),
         leadingWidth: 30,
       ),
-      bottomNavigationBar:
-          navbar(Home(), homeinterface(), Listof(), Profile(), context),
       body: Column(
         children: <Widget>[
           Container(
@@ -84,7 +83,7 @@ class Profile extends StatelessWidget {
               //crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Pouya Ramirez",
+                  "Kevin Pouya",
                   style: TextStyle(
                       color: Colors.redAccent,
                       fontStyle: FontStyle.normal,
@@ -121,7 +120,7 @@ class Profile extends StatelessWidget {
                       width: 20,
                     ),
                     Text(
-                      'pouya.ramirez56@gmail.com',
+                      'kevin.pouya56@gmail.com',
                       style: TextStyle(
                         fontSize: 18.0,
                         fontStyle: FontStyle.italic,
@@ -161,7 +160,7 @@ class Profile extends StatelessWidget {
           ),
           Container(
             width: 300.00,
-            child: buttonCustome('Edit Profile', Profile(), context),
+            child: buttonCustome('Edit Profile', EditProfile(), context),
           ),
         ],
       ),

@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:smart_personal_shopper/provider/feedback.dart';
 import 'package:smart_personal_shopper/screens/Landing/landingscreen.dart';
-import 'package:smart_personal_shopper/screens/provider/feedback.dart';
 
 import 'screens/home.dart';
 
