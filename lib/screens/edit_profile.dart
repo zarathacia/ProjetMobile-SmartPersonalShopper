@@ -1,30 +1,60 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:smart_personal_shopper/widget/bottomsheet.dart';
+import 'package:smart_personal_shopper/constants.dart';
 //import 'package:smart_personal_shopper/widget/textfield.dart';
 //import 'package:settings_ui/pages/settings.dart';
+//final StorageReference storageRef = FirebaseStorage.instance.ref();
+//final usersRef = Firestore.instance.collection('users');
 
 class EditProfile extends StatefulWidget {
+  final String currentUserId = '';
   @override
   _EditProfileState createState() => _EditProfileState();
 }
 
 class _EditProfileState extends State<EditProfile> {
-  final _globalkey = GlobalKey<FormState>();
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
+  //same here XD
+  /* TextEditingController displayNameController = TextEditingController();
+  TextEditingController bioController = TextEditingController();
+  bool isLoading = false;
+  late User user;
+  bool _displayNameValid = true;
+  bool _bioValid = true;
+  final _globalkey = GlobalKey<FormState>();*/
   late PickedFile _imageFile;
   final ImagePicker _picker = ImagePicker();
 
   bool showPassword = false;
   @override
+  //backend fonctionalities xD
+  /*void initState() {
+    super.initState();
+    getUser();
+  }
+
+  getUser() async {
+    setState(() {
+      isLoading = true;
+    });
+    DocumentSnapshot doc = await usersRef.document(widget.currentUserId).get();
+    user = User.fromDocument(doc);
+    displayNameController.text = user.displayName;
+    bioController.text = user.bio;
+    setState(() {
+      isLoading = false;
+    });
+  }*/
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         elevation: 1,
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back,
-            color: Colors.red,
+            color: PrimaryDarkRed,
           ),
           onPressed: () => Navigator.of(context).pop(),
         ),
@@ -32,7 +62,7 @@ class _EditProfileState extends State<EditProfile> {
           IconButton(
             icon: Icon(
               Icons.settings,
-              color: Colors.red,
+              color: PrimaryDarkRed,
             ),
             onPressed: () {
               // Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => SettingsPage()));
@@ -90,7 +120,7 @@ class _EditProfileState extends State<EditProfile> {
                               width: 4,
                               color: Theme.of(context).scaffoldBackgroundColor,
                             ),
-                            color: Colors.red,
+                            color: PrimaryDarkRed,
                           ),
                           child: IconButton(
                             padding: EdgeInsets.all(0),
@@ -129,7 +159,9 @@ class _EditProfileState extends State<EditProfile> {
                     padding: EdgeInsets.symmetric(horizontal: 50),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20)),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
                     child: Text("CANCEL",
                         style: TextStyle(
                             fontSize: 14,
@@ -138,7 +170,7 @@ class _EditProfileState extends State<EditProfile> {
                   ),
                   RaisedButton(
                     onPressed: () {},
-                    color: Colors.red,
+                    color: PrimaryDarkRed,
                     padding: EdgeInsets.symmetric(horizontal: 50),
                     elevation: 10,
                     shape: RoundedRectangleBorder(

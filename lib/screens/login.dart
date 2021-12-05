@@ -1,101 +1,122 @@
 import 'package:flutter/material.dart';
 import '../widget/button.dart' show buttonCustome;
 import 'home.dart';
-void main()=> runApp(MaterialApp(
-  home:login(),
-));
-class login extends StatefulWidget{
-  @override
-  _login createState() => _login();}
-class _login extends State<login>{
-  @override
-  Widget build(BuildContext context){
-    return
-      Stack(
-        children: [
-            Container(
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage('images/Background.png'),
-                    fit: BoxFit.cover
-                )
-                ),
-                ),
+import 'package:particles_flutter/particles_flutter.dart';
 
+void main() => runApp(MaterialApp(
+      home: login(),
+    ));
+
+class login extends StatefulWidget {
+  @override
+  _login createState() => _login();
+}
+
+class _login extends State<login> {
+  @override
+  Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
+    return Stack(
+      children: [
+        CircularParticle(
+          // key: UniqueKey(),
+          awayRadius: 100,
+          numberOfParticles: 200,
+          speedOfParticles: 0.6,
+          height: screenHeight,
+          width: screenWidth,
+          onTapAnimation: true,
+          particleColor: Colors.white.withOpacity(0.1),
+          awayAnimationDuration: Duration(milliseconds: 600),
+          maxParticleSize: 8,
+          isRandSize: true,
+          isRandomColor: true,
+          randColorList: [
+            Colors.red.withOpacity(0.1),
+            Colors.white.withOpacity(0.1),
+          ],
+          awayAnimationCurve: Curves.bounceInOut,
+          enableHover: true,
+          hoverColor: Colors.white,
+          hoverRadius: 90,
+          connectDots: false, //not recommended
+        ),
+        Container(
+          decoration: const BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('images/Background.png'),
+                  fit: BoxFit.cover)),
+        ),
         Scaffold(
           backgroundColor: Colors.transparent,
           body: Column(
             children: <Widget>[
               const Center(
-                child:
-              Image(image: AssetImage('assets/images/logo.png'),width:300,height:300),
+                child: Image(
+                    image: AssetImage('assets/images/logo.png'),
+                    width: 300,
+                    height: 300),
               ),
               Container(
-                height:70,
-                decoration:BoxDecoration(
-                  color:Colors.grey.withOpacity(0.5),
+                height: 70,
+                decoration: BoxDecoration(
+                  color: Colors.grey.withOpacity(0.5),
                   borderRadius: BorderRadius.circular(16),
                 ),
                 child: TextField(
-              decoration:InputDecoration(
-                border: InputBorder.none,
-                prefixIcon: Padding(
-                padding:const EdgeInsets.symmetric(
-                horizontal: 20.0
-    ),
-                child:Icon (
-                  Icons.alternate_email,
-                  size: 28,
-    ),
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    prefixIcon: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      child: Icon(
+                        Icons.alternate_email,
+                        size: 28,
+                      ),
+                    ),
+                    hintText: 'Email',
+                  ),
                 ),
-                hintText: 'Email',
-    ),
-
-    ),
-
-    ),
+              ),
               const SizedBox(
                 height: 10,
               ),
               Container(
                 padding: const EdgeInsets.all(16),
-                height:70,
-                decoration:BoxDecoration(
-                  color:Colors.grey.withOpacity(0.5),
+                height: 70,
+                decoration: BoxDecoration(
+                  color: Colors.grey.withOpacity(0.5),
                   borderRadius: BorderRadius.circular(16),
                 ),
                 child: const TextField(
                   obscureText: true,
                   enableSuggestions: false,
                   autocorrect: false,
-                  decoration:InputDecoration(
+                  decoration: InputDecoration(
                     border: InputBorder.none,
                     prefixIcon: Padding(
-                      padding:EdgeInsets.symmetric(
-                          horizontal: 20.0
-                      ),
-                      child:Icon (
+                      padding: EdgeInsets.symmetric(horizontal: 20.0),
+                      child: Icon(
                         Icons.eleven_mp_rounded,
                         size: 28,
                       ),
                     ),
                     hintText: 'Password',
                   ),
-
                 ),
-
               ),
               Padding(
                 padding: const EdgeInsets.all(15.0),
                 child: RaisedButton(
-
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(200)),
                     elevation: 0.0,
                     padding: const EdgeInsets.all(0),
                     onPressed: () {
                       Navigator.push(
-                          context, MaterialPageRoute(builder: (context) => const Home()));
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Home()));
                     },
                     child: Ink(
                       decoration: BoxDecoration(
@@ -122,11 +143,10 @@ class _login extends State<login>{
                       ),
                     )),
               ),
-
             ],
-    ),
-    ),
-    ],
+          ),
+        ),
+      ],
     );
   }
 }

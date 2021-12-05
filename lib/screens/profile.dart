@@ -1,13 +1,6 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:smart_personal_shopper/screens/Chat_With_Personal_shopper.dart';
-import 'package:smart_personal_shopper/screens/Market/Market_screen.dart';
 import 'package:smart_personal_shopper/widget/button.dart';
-import 'package:smart_personal_shopper/widget/navbar.dart';
-import 'List_of_Past_discussions.dart';
 import 'edit_profile.dart';
-import 'home.dart';
-import 'home_screen.dart';
 
 class Profile extends StatelessWidget {
   @override
