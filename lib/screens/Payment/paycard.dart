@@ -3,6 +3,7 @@ import 'package:flutter_credit_card/credit_card_brand.dart';
 import 'package:flutter_credit_card/credit_card_form.dart';
 import 'package:flutter_credit_card/credit_card_model.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
+import 'package:smart_personal_shopper/constants.dart';
 import 'package:smart_personal_shopper/screens/home.dart';
 
 class MyCard extends StatefulWidget {
@@ -81,9 +82,9 @@ class MyCardState extends State<MyCard> {
                 obscureCardNumber: true,
                 obscureCardCvv: true,
                 isHolderNameVisible: true,
-                cardBgColor: Colors.red.shade900,
-                backgroundImage:
-                    useBackgroundImage ? 'images/ic_launcher.png' : null,
+                cardBgColor: PrimaryRed,
+                /*backgroundImage:
+                    useBackgroundImage ? 'images/ic_launcher.png' : null,*/
                 isSwipeGestureEnabled: true,
                 onCreditCardWidgetChange: (CreditCardBrand creditCardBrand) {},
                 customCardTypeIcons: <CustomCardTypeIcon>[
@@ -112,7 +113,7 @@ class MyCardState extends State<MyCard> {
                         isExpiryDateVisible: true,
                         cardHolderName: cardHolderName,
                         expiryDate: expiryDate,
-                        themeColor: Colors.red,
+                        themeColor: PrimaryRed,
                         textColor: Colors.grey.shade900,
                         cardNumberDecoration: InputDecoration(
                           labelText: 'Number',

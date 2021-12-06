@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-const PrimaryRed = Color(0xffe71010);
+final PrimaryRed = Colors.red.shade900;
+final PrimaryGrey = Colors.grey.shade900;
 const PrimaryDarkRed = Color(0xFF8a1e1f);
 const PrimaryDarkGray = Color(0xff494042);
 const PrimaryPurpleGray = Color(0xFF7a6d7d);

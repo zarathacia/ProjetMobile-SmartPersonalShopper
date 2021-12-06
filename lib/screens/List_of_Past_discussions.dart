@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_personal_shopper/constants.dart';
 import 'package:smart_personal_shopper/screens/home.dart';
 import 'package:smart_personal_shopper/screens/profile.dart';
 import 'package:smart_personal_shopper/widget/navbar.dart';
@@ -18,7 +19,7 @@ class Listof extends StatelessWidget {
       title: 'chat list',
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.red[900],
+          backgroundColor: PrimaryRed,
           elevation: 0,
           leading: IconButton(
             icon: const Icon(
@@ -33,7 +34,7 @@ class Listof extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(children: [
               Container(
-                color: Colors.red[900],
+                color: PrimaryRed,
                 child: Column(
                   children: [
                     Text('Chats',
@@ -65,30 +66,28 @@ class Listof extends StatelessWidget {
                     SizedBox(
                       height: 40,
                     ),
-                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-
-
-                    ]),
-
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: []),
                     ListView.builder(
                       itemCount: chatUsers.length,
                       shrinkWrap: true,
                       padding: EdgeInsets.only(top: 16),
                       physics: NeverScrollableScrollPhysics(),
-                      itemBuilder: (context, index){
+                      itemBuilder: (context, index) {
                         return ConversationList(
                           name: chatUsers[index].name,
                           messageText: chatUsers[index].messageText,
                           imageUrl: chatUsers[index].imageURL,
                           time: chatUsers[index].time,
                           rate: chatUsers[index].rate,
-                          isMessageRead: (index == 0 || index == 3)?true:false,
+                          isMessageRead:
+                              (index == 0 || index == 3) ? true : false,
                         );
                       },
                     ),
                     Text('More...',
-                        style:
-                        TextStyle(color: Colors.red.shade900, fontSize: 15)),
+                        style: TextStyle(color: PrimaryRed, fontSize: 15)),
                   ],
                 ),
               )
@@ -98,11 +97,37 @@ class Listof extends StatelessWidget {
       ),
     );
   }
+
   List<ChatUsers> chatUsers = [
-    ChatUsers(name: "Jane Russel", messageText: "Awesome Setup", imageURL: "images/user1.jpg", time: "Now",rate: 2  ),
-    ChatUsers(name: "Glady's Murphy", messageText: "That's Great", imageURL: "images/user2.jpg", time: "Yesterday", rate: 1 ),
-    ChatUsers(name: "Jorge Henry", messageText: "Hey where are you?", imageURL: "images/user3.jpg", time: "31 Mar",rate: 3  ),
-    ChatUsers(name: "Philip Fox", messageText: "Busy! Call me in 20 mins", imageURL: "images/user4.jpg", time: "28 Mar",rate: 4 ),
-    ChatUsers(name: "Debra Hawkins", messageText: "Thankyou, It's awesome", imageURL: "images/kim1.jpg", time: "23 Mar",rate: 5 ),
+    ChatUsers(
+        name: "Jane Russel",
+        messageText: "Awesome Setup",
+        imageURL: "images/user1.jpg",
+        time: "Now",
+        rate: 2),
+    ChatUsers(
+        name: "Glady's Murphy",
+        messageText: "That's Great",
+        imageURL: "images/user2.jpg",
+        time: "Yesterday",
+        rate: 1),
+    ChatUsers(
+        name: "Jorge Henry",
+        messageText: "Hey where are you?",
+        imageURL: "images/user3.jpg",
+        time: "31 Mar",
+        rate: 3),
+    ChatUsers(
+        name: "Philip Fox",
+        messageText: "Busy! Call me in 20 mins",
+        imageURL: "images/user4.jpg",
+        time: "28 Mar",
+        rate: 4),
+    ChatUsers(
+        name: "Debra Hawkins",
+        messageText: "Thankyou, It's awesome",
+        imageURL: "images/user5.jpg",
+        time: "23 Mar",
+        rate: 5),
   ];
 }
