@@ -7,7 +7,6 @@ import '../widget/navbar.dart';
 import 'List_of_Past_discussions.dart';
 import '/models/chatMessageModel.dart';
 
-
 class Chat extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -25,54 +24,83 @@ class Chat extends StatelessWidget {
               child: Row(
                 children: <Widget>[
                   IconButton(
-                    onPressed: (){
+                    onPressed: () {
                       Navigator.pop(context);
                     },
-                    icon: Icon(Icons.arrow_back,color: Colors.black,),
+                    icon: Icon(
+                      Icons.arrow_back,
+                      color: Colors.black,
+                    ),
                   ),
-                  SizedBox(width: 2,),
+                  SizedBox(
+                    width: 2,
+                  ),
                   CircleAvatar(
                     backgroundImage: NetworkImage('images/shopper1.png'),
                     maxRadius: 20,
                   ),
-                  SizedBox(width: 12,),
+                  SizedBox(
+                    width: 12,
+                  ),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Text("Kriss Benwat",style: TextStyle( fontSize: 16 ,fontWeight: FontWeight.w600),),
-                        SizedBox(height: 6,),
-                        Text("Online",style: TextStyle(color: Colors.grey.shade600, fontSize: 13),),
+                        Text(
+                          "Kriss Benwat",
+                          style: TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.w600),
+                        ),
+                        SizedBox(
+                          height: 6,
+                        ),
+                        Text(
+                          "Online",
+                          style: TextStyle(
+                              color: Colors.grey.shade600, fontSize: 13),
+                        ),
                       ],
                     ),
                   ),
-                  Icon(Icons.settings,color: Colors.black54,),
+                  Icon(
+                    Icons.settings,
+                    color: Colors.black54,
+                  ),
                 ],
               ),
             ),
           ),
         ),
-        body:
-        Stack(
+        body: Stack(
           children: <Widget>[
             ListView.builder(
               itemCount: messages.length,
               shrinkWrap: true,
-              padding: EdgeInsets.only(top: 10,bottom: 10),
+              padding: EdgeInsets.only(top: 10, bottom: 10),
               physics: NeverScrollableScrollPhysics(),
-              itemBuilder: (context, index){
+              itemBuilder: (context, index) {
                 return Container(
-                  padding: EdgeInsets.only(left: 16,right: 16,top: 10,bottom: 10),
+                  padding:
+                      EdgeInsets.only(left: 16, right: 16, top: 10, bottom: 10),
                   child: Align(
-                    alignment: (messages[index].messageType == "receiver"?Alignment.topLeft:Alignment.topRight),
+                    alignment: (messages[index].messageType == "receiver"
+                        ? Alignment.topLeft
+                        : Alignment.topRight),
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
-                        color: (messages[index].messageType  == "receiver"?Colors.grey.shade200:Colors.red[200]),
+                        color: (messages[index].messageType == "receiver"
+                            ? Colors.grey.shade200
+                            : Colors.red[200]),
                       ),
                       padding: EdgeInsets.all(16),
-                      child: Text(messages[index].time+':'+messages[index].messageContent, style: TextStyle(fontSize: 15),),
+                      child: Text(
+                        messages[index].time +
+                            ':' +
+                            messages[index].messageContent,
+                        style: TextStyle(fontSize: 15),
+                      ),
                     ),
                   ),
                 );
@@ -81,15 +109,14 @@ class Chat extends StatelessWidget {
             Align(
               alignment: Alignment.bottomLeft,
               child: Container(
-                padding: EdgeInsets.only(left: 10,bottom: 10,top: 10),
+                padding: EdgeInsets.only(left: 10, bottom: 10, top: 10),
                 height: 60,
                 width: double.infinity,
                 color: Colors.white,
                 child: Row(
                   children: <Widget>[
                     GestureDetector(
-                      onTap: (){
-                      },
+                      onTap: () {},
                       child: Container(
                         height: 30,
                         width: 30,
@@ -97,43 +124,67 @@ class Chat extends StatelessWidget {
                           color: Colors.red.shade900,
                           borderRadius: BorderRadius.circular(30),
                         ),
-                        child: Icon(Icons.add, color: Colors.white, size: 20, ),
+                        child: Icon(
+                          Icons.add,
+                          color: Colors.white,
+                          size: 20,
+                        ),
                       ),
                     ),
-                    SizedBox(width: 15,),
+                    SizedBox(
+                      width: 15,
+                    ),
                     Expanded(
                       child: TextField(
                         decoration: InputDecoration(
                             hintText: "Write message...",
                             hintStyle: TextStyle(color: Colors.black54),
-                            border: InputBorder.none
-                        ),
+                            border: InputBorder.none),
                       ),
                     ),
-                    SizedBox(width: 15,),
+                    SizedBox(
+                      width: 15,
+                    ),
                     FloatingActionButton(
-                      onPressed: (){},
-                      child: Icon(Icons.send,color: Colors.white,size: 18,),
+                      onPressed: () {},
+                      child: Icon(
+                        Icons.send,
+                        color: Colors.white,
+                        size: 18,
+                      ),
                       backgroundColor: Colors.red.shade900,
                       elevation: 0,
                     ),
                   ],
-
                 ),
               ),
             ),
           ],
         ),
-        bottomNavigationBar:
-            navbar(Home(), marketScreen(), Listof(), Profile(), context),
+        /*bottomNavigationBar:
+            navbar(Home(), marketScreen(), Listof(), Profile(), context),*/
       ),
     );
   }
+
   List<ChatMessage> messages = [
-    ChatMessage(messageContent: 'Hello, Will',time: '12:12', messageType: 'receiver'),
-    ChatMessage(messageContent: "How have you been?",time: '12:12', messageType: "receiver"),
-    ChatMessage(messageContent: "Hey Kriss, I am doing fine dude. wbu?",time: '12:12', messageType: "sender"),
-    ChatMessage(messageContent: "ehhhh, doing OK.",time: '12:12', messageType: "receiver"),
-    ChatMessage(messageContent: "Is there any thing wrong?",time: '12:12', messageType: "sender"),
+    ChatMessage(
+        messageContent: 'Hello, Will', time: '12:12', messageType: 'receiver'),
+    ChatMessage(
+        messageContent: "How have you been?",
+        time: '12:12',
+        messageType: "receiver"),
+    ChatMessage(
+        messageContent: "Hey Kriss, I am doing fine dude. wbu?",
+        time: '12:12',
+        messageType: "sender"),
+    ChatMessage(
+        messageContent: "ehhhh, doing OK.",
+        time: '12:12',
+        messageType: "receiver"),
+    ChatMessage(
+        messageContent: "Is there any thing wrong?",
+        time: '12:12',
+        messageType: "sender"),
   ];
 }

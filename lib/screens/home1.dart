@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_personal_shopper/constants.dart';
 import 'Payment/paycard.dart';
 import 'package:smart_personal_shopper/screens/register.dart';
 import 'Confirm_receival.dart';
@@ -27,7 +28,7 @@ class _Home1State extends State<Home1> {
               fontSize: 25,
             )),
         centerTitle: true,
-        backgroundColor: Colors.red[900],
+        backgroundColor: PrimaryRed,
         leading: Icon(
           Icons.menu,
           color: Colors.white,
