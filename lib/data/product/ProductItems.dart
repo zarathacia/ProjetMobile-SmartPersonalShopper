@@ -24,7 +24,7 @@ List<Product> products = [
   Product(
       id: 2,
       title: "Pizza",
-      image: "images/pizza.jfif",
+      image: "images/pizza.png",
       descreption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor posuere eleifend. Etiam ut imperdiet odio, id euismod nisi. Nunc vulputate quis orci id luctus. Nulla facilisi. Vestibulum vulputate laoreet massa, vitae tempus nulla iaculis nec. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
       price: 20.850
   ),
@@ -38,7 +38,7 @@ List<Product> products = [
   Product(
       id: 4,
       title: "Tomates",
-      image: "images/tomate.jfif",
+      image: "images/tomate.jpg",
       descreption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor posuere eleifend. Etiam ut imperdiet odio, id euismod nisi. Nunc vulputate quis orci id luctus. Nulla facilisi. Vestibulum vulputate laoreet massa, vitae tempus nulla iaculis nec. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
       price: 1.850
   ),
