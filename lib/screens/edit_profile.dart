@@ -54,7 +54,7 @@ class _EditProfileState extends State<EditProfile> {
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back,
-            color: PrimaryDarkRed,
+            color: PrimaryRed,
           ),
           onPressed: () => Navigator.of(context).pop(),
         ),
@@ -62,7 +62,7 @@ class _EditProfileState extends State<EditProfile> {
           IconButton(
             icon: Icon(
               Icons.settings,
-              color: PrimaryDarkRed,
+              color: PrimaryRed,
             ),
             onPressed: () {
               // Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => SettingsPage()));
@@ -208,7 +208,7 @@ class _EditProfileState extends State<EditProfile> {
                     },
                     icon: Icon(
                       Icons.remove_red_eye,
-                      color: Colors.grey,
+                      color: PrimaryGrey,
                     ),
                   )
                 : null,

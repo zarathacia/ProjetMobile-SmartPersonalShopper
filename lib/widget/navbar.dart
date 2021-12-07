@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+/*import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/screens/home.dart';
 
@@ -63,4 +63,4 @@ Widget navbar(Widget page1, Widget page2, Widget page3, Widget page4, context) {
       ),
     ),
   );
-}
+}*/
