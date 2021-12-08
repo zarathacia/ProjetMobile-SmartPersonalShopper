@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 import 'package:particles_flutter/particles_flutter.dart';
-import 'package:smart_personal_shopper/screens/login.dart';
-import 'package:smart_personal_shopper/screens/register.dart';
+import 'package:smart_personal_shopper/screens/login_registration/login.dart';
+import 'package:smart_personal_shopper/screens/login_registration/register.dart';
 
 void main() => runApp(MaterialApp(
       home: Landing(),
@@ -140,3 +140,4 @@ class _landing extends State<Landing> {
     );
   }
 }
+*/

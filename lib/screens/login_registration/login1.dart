@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:smart_personal_shopper/screens/register.dart';
-import '../constants.dart';
-import '../widget/button.dart' show buttonCustome;
-import 'home.dart';
+import 'package:smart_personal_shopper/screens/home1.dart';
+import 'package:smart_personal_shopper/screens/login_registration/register.dart';
+
 import 'package:particles_flutter/particles_flutter.dart';
 import 'package:flutter/services.dart';
 
-class Login extends StatefulWidget {
+import '../../constants.dart';
+import '../home.dart';
+
+class Login1 extends StatefulWidget {
   @override
-  _LoginState createState() => _LoginState();
+  _Login1State createState() => _Login1State();
 }
 
-class _LoginState extends State<Login> {
+class _Login1State extends State<Login1> {
   bool _rememberMe = false;
 
   Widget _buildEmailTF() {
@@ -131,7 +133,11 @@ class _LoginState extends State<Login> {
       width: double.infinity,
       child: RaisedButton(
         elevation: 5.0,
-        onPressed: () => print('Login Button Pressed'),
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return Home();
+          }));
+        },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
@@ -250,6 +256,8 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
@@ -257,6 +265,29 @@ class _LoginState extends State<Login> {
           onTap: () => FocusScope.of(context).unfocus(),
           child: Stack(
             children: <Widget>[
+              /*CircularParticle(
+                // key: UniqueKey(),
+                awayRadius: 100,
+                numberOfParticles: 200,
+                speedOfParticles: 0.6,
+                height: screenHeight,
+                width: screenWidth,
+                onTapAnimation: true,
+                particleColor: Colors.white.withOpacity(0.1),
+                awayAnimationDuration: Duration(milliseconds: 600),
+                maxParticleSize: 8,
+                isRandSize: true,
+                isRandomColor: true,
+                randColorList: [
+                  Colors.red.withOpacity(1),
+                  Colors.white.withOpacity(1),
+                ],
+                awayAnimationCurve: Curves.bounceInOut,
+                enableHover: true,
+                hoverColor: Colors.white,
+                hoverRadius: 90,
+                connectDots: true, //not recommended
+              ),*/
               Container(
                 height: double.infinity,
                 width: double.infinity,

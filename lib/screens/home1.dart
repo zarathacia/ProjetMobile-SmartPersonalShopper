@@ -2,10 +2,10 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/constants.dart';
 import 'Payment/paycard.dart';
-import 'package:smart_personal_shopper/screens/register.dart';
+import 'package:smart_personal_shopper/screens/login_registration/register.dart';
 import 'Confirm_receival.dart';
 import 'choose_your_personal_shopper.dart';
-import 'login.dart';
+import 'login_registration/login.dart';
 import 'profile.dart';
 
 class Home1 extends StatefulWidget {
