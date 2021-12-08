@@ -162,7 +162,7 @@ class Listof extends StatelessWidget {
         name: "Glady's Murphy",
         messageText: "That's Great",
         imageURL: "images/user2.jpg",
-        time: "Yesterday",
+        time: "Ystrdy",
         rate: 1),
     ChatUsers(
         name: "Jorge Henry",

@@ -160,7 +160,7 @@ class _Home1State extends State<Home1> {
           RaisedButton(
             onPressed: () {
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => login()));
+                  context, MaterialPageRoute(builder: (context) => Login()));
             },
             color: Colors.red,
             child: Text(

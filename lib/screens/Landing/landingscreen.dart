@@ -70,7 +70,7 @@ class _landing extends State<Landing> {
                     padding: const EdgeInsets.all(0),
                     onPressed: () {
                       Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => login()));
+                          MaterialPageRoute(builder: (context) => Login()));
                     },
                     child: Ink(
                       decoration: BoxDecoration(

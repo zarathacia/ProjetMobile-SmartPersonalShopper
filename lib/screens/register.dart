@@ -178,7 +178,7 @@ class _register extends State<register> {
                     padding: const EdgeInsets.all(0),
                     onPressed: () {
                       Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => login()));
+                          MaterialPageRoute(builder: (context) => Login()));
                     },
                     child: Ink(
                       decoration: BoxDecoration(

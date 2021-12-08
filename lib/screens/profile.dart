@@ -7,6 +7,7 @@ class Profile extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size; //responsive sized
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
         toolbarHeight: 80,
         backgroundColor: Colors.transparent, //Color(0xff880e4f)
