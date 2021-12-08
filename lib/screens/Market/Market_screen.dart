@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/screens/Market/Market_items.dart';
-import '../List_of_Past_discussions.dart';
 import '../Productscreen.dart';
-import '../profile.dart';
 import 'Market_items.dart';
 
 class marketScreen extends StatelessWidget {
@@ -21,7 +19,7 @@ class marketScreen extends StatelessWidget {
           TextButton(
             style: style,
             onPressed: () {},
-            child: const Text('Credit 180.52£'),
+            child: const Text('Credit:180.52 DT'),
           ),
           TextButton(
               style: style,
@@ -50,13 +48,13 @@ class marketScreen extends StatelessWidget {
           ),
           Expanded(
               child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 60.0),
+                padding: EdgeInsets.symmetric(horizontal:screensize.width*0.005,),
             child: GridView.builder(
                 itemCount: markets.length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  mainAxisSpacing: 20.0,
-                  crossAxisSpacing: 20.0,
+                  mainAxisSpacing: 1.0,
+                  crossAxisSpacing: 1.0,
                   childAspectRatio: 0.75,
                 ),
                 itemBuilder: (context, index) => ItemCard(
@@ -83,12 +81,12 @@ class ItemCard extends StatelessWidget {
         child: Stack(
             children: <Widget>[
         new Container(
-              padding: EdgeInsets.all(screensize.height*0.01),
+              padding: EdgeInsets.all(screensize.height*0.005),
               child: Column(
                 children: <Widget>[
                   Container(
                     height: screensize.height*0.3,
-                    width: screensize.height*0.3,
+                    width: screensize.width*0.7,
                     decoration: BoxDecoration(
                       border: Border.all(
                         color: Colors.black,
@@ -99,7 +97,7 @@ class ItemCard extends StatelessWidget {
                     child: Column(
                       children: <Widget>[
                         Image.asset(market.image,height: screensize.height*0.2,
-                          width: screensize.height*0.2,),
+                          width: screensize.width*0.4,),
                         TextButton(
                           style: ButtonStyle(
                             foregroundColor:

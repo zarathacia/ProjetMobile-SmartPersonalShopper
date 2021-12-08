@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/data/product/ProductItems.dart';
 import 'package:smart_personal_shopper/screens/profile.dart';
@@ -21,84 +19,37 @@ class ProductScreen extends StatelessWidget {
   }
   @override
   Widget build(BuildContext context) {
+    var screensize=MediaQuery.of(context).size;
+
     final ButtonStyle style =
     TextButton.styleFrom(primary: Theme.of(context).colorScheme.onPrimary);
     return Scaffold(
-      appBar: AppBar(
-        actions: <Widget>[
-          TextButton(
+       appBar: AppBar(
+      toolbarHeight: screensize.height*0.1,
+      backgroundColor: const Color(0xffF57752),
+      elevation: 0.0,
+
+      actions: <Widget>[
+        TextButton(
+          style: style,
+          onPressed: () {},
+          child: const Text('Credit:180.52 DT'),
+        ),
+        TextButton(
             style: style,
             onPressed: () {},
-            child: const Text('Credit 180.52£'),
-          ),
-          TextButton(
-              style: style,
-              onPressed: () {},
-              child: new Container(
-                width:90.0,
-                height:90.0,
-                decoration: new BoxDecoration(
-                    shape:BoxShape.circle,
-                    image: new DecorationImage(
-                        fit : BoxFit.fill,
-                        image: AssetImage('images/profile.jpg'))
-                ),
-              )
-          )
-        ],
-      ),
-      bottomNavigationBar: BottomAppBar(
-        shape: CircularNotchedRectangle(),
-        color: Colors.white,
-        child: IconTheme(
-          data: IconThemeData(color: Theme.of(context).colorScheme.onPrimary),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              IconButton(
-                icon: const Icon(
-                  Icons.home_outlined,
-                  color: Colors.black,
-                  size: 40,
-                ),
-                onPressed: () {Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Profile()));},
-              ),
-              IconButton(
-                icon: const Icon(
-                  Icons.shopping_cart_outlined,
-                  color: Colors.black,
-                  size: 40,
-                ),
-                onPressed: () {Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => homeinterface()));
-                },
-              ),
-              IconButton(
-                icon: const Icon(
-                  Icons.chat_outlined,
-                  color: Colors.black,
-                  size: 35,
-                ),
-                onPressed: () {Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Chat()));
-                },
-              ),
-              IconButton(
-                icon: const Icon(
-                  Icons.account_circle_outlined,
-                  color: Colors.black,
-                  size: 40,
-                ),
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Profile()));
-                },
-              ),
-            ],
-          ),
-        ),
-      ),
+            child: new Container(
+              width: 60.0,
+              height: 60.0,
+              decoration: new BoxDecoration(
+                  shape: BoxShape.circle,
+                  image: new DecorationImage(
+                      fit: BoxFit.fill,
+                      image: AssetImage('images/profile.jpg'))),
+            ))
+      ],
+    ),
+
       body:Column(
         children: <Widget>[
           Text(
@@ -157,11 +108,13 @@ class ProductScreen extends StatelessWidget {
                       crossAxisSpacing: 20.0,
                       childAspectRatio: 0.75,
                     ),
-                    itemBuilder: (context, index) => ItemCard(
-                      product: products[index],
-                    )),
+                      itemBuilder: (context, index) => ItemCard(
+                        product: products[index],
+
               )),
-          ],
+                ),
+                ),
+        ],
     ),
     );
   }
@@ -172,21 +125,27 @@ class ItemCard extends StatelessWidget {
     Key ,
     required this.product,
 
+
   }) : super(key: Key);
 
-  get index => products.length;
+  get itemcount => products.length;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding:EdgeInsets.all(20),
-      child: Column(
+    var screensize=MediaQuery.of(context).size;
+    return GestureDetector(
+      child:SingleChildScrollView(
+        child: Stack(
+            children: <Widget>[
+        new Container(
+        padding: EdgeInsets.all(screensize.height*0.005),
+        child: Column(
         children: <Widget>[
 
           Container(
-            padding:EdgeInsets.all(16),
-            height:250,
-            width:250,
+            padding:EdgeInsets.all(screensize.height*0.005),
+            height: screensize.height*0.25,
+            width: screensize.width*0.7,
             decoration: BoxDecoration(
               border: Border.all(
                 color: Colors.black,
@@ -196,14 +155,17 @@ class ItemCard extends StatelessWidget {
             ),
             child:Column(
               children: <Widget>[
-                Image.asset(product.image,height: 150,width: 150,),
+                Image.asset(product.image,height: screensize.height*0.1,
+                  width: screensize.width*0.4,),
                 Text(product.title,
-                  style: TextStyle(fontSize: 25),
+                  style: TextStyle(fontSize: 15),
                 ),
             RaisedButton(
               onPressed: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => details()));
+               Navigator.push(
+                      context,
+                    MaterialPageRoute(
+                        builder: (context) => details()));
               },
 
               color: Colors.grey,
@@ -226,6 +188,10 @@ class ItemCard extends StatelessWidget {
         ],
 
       ),
+    ),
+    ],
+        ),
+    ),
     );
   }
 }
