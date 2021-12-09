@@ -34,7 +34,7 @@ class _ConversationListState extends State<ConversationList> {
         child: Container(
           padding: EdgeInsets.only(left: 16, right: 16, top: 10, bottom: 10),
           decoration:
-              BoxDecoration(border: Border.all(color: Colors.red.shade900)),
+              BoxDecoration(border: Border.all(color: Color(0xffb89686))),
           child: Row(
             children: <Widget>[
               Expanded(

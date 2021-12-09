@@ -140,7 +140,7 @@ class _LoginState extends State<Login> {
                                       },
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
-                                        color: Theme.of(context).accentColor),
+                                        color: Color(0xffb89686),),
                                   ),
                                 ])),
                               ),

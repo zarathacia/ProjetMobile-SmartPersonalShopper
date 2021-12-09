@@ -26,7 +26,7 @@ class ProductScreen extends StatelessWidget {
     return Scaffold(
        appBar: AppBar(
       toolbarHeight: screensize.height*0.1,
-      backgroundColor: const Color(0xffF57752),
+      backgroundColor: const Color(0xffb89686),
       elevation: 0.0,
 
       actions: <Widget>[

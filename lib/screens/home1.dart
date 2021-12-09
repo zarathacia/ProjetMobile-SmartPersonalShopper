@@ -28,7 +28,7 @@ class _Home1State extends State<Home1> {
               fontSize: 25,
             )),
         centerTitle: true,
-        backgroundColor: PrimaryRed,
+        backgroundColor: Color(0xffb89686),
         leading: Icon(
           Icons.menu,
           color: Colors.white,
@@ -64,7 +64,7 @@ class _Home1State extends State<Home1> {
               ),
               Text("Welcome message",
                   style: TextStyle(
-                    color: Colors.blue,
+                    color:Color(0xffb89686),
                     fontSize: 20,
                   )),
             ],
@@ -72,7 +72,7 @@ class _Home1State extends State<Home1> {
           Padding(
             padding: EdgeInsets.all(16.0),
             child: Text(
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."),
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."),
           ),
           SizedBox(
             height: 10,
@@ -82,7 +82,7 @@ class _Home1State extends State<Home1> {
               Navigator.push(
                   context, MaterialPageRoute(builder: (context) => Profile()));
             },
-            color: Colors.red,
+            color:Color(0xffb89686),
             child: Text(
               'go to profile',
               style: TextStyle(
@@ -102,7 +102,7 @@ class _Home1State extends State<Home1> {
               Navigator.push(
                   context, MaterialPageRoute(builder: (context) => MyCard()));
             },
-            color: Colors.red,
+             color:Color(0xffb89686),
             child: Text(
               'go to pay',
               style: TextStyle(
@@ -122,7 +122,7 @@ class _Home1State extends State<Home1> {
               Navigator.push(
                   context, MaterialPageRoute(builder: (context) => Choose()));
             },
-            color: Colors.red,
+            color:Color(0xffb89686),
             child: Text(
               'choose your delivrer',
               style: TextStyle(
@@ -142,7 +142,7 @@ class _Home1State extends State<Home1> {
               Navigator.push(
                   context, MaterialPageRoute(builder: (context) => Confirm()));
             },
-            color: Colors.red,
+            color:Color(0xffb89686),
             child: Text(
               'Rate',
               style: TextStyle(
@@ -162,7 +162,7 @@ class _Home1State extends State<Home1> {
               Navigator.push(
                   context, MaterialPageRoute(builder: (context) => Login()));
             },
-            color: Colors.red,
+            color:Color(0xffb89686),
             child: Text(
               'Login',
               style: TextStyle(
@@ -182,7 +182,7 @@ class _Home1State extends State<Home1> {
               Navigator.push(
                   context, MaterialPageRoute(builder: (context) => register()));
             },
-            color: Colors.red,
+            color:Color(0xffb89686),
             child: const Text(
               'Register',
               style: TextStyle(

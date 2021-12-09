@@ -21,8 +21,7 @@ Widget buttonCustome(String txt, Widget page, context) {
               begin: Alignment.centerRight,
               end: Alignment.centerLeft,
               colors: <Color>[
-                Color(0xff880e4f),
-                Color(0xffb71c1c)
+                Color(0xffb89686), Color(0xffd8c8be)
               ]), //colors: <Color>[Color(0xff880e4f), Color(0xffb71c1c)])),
           borderRadius: BorderRadius.circular(30.0),
         ),

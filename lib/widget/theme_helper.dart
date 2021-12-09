@@ -18,10 +18,10 @@ class ThemeHelper {
           borderSide: BorderSide(color: Colors.grey.shade400)),
       errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(100.0),
-          borderSide: BorderSide(color: Colors.red, width: 2.0)),
+          borderSide: BorderSide(color: Color(0xffb89686), width: 2.0)),
       focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(100.0),
-          borderSide: BorderSide(color: Colors.red, width: 2.0)),
+          borderSide: BorderSide(color: Color(0xffb89686), width: 2.0)),
     );
   }
 
@@ -37,8 +37,8 @@ class ThemeHelper {
 
   BoxDecoration buttonBoxDecoration(BuildContext context,
       [String color1 = "", String color2 = ""]) {
-    Color c1 = Color(0xffa4133c);
-    Color c2 = Color(0xffc9184a);
+    Color c1 = Color(0xffb89686);
+    Color c2 = Color(0xffd8c8be);
     if (color1.isEmpty == false) {
       c1 = HexColor(color1);
     }
@@ -59,7 +59,7 @@ class ThemeHelper {
           c2,
         ],
       ),
-      color: Colors.deepPurple.shade300,
+      color: Colors.brown,
       borderRadius: BorderRadius.circular(30),
     );
   }
