@@ -103,8 +103,8 @@ class Confirm extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar:
-          navbar(Home(), marketScreen(), Listof(), Profile(), context),
+      /*bottomNavigationBar:
+          navbar(Home(), marketScreen(), Listof(), Profile(), context),*/
     );
   }
 

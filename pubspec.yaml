@@ -42,6 +42,9 @@ dependencies:
   #cloud_firestore: ^3.1.1
   #firebase_storage: ^10.2.0
   particles_flutter: ^0.1.4
+  hexcolor: ^2.0.5
+  font_awesome_flutter: ^9.2.0
+  otp_text_field: ^1.1.1
 
 dev_dependencies:
   flutter_test:
@@ -81,15 +84,23 @@ flutter:
     - images/Background.png
     - assets/images/logo.png
     - images/profile.jpg
-    - images/aziza.jfif
+    - images/aziza.png
     - images/geant.jpg
     - images/mg.jpg
     - images/carrefour.png
     - images/hrissa.jpg
+    - images/hrissa.png
     - images/boga1.jpg
-    - images/pizza.jfif
-    - images/tomate.jfif
+    - images/pizza.png
+    - images/tomate.jpg
     - images/bg.jpg
+    - assets/logos/google.jpg
+    - assets/logos/facebook.jpg
+    - images/deliv1.png
+    - images/deliv2.jpg
+    - images/deliv3.jpg
+    - images/deliv4.png
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

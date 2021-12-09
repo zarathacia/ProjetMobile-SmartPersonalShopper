@@ -1,38 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/data/product/ProductItems.dart';
-import 'package:smart_personal_shopper/screens/profile.dart';
-import 'package:smart_personal_shopper/constants.dart';
-
-import 'Productscreen.dart';
-
-class details extends StatelessWidget {
-  TextEditingController controller = new TextEditingController();
-  late String filter;
-  @override
-  void initState() {
-    controller.addListener(() {
-      filter = controller.text;
-    });
-  }
-
+class details extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
+    var screensize=MediaQuery.of(context).size;
+
     final ButtonStyle style =
-        TextButton.styleFrom(primary: Theme.of(context).colorScheme.onPrimary);
+    TextButton.styleFrom(primary: Theme.of(context).colorScheme.onPrimary);
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
+       backgroundColor: Colors.redAccent,
       appBar: AppBar(
+        toolbarHeight: screensize.height*0.1,
+        backgroundColor: Colors.redAccent,
+        elevation: 0.0,
+
         actions: <Widget>[
           TextButton(
             style: style,
             onPressed: () {},
-            child: const Text('Credit 180.52£'),
+            child: const Text('Credit:180.52 DT'),
           ),
           TextButton(
               style: style,
               onPressed: () {},
               child: new Container(
-                width: 90.0,
-                height: 90.0,
+                width: 60.0,
+                height: 60.0,
                 decoration: new BoxDecoration(
                     shape: BoxShape.circle,
                     image: new DecorationImage(
@@ -41,172 +35,208 @@ class details extends StatelessWidget {
               ))
         ],
       ),
-      body: Column(
-        children: <Widget>[
-          Text(
-            'choose your product',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              height: 2,
-              fontSize: 30,
-              color: Colors.grey,
-            ),
-          ),
-          Column(
-            children: <Widget>[
-              Row(
+      body: SingleChildScrollView(
+          child: Column(
+          children:<Widget> [
+            SizedBox(
+              height: size.height,
+              width: size.width,
+              child: Stack(
                 children: <Widget>[
-                  Expanded(
-                    child: Container(
-                      height: 80,
-                      padding: EdgeInsets.only(
-                        top: 35,
-                        left: 15,
-                        right: 5,
-                        bottom: 5,
-                      ),
-                      width: double.infinity,
-                      color: Colors.white10,
-                      child: TextField(
-                        controller: controller,
-                        decoration: InputDecoration(
-                          enabledBorder: UnderlineInputBorder(
-                              borderRadius: BorderRadius.circular(25.7),
-                              borderSide: BorderSide(color: Colors.black)),
-                          focusedBorder: UnderlineInputBorder(
-                              borderRadius: BorderRadius.circular(25.7),
-                              borderSide: BorderSide(color: Colors.black)),
-                          labelText: 'search',
-                          filled: true,
-                          fillColor: Colors.white12,
-                        ),
+                  Container(
+                    margin: EdgeInsets.only(top: size.height * 0.3),
+                    padding: EdgeInsets.only(
+                      top: size.height * 0.12,
+                    ),
+                    height: size.height*2,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(24),
+                        topRight: Radius.circular(24),
                       ),
                     ),
-                  ),
-                  Container(
-                    height: 80,
+                    child:Container(
+                      padding: EdgeInsets.only(left:size.width * 0.12 ,right:size.width * 0.05 ),
+                      child: Column(
+                            children:<Widget> [
+
+                        Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor posuere eleifend. Etiam ut imperdiet odio, id euismod nisi. Nunc vulputate quis orci id luctus. Nulla facilisi. Vestibulum vulputate laoreet massa, vitae tempus nulla iaculis nec. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."),
+                      Row(
+                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                               children: <Widget>[
+                      Container(
+                      margin: EdgeInsets.only(top: size.height * 0.05),
+                              padding: EdgeInsets.only(
+                                top: size.height * 0.0012,
+                                left:size.width * 0.05,
+                              ),
+
+                              child:  CounterWithFavBtn(),),
+
+                               ],
+                             ),
+                              AddToCart(),
+                            ],
+                      ),
+                    ),),
+                          Padding(padding: EdgeInsets.only(right:screensize.height*0.0 ,left:screensize.height*0.02),
+                              child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                      Text('hrissa sicam',
+                                        style: Theme.of(context).textTheme.headline4?.copyWith(color: Colors.white ,
+                                          fontWeight: FontWeight.bold),),
+                                        SizedBox(height:20.0),
+                                    Row(
+                                  children: <Widget>[
+                                    Icon(Icons.add_business_sharp, color:Colors.white,),
+                                    RichText(text: TextSpan(
+                                      children: [
+                                        TextSpan(text:"   price : 0.8 DT",
+                                        style: TextStyle(fontSize: 18,color: Colors.white),),
+                                              ],
+                                          ),),
+                                          SizedBox(width:40.0),
+
+                                      Expanded(
+                                        child:Container(
+                                            margin:EdgeInsets.only(
+                                              top: screensize.height*0.002,
+                                               right :screensize.height*0.00,),
+                                          child:Image.asset("images/hrissa.png",height: screensize.height*0.25,
+                                        width: screensize.width*0.9,
+                                                  fit:BoxFit.fill,
+                                          )))
+                                                 ],
+                                        )],),)],),)],),),);
+  }
+
+}
+class AddToCart extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 16.0),
+      child: Row(
+        children: <Widget>[
+          Container(
+            margin: EdgeInsets.only(right: 16.0),
+            height: 50,
+            width: 58,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(18),
+              border: Border.all(
+                color: Colors.redAccent,
+              ),
+            ),
+            child: IconButton(
+              icon: Icon(Icons.add_shopping_cart, color:Colors.black,),
+                color: Colors.redAccent, onPressed: () {  },
+              ),
+          ),
+          Expanded(
+            child: SizedBox(
+              height: 40,
+              child: FlatButton(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(18)),
+                color: Colors.redAccent,
+                onPressed: () {},
+                child: Text(
+                  "Buy  Now".toUpperCase(),
+                  style: TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold,
                     color: Colors.white,
-                    padding: EdgeInsets.only(top: 25, right: 15),
-                    child: Icon(Icons.search),
                   ),
-                ],
+                ),
               ),
-              Item(
-                title: '',
-              ),
-            ],
+            ),
           ),
         ],
       ),
     );
   }
 }
-
-class Item extends StatefulWidget {
-  const Item({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  State<Item> createState() => _Item();
-}
-
-class _Item extends State<Item> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+class CounterWithFavBtn extends StatelessWidget {
+  const CounterWithFavBtn({
+    Key?  key ,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(20),
-      child: Column(
-        children: <Widget>[
-          Container(
-            height: 400,
-            width: 500,
-            padding: EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Colors.black,
-                width: 1,
-              ),
-            ),
-            child: Column(
-              children: <Widget>[
-                Row(
-                  children: <Widget>[
-                    Image.asset(
-                      'images/hrissa.jpg',
-                      height: 150,
-                      width: 150,
-                    ),
-                    Column(
-                      children: <Widget>[
-                        Text(
-                          'hrissa sicam',
-                          style: TextStyle(
-                            fontSize: 25,
-                            color: Colors.red,
-                          ),
-                        ),
-
-                        Text(
-                          'prix unitaire : 0.85 £',
-                          style: TextStyle(fontSize: 25),
-                        ),
-
-                        //   FloatingActionButton(
-                        // onPressed: _incrementCounter,
-                        // tooltip: 'Increment',
-                        // child: const Icon(Icons.add),
-                        //),
-                        Text(
-                          'Total : 22.85 £',
-                          style: TextStyle(fontSize: 25),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                RaisedButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Profile()));
-                  },
-                  color: Colors.red,
-                  child: Text(
-                    'Add To Cart',
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15),
-                  ),
-                  shape: new RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30.0),
-                  ),
-                ),
-                Text(
-                  'Details',
-                  textAlign: TextAlign.right,
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 25),
-                ),
-                Text(
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor posuere eleifend. Etiam ut imperdiet odio, id euismod nisi. Nunc vulputate quis orci id luctus. Nulla facilisi. Vestibulum vulputate laoreet massa, vitae tempus nulla iaculis nec. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
-                  textAlign: TextAlign.left,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 10),
-                )
-              ],
-            ),
+    Size size = MediaQuery.of(context).size;
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: <Widget>[
+        CartCounter(),
+        Container(
+          margin:EdgeInsets.only(left: size.width * 0.13),
+          padding: EdgeInsets.all(8),
+          height: 50,
+          width: 50,
+          decoration: BoxDecoration(
+            color: Color(0xFFFF6464),
+            shape: BoxShape.circle,
           ),
-        ],
+          child: Icon(Icons.adb_outlined, color:Colors.white,),
+        )
+      ],
+    );
+  }
+}
+class CartCounter extends StatefulWidget {
+  @override
+  _CartCounterState createState() => _CartCounterState();
+}
+
+class _CartCounterState extends State<CartCounter> {
+  int numOfItems = 1;
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: <Widget>[
+        buildOutlineButton(
+          icon: Icons.remove,
+          press: () {
+            if (numOfItems > 1) {
+              setState(() {
+                numOfItems--;
+              });
+            }
+          },
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal:1),
+          child: Text(
+            // if our item is less  then 10 then  it shows 01 02 like that
+            numOfItems.toString().padLeft(2, "0"),
+            style: Theme.of(context).textTheme.headline6,
+          ),
+        ),
+        buildOutlineButton(
+            icon: Icons.add,
+            press: () {
+              setState(() {
+                numOfItems++;
+              });
+            }),
+      ],
+    );
+  }
+
+  SizedBox buildOutlineButton({icon: Icons.add, required Function press}) {
+    Size size = MediaQuery.of(context).size;
+    return SizedBox(
+      width: size.width * 0.15,
+      height: size.width * 0.15,
+      child: OutlineButton(
+        padding: EdgeInsets.zero,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(13),
+        ),
+        onPressed: press(),
+        child: Icon(icon),
       ),
     );
   }

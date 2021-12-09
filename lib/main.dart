@@ -1,10 +1,7 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_personal_shopper/provider/feedback.dart';
-import 'package:smart_personal_shopper/screens/Landing/landingscreen.dart';
-
-import 'screens/home.dart';
+import 'package:smart_personal_shopper/screens/Landing/intro.dart';
 
 void main() {
   runApp(MyApp());
@@ -20,7 +17,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             primarySwatch: Colors.red,
           ),
-          home: Landing(),
+          home: IntroScreen(),
         ),
       );
 }

@@ -69,7 +69,7 @@ class _ChooseState extends State<Choose> {
                       style: TextStyle(fontSize: 20),
                     )
                   : Stack(children: users.map(buildUser).toList()),
-              Expanded(child: Container()),
+              Flexible(child: Container()),
               Row(children: [
                 Text("swipe ",
                     style: TextStyle(

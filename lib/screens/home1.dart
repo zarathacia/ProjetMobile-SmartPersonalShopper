@@ -1,10 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_personal_shopper/constants.dart';
 import 'Payment/paycard.dart';
-import 'package:smart_personal_shopper/screens/register.dart';
+import 'package:smart_personal_shopper/screens/login_registration/register.dart';
 import 'Confirm_receival.dart';
 import 'choose_your_personal_shopper.dart';
-import 'login.dart';
+import 'login_registration/login.dart';
 import 'profile.dart';
 
 class Home1 extends StatefulWidget {
@@ -27,7 +28,7 @@ class _Home1State extends State<Home1> {
               fontSize: 25,
             )),
         centerTitle: true,
-        backgroundColor: Colors.red[900],
+        backgroundColor: PrimaryRed,
         leading: Icon(
           Icons.menu,
           color: Colors.white,
@@ -159,7 +160,7 @@ class _Home1State extends State<Home1> {
           RaisedButton(
             onPressed: () {
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => login()));
+                  context, MaterialPageRoute(builder: (context) => Login()));
             },
             color: Colors.red,
             child: Text(

@@ -53,7 +53,9 @@ class _HomeState extends State<Home> {
           ),
         ],
         selectedItemColor: PrimaryRed,
+
       ),
+
     );
   }
 }

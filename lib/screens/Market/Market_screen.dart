@@ -1,29 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/screens/Market/Market_items.dart';
-import '../List_of_Past_discussions.dart';
 import '../Productscreen.dart';
-import '../profile.dart';
 import 'Market_items.dart';
 
 class marketScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var screensize=MediaQuery.of(context).size;
     final ButtonStyle style =
         TextButton.styleFrom(primary: Theme.of(context).colorScheme.onPrimary);
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: screensize.height*0.1,
+        backgroundColor: const Color(0xffF57752),
+        elevation: 0.0,
+
         actions: <Widget>[
           TextButton(
             style: style,
             onPressed: () {},
-            child: const Text('Credit 180.52£'),
+            child: const Text('Credit:180.52 DT'),
           ),
           TextButton(
               style: style,
               onPressed: () {},
               child: new Container(
-                width: 90.0,
-                height: 90.0,
+                width: 60.0,
+                height: 60.0,
                 decoration: new BoxDecoration(
                     shape: BoxShape.circle,
                     image: new DecorationImage(
@@ -45,13 +48,13 @@ class marketScreen extends StatelessWidget {
           ),
           Expanded(
               child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                padding: EdgeInsets.symmetric(horizontal:screensize.width*0.005,),
             child: GridView.builder(
                 itemCount: markets.length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  mainAxisSpacing: 20.0,
-                  crossAxisSpacing: 20.0,
+                  mainAxisSpacing: 1.0,
+                  crossAxisSpacing: 1.0,
                   childAspectRatio: 0.75,
                 ),
                 itemBuilder: (context, index) => ItemCard(
@@ -73,45 +76,52 @@ class ItemCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(30),
-      child: Column(
-        children: <Widget>[
-          Container(
-            padding: EdgeInsets.all(6),
-            height: 159,
-            width: 200,
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Colors.black,
-                width: 1,
+    var screensize=MediaQuery.of(context).size;
+    return SingleChildScrollView(
+        child: Stack(
+            children: <Widget>[
+        new Container(
+              padding: EdgeInsets.all(screensize.height*0.005),
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    height: screensize.height*0.3,
+                    width: screensize.width*0.7,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.black,
+                        width: 1,
+                      ),
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    child: Column(
+                      children: <Widget>[
+                        Image.asset(market.image,height: screensize.height*0.2,
+                          width: screensize.width*0.4,),
+                        TextButton(
+                          style: ButtonStyle(
+                            foregroundColor:
+                            MaterialStateProperty.all<Color>(Colors.black),
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ProductScreen()));
+                          },
+                          child: Text(
+                            market.title,
+                            style: TextStyle(fontSize: 15),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ],
               ),
-              borderRadius: BorderRadius.circular(16),
             ),
-            child: Column(
-              children: <Widget>[
-                Image.asset(market.image),
-                TextButton(
-                  style: ButtonStyle(
-                    foregroundColor:
-                        MaterialStateProperty.all<Color>(Colors.black),
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ProductScreen()));
-                  },
-                  child: Text(
-                    market.title,
-                    style: TextStyle(fontSize: 15),
-                  ),
-                )
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
+          ],
+
+        ),);
   }
 }
