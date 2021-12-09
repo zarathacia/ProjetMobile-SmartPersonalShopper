@@ -15,7 +15,7 @@ class Confirm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.red.shade900,
+        backgroundColor:Color(0xffb89686),
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back_ios,
@@ -39,11 +39,11 @@ class Confirm extends StatelessWidget {
             RaisedButton(
                 onPressed: () {},
                 child: Text('Confirm receipt'),
-                color: Colors.red.shade900,
+                color:Color(0xffb89686),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(5))),
             SizedBox(
-              height: 100,
+              height: 70,
             ),
             Text(
               'Review personal shopper',
@@ -65,7 +65,7 @@ class Confirm extends StatelessWidget {
                         borderRadius: BorderRadius.circular(100.0),
                         child: Image.asset(
                           'images/shopper1.png',
-                          width: 150,
+                          width: 120,
                         ),
                       ),
                     ),

@@ -17,7 +17,7 @@ class Chat extends StatelessWidget {
         appBar: AppBar(
           elevation: 0,
           automaticallyImplyLeading: false,
-          backgroundColor: Colors.red.shade900,
+          backgroundColor: Color(0xffb89686),
           flexibleSpace: SafeArea(
             child: Container(
               padding: EdgeInsets.only(right: 16),
@@ -92,7 +92,7 @@ class Chat extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20),
                         color: (messages[index].messageType == "receiver"
                             ? Colors.grey.shade200
-                            : Colors.red[200]),
+                            : Color(0xffb89686)),
                       ),
                       padding: EdgeInsets.all(16),
                       child: Text(
@@ -121,7 +121,7 @@ class Chat extends StatelessWidget {
                         height: 30,
                         width: 30,
                         decoration: BoxDecoration(
-                          color: Colors.red.shade900,
+                          color:Color(0xffb89686),
                           borderRadius: BorderRadius.circular(30),
                         ),
                         child: Icon(
@@ -152,7 +152,7 @@ class Chat extends StatelessWidget {
                         color: Colors.white,
                         size: 18,
                       ),
-                      backgroundColor: Colors.red.shade900,
+                      backgroundColor:Color(0xffb89686),
                       elevation: 0,
                     ),
                   ],

@@ -30,7 +30,7 @@ class _ChooseState extends State<Choose> {
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           toolbarHeight: 70,
-          backgroundColor: Colors.red[900],
+          backgroundColor:Color(0xffb89686),
           actions: [
             Container(
               width: 80,
@@ -73,24 +73,24 @@ class _ChooseState extends State<Choose> {
               Row(children: [
                 Text("swipe ",
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 15,
                       fontWeight: FontWeight.bold,
                     )),
                 Text("right to choose ",
                     style: TextStyle(
-                      color: Colors.red[900],
-                      fontSize: 20,
+                      color:Color(0xffb89686),
+                      fontSize: 15,
                       fontWeight: FontWeight.bold,
                     )),
                 Text("and ",
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 15,
                       fontWeight: FontWeight.bold,
                     )),
                 Text("left to go next",
                     style: TextStyle(
                       color: Colors.grey,
-                      fontSize: 20,
+                      fontSize: 15,
                       fontWeight: FontWeight.bold,
                     )),
               ]),
