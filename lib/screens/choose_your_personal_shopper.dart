@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_personal_shopper/provider/feedback.dart';
 import 'package:smart_personal_shopper/screens/Confirm_receival.dart';
+import 'package:smart_personal_shopper/screens/Market/address.dart';
 import 'package:smart_personal_shopper/screens/profile.dart';
 
 import 'package:smart_personal_shopper/data/user.dart';
@@ -139,7 +140,7 @@ class _ChooseState extends State<Choose> {
     if (details.offset.dx > minimumDrag) {
       user.isLiked = true;
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => Confirm()));
+          context, MaterialPageRoute(builder: (context) => Address()));
     } else if (details.offset.dx < -minimumDrag) {
       user.isSwipedOff = true;
     }

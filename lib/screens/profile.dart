@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_personal_shopper/screens/home.dart';
 import 'package:smart_personal_shopper/widget/button.dart';
 import 'edit_profile.dart';
 
@@ -24,7 +25,8 @@ class Profile extends StatelessWidget {
             color: Colors.white,
             size: 40,
           ),
-          onPressed: () => Navigator.of(context).pop(),
+          onPressed: () => Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => Home())),
         ),
         leadingWidth: 30,
       ),

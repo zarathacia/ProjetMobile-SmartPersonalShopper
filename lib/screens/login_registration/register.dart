@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hexcolor/hexcolor.dart';
 import 'package:smart_personal_shopper/screens/profile.dart';
+import 'package:smart_personal_shopper/widget/bottomsheet.dart';
 import 'package:smart_personal_shopper/widget/header.dart';
 import 'package:smart_personal_shopper/widget/socialbtn.dart';
 import 'package:smart_personal_shopper/widget/theme_helper.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:image_picker/image_picker.dart';
 
 class register extends StatefulWidget {
   @override
@@ -18,6 +18,8 @@ class _registerState extends State<register> {
   final _formKey = GlobalKey<FormState>();
   bool checkedValue = false;
   bool checkboxValue = false;
+  late PickedFile _imageFile;
+  final ImagePicker _picker = ImagePicker();
 
   @override
   Widget build(BuildContext context) {
@@ -66,11 +68,23 @@ class _registerState extends State<register> {
                               ),
                               Container(
                                 padding: EdgeInsets.fromLTRB(80, 80, 0, 0),
-                                child: Icon(
+                                child: IconButton(
+                                  padding: EdgeInsets.all(0),
+                                  icon: Icon(Icons.add_circle,
+                                      color: Colors.grey.shade700, size: 25.0),
+                                  onPressed: () {
+                                    showModalBottomSheet(
+                                      context: context,
+                                      builder: ((builder) => bottomSheet()),
+                                    );
+                                    // Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => SettingsPage()));
+                                  },
+                                ), // Ic
+                                /*Icon(
                                   Icons.add_circle,
                                   color: Colors.grey.shade700,
                                   size: 25.0,
-                                ),
+                                ),*/
                               ),
                             ],
                           ),
@@ -238,81 +252,6 @@ class _registerState extends State<register> {
                                 'assets/logos/google.jpg',
                               ),
                             ),
-                            /*GestureDetector(
-                              child: FaIcon(
-                                FontAwesomeIcons.googlePlus,
-                                size: 35,
-                                color: HexColor("#EC2D2F"),
-                              ),
-                              onTap: () {
-                                setState(() {
-                                  showDialog(
-                                    context: context,
-                                    builder: (BuildContext context) {
-                                      return ThemeHelper().alartDialog(
-                                          "Google Plus",
-                                          "You tap on Google icon.",
-                                          context);
-                                    },
-                                  );
-                                });
-                              },
-                            ),
-                            SizedBox(
-                              width: 30.0,
-                            ),
-                            /*GestureDetector(
-                              child: Container(
-                                padding: EdgeInsets.all(0),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(100),
-                                  border: Border.all(
-                                      width: 5, color: HexColor("#40ABF0")),
-                                  color: HexColor("#40ABF0"),
-                                ),
-                                child: FaIcon(
-                                  FontAwesomeIcons.twitter,
-                                  size: 23,
-                                  color: HexColor("#FFFFFF"),
-                                ),
-                              ),
-                              onTap: () {
-                                setState(() {
-                                  showDialog(
-                                    context: context,
-                                    builder: (BuildContext context) {
-                                      return ThemeHelper().alartDialog(
-                                          "Twitter",
-                                          "You tap on Twitter social icon.",
-                                          context);
-                                    },
-                                  );
-                                });
-                              },
-                            ),*/
-                            SizedBox(
-                              width: 30.0,
-                            ),
-                            GestureDetector(
-                              child: FaIcon(
-                                FontAwesomeIcons.facebook,
-                                size: 35,
-                                color: HexColor("#3E529C"),
-                              ),
-                              onTap: () {
-                                setState(() {
-                                  showDialog(
-                                    context: context,
-                                    builder: (BuildContext context) {
-                                      return ThemeHelper().alartDialog(
-                                          "Facebook",
-                                          "You tap on Facebook social icon.",
-                                          context);
-                                    },
-                                  );
-                                });
-                              },
-                            ),*/
                           ],
                         ),
                       ],
@@ -326,252 +265,53 @@ class _registerState extends State<register> {
       ),
     );
   }
-}
-/*import 'package:flutter/material.dart';
-import 'package:particles_flutter/particles_flutter.dart';
-import 'package:smart_personal_shopper/screens/login.dart';
 
-void main() => runApp(MaterialApp(
-      home: register(),
-    ));
-
-class register extends StatefulWidget {
-  @override
-  _register createState() => _register();
-}
-
-class _register extends State<register> {
-  @override
-  Widget build(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
-    double screenWidth = MediaQuery.of(context).size.width;
-    return Stack(
-      children: [
-        CircularParticle(
-          // key: UniqueKey(),
-          awayRadius: 100,
-          numberOfParticles: 200,
-          speedOfParticles: 0.6,
-          height: screenHeight,
-          width: screenWidth,
-          onTapAnimation: true,
-          particleColor: Colors.white.withOpacity(0.1),
-          awayAnimationDuration: Duration(milliseconds: 600),
-          maxParticleSize: 8,
-          isRandSize: true,
-          isRandomColor: true,
-          randColorList: [
-            Colors.red.withOpacity(0.1),
-            Colors.white.withOpacity(0.1),
-          ],
-          awayAnimationCurve: Curves.bounceInOut,
-          enableHover: true,
-          hoverColor: Colors.white,
-          hoverRadius: 90,
-          connectDots: false, //not recommended
-        ),
-        Container(
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage('images/Background.png'),
-                  fit: BoxFit.cover)),
-        ),
-        Scaffold(
-          backgroundColor: Colors.transparent,
-          body: Column(
-            children: <Widget>[
-              Center(
-                child: Image(
-                    image: AssetImage('assets/images/logo.png'),
-                    width: 200,
-                    height: 200),
-              ),
-              Container(
-                height: 50,
-                decoration: BoxDecoration(
-                  color: Colors.grey.withOpacity(0.5),
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                child: TextField(
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    prefixIcon: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                      child: Icon(
-                        Icons.alternate_email,
-                        size: 28,
-                      ),
-                    ),
-                    hintText: 'Email',
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              Container(
-                height: 50,
-                decoration: BoxDecoration(
-                  color: Colors.grey.withOpacity(0.5),
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                child: TextField(
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    prefixIcon: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                    ),
-                    hintText: 'First Name',
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              Container(
-                height: 50,
-                decoration: BoxDecoration(
-                  color: Colors.grey.withOpacity(0.5),
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                child: TextField(
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    prefixIcon: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                    ),
-                    hintText: 'Last Name',
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              Container(
-                padding: EdgeInsets.all(16),
-                height: 50,
-                decoration: BoxDecoration(
-                  color: Colors.grey.withOpacity(0.5),
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                child: TextField(
-                  obscureText: true,
-                  enableSuggestions: false,
-                  autocorrect: false,
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    prefixIcon: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                      child: Icon(
-                        Icons.eleven_mp_rounded,
-                        size: 28,
-                      ),
-                    ),
-                    hintText: 'Password',
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              Container(
-                padding: EdgeInsets.all(16),
-                height: 50,
-                decoration: BoxDecoration(
-                  color: Colors.grey.withOpacity(0.5),
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                child: TextField(
-                  obscureText: true,
-                  enableSuggestions: false,
-                  autocorrect: false,
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    prefixIcon: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                      child: Icon(
-                        Icons.eleven_mp_rounded,
-                        size: 28,
-                      ),
-                    ),
-                    hintText: 'Confirm Password',
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: RaisedButton(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(200)),
-                    elevation: 0.0,
-                    padding: const EdgeInsets.all(0),
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Login()));
-                    },
-                    child: Ink(
-                      decoration: BoxDecoration(
-                        gradient: const LinearGradient(
-                            begin: Alignment.centerRight,
-                            end: Alignment.centerLeft,
-                            colors: <Color>[
-                              Color(0xff880e4f),
-                              Color(0xffb71c1c)
-                            ]), //colors: <Color>[Color(0xff880e4f), Color(0xffb71c1c)])),
-                        borderRadius: BorderRadius.circular(30.0),
-                      ),
-                      child: Container(
-                        constraints: const BoxConstraints(
-                            maxWidth: 300.0, minHeight: 50.0),
-                        alignment: Alignment.center,
-                        child: Text(
-                          'Register',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 26.0,
-                              fontWeight: FontWeight.w300),
-                        ),
-                      ),
-                    )),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: RaisedButton(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(200)),
-                    elevation: 0.0,
-                    padding: const EdgeInsets.all(0),
-                    onPressed: () {},
-                    child: Ink(
-                      decoration: BoxDecoration(
-                        gradient: const LinearGradient(
-                            begin: Alignment.centerRight,
-                            end: Alignment.centerLeft,
-                            colors: <Color>[
-                              Color(0xffffffff),
-                              Color(0xffb71c1c)
-                            ]), //colors: <Color>[Color(0xff880e4f), Color(0xffb71c1c)])),
-                        borderRadius: BorderRadius.circular(30.0),
-                      ),
-                      child: Container(
-                        constraints: const BoxConstraints(
-                            maxWidth: 300.0, minHeight: 50.0),
-                        alignment: Alignment.center,
-                        child: Text(
-                          'Cancel',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 26.0,
-                              fontWeight: FontWeight.w300),
-                        ),
-                      ),
-                    )),
-              ),
-            ],
+  Widget bottomSheet() {
+    return Container(
+      height: 100.0,
+      width: MediaQuery.of(context).size.width,
+      margin: EdgeInsets.symmetric(
+        horizontal: 20,
+        vertical: 20,
+      ),
+      child: Column(
+        children: <Widget>[
+          Text(
+            "Choose Profile photo",
+            style: TextStyle(
+              fontSize: 20.0,
+            ),
           ),
-        ),
-      ],
+          SizedBox(
+            height: 20,
+          ),
+          Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+            FlatButton.icon(
+              icon: Icon(Icons.camera),
+              onPressed: () {
+                takePhoto(ImageSource.camera);
+              },
+              label: Text("Camera"),
+            ),
+            FlatButton.icon(
+              icon: Icon(Icons.image),
+              onPressed: () {
+                takePhoto(ImageSource.gallery);
+              },
+              label: Text("Gallery"),
+            ),
+          ])
+        ],
+      ),
     );
   }
+
+  void takePhoto(ImageSource source) async {
+    final pickedFile = await _picker.getImage(
+      source: source,
+    );
+    setState(() {
+      _imageFile = pickedFile!;
+    });
+  }
 }
-*/
