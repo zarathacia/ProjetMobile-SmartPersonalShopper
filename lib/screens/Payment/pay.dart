@@ -56,7 +56,7 @@ class Pay extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 25.0,
                         fontWeight: FontWeight.bold,
-                        color: Colors.red[900],
+                        color:Color(0xffb89686),
                       ),
                     ),
                     Text(
@@ -154,8 +154,7 @@ class Pay extends StatelessWidget {
                             begin: Alignment.centerRight,
                             end: Alignment.centerLeft,
                             colors: <Color>[
-                              Color(0xff880e4f),
-                              Color(0xffb71c1c)
+                              Color(0xffb89686), Color(0xffd8c8be)
                             ]), //colors: <Color>[Color(0xff880e4f), Color(0xffb71c1c)])),
                         borderRadius: BorderRadius.circular(30.0),
                       ),
@@ -185,7 +184,7 @@ class Pay extends StatelessWidget {
                   TextSpan(children: [
                     TextSpan(
                       text: 'Privacy policy',
-                      style: TextStyle(color: Colors.red[900]),
+                      style: TextStyle(color:Color(0xffb89686)),
                     ),
                   ]),
                 ),

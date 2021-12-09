@@ -1,11 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:smart_personal_shopper/constants.dart';
-import 'package:smart_personal_shopper/constants.dart';
 import 'package:smart_personal_shopper/screens/profile.dart';
 import 'package:smart_personal_shopper/widget/rating.dart';
 
-import '../constants.dart';
 import '../widget/navbar.dart';
 import 'List_of_Past_discussions.dart';
 import 'Market/Market_screen.dart';
@@ -18,7 +15,7 @@ class Confirm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: PrimaryRed,
+        backgroundColor:Color(0xffb89686),
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back_ios,
@@ -42,11 +39,11 @@ class Confirm extends StatelessWidget {
             RaisedButton(
                 onPressed: () {},
                 child: Text('Confirm receipt'),
-                color: PrimaryRed,
+                color:Color(0xffb89686),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(5))),
             SizedBox(
-              height: 100,
+              height: 70,
             ),
             Text(
               'Review personal shopper',
@@ -68,7 +65,7 @@ class Confirm extends StatelessWidget {
                         borderRadius: BorderRadius.circular(100.0),
                         child: Image.asset(
                           'images/shopper1.png',
-                          width: 150,
+                          width: 120,
                         ),
                       ),
                     ),

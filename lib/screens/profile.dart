@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_personal_shopper/screens/home.dart';
 import 'package:smart_personal_shopper/widget/button.dart';
 import 'edit_profile.dart';
 
@@ -24,7 +25,8 @@ class Profile extends StatelessWidget {
             color: Colors.white,
             size: 40,
           ),
-          onPressed: () => Navigator.of(context).pop(),
+          onPressed: () => Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => Home())),
         ),
         leadingWidth: 30,
       ),
@@ -45,8 +47,7 @@ class Profile extends StatelessWidget {
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
                           colors: <Color>[
-                            Color(0xff880e4f),
-                            Color(0xffb71c1c)
+                            Color(0xffb89686), Color(0xffd8c8be)
                           ])),
                   width: double.infinity,
                 ),
@@ -78,7 +79,7 @@ class Profile extends StatelessWidget {
                 Text(
                   "Kevin Pouya",
                   style: TextStyle(
-                      color: Colors.redAccent,
+                      color: Color(0xffb89686),
                       fontStyle: FontStyle.normal,
                       fontSize: 28.0),
                 ),

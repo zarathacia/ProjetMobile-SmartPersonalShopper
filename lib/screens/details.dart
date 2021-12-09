@@ -9,10 +9,10 @@ class details extends StatelessWidget{
     TextButton.styleFrom(primary: Theme.of(context).colorScheme.onPrimary);
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-       backgroundColor: Colors.redAccent,
+       backgroundColor: Color(0xffb89686),
       appBar: AppBar(
         toolbarHeight: screensize.height*0.1,
-        backgroundColor: Colors.redAccent,
+        backgroundColor:Color(0xffb89686),
         elevation: 0.0,
 
         actions: <Widget>[
@@ -126,12 +126,12 @@ class AddToCart extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(18),
               border: Border.all(
-                color: Colors.redAccent,
+                color: Color(0xffb89686),
               ),
             ),
             child: IconButton(
               icon: Icon(Icons.add_shopping_cart, color:Colors.black,),
-                color: Colors.redAccent, onPressed: () {  },
+                color:Color(0xffb89686),  onPressed: () {  },
               ),
           ),
           Expanded(
@@ -140,7 +140,7 @@ class AddToCart extends StatelessWidget {
               child: FlatButton(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(18)),
-                color: Colors.redAccent,
+                color: Color(0xffb89686),
                 onPressed: () {},
                 child: Text(
                   "Buy  Now".toUpperCase(),
@@ -176,10 +176,10 @@ class CounterWithFavBtn extends StatelessWidget {
           height: 50,
           width: 50,
           decoration: BoxDecoration(
-            color: Color(0xFFFF6464),
+            color: Color(0xffb89686),
             shape: BoxShape.circle,
           ),
-          child: Icon(Icons.adb_outlined, color:Colors.white,),
+          child: Icon(Icons.favorite, color:Colors.white,),
         )
       ],
     );

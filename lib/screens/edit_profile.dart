@@ -54,7 +54,7 @@ class _EditProfileState extends State<EditProfile> {
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back,
-            color: PrimaryRed,
+            color:Color(0xffb89686),
           ),
           onPressed: () => Navigator.of(context).pop(),
         ),
@@ -62,7 +62,7 @@ class _EditProfileState extends State<EditProfile> {
           IconButton(
             icon: Icon(
               Icons.settings,
-              color: PrimaryRed,
+              color:Color(0xffb89686),
             ),
             onPressed: () {
               // Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => SettingsPage()));
@@ -94,7 +94,7 @@ class _EditProfileState extends State<EditProfile> {
                       decoration: BoxDecoration(
                           border: Border.all(
                               width: 4,
-                              color: Theme.of(context).scaffoldBackgroundColor),
+                              color:Color(0xffb89686),),
                           boxShadow: [
                             BoxShadow(
                                 spreadRadius: 2,
@@ -118,7 +118,7 @@ class _EditProfileState extends State<EditProfile> {
                             shape: BoxShape.circle,
                             border: Border.all(
                               width: 4,
-                              color: Theme.of(context).scaffoldBackgroundColor,
+                              color:Color(0xffb89686),
                             ),
                             color: PrimaryDarkRed,
                           ),
@@ -170,7 +170,7 @@ class _EditProfileState extends State<EditProfile> {
                   ),
                   RaisedButton(
                     onPressed: () {},
-                    color: PrimaryDarkRed,
+                    color:Color(0xffb89686),
                     padding: EdgeInsets.symmetric(horizontal: 50),
                     elevation: 10,
                     shape: RoundedRectangleBorder(

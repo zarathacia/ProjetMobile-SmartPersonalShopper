@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_personal_shopper/provider/feedback.dart';
 import 'package:smart_personal_shopper/screens/Confirm_receival.dart';
+import 'package:smart_personal_shopper/screens/Market/address.dart';
 import 'package:smart_personal_shopper/screens/profile.dart';
 
 import 'package:smart_personal_shopper/data/user.dart';
 import 'package:smart_personal_shopper/data/users.dart';
 import 'package:smart_personal_shopper/widget/navbar.dart';
-import 'package:smart_personal_shopper/constants.dart';
 
 import 'package:smart_personal_shopper/widget/user_card.dart';
 
@@ -30,7 +30,7 @@ class _ChooseState extends State<Choose> {
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           toolbarHeight: 70,
-          backgroundColor: PrimaryRed,
+          backgroundColor:Color(0xffb89686),
           actions: [
             Container(
               width: 80,
@@ -73,24 +73,24 @@ class _ChooseState extends State<Choose> {
               Row(children: [
                 Text("swipe ",
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 15,
                       fontWeight: FontWeight.bold,
                     )),
                 Text("right to choose ",
                     style: TextStyle(
-                      color: PrimaryRed,
-                      fontSize: 20,
+                      color:Color(0xffb89686),
+                      fontSize: 15,
                       fontWeight: FontWeight.bold,
                     )),
                 Text("and ",
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 15,
                       fontWeight: FontWeight.bold,
                     )),
                 Text("left to go next",
                     style: TextStyle(
                       color: Colors.grey,
-                      fontSize: 20,
+                      fontSize: 15,
                       fontWeight: FontWeight.bold,
                     )),
               ]),
@@ -140,7 +140,7 @@ class _ChooseState extends State<Choose> {
     if (details.offset.dx > minimumDrag) {
       user.isLiked = true;
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => Confirm()));
+          context, MaterialPageRoute(builder: (context) => Address()));
     } else if (details.offset.dx < -minimumDrag) {
       user.isSwipedOff = true;
     }
