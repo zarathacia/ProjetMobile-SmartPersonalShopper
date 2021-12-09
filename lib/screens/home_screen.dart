@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/screens/Market/Market_items.dart';
 import 'package:smart_personal_shopper/screens/profile.dart';
 
+import '../constants.dart';
 import 'Market/Market_screen.dart';
 import 'Productscreen.dart';
 
@@ -105,7 +106,7 @@ class homeinterface extends StatelessWidget {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => marketScreen()));
             },
-            color: Colors.red,
+            color: PrimaryRed,
             child: const Text(
               'Start Ordering here',
               style: const TextStyle(

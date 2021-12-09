@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/data/product/ProductItems.dart';
 import 'package:smart_personal_shopper/screens/profile.dart';
+import 'package:smart_personal_shopper/constants.dart';
 
 import 'Productscreen.dart';
 

@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:smart_personal_shopper/constants.dart';
+import 'package:smart_personal_shopper/constants.dart';
 import 'package:smart_personal_shopper/screens/Market/Market_screen.dart';
 import 'package:smart_personal_shopper/screens/home.dart';
 import 'package:smart_personal_shopper/screens/profile.dart';
 
+import '../constants.dart';
+import '../constants.dart';
 import '../widget/navbar.dart';
 import 'List_of_Past_discussions.dart';
 import '/models/chatMessageModel.dart';
@@ -18,7 +22,7 @@ class Chat extends StatelessWidget {
         appBar: AppBar(
           elevation: 0,
           automaticallyImplyLeading: false,
-          backgroundColor: Colors.red.shade900,
+          backgroundColor: PrimaryRed,
           flexibleSpace: SafeArea(
             child: Container(
               padding: EdgeInsets.only(right: 16),
@@ -69,7 +73,7 @@ class Chat extends StatelessWidget {
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
-                        color: (messages[index].messageType  == "receiver"?Colors.grey.shade200:Colors.red[200]),
+                        color: (messages[index].messageType  == "receiver"?PrimaryRed:Colors.red[200]),
                       ),
                       padding: EdgeInsets.all(16),
                       child: Text(messages[index].time+':'+messages[index].messageContent, style: TextStyle(fontSize: 15),),
@@ -94,7 +98,7 @@ class Chat extends StatelessWidget {
                         height: 30,
                         width: 30,
                         decoration: BoxDecoration(
-                          color: Colors.red.shade900,
+                          color: PrimaryRed,
                           borderRadius: BorderRadius.circular(30),
                         ),
                         child: Icon(Icons.add, color: Colors.white, size: 20, ),
@@ -114,7 +118,7 @@ class Chat extends StatelessWidget {
                     FloatingActionButton(
                       onPressed: (){},
                       child: Icon(Icons.send,color: Colors.white,size: 18,),
-                      backgroundColor: Colors.red.shade900,
+                      backgroundColor: PrimaryRed,
                       elevation: 0,
                     ),
                   ],

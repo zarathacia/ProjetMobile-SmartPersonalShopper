@@ -8,6 +8,7 @@ import 'package:smart_personal_shopper/screens/profile.dart';
 import 'package:smart_personal_shopper/data/user.dart';
 import 'package:smart_personal_shopper/data/users.dart';
 import 'package:smart_personal_shopper/widget/navbar.dart';
+import 'package:smart_personal_shopper/constants.dart';
 
 import 'package:smart_personal_shopper/widget/user_card.dart';
 
@@ -29,7 +30,7 @@ class _ChooseState extends State<Choose> {
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           toolbarHeight: 70,
-          backgroundColor: Colors.red[900],
+          backgroundColor: PrimaryRed,
           actions: [
             Container(
               width: 80,
@@ -77,7 +78,7 @@ class _ChooseState extends State<Choose> {
                     )),
                 Text("right to choose ",
                     style: TextStyle(
-                      color: Colors.red[900],
+                      color: PrimaryRed,
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                     )),
