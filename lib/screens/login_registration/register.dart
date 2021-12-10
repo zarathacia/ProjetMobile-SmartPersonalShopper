@@ -1,5 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:smart_personal_shopper/screens/login_registration/login.dart';
 import 'package:smart_personal_shopper/screens/profile.dart';
 import 'package:smart_personal_shopper/widget/bottomsheet.dart';
 import 'package:smart_personal_shopper/widget/header.dart';
@@ -7,6 +11,7 @@ import 'package:smart_personal_shopper/widget/socialbtn.dart';
 import 'package:smart_personal_shopper/widget/theme_helper.dart';
 import 'package:image_picker/image_picker.dart';
 
+import 'package:http/http.dart' as http;
 class register extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -20,7 +25,51 @@ class _registerState extends State<register> {
   bool checkboxValue = false;
   late PickedFile _imageFile;
   final ImagePicker _picker = ImagePicker();
+  TextEditingController fnameController= TextEditingController();
+  TextEditingController lnameController= TextEditingController();
+  TextEditingController emailController= TextEditingController();
+  TextEditingController phoneController= TextEditingController();
+  TextEditingController passwordController= TextEditingController();
 
+  void signUp(String fname,String lname, String email,String phone, String password)  async{
+    var jsonData=null;
+    SharedPreferences sharedPreferences=await SharedPreferences.getInstance();
+    try {
+      var response = await http.post(
+        Uri.parse("http://127.0.0.1/Projects/ShopilyAPI/register.php"),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode(<String, String>{
+          'Firstname': fname,
+          'Lastname': lname,
+          'Email': email,
+          'Phone': phone,
+          'Password': password
+        }),);
+
+      if (response.statusCode == 200) {
+        jsonData = json.decode(response.body);
+        setState(() {
+          sharedPreferences.setString("token", jsonData('token'));
+          Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(
+                  builder: (context) => Login()),
+                  (Route<dynamic> route) => false);
+        });
+      }
+      else {
+        print(response.body);
+      }
+    }
+    catch(Exception){
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(
+              builder: (context) => Login()),
+              (Route<dynamic> route) => false);
+    }
+
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -94,6 +143,7 @@ class _registerState extends State<register> {
                         ),
                         Container(
                           child: TextFormField(
+                            controller: fnameController,
                             decoration: ThemeHelper().textInputDecoration(
                                 'First Name', 'Enter your first name'),
                           ),
@@ -104,6 +154,7 @@ class _registerState extends State<register> {
                         ),
                         Container(
                           child: TextFormField(
+                            controller: lnameController,
                             decoration: ThemeHelper().textInputDecoration(
                                 'Last Name', 'Enter your last name'),
                           ),
@@ -112,6 +163,7 @@ class _registerState extends State<register> {
                         SizedBox(height: 20.0),
                         Container(
                           child: TextFormField(
+                            controller: emailController,
                             decoration: ThemeHelper().textInputDecoration(
                                 "E-mail address", "Enter your email"),
                             keyboardType: TextInputType.emailAddress,
@@ -129,6 +181,7 @@ class _registerState extends State<register> {
                         SizedBox(height: 20.0),
                         Container(
                           child: TextFormField(
+                            controller: phoneController,
                             decoration: ThemeHelper().textInputDecoration(
                                 "Mobile Number", "Enter your mobile number"),
                             keyboardType: TextInputType.phone,
@@ -145,6 +198,7 @@ class _registerState extends State<register> {
                         SizedBox(height: 20.0),
                         Container(
                           child: TextFormField(
+                            controller: passwordController,
                             obscureText: true,
                             decoration: ThemeHelper().textInputDecoration(
                                 "Password*", "Enter your password"),
@@ -219,12 +273,14 @@ class _registerState extends State<register> {
                               ),
                             ),
                             onPressed: () {
-                              if (_formKey.currentState!.validate()) {
-                                Navigator.of(context).pushAndRemoveUntil(
-                                    MaterialPageRoute(
-                                        builder: (context) => Profile()),
-                                    (Route<dynamic> route) => false);
-                              }
+                              if (_formKey.currentState!.validate()) {}
+                                signUp(fnameController.text,
+                                        lnameController.text,
+                                        emailController.text,
+                                        phoneController.text,
+                                        passwordController.text);
+
+
                             },
                           ),
                         ),

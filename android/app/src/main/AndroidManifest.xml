@@ -3,7 +3,8 @@
    <application
         android:label="smart_personal_shopper"
         android:icon="@mipmap/ic_launcher">
-        <activity
+       <uses-permission android:name="android.permission.INTERNET"/>
+       <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
             android:theme="@style/LaunchTheme"
