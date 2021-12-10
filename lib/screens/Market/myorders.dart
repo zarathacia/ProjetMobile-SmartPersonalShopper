@@ -82,7 +82,8 @@ class LunchState extends State<MyOrders> {
                   child: Ink(
                     decoration: BoxDecoration(
                         gradient: LinearGradient(
-                            colors: [Color(0xffb89686), Color(0xffd8c8be)],
+                            colors: [  Color(0xffc9184a),
+                              Color(0xFFff4d6d)],
                             begin: Alignment.centerLeft,
                             end: Alignment.centerRight),
                         borderRadius: BorderRadius.all(Radius.circular(5.0))),

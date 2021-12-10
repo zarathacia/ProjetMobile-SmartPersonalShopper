@@ -30,7 +30,8 @@ class _ChooseState extends State<Choose> {
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           toolbarHeight: 70,
-          backgroundColor:Color(0xffb89686),
+          backgroundColor:
+          Color(0xFFff4d6d),
           actions: [
             Container(
               width: 80,
@@ -78,7 +79,8 @@ class _ChooseState extends State<Choose> {
                     )),
                 Text("right to choose ",
                     style: TextStyle(
-                      color:Color(0xffb89686),
+                      color:
+                      Color(0xFFff4d6d),
                       fontSize: 15,
                       fontWeight: FontWeight.bold,
                     )),

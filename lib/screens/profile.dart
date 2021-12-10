@@ -47,8 +47,9 @@ class Profile extends StatelessWidget {
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
                           colors: <Color>[
-                            Color(0xffb89686),
-                            Color(0xffd8c8be),
+                            Color(0xffc9184a),
+                          Color(0xFFff4d6d),
+
                           ])),
                   width: double.infinity,
                 ),
@@ -80,7 +81,7 @@ class Profile extends StatelessWidget {
                 Text(
                   "Kevin Pouya",
                   style: TextStyle(
-                      color: Color(0xffb89686),
+                      color:  Color(0xFFff4d6d),
                       fontStyle: FontStyle.normal,
                       fontSize: 28.0),
                 ),

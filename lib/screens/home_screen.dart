@@ -8,30 +8,37 @@ import 'Productscreen.dart';
 class homeinterface extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var screensize=MediaQuery.of(context).size;
     final ButtonStyle style =
         TextButton.styleFrom(primary: Theme.of(context).colorScheme.onPrimary);
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: screensize.height*0.1,
+        backgroundColor: const
+        Color(0xFFff4d6d),
+        elevation: 0.0,
+
         actions: <Widget>[
           TextButton(
             style: style,
             onPressed: () {},
-            child: const Text('Credit 180.52£'),
+            child: const Text('Credit:180.52 DT'),
           ),
           TextButton(
               style: style,
               onPressed: () {},
-              child: Container(
-                width: 90.0,
-                height: 90.0,
-                decoration: BoxDecoration(
+              child: new Container(
+                width: 60.0,
+                height: 60.0,
+                decoration: new BoxDecoration(
                     shape: BoxShape.circle,
-                    image: DecorationImage(
+                    image: new DecorationImage(
                         fit: BoxFit.fill,
-                        image: const AssetImage('images/profile.jpg'))),
+                        image: AssetImage('images/profile.jpg'))),
               ))
         ],
       ),
+
       body: Column(
         children: <Widget>[
           Container(
@@ -52,7 +59,7 @@ class homeinterface extends StatelessWidget {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => marketScreen()));
             },
-            color: Colors.red,
+            color:  Color(0xffc9184a),
             child: const Text(
               'Start Ordering here',
               style: const TextStyle(

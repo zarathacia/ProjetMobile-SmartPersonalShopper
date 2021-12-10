@@ -55,7 +55,8 @@ class _EditProfileState extends State<EditProfile> {
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back,
-            color:Color(0xffb89686),
+            color:
+            Color(0xFFff4d6d),
           ),
           onPressed: () => Navigator.of(context).pop(),
         ),
@@ -63,7 +64,8 @@ class _EditProfileState extends State<EditProfile> {
           IconButton(
             icon: Icon(
               Icons.settings,
-              color:Color(0xffb89686),
+              color:
+              Color(0xFFff4d6d),
             ),
             onPressed: () {
               Navigator.of(context).push(MaterialPageRoute(
@@ -96,7 +98,8 @@ class _EditProfileState extends State<EditProfile> {
                       decoration: BoxDecoration(
                           border: Border.all(
                               width: 4,
-                              color:Color(0xffb89686),),
+                              color:
+                            Color(0xFFff4d6d),),
                           boxShadow: [
                             BoxShadow(
                                 spreadRadius: 2,
@@ -120,7 +123,8 @@ class _EditProfileState extends State<EditProfile> {
                             shape: BoxShape.circle,
                             border: Border.all(
                               width: 4,
-                              color:Color(0xffb89686),
+                              color:
+                              Color(0xFFff4d6d),
                             ),
                             color: PrimaryDarkRed,
                           ),
@@ -172,7 +176,8 @@ class _EditProfileState extends State<EditProfile> {
                   ),
                   RaisedButton(
                     onPressed: () {},
-                    color:Color(0xffb89686),
+                    color:
+                      Color(0xFFff4d6d),
                     padding: EdgeInsets.symmetric(horizontal: 50),
                     elevation: 10,
                     shape: RoundedRectangleBorder(

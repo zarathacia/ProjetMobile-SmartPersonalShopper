@@ -11,10 +11,12 @@ class details extends StatelessWidget {
         TextButton.styleFrom(primary: Theme.of(context).colorScheme.onPrimary);
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Color(0xffb89686),
+      backgroundColor:
+      Color(0xFFff4d6d),
       appBar: AppBar(
         toolbarHeight: screensize.height * 0.1,
-        backgroundColor: Color(0xffb89686),
+        backgroundColor:
+        Color(0xFFff4d6d),
         elevation: 0.0,
         actions: <Widget>[
           TextButton(
@@ -159,7 +161,8 @@ class AddToCart extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(18),
               border: Border.all(
-                color: Color(0xffb89686),
+                color:
+                Color(0xFFff4d6d),
               ),
             ),
             child: IconButton(
@@ -167,7 +170,8 @@ class AddToCart extends StatelessWidget {
                 Icons.add_shopping_cart,
                 color: Colors.black,
               ),
-              color: Color(0xffb89686),
+              color:
+              Color(0xFFff4d6d),
               onPressed: () {
                 Navigator.of(context)
                     .push(MaterialPageRoute(builder: (context) => Cart()));
@@ -180,7 +184,8 @@ class AddToCart extends StatelessWidget {
               child: FlatButton(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(18)),
-                color: Color(0xffb89686),
+                color:
+                Color(0xFFff4d6d),
                 onPressed: () {},
                 child: Text(
                   "Buy  Now".toUpperCase(),
@@ -217,7 +222,8 @@ class CounterWithFavBtn extends StatelessWidget {
           height: 50,
           width: 50,
           decoration: BoxDecoration(
-            color: Color(0xffb89686),
+            color:
+            Color(0xFFff4d6d),
             shape: BoxShape.circle,
           ),
           child: Icon(

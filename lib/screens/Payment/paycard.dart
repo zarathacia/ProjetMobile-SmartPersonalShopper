@@ -82,7 +82,8 @@ class MyCardState extends State<MyCard> {
                 obscureCardNumber: true,
                 obscureCardCvv: true,
                 isHolderNameVisible: true,
-                cardBgColor: Color(0xffb89686),
+                cardBgColor:
+                Color(0xFFff4d6d),
                 /*backgroundImage:
                     useBackgroundImage ? 'images/ic_launcher.png' : null,*/
                 isSwipeGestureEnabled: true,
@@ -113,7 +114,8 @@ class MyCardState extends State<MyCard> {
                         isExpiryDateVisible: true,
                         cardHolderName: cardHolderName,
                         expiryDate: expiryDate,
-                        themeColor:Color(0xffb89686),
+                        themeColor:
+                        Color(0xFFff4d6d),
                         textColor: Colors.grey.shade900,
                         cardNumberDecoration: InputDecoration(
                           labelText: 'Number',
@@ -201,7 +203,8 @@ class MyCardState extends State<MyCard> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8.0),
                           ),
-                          primary:Color(0xffb89686),
+                          primary:
+                          Color(0xFFff4d6d),
                         ),
                         child: Container(
                           margin: const EdgeInsets.all(12),

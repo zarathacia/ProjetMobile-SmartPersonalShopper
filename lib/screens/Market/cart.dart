@@ -61,7 +61,8 @@ class LunchState extends State<Cart> {
               Navigator.of(context)
                   .push(MaterialPageRoute(builder: (context) => Choose()));
             },
-            color: Color(0xffb89686),
+            color:
+            Color(0xFFff4d6d),
             minWidth: double.maxFinite,
             child: Text(
               "Continue",
