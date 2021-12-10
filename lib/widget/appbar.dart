@@ -7,7 +7,7 @@ AppBar homeAppBar(BuildContext context) {
     backgroundColor: Colors.white,
     elevation: 0,
     leading: IconButton(
-      icon: SvgPicture.asset("assets/icons/menu.svg"),
+      icon: SvgPicture.asset("assets/logos/menu.svg"),
       onPressed: () {},
     ),
     title: RichText(
@@ -26,7 +26,7 @@ AppBar homeAppBar(BuildContext context) {
     ),
     actions: <Widget>[
       IconButton(
-        icon: SvgPicture.asset("assets/icons/notification.svg"),
+        icon: SvgPicture.asset("assets/logos/notification.svg"),
         onPressed: () {},
       ),
     ],

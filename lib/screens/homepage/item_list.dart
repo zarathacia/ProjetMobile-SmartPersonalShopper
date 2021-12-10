@@ -30,13 +30,13 @@ class ItemList extends StatelessWidget {
             },
           ),
           ItemCard(
-            svgSrc: "assets/icons/chinese_noodles.svg",
+            svgSrc: "assets/logos/chinese_noodles.svg",
             title: "Pizza",
             shopName: "Papa Jones",
             press: () {},
           ),
           ItemCard(
-            svgSrc: "assets/icons/burger_beer.svg",
+            svgSrc: "assets/logos/burger_beer.svg",
             title: "eau",
             shopName: "Aziza",
             press: () {},

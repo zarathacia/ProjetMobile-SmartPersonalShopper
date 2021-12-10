@@ -44,7 +44,7 @@ class DiscountCard extends StatelessWidget {
                 child: Row(
                   children: <Widget>[
                     Expanded(
-                      child: SvgPicture.asset("assets/icons/macdonalds.svg"),
+                      child: SvgPicture.asset("assets/logos/macdonalds.svg"),
                     ),
                     Expanded(
                       child: RichText(
