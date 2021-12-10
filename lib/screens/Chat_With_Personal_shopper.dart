@@ -36,7 +36,7 @@ class Chat extends StatelessWidget {
                     width: 2,
                   ),
                   CircleAvatar(
-                    backgroundImage: NetworkImage('images/shopper1.png'),
+                    backgroundImage: NetworkImage('images/user1.jpg'),
                     maxRadius: 20,
                   ),
                   SizedBox(
@@ -48,7 +48,7 @@ class Chat extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text(
-                          "Kriss Benwat",
+                          "Jane Russel",
                           style: TextStyle(
                               fontSize: 16, fontWeight: FontWeight.w600),
                         ),
@@ -121,7 +121,7 @@ class Chat extends StatelessWidget {
                         height: 30,
                         width: 30,
                         decoration: BoxDecoration(
-                          color:Color(0xffb89686),
+                          color: Color(0xffb89686),
                           borderRadius: BorderRadius.circular(30),
                         ),
                         child: Icon(
@@ -152,7 +152,7 @@ class Chat extends StatelessWidget {
                         color: Colors.white,
                         size: 18,
                       ),
-                      backgroundColor:Color(0xffb89686),
+                      backgroundColor: Color(0xffb89686),
                       elevation: 0,
                     ),
                   ],
@@ -175,7 +175,7 @@ class Chat extends StatelessWidget {
         time: '12:12',
         messageType: "receiver"),
     ChatMessage(
-        messageContent: "Hey Kriss, I am doing fine dude. wbu?",
+        messageContent: "Hey Jane, I am doing fine dude. wbu?",
         time: '12:12',
         messageType: "sender"),
     ChatMessage(

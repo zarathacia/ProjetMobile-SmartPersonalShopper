@@ -32,59 +32,6 @@ class homeinterface extends StatelessWidget {
               ))
         ],
       ),
-      bottomNavigationBar: BottomAppBar(
-        shape: CircularNotchedRectangle(),
-        color: Colors.white,
-        child: IconTheme(
-          data: IconThemeData(color: Theme.of(context).colorScheme.onPrimary),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              IconButton(
-                icon: const Icon(
-                  Icons.home_outlined,
-                  color: Colors.black,
-                  size: 40,
-                ),
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Profile()));
-                },
-              ),
-              IconButton(
-                icon: const Icon(
-                  Icons.shopping_cart_outlined,
-                  color: Colors.black,
-                  size: 40,
-                ),
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => ProductScreen()));
-                },
-              ),
-              IconButton(
-                icon: const Icon(
-                  Icons.chat_outlined,
-                  color: Colors.black,
-                  size: 35,
-                ),
-                onPressed: () {},
-              ),
-              IconButton(
-                icon: const Icon(
-                  Icons.account_circle_outlined,
-                  color: Colors.black,
-                  size: 40,
-                ),
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Profile()));
-                },
-              ),
-            ],
-          ),
-        ),
-      ),
       body: Column(
         children: <Widget>[
           Container(
