@@ -46,6 +46,7 @@ dependencies:
   hexcolor: ^2.0.5
   font_awesome_flutter: ^9.2.0
   otp_text_field: ^1.1.1
+  flutter_svg: ^1.0.0
 
 dev_dependencies:
   flutter_test:
@@ -70,37 +71,9 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - images/ic_launcher.png
-    - images/shopper1.png
-    - images/pouya.jfif
-    - images/profile.jpg
-    - images/user1.jpg
-    - images/user2.jpg
-    - images/user3.jpg
-    - images/user4.jpg
-    - images/user5.jpg
-    - images/user6.jpg
-    - images/kim.png
-    - images/kim1.jpg
-    - images/back.png
-    - assets/images/logo.png
-    - images/profile.jpg
-    - images/aziza.png
-    - images/geant.jpg
-    - images/mg.jpg
-    - images/carrefour.png
-    - images/hrissa.jpg
-    - images/hrissa.png
-    - images/boga1.jpg
-    - images/pizza.png
-    - images/tomate.jpg
-    - images/bg.jpg
-    - assets/logos/google.jpg
-    - assets/logos/facebook.jpg
-    - images/deliv1.png
-    - images/deliv2.jpg
-    - images/deliv3.jpg
-    - images/deliv4.png
+    - images/
+    - assets/logos/
+    - assets/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
