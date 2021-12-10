@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_personal_shopper/constants.dart';
 import 'package:smart_personal_shopper/screens/profile.dart';
 import 'package:smart_personal_shopper/widget/rating.dart';
 
@@ -15,42 +16,35 @@ class Confirm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor:Color(0xffb89686),
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back_ios,
-            color: Colors.white,
-            size: 40,
+        title: Text(
+          "Confirm receival",
+          style: TextStyle(color: Colors.black),
+        ),
+        backgroundColor: Colors.white,
+        elevation: 5.0,
+        automaticallyImplyLeading: false,
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.of(context).pop();
+          },
+          child: Container(
+            child: Icon(
+              Icons.arrow_back,
+              color: Colors.black,
+            ),
           ),
-          onPressed: () => Navigator.of(context).pop(),
         ),
       ),
-      body: Center(
+      body: Container(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'Confirm receival of goods',
+              'Rate your provider',
               style: TextStyle(color: Colors.grey, fontSize: 30),
             ),
             SizedBox(
               height: 50,
-            ),
-            RaisedButton(
-                onPressed: () {},
-                child: Text('Confirm receipt'),
-                color:Color(0xffb89686),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(5))),
-            SizedBox(
-              height: 70,
-            ),
-            Text(
-              'Review personal shopper',
-              style: TextStyle(
-                  fontSize: 20,
-                  decoration: TextDecoration.underline,
-                  fontWeight: FontWeight.bold),
             ),
             SizedBox(
               height: 50,
@@ -70,7 +64,7 @@ class Confirm extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      'Jakie chong',
+                      'Fred Gentelman',
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
@@ -97,11 +91,53 @@ class Confirm extends StatelessWidget {
                 ),
               ],
             ),
+            SizedBox(
+              height: 80,
+            ),
+            RaisedButton(
+              onPressed: () {
+                //Navigator.of(context).push(MaterialPageRoute(builder: (context) => Confirm()));
+              }, // When Click on Button goto Login Screen
+
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(80.0)),
+              padding: const EdgeInsets.all(0.0),
+              child: Ink(
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        colors: [Color(0xff880e4f), Color(0xffb71c1c)],
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight),
+                    borderRadius: BorderRadius.all(Radius.circular(5.0))),
+                child: Container(
+                  constraints: const BoxConstraints(
+                      maxWidth: 350.0,
+                      minHeight: 40.0), // min sizes for Material buttons
+                  alignment: Alignment.center,
+                  child: const Text(
+                    'Confirm receipt',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.white, fontSize: 18.0),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 100,
+            ),
+            /* Text(
+              'Review personal shopper',
+              style: TextStyle(
+                  fontSize: 20,
+                  decoration: TextDecoration.underline,
+                  fontWeight: FontWeight.bold),
+            ),*/
+            SizedBox(
+              height: 50,
+            ),
           ],
         ),
       ),
-      /*bottomNavigationBar:
-          navbar(Home(), marketScreen(), Listof(), Profile(), context),*/
     );
   }
 

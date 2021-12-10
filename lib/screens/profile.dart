@@ -47,7 +47,8 @@ class Profile extends StatelessWidget {
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
                           colors: <Color>[
-                            Color(0xffb89686), Color(0xffd8c8be)
+                            Color(0xffb89686),
+                            Color(0xffd8c8be),
                           ])),
                   width: double.infinity,
                 ),

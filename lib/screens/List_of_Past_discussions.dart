@@ -45,7 +45,8 @@ class Listof extends StatelessWidget {
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter,
                               colors: <Color>[
-                                Color(0xffb89686), Color(0xffd8c8be)
+                                Color(0xffb89686),
+                                Color(0xffd8c8be)
                               ])),
                       width: double.infinity,
                       padding: EdgeInsets.only(top: 150, left: 150),
@@ -73,7 +74,9 @@ class Listof extends StatelessWidget {
                                 fillColor: Colors.white,
                                 border: new OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(25.0),
-                                  borderSide: BorderSide(color: Color(0xffb89686),),
+                                  borderSide: BorderSide(
+                                    color: Color(0xffb89686),
+                                  ),
                                 ),
                               ),
                             ),
@@ -133,7 +136,8 @@ class Listof extends StatelessWidget {
                       },
                     ),
                     Text('More...',
-                        style: TextStyle(color: Color(0xffb89686), fontSize: 15)),
+                        style:
+                            TextStyle(color: Color(0xffb89686), fontSize: 15)),
                   ],
                 ),
               )

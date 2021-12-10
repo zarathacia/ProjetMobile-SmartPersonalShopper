@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:smart_personal_shopper/constants.dart';
+import 'package:smart_personal_shopper/screens/settings.dart';
 //import 'package:smart_personal_shopper/widget/textfield.dart';
 //import 'package:settings_ui/pages/settings.dart';
 //final StorageReference storageRef = FirebaseStorage.instance.ref();
@@ -65,7 +66,8 @@ class _EditProfileState extends State<EditProfile> {
               color:Color(0xffb89686),
             ),
             onPressed: () {
-              // Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => SettingsPage()));
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (BuildContext context) => Settings()));
             },
           ),
         ],
