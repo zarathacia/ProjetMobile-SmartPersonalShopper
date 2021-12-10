@@ -20,15 +20,15 @@ class Login extends StatefulWidget {
   @override
   _LoginState createState() => _LoginState();
 }
-TextEditingController emailController= TextEditingController();
-TextEditingController passwordController= TextEditingController();
+
+/*TextEditingController emailController= TextEditingController();
+TextEditingController passwordController= TextEditingController();*/
 class _LoginState extends State<Login> {
-  bool _isLoading=false;
+  bool _isLoading = false;
   double _headerHeight = 250;
   Key _formKey = GlobalKey<FormState>();
 
   get route => null;
-
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +45,8 @@ class _LoginState extends State<Login> {
             SafeArea(
               child: Container(
                   padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-                  margin: EdgeInsets.fromLTRB(20, 10, 20, 10), // This will be the login form
+                  margin: EdgeInsets.fromLTRB(
+                      20, 10, 20, 10), // This will be the login form
                   child: Column(
                     children: [
                       const Center(
@@ -71,7 +72,7 @@ class _LoginState extends State<Login> {
                             children: [
                               Container(
                                 child: TextField(
-                                  controller: emailController,
+                                  //controller: emailController,
                                   decoration: ThemeHelper().textInputDecoration(
                                       'User Name', 'Enter your user name'),
                                 ),
@@ -81,7 +82,7 @@ class _LoginState extends State<Login> {
                               SizedBox(height: 30.0),
                               Container(
                                 child: TextField(
-                                  controller: passwordController,
+                                  //controller: passwordController,
                                   obscureText: true,
                                   decoration: ThemeHelper().textInputDecoration(
                                       'Password', 'Enter your password'),
@@ -127,7 +128,7 @@ class _LoginState extends State<Login> {
                                     ),
                                   ),
                                   onPressed: () {
-                                    signIn(emailController.text,passwordController.text);
+                                    // signIn(emailController.text,passwordController.text);
                                     //After successful login we will redirect to profile page. Let's create profile page now
                                     Navigator.pushReplacement(
                                         context,
@@ -152,8 +153,9 @@ class _LoginState extends State<Login> {
                                                     register()));
                                       },
                                     style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: Color(0xffb89686),),
+                                      fontWeight: FontWeight.bold,
+                                      color: Color(0xffb89686),
+                                    ),
                                   ),
                                 ])),
                               ),
@@ -167,7 +169,7 @@ class _LoginState extends State<Login> {
       ),
     );
   }
-
+/* 
   void signIn(String email, String password)  async{
       print(password);
       var jsonData=null;
@@ -203,5 +205,5 @@ class _LoginState extends State<Login> {
               (Route<dynamic> route) => false);
     }
   }
-
+*/
 }
