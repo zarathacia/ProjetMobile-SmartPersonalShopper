@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/data/product/ProductItems.dart';
+import 'package:smart_personal_shopper/screens/Payment/paycard.dart';
+import 'package:smart_personal_shopper/screens/home.dart';
+import 'package:smart_personal_shopper/screens/profile.dart';
 
 import 'details.dart';
 
@@ -18,29 +21,44 @@ class ProductScreen extends StatelessWidget {
     var screensize = MediaQuery.of(context).size;
 
     final ButtonStyle style =
-        TextButton.styleFrom(primary: Theme.of(context).colorScheme.onPrimary);
+        TextButton.styleFrom(primary: Theme.of(context).colorScheme.primary);
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: screensize.height * 0.1,
-        backgroundColor: const Color(0xFFff4d6d),
+        //toolbarHeight: screensize.height * 0.1,
+        backgroundColor: Colors.white,
         elevation: 0.0,
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back_rounded,
+            color: Colors.red,
+            size: 40,
+          ),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        leadingWidth: 30,
         actions: <Widget>[
           TextButton(
             style: style,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => MyCard()));
+            },
             child: const Text('Credit:180.52 DT'),
           ),
           TextButton(
               style: style,
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => Profile()));
+              },
               child: new Container(
-                width: 60.0,
-                height: 60.0,
+                width: 70.0,
+                height: 45.0,
                 decoration: new BoxDecoration(
                     shape: BoxShape.circle,
                     image: new DecorationImage(
-                        fit: BoxFit.fill,
-                        image: AssetImage('images/profile.jpg'))),
+                        fit: BoxFit.contain,
+                        image: AssetImage('images/pouya.jfif'))),
               ))
         ],
       ),

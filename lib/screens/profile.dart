@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_personal_shopper/constants.dart';
 import 'package:smart_personal_shopper/screens/home.dart';
 import 'package:smart_personal_shopper/widget/button.dart';
 import 'edit_profile.dart';
@@ -47,9 +48,8 @@ class Profile extends StatelessWidget {
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
                           colors: <Color>[
-                            Color(0xffc9184a),
-                          Color(0xFFff4d6d),
-
+                            SecondaryRed,
+                            PrimaryRed,
                           ])),
                   width: double.infinity,
                 ),
@@ -81,7 +81,7 @@ class Profile extends StatelessWidget {
                 Text(
                   "Kevin Pouya",
                   style: TextStyle(
-                      color:  Color(0xFFff4d6d),
+                      color: Color(0xFFff4d6d),
                       fontStyle: FontStyle.normal,
                       fontSize: 28.0),
                 ),

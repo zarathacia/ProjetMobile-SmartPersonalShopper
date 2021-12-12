@@ -15,7 +15,7 @@ class ItemList extends StatelessWidget {
       child: Row(
         children: <Widget>[
           ItemCard(
-            svgSrc: "assets/icons/burger_beer.svg",
+            imgSrc: "images/veg_frt.png",
             title: "fruits & vegetables",
             shopName: "Carrefour",
             press: () {
@@ -30,15 +30,15 @@ class ItemList extends StatelessWidget {
             },
           ),
           ItemCard(
-            svgSrc: "assets/logos/chinese_noodles.svg",
+            imgSrc: "images/pizza.png",
             title: "Pizza",
-            shopName: "Papa Jones",
+            shopName: "Papa John's",
             press: () {},
           ),
           ItemCard(
-            svgSrc: "assets/logos/burger_beer.svg",
+            imgSrc: "images/safia.png",
             title: "eau",
-            shopName: "Aziza",
+            shopName: "MG",
             press: () {},
           )
         ],

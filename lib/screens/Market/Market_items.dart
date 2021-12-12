@@ -12,10 +12,10 @@ class Market {
 
 List<Market> markets = [
   Market(
-      id: 1,
-      title: "Magazin General",
-      image: "images/mg.jpg",
-),
+    id: 1,
+    title: "Magazin General",
+    image: "images/mg.jpg",
+  ),
   Market(
     id: 2,
     title: "Carrefour",
@@ -33,10 +33,10 @@ List<Market> markets = [
   ),
   Market(
     id: 5,
-    title: "Magazin General",
-    image: "images/mg.jpg",
+    title: "Papa John's",
+    image: "images/papaj.png",
   ),
-  Market(
+  /*Market(
     id: 6,
     title: "Carrefour",
     image: "images/carrefour.png",
@@ -45,5 +45,5 @@ List<Market> markets = [
     id: 7,
     title: "Aziza",
     image: "images/aziza.png",
-  ),
+  ),*/
 ];

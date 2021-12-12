@@ -3,13 +3,13 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smart_personal_shopper/constants.dart';
 
 class ItemCard extends StatelessWidget {
-  final String title, shopName, svgSrc;
+  final String title, shopName, imgSrc;
   final VoidCallback press;
   const ItemCard({
     Key? key,
     required this.title,
     required this.shopName,
-    required this.svgSrc,
+    required this.imgSrc,
     required this.press,
   }) : super(key: key);
 
@@ -45,9 +45,9 @@ class ItemCard extends StatelessWidget {
                     color: PrimaryRed.withOpacity(0.13),
                     shape: BoxShape.circle,
                   ),
-                  child: SvgPicture.asset(
-                    svgSrc,
-                    width: size.width * 0.18,
+                  child: Image.asset(
+                    imgSrc,
+                    width: size.width * 0.18, fit: BoxFit.contain,
                     // size.width * 0.18 means it use 18% of total width
                   ),
                 ),

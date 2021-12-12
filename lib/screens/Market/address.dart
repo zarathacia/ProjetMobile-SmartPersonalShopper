@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_personal_shopper/constants.dart';
 
 import 'checkout.dart';
 //import 'checkout_screen.dart';
@@ -124,8 +125,7 @@ class LunchState extends State<Address> {
                   child: Ink(
                     decoration: BoxDecoration(
                         gradient: LinearGradient(
-                            colors: [  Color(0xffc9184a),
-                              Color(0xFFff4d6d)],
+                            colors: [PrimaryRed, SecondaryRed],
                             begin: Alignment.centerLeft,
                             end: Alignment.centerRight),
                         borderRadius: BorderRadius.all(Radius.circular(5.0))),

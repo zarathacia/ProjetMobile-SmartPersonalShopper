@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_personal_shopper/constants.dart';
 import 'package:smart_personal_shopper/screens/choose_your_personal_shopper.dart';
 import 'package:smart_personal_shopper/screens/details.dart';
 import 'address.dart';
@@ -61,8 +62,7 @@ class LunchState extends State<Cart> {
               Navigator.of(context)
                   .push(MaterialPageRoute(builder: (context) => Choose()));
             },
-            color:
-            Color(0xFFff4d6d),
+            color: SecondaryRed,
             minWidth: double.maxFinite,
             child: Text(
               "Continue",

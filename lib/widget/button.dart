@@ -3,6 +3,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:smart_personal_shopper/constants.dart';
 
 Widget buttonCustome(String txt, Widget page, context) {
   assert(txt != null);
@@ -17,11 +18,11 @@ Widget buttonCustome(String txt, Widget page, context) {
       padding: const EdgeInsets.all(0),
       child: Ink(
         decoration: BoxDecoration(
-          gradient: const LinearGradient(
+          gradient: LinearGradient(
               begin: Alignment.centerRight,
               end: Alignment.centerLeft,
               colors: <Color>[
-                Color(0xFFff4d6d),
+                PrimaryRed,
                 Color(0xffc9184a),
               ]), //colors: <Color>[Color(0xff880e4f), Color(0xffb71c1c)])),
           borderRadius: BorderRadius.circular(30.0),

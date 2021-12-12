@@ -105,7 +105,7 @@ class Confirm extends StatelessWidget {
               child: Ink(
                 decoration: BoxDecoration(
                     gradient: LinearGradient(
-                        colors: [Color(0xff880e4f), Color(0xffb71c1c)],
+                        colors: [PrimaryRed, SecondaryRed],
                         begin: Alignment.centerLeft,
                         end: Alignment.centerRight),
                     borderRadius: BorderRadius.all(Radius.circular(5.0))),

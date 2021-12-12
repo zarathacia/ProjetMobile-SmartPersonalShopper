@@ -19,7 +19,9 @@ AppBar homeAppBar(BuildContext context) {
         children: [
           TextSpan(
             text: "Shopily",
-            style: TextStyle(color: PrimaryRed),
+            style: TextStyle(
+              color: PrimaryRed,
+            ),
           ),
         ],
       ),

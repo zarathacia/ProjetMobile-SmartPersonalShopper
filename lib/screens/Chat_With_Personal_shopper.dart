@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_personal_shopper/constants.dart';
 import 'package:smart_personal_shopper/screens/Market/Market_screen.dart';
 import 'package:smart_personal_shopper/screens/home.dart';
 import 'package:smart_personal_shopper/screens/profile.dart';
@@ -17,8 +18,7 @@ class Chat extends StatelessWidget {
         appBar: AppBar(
           elevation: 0,
           automaticallyImplyLeading: false,
-          backgroundColor:
-          Color(0xFFff4d6d),
+          backgroundColor: SecondaryRed,
           flexibleSpace: SafeArea(
             child: Container(
               padding: EdgeInsets.only(right: 16),
@@ -37,7 +37,7 @@ class Chat extends StatelessWidget {
                     width: 2,
                   ),
                   CircleAvatar(
-                    backgroundImage: NetworkImage('images/shopper1.png'),
+                    backgroundImage: const AssetImage('images/user1.png'),
                     maxRadius: 20,
                   ),
                   SizedBox(
@@ -49,7 +49,7 @@ class Chat extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text(
-                          "Kriss Benwat",
+                          "Jane Russel",
                           style: TextStyle(
                               fontSize: 16, fontWeight: FontWeight.w600),
                         ),
@@ -90,12 +90,10 @@ class Chat extends StatelessWidget {
                         : Alignment.topRight),
                     child: Container(
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: (messages[index].messageType == "receiver"
-                            ? Colors.grey.shade200
-                            :
-                            Color(0xFFff4d6d)),
-                      ),
+                          borderRadius: BorderRadius.circular(20),
+                          color: (messages[index].messageType == "receiver"
+                              ? Colors.grey.shade200
+                              : SecondaryRed.withOpacity(0.5))),
                       padding: EdgeInsets.all(16),
                       child: Text(
                         messages[index].time +
@@ -123,8 +121,7 @@ class Chat extends StatelessWidget {
                         height: 30,
                         width: 30,
                         decoration: BoxDecoration(
-                          color:
-                          Color(0xFFff4d6d),
+                          color: SecondaryRed,
                           borderRadius: BorderRadius.circular(30),
                         ),
                         child: Icon(
@@ -155,8 +152,7 @@ class Chat extends StatelessWidget {
                         color: Colors.white,
                         size: 18,
                       ),
-                      backgroundColor:
-                      Color(0xFFff4d6d),
+                      backgroundColor: SecondaryRed,
                       elevation: 0,
                     ),
                   ],
@@ -179,7 +175,7 @@ class Chat extends StatelessWidget {
         time: '12:12',
         messageType: "receiver"),
     ChatMessage(
-        messageContent: "Hey Kriss, I am doing fine dude. wbu?",
+        messageContent: "Hey Jane, I am doing fine girl. wbu?",
         time: '12:12',
         messageType: "sender"),
     ChatMessage(

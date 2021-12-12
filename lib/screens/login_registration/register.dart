@@ -253,7 +253,7 @@ class _registerState extends State<register> {
                             }
                           },
                         ),
-                        SizedBox(height: 20.0),
+                        SizedBox(height: 5.0),
                         Container(
                           decoration:
                               ThemeHelper().buttonBoxDecoration(context),
@@ -281,7 +281,7 @@ class _registerState extends State<register> {
                             },
                           ),
                         ),
-                        SizedBox(height: 30.0),
+                        SizedBox(height: 10.0),
                         Text(
                           "Or create account using social media",
                           style: TextStyle(color: Colors.grey),

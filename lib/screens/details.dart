@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:smart_personal_shopper/constants.dart';
 import 'package:smart_personal_shopper/data/product/ProductItems.dart';
 import 'package:smart_personal_shopper/screens/Market/cart.dart';
+import 'package:smart_personal_shopper/screens/profile.dart';
+
+import 'Payment/paycard.dart';
+import 'home.dart';
 
 class details extends StatelessWidget {
   @override
@@ -11,30 +16,44 @@ class details extends StatelessWidget {
         TextButton.styleFrom(primary: Theme.of(context).colorScheme.onPrimary);
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor:
-      Color(0xFFff4d6d),
+      backgroundColor: SecondaryRed,
       appBar: AppBar(
-        toolbarHeight: screensize.height * 0.1,
-        backgroundColor:
-        Color(0xFFff4d6d),
+        //toolbarHeight: screensize.height * 0.1,
+        backgroundColor: SecondaryRed,
         elevation: 0.0,
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back_rounded,
+            color: Colors.white,
+            size: 40,
+          ),
+          onPressed: () => Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => Home())),
+        ),
+        leadingWidth: 30,
         actions: <Widget>[
           TextButton(
             style: style,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => MyCard()));
+            },
             child: const Text('Credit:180.52 DT'),
           ),
           TextButton(
               style: style,
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => Profile()));
+              },
               child: new Container(
-                width: 60.0,
-                height: 60.0,
+                width: 70.0,
+                height: 45.0,
                 decoration: new BoxDecoration(
                     shape: BoxShape.circle,
                     image: new DecorationImage(
-                        fit: BoxFit.fill,
-                        image: AssetImage('images/profile.jpg'))),
+                        fit: BoxFit.contain,
+                        image: AssetImage('images/pouya.jfif'))),
               ))
         ],
       ),
@@ -161,8 +180,7 @@ class AddToCart extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(18),
               border: Border.all(
-                color:
-                Color(0xFFff4d6d),
+                color: Color(0xFFff4d6d),
               ),
             ),
             child: IconButton(
@@ -170,8 +188,7 @@ class AddToCart extends StatelessWidget {
                 Icons.add_shopping_cart,
                 color: Colors.black,
               ),
-              color:
-              Color(0xFFff4d6d),
+              color: Color(0xFFff4d6d),
               onPressed: () {
                 Navigator.of(context)
                     .push(MaterialPageRoute(builder: (context) => Cart()));
@@ -184,8 +201,7 @@ class AddToCart extends StatelessWidget {
               child: FlatButton(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(18)),
-                color:
-                Color(0xFFff4d6d),
+                color: SecondaryRed,
                 onPressed: () {},
                 child: Text(
                   "Buy  Now".toUpperCase(),
@@ -222,8 +238,7 @@ class CounterWithFavBtn extends StatelessWidget {
           height: 50,
           width: 50,
           decoration: BoxDecoration(
-            color:
-            Color(0xFFff4d6d),
+            color: SecondaryRed,
             shape: BoxShape.circle,
           ),
           child: Icon(

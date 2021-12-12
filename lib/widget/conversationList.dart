@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_personal_shopper/constants.dart';
 import 'package:smart_personal_shopper/screens/Chat_With_Personal_shopper.dart';
 import 'package:smart_personal_shopper/widget/ratingstat.dart';
 
@@ -33,15 +34,17 @@ class _ConversationListState extends State<ConversationList> {
         padding: const EdgeInsets.only(left: 5, right: 5, top: 0, bottom: 0),
         child: Container(
           padding: EdgeInsets.only(left: 16, right: 16, top: 10, bottom: 10),
-          decoration:
-              BoxDecoration(border: Border.all(color:  Color(0xFFff4d6d),)),
+          decoration: BoxDecoration(
+              border: Border.all(
+            color: Colors.white,
+          )),
           child: Row(
             children: <Widget>[
               Expanded(
                 child: Row(
                   children: <Widget>[
                     CircleAvatar(
-                      backgroundImage: NetworkImage(widget.imageUrl),
+                      backgroundImage: AssetImage(widget.imageUrl),
                       maxRadius: 40,
                     ),
                     SizedBox(

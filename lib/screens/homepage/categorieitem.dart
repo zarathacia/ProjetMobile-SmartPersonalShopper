@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:smart_personal_shopper/constants.dart';
 
 class CategoryItem extends StatelessWidget {
