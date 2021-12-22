@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/constants.dart';
-import 'package:smart_personal_shopper/data/product/ProductItems.dart';
 import 'package:smart_personal_shopper/screens/Market/cart.dart';
 import 'package:smart_personal_shopper/screens/profile.dart';
 
-import 'Payment/paycard.dart';
-import 'home.dart';
+import '../Payment/paycard.dart';
+import '../home.dart';
 
 class details extends StatelessWidget {
   @override

@@ -1,10 +1,11 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/constants.dart';
 import 'package:smart_personal_shopper/screens/Market/Market_items.dart';
 import 'package:smart_personal_shopper/screens/Payment/paycard.dart';
 import 'package:smart_personal_shopper/screens/home.dart';
 import 'package:smart_personal_shopper/screens/profile.dart';
-import '../Productscreen.dart';
+import 'Productscreen.dart';
 import 'Market_items.dart';
 
 class marketScreen extends StatelessWidget {
@@ -32,8 +33,23 @@ class marketScreen extends StatelessWidget {
           TextButton(
             style: style,
             onPressed: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => MyCard()));
+              //Navigator.of(context).push(MaterialPageRoute(builder: (context) => MyCard()));
+              AwesomeDialog(
+                context: context,
+                headerAnimationLoop: false,
+                dialogType: DialogType.NO_HEADER,
+                title: 'Your have 180.52 DT',
+                desc: 'Do you want to recharge your account?',
+                btnCancelText: "No",
+                btnOkText: "Recharge",
+                btnCancelOnPress: () {},
+                btnOkOnPress: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) => MyCard()));
+                },
+                btnOkColor: SecondaryRed,
+                btnCancelColor: Colors.grey[500],
+              )..show();
             },
             child: const Text('Credit:180.52 DT'),
           ),
@@ -88,6 +104,11 @@ class marketScreen extends StatelessWidget {
   }
 }
 
+void onTap(BuildContext context) {
+  Navigator.of(context)
+      .push(MaterialPageRoute(builder: (_) => ProductScreen()));
+}
+
 class ItemCard extends StatelessWidget {
   final Market market;
   const ItemCard({
@@ -98,7 +119,8 @@ class ItemCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var screensize = MediaQuery.of(context).size;
-    return SingleChildScrollView(
+    return InkWell(
+      onTap: () => onTap(context),
       child: Stack(
         children: <Widget>[
           new Container(
@@ -110,10 +132,10 @@ class ItemCard extends StatelessWidget {
                   width: screensize.width * 0.7,
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: Colors.black,
+                      color: PrimaryGrey,
                       width: 1,
                     ),
-                    borderRadius: BorderRadius.circular(16),
+                    borderRadius: BorderRadius.circular(15),
                   ),
                   child: Column(
                     children: <Widget>[
@@ -122,22 +144,10 @@ class ItemCard extends StatelessWidget {
                         height: screensize.height * 0.2,
                         width: screensize.width * 0.4,
                       ),
-                      TextButton(
-                        style: ButtonStyle(
-                          foregroundColor:
-                              MaterialStateProperty.all<Color>(Colors.black),
-                        ),
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => ProductScreen()));
-                        },
-                        child: Text(
-                          market.title,
-                          style: TextStyle(fontSize: 15),
-                        ),
-                      )
+                      Text(
+                        market.title,
+                        style: TextStyle(fontSize: 15),
+                      ),
                     ],
                   ),
                 ),

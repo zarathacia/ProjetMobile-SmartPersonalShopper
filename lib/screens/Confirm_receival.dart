@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/constants.dart';
 import 'package:smart_personal_shopper/screens/profile.dart';
 import 'package:smart_personal_shopper/widget/rating.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
 
 import '../widget/navbar.dart';
 import 'List_of_Past_discussions.dart';
@@ -97,6 +98,20 @@ class Confirm extends StatelessWidget {
             RaisedButton(
               onPressed: () {
                 //Navigator.of(context).push(MaterialPageRoute(builder: (context) => Confirm()));
+                AwesomeDialog(
+                  context: context,
+                  animType: AnimType.LEFTSLIDE,
+                  headerAnimationLoop: false,
+                  dialogType: DialogType.SUCCES,
+                  showCloseIcon: true,
+                  btnOkColor: SecondaryRed,
+                  title: 'Succes',
+                  desc: 'Shopping Done',
+                  btnOkOnPress: () {
+                    Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (_) => Home()));
+                  },
+                )..show();
               }, // When Click on Button goto Login Screen
 
               shape: RoundedRectangleBorder(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_personal_shopper/screens/details.dart';
+import 'package:smart_personal_shopper/screens/Market/details.dart';
 
 import 'item_card.dart';
 

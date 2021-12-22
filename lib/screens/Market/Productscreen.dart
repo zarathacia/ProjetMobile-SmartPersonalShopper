@@ -1,8 +1,11 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_personal_shopper/constants.dart';
 import 'package:smart_personal_shopper/data/product/ProductItems.dart';
 import 'package:smart_personal_shopper/screens/Payment/paycard.dart';
 import 'package:smart_personal_shopper/screens/home.dart';
 import 'package:smart_personal_shopper/screens/profile.dart';
+import 'package:smart_personal_shopper/widget/banner.dart';
 
 import 'details.dart';
 
@@ -40,8 +43,22 @@ class ProductScreen extends StatelessWidget {
           TextButton(
             style: style,
             onPressed: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => MyCard()));
+              AwesomeDialog(
+                context: context,
+                headerAnimationLoop: false,
+                dialogType: DialogType.NO_HEADER,
+                title: 'Your have 180.52 DT',
+                desc: 'Do you want to recharge your account?',
+                btnCancelText: "No",
+                btnOkText: "Recharge",
+                btnCancelOnPress: () {},
+                btnOkOnPress: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) => MyCard()));
+                },
+                btnOkColor: SecondaryRed,
+                btnCancelColor: Colors.grey[500],
+              )..show();
             },
             child: const Text('Credit:180.52 DT'),
           ),
@@ -144,59 +161,82 @@ class ItemCard extends StatelessWidget {
   }) : super(key: Key);
 
   get itemcount => products.length;
+  void onTap(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (_) => details()));
+  }
 
   @override
   Widget build(BuildContext context) {
     var screensize = MediaQuery.of(context).size;
-    return GestureDetector(
-      child: SingleChildScrollView(
+    return InkWell(
+      onTap: () => onTap(context),
+      child: Container(
         child: Stack(
           children: <Widget>[
             new Container(
-              padding: EdgeInsets.all(screensize.height * 0.005),
+              padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
               child: Column(
                 children: <Widget>[
                   Container(
-                    padding: EdgeInsets.all(screensize.height * 0.005),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 10),
                     height: screensize.height * 0.25,
-                    width: screensize.width * 0.7,
+                    width: screensize.width * 0.5,
                     decoration: BoxDecoration(
+                      color: PrimaryGrey.withOpacity(0.05),
+                      borderRadius: BorderRadius.circular(15),
                       border: Border.all(
-                        color: Colors.black,
+                        color: SecondaryRed,
                         width: 1,
                       ),
                     ),
-                    child: Column(
-                      children: <Widget>[
-                        Image.asset(
-                          product.image,
-                          height: screensize.height * 0.1,
-                          width: screensize.width * 0.4,
-                        ),
-                        Text(
-                          product.title,
-                          style: TextStyle(fontSize: 15),
-                        ),
-                        RaisedButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => details()));
-                          },
-                          color: Colors.grey,
-                          child: Text(
-                            'details',
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15),
-                          ),
-                          shape: new RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30.0),
-                          ),
-                        ),
-                      ],
+                    child: LayoutBuilder(
+                      builder: (_, constraints) {
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Hero(
+                              tag: product.hashCode,
+                              child: Image.asset(
+                                product.image,
+                                height: constraints.maxHeight * 0.4,
+                              ),
+                            ),
+                            SizedBox(height: 10),
+                            Text(
+                              product.title,
+                              style: TextStyle(color: PrimaryRed),
+                            ),
+                            Text(
+                              product.description,
+                              style: TextStyle(color: PrimaryRed),
+                            ),
+                            Spacer(),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  '${product.price} dt',
+                                  style: TextStyle(color: PrimaryRed)
+                                      .copyWith(fontWeight: FontWeight.w700),
+                                ),
+                                Container(
+                                  padding: const EdgeInsets.all(7),
+                                  decoration: BoxDecoration(
+                                    color: PrimaryRed,
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: Icon(
+                                    Icons.add,
+                                    size: 20,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        );
+                      },
                     ),
                   ),
                 ],

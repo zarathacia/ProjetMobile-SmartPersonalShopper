@@ -44,13 +44,13 @@ class LunchState extends State<MyOrders> {
           child: ListView(
             children: <Widget>[
               dummyDataOfListView(
-                  "images/pizza.png", "pizza neptune", "Cloths", "500Rs", 4),
+                  "images/pizza.png", "pizza neptune", "Cloths", "500dt", 4),
               dummyDataOfListView(
-                  "images/tomate.jpg", "1kg tomate", "Cloths", "600Rs", 1),
+                  "images/tomate.png", "1kg tomate", "Cloths", "500dt", 1),
               dummyDataOfListView(
-                  "images/hrissa.png", "hrissa sicam", "Cloths", "800Rs", 3),
+                  "images/hrissa.png", "hrissa sicam", "Cloths", "500dt", 3),
               dummyDataOfListView(
-                  "images/boga1.jpg", "Boga 1.5L", "Cloths", "100Rs", 4),
+                  "images/boga1.jpg", "Boga 1.5L", "Cloths", "500dt", 4),
             ],
           ),
         ),
