@@ -37,7 +37,7 @@ class Chat extends StatelessWidget {
                     width: 2,
                   ),
                   CircleAvatar(
-                    backgroundImage: const AssetImage('images/user1.png'),
+                    backgroundImage: AssetImage('images/user1.jpg'),
                     maxRadius: 20,
                   ),
                   SizedBox(

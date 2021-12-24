@@ -25,7 +25,7 @@ class SearchBox extends StatelessWidget {
         onChanged: onChanged,
         decoration: InputDecoration(
           border: InputBorder.none,
-          icon: SvgPicture.asset("assets/icons/search.svg"),
+          icon: SvgPicture.asset("assets/logos/search.svg"),
           hintText: "Search Here",
           hintStyle: TextStyle(color: PrimaryRed),
         ),
