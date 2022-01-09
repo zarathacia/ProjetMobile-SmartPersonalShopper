@@ -1,3 +1,4 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/credit_card_brand.dart';
 import 'package:flutter_credit_card/credit_card_form.dart';
@@ -82,7 +83,7 @@ class MyCardState extends State<MyCard> {
                 obscureCardNumber: true,
                 obscureCardCvv: true,
                 isHolderNameVisible: true,
-                cardBgColor: Color(0xffb89686),
+                cardBgColor: SecondaryRed,
                 /*backgroundImage:
                     useBackgroundImage ? 'images/ic_launcher.png' : null,*/
                 isSwipeGestureEnabled: true,
@@ -113,7 +114,7 @@ class MyCardState extends State<MyCard> {
                         isExpiryDateVisible: true,
                         cardHolderName: cardHolderName,
                         expiryDate: expiryDate,
-                        themeColor:Color(0xffb89686),
+                        themeColor: SecondaryRed,
                         textColor: Colors.grey.shade900,
                         cardNumberDecoration: InputDecoration(
                           labelText: 'Number',
@@ -201,7 +202,7 @@ class MyCardState extends State<MyCard> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8.0),
                           ),
-                          primary:Color(0xffb89686),
+                          primary: SecondaryRed,
                         ),
                         child: Container(
                           margin: const EdgeInsets.all(12),
@@ -234,30 +235,22 @@ class MyCardState extends State<MyCard> {
                                         child: Text("No")),
                                     ElevatedButton(
                                         onPressed: () {
-                                          showDialog(
+                                          AwesomeDialog(
                                             context: context,
-                                            builder: (BuildContext context) {
-                                              return AlertDialog(
-                                                title: Text(
-                                                  "Payment done !",
-                                                  textAlign: TextAlign.center,
-                                                ),
-                                                actions: [
-                                                  ElevatedButton(
-                                                      onPressed: () {
-                                                        Navigator.push(
-                                                            context,
-                                                            MaterialPageRoute(
-                                                                builder:
-                                                                    (context) =>
-                                                                        Home()));
-                                                      },
-                                                      child: Text("Go Home")),
-                                                ],
-                                                elevation: 24,
-                                              );
+                                            animType: AnimType.LEFTSLIDE,
+                                            headerAnimationLoop: false,
+                                            dialogType: DialogType.SUCCES,
+                                            showCloseIcon: true,
+                                            btnOkColor: SecondaryRed,
+                                            title: 'Succes',
+                                            desc:
+                                                'Votre compte est bien chargé',
+                                            btnOkOnPress: () {
+                                              Navigator.of(context).push(
+                                                  MaterialPageRoute(
+                                                      builder: (_) => Home()));
                                             },
-                                          );
+                                          )..show();
                                         },
                                         child: Text("Yes")),
                                   ],

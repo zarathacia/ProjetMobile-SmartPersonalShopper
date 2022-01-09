@@ -1,4 +1,6 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_personal_shopper/constants.dart';
 
 import 'myorders.dart';
 
@@ -43,11 +45,11 @@ class LunchState extends State<Checkout> {
               dummyDataOfListView(
                   "images/pizza.png", "pizza neptune", "Cloths", "500Rs", 4),
               dummyDataOfListView(
-                  "images/tomate.jpg", "1kg tomate", "Cloths", "600Rs", 1),
+                  "images/tomate.png", "1kg tomate", "Cloths", "600Rs", 1),
               dummyDataOfListView(
                   "images/hrissa.png", "hrissa sicam", "Cloths", "800Rs", 3),
               dummyDataOfListView(
-                  "images/boga1.jpg", "Boga 1.5L", "Cloths", "100Rs", 4),
+                  "images/boga.png", "Boga 1.5L", "Cloths", "100Rs", 4),
             ],
           ),
         ),
@@ -148,8 +150,27 @@ class LunchState extends State<Checkout> {
                 margin: EdgeInsets.only(top: 30.0),
                 child: RaisedButton(
                   onPressed: () {
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => MyOrders()));
+                    //Navigator.of(context).push(MaterialPageRoute(builder: (context) => MyOrders()));
+                    AwesomeDialog(
+                      context: context,
+                      keyboardAware: true,
+                      dismissOnBackKeyPress: false,
+                      dialogType: DialogType.WARNING,
+                      animType: AnimType.BOTTOMSLIDE,
+                      btnCancelText: "Cancel Order",
+                      btnOkText: "Yes, I will pay",
+                      title: 'Continue to pay?',
+                      // padding: const EdgeInsets.all(5.0),
+                      desc:
+                          'Please confirm that you will pay 1500 dt . Creating orders without paying will create penalty charges, and your account may be disabled.',
+                      btnCancelOnPress: () {},
+                      btnOkOnPress: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => MyOrders()));
+                      },
+                      btnOkColor: SecondaryRed,
+                      btnCancelColor: Colors.grey[500],
+                    ).show();
                   }, // When Click on Button goto Login Screen
 
                   shape: RoundedRectangleBorder(
@@ -158,7 +179,7 @@ class LunchState extends State<Checkout> {
                   child: Ink(
                     decoration: BoxDecoration(
                         gradient: LinearGradient(
-                            colors: [Color(0xffb89686), Color(0xffd8c8be)],
+                            colors: [PrimaryRed, SecondaryRed],
                             begin: Alignment.centerLeft,
                             end: Alignment.centerRight),
                         borderRadius: BorderRadius.all(Radius.circular(5.0))),
@@ -222,7 +243,7 @@ class LunchState extends State<Checkout> {
               Container(
                 padding: EdgeInsets.only(bottom: 3.0),
                 child: Text(
-                  "500 RS",
+                  "500 dt",
                   style: TextStyle(color: Color(0xff374ABE)),
                 ),
               ),

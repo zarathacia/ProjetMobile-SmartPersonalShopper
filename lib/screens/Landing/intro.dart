@@ -24,15 +24,15 @@ class _IntroScreenState extends State<IntroScreen> {
     }
     return list;
   }
-  Widget _indicator(bool isActive) {
 
+  Widget _indicator(bool isActive) {
     return AnimatedContainer(
       duration: Duration(milliseconds: 150),
       margin: EdgeInsets.symmetric(horizontal: 8.0),
       height: 8.0,
       width: isActive ? 24.0 : 16.0,
       decoration: BoxDecoration(
-        color: isActive ? Colors.white : Color(0xffb89686),
+        color: isActive ? Color(0xFFff4d6d) : Colors.grey,
         borderRadius: BorderRadius.all(Radius.circular(12)),
       ),
     );
@@ -40,16 +40,16 @@ class _IntroScreenState extends State<IntroScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var screensize=MediaQuery.of(context).size;
+    var screensize = MediaQuery.of(context).size;
     return Scaffold(
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
         child: Container(
           decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("images/background1.png"), fit: BoxFit.cover)),
+                  image: AssetImage("images/back.png"), fit: BoxFit.cover)),
           child: Padding(
-            padding: EdgeInsets.symmetric(vertical: screensize.width*0.09),
+            padding: EdgeInsets.symmetric(vertical: screensize.width * 0.06),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
@@ -63,14 +63,14 @@ class _IntroScreenState extends State<IntroScreen> {
                     child: Text(
                       'Skip',
                       style: TextStyle(
-                        color: Color(0xffb89686),
-                        fontSize:  screensize.width*0.06,
+                        color: Color(0xffc9184a),
+                        fontSize: screensize.width * 0.04,
                       ),
                     ),
                   ),
                 ),
                 Container(
-                  height: screensize.height*0.7,
+                  height: screensize.height * 0.6,
                   child: PageView(
                     physics: ClampingScrollPhysics(),
                     controller: _pageController,
@@ -81,7 +81,10 @@ class _IntroScreenState extends State<IntroScreen> {
                     },
                     children: <Widget>[
                       Padding(
-                        padding: EdgeInsets.all( screensize.width*0.12),
+                        padding: EdgeInsets.only(
+                            top: screensize.width * 0.3,
+                            right: screensize.width * 0.05,
+                            left: screensize.width * 0.05),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
@@ -90,31 +93,35 @@ class _IntroScreenState extends State<IntroScreen> {
                                 image: AssetImage(
                                   'images/ic_launcher.png',
                                 ),
-                                height: screensize.height*0.3,
-                                width: screensize.width*0.8,
+                                height: screensize.height * 0.2,
+                                width: screensize.width * 0.8,
                               ),
                             ),
-                            SizedBox(height:  screensize.width*0.09),
+                            SizedBox(height: screensize.width * 0.06),
                             Text(
                               'Connect people\naround the world',
                               style: TextStyle(
-                              fontSize:screensize.width*0.06,
-                              fontWeight: FontWeight.bold,
-                                color: Color(0xffb89686),
-                            ),),
-                            SizedBox(height:  screensize.width*0.09),
+                                fontSize: screensize.width * 0.04,
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xFFff4d6d),
+                              ),
+                            ),
+                            SizedBox(height: screensize.width * 0.06),
                             Text(
                               'Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
                               style: TextStyle(
-                                fontSize: screensize.width*0.04,
-                                color: Color(0xffb89686),
+                                fontSize: screensize.width * 0.04,
+                                color: Color(0xFFff4d6d),
                               ),
                             ),
                           ],
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.all( screensize.width*0.12),
+                        padding: EdgeInsets.only(
+                            top: screensize.width * 0.3,
+                            right: screensize.width * 0.05,
+                            left: screensize.width * 0.05),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
@@ -123,32 +130,35 @@ class _IntroScreenState extends State<IntroScreen> {
                                 image: AssetImage(
                                   'images/deliv4.png',
                                 ),
-                                height: screensize.height*0.3,
-                                width: screensize.width*0.8,
+                                height: screensize.height * 0.21,
+                                width: screensize.width * 0.8,
                               ),
                             ),
-                            SizedBox(height:  screensize.width*0.09),
+                            SizedBox(height: screensize.width * 0.06),
                             Text(
                               'Live your life smarter\nwith us!',
                               style: TextStyle(
-                                fontSize:  screensize.width*0.06,
+                                fontSize: screensize.width * 0.04,
                                 fontWeight: FontWeight.bold,
-                                color: Color(0xffb89686),
+                                color: Color(0xFFff4d6d),
                               ),
                             ),
-                            SizedBox(height:  screensize.width*0.09),
+                            SizedBox(height: screensize.width * 0.06),
                             Text(
                               'Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
                               style: TextStyle(
-                                fontSize: screensize.width*0.04,
-                                color: Color(0xffb89686),
+                                fontSize: screensize.width * 0.04,
+                                color: Color(0xFFff4d6d),
                               ),
                             ),
                           ],
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.all(screensize.width*0.12),
+                        padding: EdgeInsets.only(
+                            top: screensize.width * 0.3,
+                            right: screensize.width * 0.05,
+                            left: screensize.width * 0.05),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
@@ -157,25 +167,25 @@ class _IntroScreenState extends State<IntroScreen> {
                                 image: AssetImage(
                                   'images/deliv1.png',
                                 ),
-                                height: screensize.height*0.3,
-                                width: screensize.width*0.8,
+                                height: screensize.height * 0.22,
+                                width: screensize.width * 0.8,
                               ),
                             ),
-                            SizedBox(height: screensize.height*0.01),
+                            SizedBox(height: screensize.height * 0.01),
                             Text(
                               'Get a new experience\nof imagination',
                               style: TextStyle(
-                                fontSize: screensize.width*0.06,
+                                fontSize: screensize.width * 0.04,
                                 fontWeight: FontWeight.bold,
-                                color: Color(0xffb89686),
+                                color: Color(0xFFff4d6d),
                               ),
                             ),
-                            SizedBox(height: screensize.height*0.01),
+                            SizedBox(height: screensize.height * 0.01),
                             Text(
                               'Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
                               style: TextStyle(
-                                fontSize: screensize.width*0.04,
-                                color: Color(0xffb89686),
+                                fontSize: screensize.width * 0.04,
+                                color: Color(0xFFff4d6d),
                               ),
                             ),
                           ],
@@ -206,15 +216,15 @@ class _IntroScreenState extends State<IntroScreen> {
                                 Text(
                                   'Next',
                                   style: TextStyle(
-                                    color: Color(0xffb89686),
-                                    fontSize: screensize.width*0.06,
+                                    color: Color(0xffc9184a),
+                                    fontSize: screensize.width * 0.06,
                                   ),
                                 ),
                                 SizedBox(width: 10.0),
                                 Icon(
                                   Icons.arrow_forward,
-                                  color:  Color(0xffb89686),
-                                  size: screensize.width*0.09,
+                                  color: Color(0xffc9184a),
+                                  size: screensize.width * 0.09,
                                 ),
                               ],
                             ),
@@ -229,31 +239,31 @@ class _IntroScreenState extends State<IntroScreen> {
       ),
       bottomSheet: _currentPage == _numPages - 1
           ? Container(
-              height:screensize.height*0.05,
+              height: screensize.height * 0.05,
               width: screensize.width,
               color: Colors.transparent,
               child: GestureDetector(
                 child: Center(
                   child: SizedBox(
-                  child: FlatButton(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(screensize.width*0.05)),
-                    color: Colors.white,
-                    onPressed: () {
-                      Navigator.push(
-                          context, MaterialPageRoute(builder: (context) => Login()));
-                    },
-                    child: Text(
-                      "Buy  Now".toUpperCase(),
-                      style: TextStyle(
-                        fontSize: screensize.width*0.04,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xffb89686),
-
+                    child: FlatButton(
+                      shape: RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.circular(screensize.width * 0.05)),
+                      color: Colors.white,
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => Login()));
+                      },
+                      child: Text(
+                        "Buy  Now".toUpperCase(),
+                        style: TextStyle(
+                          fontSize: screensize.width * 0.04,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xffc9184a),
+                        ),
                       ),
                     ),
                   ),
-                ),
                 ),
               ),
             )

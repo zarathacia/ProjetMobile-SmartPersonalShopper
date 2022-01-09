@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_personal_shopper/constants.dart';
 import 'package:smart_personal_shopper/screens/Confirm_receival.dart';
 
 class MyOrders extends StatefulWidget {
@@ -43,13 +44,13 @@ class LunchState extends State<MyOrders> {
           child: ListView(
             children: <Widget>[
               dummyDataOfListView(
-                  "images/pizza.png", "pizza neptune", "Cloths", "500Rs", 4),
+                  "images/pizza.png", "pizza neptune", "Cloths", "500dt", 4),
               dummyDataOfListView(
-                  "images/tomate.jpg", "1kg tomate", "Cloths", "600Rs", 1),
+                  "images/tomate.png", "1kg tomate", "Cloths", "500dt", 1),
               dummyDataOfListView(
-                  "images/hrissa.png", "hrissa sicam", "Cloths", "800Rs", 3),
+                  "images/hrissa.png", "hrissa sicam", "Cloths", "500dt", 3),
               dummyDataOfListView(
-                  "images/boga1.jpg", "Boga 1.5L", "Cloths", "100Rs", 4),
+                  "images/boga1.jpg", "Boga 1.5L", "Cloths", "500dt", 4),
             ],
           ),
         ),
@@ -82,7 +83,7 @@ class LunchState extends State<MyOrders> {
                   child: Ink(
                     decoration: BoxDecoration(
                         gradient: LinearGradient(
-                            colors: [Color(0xffb89686), Color(0xffd8c8be)],
+                            colors: [PrimaryRed, SecondaryRed],
                             begin: Alignment.centerLeft,
                             end: Alignment.centerRight),
                         borderRadius: BorderRadius.all(Radius.circular(5.0))),

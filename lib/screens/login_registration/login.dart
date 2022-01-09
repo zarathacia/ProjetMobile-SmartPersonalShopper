@@ -1,11 +1,17 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smart_personal_shopper/screens/login_registration/register.dart';
 import 'package:smart_personal_shopper/screens/profile.dart';
 import 'package:smart_personal_shopper/widget/header.dart';
 import 'package:smart_personal_shopper/widget/theme_helper.dart';
-
+import 'package:http/http.dart' as http;
+import 'package:smart_personal_shopper/models/env.dart';
+import 'package:smart_personal_shopper/models/user.dart';
+import '../home.dart';
 import 'forgotpass.dart';
 
 class Login extends StatefulWidget {
@@ -15,9 +21,15 @@ class Login extends StatefulWidget {
   _LoginState createState() => _LoginState();
 }
 
+TextEditingController emailController = TextEditingController();
+TextEditingController passwordController = TextEditingController();
+
 class _LoginState extends State<Login> {
+  bool _isLoading = false;
   double _headerHeight = 250;
   Key _formKey = GlobalKey<FormState>();
+
+  get route => null;
 
   @override
   Widget build(BuildContext context) {
@@ -61,6 +73,7 @@ class _LoginState extends State<Login> {
                             children: [
                               Container(
                                 child: TextField(
+                                  controller: emailController,
                                   decoration: ThemeHelper().textInputDecoration(
                                       'User Name', 'Enter your user name'),
                                 ),
@@ -70,6 +83,7 @@ class _LoginState extends State<Login> {
                               SizedBox(height: 30.0),
                               Container(
                                 child: TextField(
+                                  controller: passwordController,
                                   obscureText: true,
                                   decoration: ThemeHelper().textInputDecoration(
                                       'Password', 'Enter your password'),
@@ -115,6 +129,8 @@ class _LoginState extends State<Login> {
                                     ),
                                   ),
                                   onPressed: () {
+                                    signIn(emailController.text,
+                                        passwordController.text);
                                     //After successful login we will redirect to profile page. Let's create profile page now
                                     Navigator.pushReplacement(
                                         context,
@@ -139,8 +155,9 @@ class _LoginState extends State<Login> {
                                                     register()));
                                       },
                                     style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: Color(0xffb89686),),
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.redAccent,
+                                    ),
                                   ),
                                 ])),
                               ),
@@ -153,5 +170,38 @@ class _LoginState extends State<Login> {
         ),
       ),
     );
+  }
+
+  void signIn(String email, String password) async {
+    print(password);
+    var jsonData = null;
+    try {
+      SharedPreferences sharedPreferences =
+          await SharedPreferences.getInstance();
+      var response = await http.post(
+        Uri.parse("http://127.0.0.1/Projects/ShopilyAPI/login.php"),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body:
+            jsonEncode(<String, String>{'email': email, 'password': password}),
+      );
+      if (response.statusCode == 200) {
+        jsonData = json.decode(response.body);
+        setState(() {
+          sharedPreferences.setString("token", jsonData('token'));
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const Home()),
+          );
+        });
+      } else {
+        print(response.body);
+      }
+    } catch (Exception) {
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (context) => Home()),
+          (Route<dynamic> route) => false);
+    }
   }
 }

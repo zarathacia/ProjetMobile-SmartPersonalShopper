@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/constants.dart';
+import 'package:smart_personal_shopper/screens/home.dart';
 
 import '../models/chatUsersModel.dart';
 import '../widget/conversationList.dart';
@@ -22,7 +23,8 @@ class Listof extends StatelessWidget {
               color: Colors.white,
               size: 40,
             ),
-            onPressed: () => Navigator.of(context).pop(),
+            onPressed: () => Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => Home())),
           ),
         ),
         body: Center(
@@ -45,7 +47,8 @@ class Listof extends StatelessWidget {
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter,
                               colors: <Color>[
-                                Color(0xffb89686), Color(0xffd8c8be)
+                                SecondaryRed,
+                                PrimaryRed,
                               ])),
                       width: double.infinity,
                       padding: EdgeInsets.only(top: 150, left: 150),
@@ -73,7 +76,9 @@ class Listof extends StatelessWidget {
                                 fillColor: Colors.white,
                                 border: new OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(25.0),
-                                  borderSide: BorderSide(color: Color(0xffb89686),),
+                                  borderSide: BorderSide(
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ),
                             ),
@@ -133,7 +138,7 @@ class Listof extends StatelessWidget {
                       },
                     ),
                     Text('More...',
-                        style: TextStyle(color: Color(0xffb89686), fontSize: 15)),
+                        style: TextStyle(color: SecondaryRed, fontSize: 15)),
                   ],
                 ),
               )

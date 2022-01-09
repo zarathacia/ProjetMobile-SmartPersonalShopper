@@ -14,6 +14,7 @@ import 'package:smart_personal_shopper/widget/user_card.dart';
 
 import 'List_of_Past_discussions.dart';
 import 'Market/Market_screen.dart';
+import 'Payment/paycard.dart';
 import 'home.dart';
 
 class Choose extends StatefulWidget {
@@ -29,23 +30,44 @@ class _ChooseState extends State<Choose> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          toolbarHeight: 70,
-          backgroundColor:Color(0xffb89686),
-          actions: [
-            Container(
-              width: 80,
-              child: IconButton(
-                alignment: Alignment.center,
-                icon: const Icon(
-                  Icons.account_circle_rounded,
-                  size: 50,
-                ),
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Profile()));
-                },
-              ),
+          //toolbarHeight: screensize.height * 0.1,
+          backgroundColor: Colors.white,
+          elevation: 0.0,
+          leading: IconButton(
+            icon: Icon(
+              Icons.arrow_back_rounded,
+              color: Colors.red,
+              size: 40,
             ),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+          leadingWidth: 30,
+          actions: <Widget>[
+            TextButton(
+              style: TextButton.styleFrom(
+                  primary: Theme.of(context).colorScheme.primary),
+              onPressed: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => MyCard()));
+              },
+              child: const Text('Credit:180.52 DT'),
+            ),
+            TextButton(
+                style: TextButton.styleFrom(
+                    primary: Theme.of(context).colorScheme.primary),
+                onPressed: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) => Profile()));
+                },
+                child: new Container(
+                  width: 70.0,
+                  height: 45.0,
+                  decoration: new BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: new DecorationImage(
+                          fit: BoxFit.contain,
+                          image: AssetImage('images/pouya.jfif'))),
+                ))
           ],
         ),
         body: Padding(
@@ -78,7 +100,7 @@ class _ChooseState extends State<Choose> {
                     )),
                 Text("right to choose ",
                     style: TextStyle(
-                      color:Color(0xffb89686),
+                      color: Color(0xFFff4d6d),
                       fontSize: 15,
                       fontWeight: FontWeight.bold,
                     )),

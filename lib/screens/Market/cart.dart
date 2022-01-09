@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:smart_personal_shopper/constants.dart';
 import 'package:smart_personal_shopper/screens/choose_your_personal_shopper.dart';
-import 'package:smart_personal_shopper/screens/details.dart';
+import 'package:smart_personal_shopper/screens/Market/details.dart';
 import 'address.dart';
 
 class Cart extends StatefulWidget {
@@ -45,11 +46,11 @@ class LunchState extends State<Cart> {
             dummyDataOfListView(
                 "images/pizza.png", "pizza neptune", "Cloths", "500Rs", 4),
             dummyDataOfListView(
-                "images/tomate.jpg", "1kg tomate", "Cloths", "600Rs", 1),
+                "images/tomate.png", "1kg tomate", "Cloths", "600Rs", 1),
             dummyDataOfListView(
                 "images/hrissa.png", "hrissa sicam", "Cloths", "800Rs", 3),
             dummyDataOfListView(
-                "images/boga1.jpg", "Boga 1.5L", "Cloths", "100Rs", 4),
+                "images/boga.png", "Boga 1.5L", "Cloths", "100Rs", 4),
           ],
         ),
         Container(
@@ -61,7 +62,7 @@ class LunchState extends State<Cart> {
               Navigator.of(context)
                   .push(MaterialPageRoute(builder: (context) => Choose()));
             },
-            color: Color(0xffb89686),
+            color: SecondaryRed,
             minWidth: double.maxFinite,
             child: Text(
               "Continue",

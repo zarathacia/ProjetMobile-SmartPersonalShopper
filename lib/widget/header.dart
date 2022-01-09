@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 
+import '../constants.dart';
+
 class HeaderWidget extends StatefulWidget {
   final double _height;
   final bool _showIcon;
@@ -34,8 +36,8 @@ class _HeaderWidgetState extends State<HeaderWidget> {
               decoration: new BoxDecoration(
                 gradient: new LinearGradient(
                     colors: [
-                      Color(0xffb89686).withOpacity(0.4),
-                      Color(0xffd8c8be).withOpacity(0.4),
+                      Color(0xFFff4d6d).withOpacity(0.4),
+                      Color(0xffc9184a).withOpacity(0.4),
                     ],
                     begin: const FractionalOffset(0.0, 0.0),
                     end: const FractionalOffset(1.0, 0.0),
@@ -55,8 +57,8 @@ class _HeaderWidgetState extends State<HeaderWidget> {
               decoration: new BoxDecoration(
                 gradient: new LinearGradient(
                     colors: [
-                      Color(0xffb89686).withOpacity(0.4),
-                      Color(0xffd8c8be).withOpacity(0.4),
+                      Color(0xFFff4d6d).withOpacity(0.4),
+                      Color(0xffc9184a).withOpacity(0.4),
                     ],
                     begin: const FractionalOffset(0.0, 0.0),
                     end: const FractionalOffset(1.0, 0.0),
@@ -75,7 +77,10 @@ class _HeaderWidgetState extends State<HeaderWidget> {
             child: Container(
               decoration: new BoxDecoration(
                 gradient: new LinearGradient(
-                    colors: [Color(0xffb89686), Color(0xffd8c8be)],
+                    colors: [
+                      Color(0xffc9184a),
+                      PrimaryRed,
+                    ],
                     begin: const FractionalOffset(0.0, 0.0),
                     end: const FractionalOffset(1.0, 0.0),
                     stops: [0.0, 1.0],

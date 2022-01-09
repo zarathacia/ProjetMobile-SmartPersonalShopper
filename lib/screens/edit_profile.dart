@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:smart_personal_shopper/constants.dart';
+import 'package:smart_personal_shopper/screens/settings.dart';
 //import 'package:smart_personal_shopper/widget/textfield.dart';
 //import 'package:settings_ui/pages/settings.dart';
 //final StorageReference storageRef = FirebaseStorage.instance.ref();
@@ -54,7 +55,7 @@ class _EditProfileState extends State<EditProfile> {
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back,
-            color:Color(0xffb89686),
+            color: SecondaryRed,
           ),
           onPressed: () => Navigator.of(context).pop(),
         ),
@@ -62,10 +63,11 @@ class _EditProfileState extends State<EditProfile> {
           IconButton(
             icon: Icon(
               Icons.settings,
-              color:Color(0xffb89686),
+              color: SecondaryRed,
             ),
             onPressed: () {
-              // Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => SettingsPage()));
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (BuildContext context) => Settings()));
             },
           ),
         ],
@@ -93,8 +95,9 @@ class _EditProfileState extends State<EditProfile> {
                       height: 130,
                       decoration: BoxDecoration(
                           border: Border.all(
-                              width: 4,
-                              color:Color(0xffb89686),),
+                            width: 4,
+                            color: Colors.white,
+                          ),
                           boxShadow: [
                             BoxShadow(
                                 spreadRadius: 2,
@@ -118,7 +121,7 @@ class _EditProfileState extends State<EditProfile> {
                             shape: BoxShape.circle,
                             border: Border.all(
                               width: 4,
-                              color:Color(0xffb89686),
+                              color: PrimaryDarkRed,
                             ),
                             color: PrimaryDarkRed,
                           ),
@@ -170,7 +173,7 @@ class _EditProfileState extends State<EditProfile> {
                   ),
                   RaisedButton(
                     onPressed: () {},
-                    color:Color(0xffb89686),
+                    color: SecondaryRed,
                     padding: EdgeInsets.symmetric(horizontal: 50),
                     elevation: 10,
                     shape: RoundedRectangleBorder(
