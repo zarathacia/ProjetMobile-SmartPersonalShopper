@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "409853911898",
-    "project_id": "shopily-97410",
-    "storage_bucket": "shopily-97410.appspot.com"
+    "project_number": "77933949881",
+    "project_id": "shopili-mobile-project",
+    "storage_bucket": "shopili-mobile-project.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:409853911898:android:ea6e44423c764a211b8963",
+        "mobilesdk_app_id": "1:77933949881:android:6daa0a272a99951872fc68",
         "android_client_info": {
           "package_name": "com.example.smart_personal_shopper"
         }
       },
       "oauth_client": [
         {
-          "client_id": "409853911898-qljljb39lmhvl2usqrp227qpbcurcsna.apps.googleusercontent.com",
+          "client_id": "77933949881-se63i1vdgj2s6kou02ug9rb6jrccd37u.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBOz3TRYgKukSsRmGUyFjvmU9GatVX1I6Y"
+          "current_key": "AIzaSyC3W65nvgDJ9vFp7OvVXtZ6z5H7dbhDuq8"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "409853911898-qljljb39lmhvl2usqrp227qpbcurcsna.apps.googleusercontent.com",
+              "client_id": "77933949881-se63i1vdgj2s6kou02ug9rb6jrccd37u.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

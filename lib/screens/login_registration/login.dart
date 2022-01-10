@@ -1,9 +1,10 @@
 import 'dart:convert';
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:smart_personal_shopper/screens/home1.dart';
 import 'package:smart_personal_shopper/screens/login_registration/register.dart';
 import 'package:smart_personal_shopper/screens/profile.dart';
 import 'package:smart_personal_shopper/widget/header.dart';
@@ -27,7 +28,11 @@ TextEditingController passwordController = TextEditingController();
 class _LoginState extends State<Login> {
   bool _isLoading = false;
   double _headerHeight = 250;
-  Key _formKey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
+  String email ='';
+  String password ='';
+
+  final auth = FirebaseAuth.instance;
 
   get route => null;
 
@@ -57,11 +62,7 @@ class _LoginState extends State<Login> {
                             height: 150),
                       ),
 
-                      /*Text(
-                        'Hello',
-                        style: TextStyle(
-                            fontSize: 60, fontWeight: FontWeight.bold),
-                      ),*/
+
                       Text(
                         'Signin into your account',
                         style: TextStyle(color: Colors.grey),
@@ -72,21 +73,40 @@ class _LoginState extends State<Login> {
                           child: Column(
                             children: [
                               Container(
-                                child: TextField(
-                                  controller: emailController,
+                                child: TextFormField(
+                                  onChanged: (val){
+                                    setState(() => email = val.trim());
+
+                                  },
+                                  keyboardType: TextInputType.emailAddress,
                                   decoration: ThemeHelper().textInputDecoration(
-                                      'User Name', 'Enter your user name'),
+                                      'Email', 'Enter your email'),
+                                  validator: (val) {
+                                    if ((val!.isEmpty)){
+                                      return "Enter a valid email address";
+                                    }
+                                    return null;
+                                  },
                                 ),
                                 decoration:
                                     ThemeHelper().inputBoxDecorationShaddow(),
                               ),
                               SizedBox(height: 30.0),
                               Container(
-                                child: TextField(
-                                  controller: passwordController,
+                                child: TextFormField(
+                                  onChanged: (val){
+                                    setState(() => password = val.trim());
+                                  },
                                   obscureText: true,
                                   decoration: ThemeHelper().textInputDecoration(
                                       'Password', 'Enter your password'),
+                                  validator: (val) {
+                                    if (val!.length < 6 ){
+                                      return "Please enter your password";
+                                    }
+                                    return null;
+                                  },
+
                                 ),
                                 decoration:
                                     ThemeHelper().inputBoxDecorationShaddow(),
@@ -128,15 +148,20 @@ class _LoginState extends State<Login> {
                                           color: Colors.white),
                                     ),
                                   ),
-                                  onPressed: () {
-                                    signIn(emailController.text,
-                                        passwordController.text);
-                                    //After successful login we will redirect to profile page. Let's create profile page now
-                                    Navigator.pushReplacement(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => Profile()));
+                                  onPressed: () async {
+                                    if (_formKey.currentState!.validate()){
+                                    auth.signInWithEmailAndPassword(email: email, password: password).then((_){
+                                      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Home()));
+                                    }
+
+                                      );
+
+                                    print(email);
+                                    print(password);
+                                  }
                                   },
+
+
                                 ),
                               ),
                               Container(
@@ -172,36 +197,4 @@ class _LoginState extends State<Login> {
     );
   }
 
-  void signIn(String email, String password) async {
-    print(password);
-    var jsonData = null;
-    try {
-      SharedPreferences sharedPreferences =
-          await SharedPreferences.getInstance();
-      var response = await http.post(
-        Uri.parse("http://127.0.0.1/Projects/ShopilyAPI/login.php"),
-        headers: <String, String>{
-          'Content-Type': 'application/json; charset=UTF-8',
-        },
-        body:
-            jsonEncode(<String, String>{'email': email, 'password': password}),
-      );
-      if (response.statusCode == 200) {
-        jsonData = json.decode(response.body);
-        setState(() {
-          sharedPreferences.setString("token", jsonData('token'));
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const Home()),
-          );
-        });
-      } else {
-        print(response.body);
-      }
-    } catch (Exception) {
-      Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (context) => Home()),
-          (Route<dynamic> route) => false);
-    }
-  }
 }
