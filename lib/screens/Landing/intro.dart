@@ -58,7 +58,7 @@ class _IntroScreenState extends State<IntroScreen> {
                   child: FlatButton(
                     onPressed: () {
                       Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Home()));
+                          MaterialPageRoute(builder: (context) => Login()));
                     },
                     child: Text(
                       'Skip',
