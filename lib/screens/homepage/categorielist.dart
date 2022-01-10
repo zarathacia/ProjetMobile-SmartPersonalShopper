@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:smart_personal_shopper/screens/homepage/house.dart';
+import 'package:smart_personal_shopper/screens/homepage/snackes.dart';
 
+import '../profile.dart';
 import 'categorieitem.dart';
+import 'groceries.dart';
 
 class CategoryList extends StatelessWidget {
   const CategoryList({
@@ -21,15 +25,27 @@ class CategoryList extends StatelessWidget {
           ),
           CategoryItem(
             title: "Groceries",
-            press: () {},
+            isActive: true,
+            press: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => groceries()));
+            },
           ),
           CategoryItem(
             title: "House materials",
-            press: () {},
+            isActive: true,
+            press: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => house()));
+            },
           ),
           CategoryItem(
             title: "Snacks & Sides",
-            press: () {},
+            isActive: true,
+            press: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => snackes()));
+            },
           ),
         ],
       ),

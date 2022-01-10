@@ -257,52 +257,60 @@ class CartCounter extends StatefulWidget {
 
 class _CartCounterState extends State<CartCounter> {
   int numOfItems = 1;
+
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery
+        .of(context)
+        .size;
     return Row(
       children: <Widget>[
-        buildOutlineButton(
-          icon: Icons.remove,
-          press: () {
-            if (numOfItems > 1) {
-              setState(() {
-                numOfItems--;
-              });
-            }
-          },
+        SizedBox(
+          width: size.width * 0.06,
+          height: size.width * 0.06,
+          child: OutlineButton(
+            padding: EdgeInsets.zero,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(13),
+            ),
+            onPressed: () {
+              if (numOfItems > 1) {
+                setState(() {
+                  numOfItems--;
+                });
+              }
+            },
+            child: Icon(Icons.remove),
+          ),
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 1),
           child: Text(
             // if our item is less  then 10 then  it shows 01 02 like that
             numOfItems.toString().padLeft(2, "0"),
-            style: Theme.of(context).textTheme.headline6,
+            style: Theme
+                .of(context)
+                .textTheme
+                .headline6,
           ),
         ),
-        buildOutlineButton(
-            icon: Icons.add,
-            press: () {
+        SizedBox(
+          width: size.width * 0.06,
+          height: size.width * 0.06,
+          child: OutlineButton(
+            padding: EdgeInsets.zero,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(13),
+            ),
+            onPressed: () {
               setState(() {
                 numOfItems++;
               });
-            }),
-      ],
-    );
-  }
-
-  SizedBox buildOutlineButton({icon: Icons.add, required Function press}) {
-    Size size = MediaQuery.of(context).size;
-    return SizedBox(
-      width: size.width * 0.15,
-      height: size.width * 0.15,
-      child: OutlineButton(
-        padding: EdgeInsets.zero,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(13),
+            },
+            child: Icon(Icons.add),
+          ),
         ),
-        onPressed: press(),
-        child: Icon(icon),
-      ),
+      ],
     );
   }
 }
