@@ -1,23 +1,29 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/constants.dart';
 import 'package:smart_personal_shopper/data/product/ProductItems.dart';
 import 'package:smart_personal_shopper/screens/Payment/paycard.dart';
-import 'package:smart_personal_shopper/screens/home.dart';
 import 'package:smart_personal_shopper/screens/profile.dart';
-import 'package:smart_personal_shopper/widget/banner.dart';
-
 import 'details.dart';
 
-class ProductScreen extends StatelessWidget {
+class ProductScreen extends StatefulWidget{
+  @override
+  _ProductScreenState createState()=>_ProductScreenState();
+}
+
+class _ProductScreenState extends State<ProductScreen> {
+  final CollectionReference _products= FirebaseFirestore.instance.collection('products');
+
   TextEditingController controller = new TextEditingController();
   late String filter;
   @override
-  void initState() {
-    controller.addListener(() {
-      filter = controller.text;
-    });
-  }
+    void initState() {
+      controller.addListener(() {
+        filter = controller.text;
+      });
+    }
+
 
   @override
   Widget build(BuildContext context) {
