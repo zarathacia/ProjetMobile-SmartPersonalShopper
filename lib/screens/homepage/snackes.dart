@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/screens/Market/details.dart';
 import 'package:smart_personal_shopper/screens/homepage/categorielist.dart';
 import 'package:smart_personal_shopper/widget/appbar.dart';
+import 'package:smart_personal_shopper/widget/bottomnavbar.dart';
 
 import 'discount_card.dart';
 import 'item_card.dart';
