@@ -4,7 +4,12 @@ import 'package:smart_personal_shopper/screens/home.dart';
 import 'package:smart_personal_shopper/widget/button.dart';
 import 'edit_profile.dart';
 
-class Profile extends StatelessWidget {
+class Profile extends StatefulWidget {
+  @override
+  ProfileState createState() => ProfileState();
+}
+
+class ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size; //responsive sized

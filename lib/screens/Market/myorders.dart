@@ -50,7 +50,7 @@ class LunchState extends State<MyOrders> {
               dummyDataOfListView(
                   "images/hrissa.png", "hrissa sicam", "Cloths", "500dt", 3),
               dummyDataOfListView(
-                  "images/boga1.jpg", "Boga 1.5L", "Cloths", "500dt", 4),
+                  "images/boga.png", "Boga 1.5L", "Cloths", "500dt", 4),
             ],
           ),
         ),

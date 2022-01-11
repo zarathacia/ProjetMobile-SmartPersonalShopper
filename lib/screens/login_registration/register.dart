@@ -1,16 +1,19 @@
 import 'dart:convert';
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:smart_personal_shopper/screens/home.dart';
+import 'package:smart_personal_shopper/screens/home1.dart';
 import 'package:smart_personal_shopper/screens/login_registration/login.dart';
 import 'package:smart_personal_shopper/screens/profile.dart';
+import 'package:smart_personal_shopper/services/verify.dart';
 import 'package:smart_personal_shopper/widget/bottomsheet.dart';
 import 'package:smart_personal_shopper/widget/header.dart';
 import 'package:smart_personal_shopper/widget/socialbtn.dart';
 import 'package:smart_personal_shopper/widget/theme_helper.dart';
 import 'package:image_picker/image_picker.dart';
-
 import 'package:http/http.dart' as http;
 
 class register extends StatefulWidget {
@@ -22,6 +25,13 @@ class register extends StatefulWidget {
 
 class _registerState extends State<register> {
   final _formKey = GlobalKey<FormState>();
+  final auth = FirebaseAuth.instance;
+
+  String fname='';
+  String lname='';
+  String email='';
+  String phone='';
+  String password='';
   bool checkedValue = false;
   bool checkboxValue = false;
   late PickedFile _imageFile;
@@ -142,6 +152,10 @@ class _registerState extends State<register> {
                         ),
                         Container(
                           child: TextFormField(
+                            onChanged: (val){
+                              setState(() => fname = val);
+
+                            },
                             //controller: fnameController,
                             decoration: ThemeHelper().textInputDecoration(
                                 'First Name', 'Enter your first name'),
@@ -153,6 +167,10 @@ class _registerState extends State<register> {
                         ),
                         Container(
                           child: TextFormField(
+                            onChanged: (val){
+                              setState(() => lname = val);
+
+                            },
                             // controller: lnameController,
                             decoration: ThemeHelper().textInputDecoration(
                                 'Last Name', 'Enter your last name'),
@@ -162,6 +180,10 @@ class _registerState extends State<register> {
                         SizedBox(height: 20.0),
                         Container(
                           child: TextFormField(
+                            onChanged: (val){
+                              setState(() => email = val);
+
+                            },
                             // controller: emailController,
                             decoration: ThemeHelper().textInputDecoration(
                                 "E-mail address", "Enter your email"),
@@ -180,6 +202,10 @@ class _registerState extends State<register> {
                         SizedBox(height: 20.0),
                         Container(
                           child: TextFormField(
+                            onChanged: (val){
+                              setState(() => phone = val);
+
+                            },
                             // controller: phoneController,
                             decoration: ThemeHelper().textInputDecoration(
                                 "Mobile Number", "Enter your mobile number"),
@@ -197,12 +223,16 @@ class _registerState extends State<register> {
                         SizedBox(height: 20.0),
                         Container(
                           child: TextFormField(
+                            onChanged: (val){
+                              setState(() => password = val);
+
+                            },
                             //  controller: passwordController,
                             obscureText: true,
                             decoration: ThemeHelper().textInputDecoration(
                                 "Password*", "Enter your password"),
                             validator: (val) {
-                              if (val!.isEmpty) {
+                              if (val!.length < 6 ){
                                 return "Please enter your password";
                               }
                               return null;
@@ -262,8 +292,7 @@ class _registerState extends State<register> {
                             child: Padding(
                               padding:
                                   const EdgeInsets.fromLTRB(40, 10, 40, 10),
-                              child: Text(
-                                "Register".toUpperCase(),
+                              child: Text("Register".toUpperCase(),
                                 style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
@@ -271,15 +300,49 @@ class _registerState extends State<register> {
                                 ),
                               ),
                             ),
-                            onPressed: () {
-                              /* if (_formKey.currentState!.validate()) {}
-                                signUp(fnameController.text,
-                                        lnameController.text,
-                                        emailController.text,
-                                        phoneController.text,
-                                        passwordController.text);*/
+                            onPressed: () async {
+                              if (_formKey.currentState!.validate()){
+                                
+                                auth.createUserWithEmailAndPassword(email: email, password: password).then((_){
+
+                                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => VerifyScreen()));
+                                });
+                                print(fname);
+                                print(lname);
+                                print(email);
+                                print(phone);
+                                print(password);
+                              }
+
+
+                              //if (_formKey.currentState.validate()){
+                                //print(email);
+
+                              //}
                             },
                           ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.fromLTRB(10, 20, 10, 20),
+                          //child: Text('Don\'t have an account? Create'),
+                          child: Text.rich(TextSpan(children: [
+                            TextSpan(text: "Already have an account ? "),
+                            TextSpan(
+                              text: 'Login',
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              Login()));
+                                },
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.redAccent,
+                              ),
+                            ),
+                          ])),
                         ),
                         SizedBox(height: 10.0),
                         Text(
@@ -287,26 +350,26 @@ class _registerState extends State<register> {
                           style: TextStyle(color: Colors.grey),
                         ),
                         SizedBox(height: 25.0),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            buildSocialBtn(
-                              () => print('Login with Facebook'),
-                              AssetImage(
-                                'assets/logos/facebook.jpg',
-                              ),
-                            ),
-                            SizedBox(
-                              width: 30,
-                            ),
-                            buildSocialBtn(
-                              () => print('Login with Google'),
-                              AssetImage(
-                                'assets/logos/google.jpg',
-                              ),
-                            ),
-                          ],
-                        ),
+                        // Row(
+                        //   mainAxisAlignment: MainAxisAlignment.center,
+                        //   children: [
+                        //     buildSocialBtn(
+                        //       () => print('Login with Facebook'),
+                        //       AssetImage(
+                        //         'assets/logos/facebook.jpg',
+                        //       ),
+                        //     ),
+                        //     SizedBox(
+                        //       width: 30,
+                        //     ),
+                        //     buildSocialBtn(
+                        //       () => print('Login with Google'),
+                        //       AssetImage(
+                        //         'assets/logos/google.jpg',
+                        //       ),
+                        //     ),
+                        //   ],
+                        // ),
                       ],
                     ),
                   ),
