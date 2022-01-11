@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_personal_shopper/screens/Market/filter.dart';
 import 'package:smart_personal_shopper/screens/homepage/nav.dart';
 import 'package:smart_personal_shopper/widget/appbar.dart';
 
@@ -8,7 +9,7 @@ import 'item_list.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
-  HomeScreenState createState() =>  HomeScreenState();
+  HomeScreenState createState() => HomeScreenState();
 }
 
 class HomeScreenState extends State<HomeScreen> {
@@ -20,6 +21,10 @@ class HomeScreenState extends State<HomeScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
+            IconButton(
+              onPressed: () {Navigator.of(context).push(MaterialPageRoute(builder: (context) => filter()));},
+              icon: const Icon(Icons.search),
+            ),
             CategoryList(),
             ItemList(),
             DiscountCard(),
