@@ -1,21 +1,13 @@
-import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:smart_personal_shopper/screens/home.dart';
-import 'package:smart_personal_shopper/screens/home1.dart';
 import 'package:smart_personal_shopper/screens/login_registration/login.dart';
-import 'package:smart_personal_shopper/screens/profile/profile.dart';
 import 'package:smart_personal_shopper/services/verify.dart';
-import 'package:smart_personal_shopper/widget/bottomsheet.dart';
 import 'package:smart_personal_shopper/widget/header.dart';
-import 'package:smart_personal_shopper/widget/socialbtn.dart';
 import 'package:smart_personal_shopper/widget/theme_helper.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:http/http.dart' as http;
 
 class register extends StatefulWidget {
   @override

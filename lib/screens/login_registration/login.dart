@@ -1,17 +1,10 @@
-import 'dart:convert';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:smart_personal_shopper/screens/home1.dart';
 import 'package:smart_personal_shopper/screens/login_registration/register.dart';
-import 'package:smart_personal_shopper/screens/profile/profile.dart';
 import 'package:smart_personal_shopper/widget/header.dart';
 import 'package:smart_personal_shopper/widget/theme_helper.dart';
-import 'package:http/http.dart' as http;
-import 'package:smart_personal_shopper/models/env.dart';
-import 'package:smart_personal_shopper/models/user.dart';
 import '../home.dart';
 import 'forgotpass.dart';
 

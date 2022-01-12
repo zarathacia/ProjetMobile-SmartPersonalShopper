@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_personal_shopper/screens/home1.dart';
+import 'package:smart_personal_shopper/screens/zebla/home1.dart';
 import 'package:smart_personal_shopper/screens/login_registration/register.dart';
 import 'package:particles_flutter/particles_flutter.dart';
 import 'package:flutter/services.dart';

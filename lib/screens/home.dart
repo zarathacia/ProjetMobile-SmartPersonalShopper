@@ -2,8 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import 'package:smart_personal_shopper/constants.dart';
-import 'package:smart_personal_shopper/screens/chat/delete_it_after/chat_screen.dart';
-import 'package:smart_personal_shopper/screens/home1.dart';
 import 'package:smart_personal_shopper/screens/homepage/home_screen.dart';
 import 'Market/Market_screen.dart';
 import 'chat/List_of_Past_discussions.dart';
