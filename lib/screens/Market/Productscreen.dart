@@ -214,12 +214,19 @@ import 'package:smart_personal_shopper/screens/home.dart';
     @override
     Widget build(BuildContext context) {
       var screensize = MediaQuery.of(context).size;
+      String description;
+      if (product.description.length>10){
+        description=product.description.substring(0,10) +"... [more]";
+      }
+      else{
+        description=product.description +"... [more]";
+      }
       return InkWell(
         onTap: () => onTap(context),
         child: Container(
           child: Stack(
             children: <Widget>[
-              new Container(
+              Container(
                 padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
                 child: Column(
                   children: <Widget>[
@@ -255,9 +262,9 @@ import 'package:smart_personal_shopper/screens/home.dart';
                                 style: TextStyle(color: PrimaryRed),
                               ),
                               Text(
-                                product.description.substring(0,30)+"... [more]",
+                                description,
                                 style: TextStyle(color: PrimaryRed),
-                              ),
+                          ),
                               Spacer(),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

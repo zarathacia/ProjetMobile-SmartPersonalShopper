@@ -172,6 +172,7 @@ class _detailsState extends State<details> {
                                     child:
                                       Image.network(widget.currentProduct.image,
                                       width: screensize.width * 0.9,
+                                      height: screensize.height * 0.3,
                                       fit: BoxFit.fill,
                                     )))
                           ],

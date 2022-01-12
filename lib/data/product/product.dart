@@ -27,9 +27,6 @@ class Product {
       review: json['review']! as String
   );
 
-
-
-
   Map<String, Object?> toJson() {
     return {
       'id':id,
