@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/constants.dart';
-import 'package:smart_personal_shopper/screens/List_of_Past_discussions.dart';
+import 'package:smart_personal_shopper/screens/chat/List_of_Past_discussions.dart';
 import 'package:smart_personal_shopper/screens/login_registration/login.dart';
 import 'package:smart_personal_shopper/screens/settings.dart';
 
-import '../Chat_With_Personal_shopper.dart';
-import '../profile.dart';
+import '../chat/Chat_With_Personal_shopper.dart';
+import '../profile/profile.dart';
 
 class NavBar extends StatelessWidget {
   @override

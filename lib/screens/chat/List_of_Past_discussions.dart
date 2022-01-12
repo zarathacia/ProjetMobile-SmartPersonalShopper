@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/constants.dart';
 import 'package:smart_personal_shopper/screens/home.dart';
 
-import '../models/chatUsersModel.dart';
-import '../widget/conversationList.dart';
+import '../../models/chatUsersModel.dart';
+import '../../widget/conversationList.dart';
 
 class Listof extends StatelessWidget {
   @override

@@ -6,7 +6,7 @@ import 'package:smart_personal_shopper/screens/login_registration/register.dart'
 import 'Confirm_receival.dart';
 import 'choose_your_personal_shopper.dart';
 import 'login_registration/login.dart';
-import 'profile.dart';
+import 'profile/profile.dart';
 
 class Home1 extends StatefulWidget {
   const Home1({Key? key}) : super(key: key);
@@ -28,8 +28,7 @@ class _Home1State extends State<Home1> {
               fontSize: 25,
             )),
         centerTitle: true,
-        backgroundColor:
-        Color(0xFFff4d6d),
+        backgroundColor: Color(0xFFff4d6d),
         leading: Icon(
           Icons.menu,
           color: Colors.white,
@@ -65,8 +64,7 @@ class _Home1State extends State<Home1> {
               ),
               Text("Welcome message",
                   style: TextStyle(
-                    color:
-                    Color(0xFFff4d6d),
+                    color: Color(0xFFff4d6d),
                     fontSize: 20,
                   )),
             ],
@@ -84,8 +82,7 @@ class _Home1State extends State<Home1> {
               Navigator.push(
                   context, MaterialPageRoute(builder: (context) => Profile()));
             },
-            color:
-            Color(0xFFff4d6d),
+            color: Color(0xFFff4d6d),
             child: Text(
               'go to profile',
               style: TextStyle(
@@ -105,8 +102,7 @@ class _Home1State extends State<Home1> {
               Navigator.push(
                   context, MaterialPageRoute(builder: (context) => MyCard()));
             },
-             color:
-    Color(0xFFff4d6d),
+            color: Color(0xFFff4d6d),
             child: Text(
               'go to pay',
               style: TextStyle(
@@ -126,8 +122,7 @@ class _Home1State extends State<Home1> {
               Navigator.push(
                   context, MaterialPageRoute(builder: (context) => Choose()));
             },
-            color:
-            Color(0xFFff4d6d),
+            color: Color(0xFFff4d6d),
             child: Text(
               'choose your delivrer',
               style: TextStyle(
@@ -147,8 +142,7 @@ class _Home1State extends State<Home1> {
               Navigator.push(
                   context, MaterialPageRoute(builder: (context) => Confirm()));
             },
-            color:
-            Color(0xFFff4d6d),
+            color: Color(0xFFff4d6d),
             child: Text(
               'Rate',
               style: TextStyle(
@@ -168,8 +162,7 @@ class _Home1State extends State<Home1> {
               Navigator.push(
                   context, MaterialPageRoute(builder: (context) => Login()));
             },
-            color:
-            Color(0xFFff4d6d),
+            color: Color(0xFFff4d6d),
             child: Text(
               'Login',
               style: TextStyle(
@@ -189,8 +182,7 @@ class _Home1State extends State<Home1> {
               Navigator.push(
                   context, MaterialPageRoute(builder: (context) => register()));
             },
-            color:
-            Color(0xFFff4d6d),
+            color: Color(0xFFff4d6d),
             child: const Text(
               'Register',
               style: TextStyle(

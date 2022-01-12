@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
-import 'package:smart_personal_shopper/screens/List_of_Past_discussions.dart';
+import 'package:smart_personal_shopper/screens/chat/List_of_Past_discussions.dart';
 import 'package:smart_personal_shopper/screens/Market/Market_screen.dart';
 import 'package:smart_personal_shopper/screens/home.dart';
-import 'package:smart_personal_shopper/screens/profile.dart';
+import 'package:smart_personal_shopper/screens/profile/profile.dart';
 
 class HomePage extends StatefulWidget {
   @override

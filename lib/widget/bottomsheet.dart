@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:smart_personal_shopper/screens/edit_profile.dart';
+import 'package:smart_personal_shopper/screens/profile/edit_profile.dart';
 
 Widget bottomSheet(context) {
   return Container(

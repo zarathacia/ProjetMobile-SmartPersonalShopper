@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:smart_personal_shopper/provider/feedback.dart';
 import 'package:smart_personal_shopper/screens/Confirm_receival.dart';
 import 'package:smart_personal_shopper/screens/Market/address.dart';
-import 'package:smart_personal_shopper/screens/profile.dart';
+import 'package:smart_personal_shopper/screens/profile/profile.dart';
 
 import 'package:smart_personal_shopper/data/user.dart';
 import 'package:smart_personal_shopper/data/users.dart';
@@ -12,7 +12,7 @@ import 'package:smart_personal_shopper/widget/navbar.dart';
 
 import 'package:smart_personal_shopper/widget/user_card.dart';
 
-import 'List_of_Past_discussions.dart';
+import 'chat/List_of_Past_discussions.dart';
 import 'Market/Market_screen.dart';
 import 'Payment/paycard.dart';
 import 'home.dart';

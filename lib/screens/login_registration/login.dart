@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smart_personal_shopper/screens/home1.dart';
 import 'package:smart_personal_shopper/screens/login_registration/register.dart';
-import 'package:smart_personal_shopper/screens/profile.dart';
+import 'package:smart_personal_shopper/screens/profile/profile.dart';
 import 'package:smart_personal_shopper/widget/header.dart';
 import 'package:smart_personal_shopper/widget/theme_helper.dart';
 import 'package:http/http.dart' as http;
@@ -29,10 +29,9 @@ class _LoginState extends State<Login> {
   bool _isLoading = false;
   double _headerHeight = 250;
   final _formKey = GlobalKey<FormState>();
-  String email ='';
-  String password ='';
-  String userID ='';
-
+  String email = '';
+  String password = '';
+  String userID = '';
 
   final auth = FirebaseAuth.instance;
 
@@ -63,8 +62,6 @@ class _LoginState extends State<Login> {
                             width: 150,
                             height: 150),
                       ),
-
-
                       Text(
                         'Signin into your account',
                         style: TextStyle(color: Colors.grey),
@@ -76,9 +73,8 @@ class _LoginState extends State<Login> {
                             children: [
                               Container(
                                 child: TextFormField(
-                                  onChanged: (val){
+                                  onChanged: (val) {
                                     setState(() => email = val.trim());
-
                                   },
                                   keyboardType: TextInputType.emailAddress,
                                   decoration: ThemeHelper().textInputDecoration(
@@ -87,7 +83,7 @@ class _LoginState extends State<Login> {
                                     if (val!.isEmpty) {
                                       return "Email can't be empty";
                                     } else if (!RegExp(
-                                        r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$")
+                                            r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$")
                                         .hasMatch(val)) {
                                       return "Enter a valid email address";
                                     }
@@ -100,19 +96,18 @@ class _LoginState extends State<Login> {
                               SizedBox(height: 30.0),
                               Container(
                                 child: TextFormField(
-                                  onChanged: (val){
+                                  onChanged: (val) {
                                     setState(() => password = val.trim());
                                   },
                                   obscureText: true,
                                   decoration: ThemeHelper().textInputDecoration(
                                       'Password', 'Enter your password'),
                                   validator: (val) {
-                                    if (val!.length < 6 ){
+                                    if (val!.length < 6) {
                                       return "Please enter your password";
                                     }
                                     return null;
                                   },
-
                                 ),
                                 decoration:
                                     ThemeHelper().inputBoxDecorationShaddow(),
@@ -155,36 +150,37 @@ class _LoginState extends State<Login> {
                                     ),
                                   ),
                                   onPressed: () async {
-                                    if (_formKey.currentState!.validate()){
-                                    auth.signInWithEmailAndPassword(email: email, password: password).then((_){
-                                      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Home()));
+                                    if (_formKey.currentState!.validate()) {
+                                      auth
+                                          .signInWithEmailAndPassword(
+                                              email: email, password: password)
+                                          .then((_) {
+                                        Navigator.of(context).pushReplacement(
+                                            MaterialPageRoute(
+                                                builder: (context) => Home()));
+                                      });
+
+                                      print(email);
+                                      print(password);
+                                      print(auth.currentUser!.uid);
+                                      setState(() {
+                                        userID = auth.currentUser!.uid;
+                                      });
+                                      print("this is th user id ${userID}");
                                     }
-
-                                      );
-
-                                    print(email);
-                                    print(password);
-                                    print(auth.currentUser!.uid);
-                                    setState(() {
-                                      userID = auth.currentUser!.uid;
-                                    });
-                                    print("this is th user id ${userID}");
-                                  }
                                   },
-
-
                                 ),
                               ),
 
                               //direct button
                               Container(
                                 decoration:
-                                ThemeHelper().buttonBoxDecoration(context),
+                                    ThemeHelper().buttonBoxDecoration(context),
                                 child: ElevatedButton(
                                   style: ThemeHelper().buttonStyle(),
                                   child: Padding(
                                     padding:
-                                    EdgeInsets.fromLTRB(40, 10, 40, 10),
+                                        EdgeInsets.fromLTRB(40, 10, 40, 10),
                                     child: Text(
                                       'Sign In'.toUpperCase(),
                                       style: TextStyle(
@@ -193,15 +189,12 @@ class _LoginState extends State<Login> {
                                           color: Colors.white),
                                     ),
                                   ),
-                                  onPressed: ()  {
+                                  onPressed: () {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) =>
-                                                Home()));
+                                            builder: (context) => Home()));
                                   },
-
-
                                 ),
                               ),
                               //
@@ -237,5 +230,4 @@ class _LoginState extends State<Login> {
       ),
     );
   }
-
 }
