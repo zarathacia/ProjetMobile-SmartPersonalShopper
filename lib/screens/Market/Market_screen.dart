@@ -1,12 +1,17 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/constants.dart';
-import 'package:smart_personal_shopper/screens/Market/Market_items.dart';
+
 import 'package:smart_personal_shopper/screens/Payment/paycard.dart';
 import 'package:smart_personal_shopper/screens/home.dart';
 import 'package:smart_personal_shopper/screens/profile.dart';
 import 'Productscreen.dart';
 import 'Market_items.dart';
+import 'package:smart_personal_shopper/screens/Market/Market_items.dart';
+//import 'package:smart_personal_shopper/data/market.dart';
+final _firestore=FirebaseFirestore.instance;
+
 
 class marketScreen extends StatelessWidget {
   @override

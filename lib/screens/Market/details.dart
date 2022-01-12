@@ -1,12 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/constants.dart';
+import 'package:smart_personal_shopper/screens/Market/Productscreen.dart';
 import 'package:smart_personal_shopper/screens/Market/cart.dart';
 import 'package:smart_personal_shopper/screens/profile.dart';
-
+import 'package:smart_personal_shopper/data/product/product.dart';
 import '../Payment/paycard.dart';
 import '../home.dart';
 
-class details extends StatelessWidget {
+
+
+class details extends StatefulWidget{
+  Product currentProduct=Product(
+      name:"harissa",
+      description: "lorem",
+      price: "0.8",
+      review: "8",
+      image: "images/hrissa.png");
+  details() {
+
+    print("Non-parameterized constructor invoked");
+  }
+  details.product({required this.currentProduct});
+
+
+  @override
+  _detailsState createState()=>_detailsState();
+}
+
+class _detailsState extends State<details> {
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _priceController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     var screensize = MediaQuery.of(context).size;
@@ -26,8 +49,8 @@ class details extends StatelessWidget {
             color: Colors.white,
             size: 40,
           ),
-          onPressed: () => Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => Home())),
+          onPressed: () => Navigator.of(context).pop()
+              //.push(MaterialPageRoute(builder: (context) => ProductScreen())),
         ),
         leadingWidth: 30,
         actions: <Widget>[
@@ -83,7 +106,8 @@ class details extends StatelessWidget {
                       child: Column(
                         children: <Widget>[
                           Text(
-                              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor posuere eleifend. Etiam ut imperdiet odio, id euismod nisi. Nunc vulputate quis orci id luctus. Nulla facilisi. Vestibulum vulputate laoreet massa, vitae tempus nulla iaculis nec. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."),
+                            widget.currentProduct.description
+                          ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
@@ -111,7 +135,7 @@ class details extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          'hrissa sicam',
+                          widget.currentProduct.name,
                           style: Theme.of(context)
                               .textTheme
                               .headline4
@@ -130,7 +154,7 @@ class details extends StatelessWidget {
                               text: TextSpan(
                                 children: [
                                   TextSpan(
-                                    text: "   price : 0.8 DT",
+                                    text: widget.currentProduct.price+"  DT",
                                     style: TextStyle(
                                         fontSize: 18, color: Colors.white),
                                   ),
@@ -144,9 +168,8 @@ class details extends StatelessWidget {
                                       top: screensize.height * 0.002,
                                       right: screensize.height * 0.00,
                                     ),
-                                    child: Image.asset(
-                                      "images/hrissa.png",
-                                      height: screensize.height * 0.25,
+                                    child:
+                                      Image.network(widget.currentProduct.image,
                                       width: screensize.width * 0.9,
                                       fit: BoxFit.fill,
                                     )))
