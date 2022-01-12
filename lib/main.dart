@@ -4,6 +4,10 @@ import 'package:smart_personal_shopper/provider/feedback.dart';
 import 'package:smart_personal_shopper/screens/Landing/intro.dart';
 import 'package:firebase_core/firebase_core.dart';
 
+
+
+
+
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(

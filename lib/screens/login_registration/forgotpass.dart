@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,8 @@ class ForgotPasswordPage extends StatefulWidget {
 
 class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   final _formKey = GlobalKey<FormState>();
+  String email ='';
+  final auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -84,6 +87,10 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                           children: <Widget>[
                             Container(
                               child: TextFormField(
+                                onChanged: (val){
+                                  setState(() => email = val.trim());
+
+                                },
                                 decoration: ThemeHelper().textInputDecoration(
                                     "Email", "Enter your email"),
                                 validator: (val) {
@@ -120,12 +127,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                                 ),
                                 onPressed: () {
                                   if (_formKey.currentState!.validate()) {
-                                    Navigator.pushReplacement(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              ForgotPasswordVerificationPage()),
-                                    );
+                                    auth.sendPasswordResetEmail(email: email);
+                                    Navigator.of(context).pop();
                                   }
                                 },
                               ),

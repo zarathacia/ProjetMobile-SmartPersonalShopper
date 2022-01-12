@@ -31,6 +31,8 @@ class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
   String email ='';
   String password ='';
+  String userID ='';
+
 
   final auth = FirebaseAuth.instance;
 
@@ -82,7 +84,11 @@ class _LoginState extends State<Login> {
                                   decoration: ThemeHelper().textInputDecoration(
                                       'Email', 'Enter your email'),
                                   validator: (val) {
-                                    if ((val!.isEmpty)){
+                                    if (val!.isEmpty) {
+                                      return "Email can't be empty";
+                                    } else if (!RegExp(
+                                        r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$")
+                                        .hasMatch(val)) {
                                       return "Enter a valid email address";
                                     }
                                     return null;
@@ -158,12 +164,47 @@ class _LoginState extends State<Login> {
 
                                     print(email);
                                     print(password);
+                                    print(auth.currentUser!.uid);
+                                    setState(() {
+                                      userID = auth.currentUser!.uid;
+                                    });
+                                    print("this is th user id ${userID}");
                                   }
                                   },
 
 
                                 ),
                               ),
+
+                              //direct button
+                              Container(
+                                decoration:
+                                ThemeHelper().buttonBoxDecoration(context),
+                                child: ElevatedButton(
+                                  style: ThemeHelper().buttonStyle(),
+                                  child: Padding(
+                                    padding:
+                                    EdgeInsets.fromLTRB(40, 10, 40, 10),
+                                    child: Text(
+                                      'Sign In'.toUpperCase(),
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white),
+                                    ),
+                                  ),
+                                  onPressed: ()  {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                Home()));
+                                  },
+
+
+                                ),
+                              ),
+                              //
                               Container(
                                 margin: EdgeInsets.fromLTRB(10, 20, 10, 20),
                                 //child: Text('Don\'t have an account? Create'),
