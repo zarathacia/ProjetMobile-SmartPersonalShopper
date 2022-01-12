@@ -5,6 +5,7 @@ import 'package:smart_personal_shopper/constants.dart';
 import 'package:smart_personal_shopper/screens/home.dart';
 import 'package:smart_personal_shopper/widget/button.dart';
 import 'edit_profile.dart';
+import 'homepage/home_screen.dart';
 
 
 
@@ -63,7 +64,7 @@ class ProfileState extends State<Profile> {
             size: 40,
           ),
           onPressed: () => Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => Home())),
+              .push(MaterialPageRoute(builder: (context) => HomeScreen())),
         ),
         leadingWidth: 30,
       ),

@@ -82,6 +82,7 @@ class CategoryList extends StatelessWidget {
                 TextSpan(
                   text: "Shopily",
                   style: TextStyle(
+                    fontSize: 20,
                     color: PrimaryRed,
                   ),
                 ),
