@@ -14,7 +14,7 @@ List<Product> products = [
   Product(
       id: 0,
       title: "Hrissa sicam",
-      image: "images/hrissa.jpg",
+      image: "images/hrissa.png",
       description: "Lorem ipsum dolor sit amet",
       price: 0.850),
   Product(

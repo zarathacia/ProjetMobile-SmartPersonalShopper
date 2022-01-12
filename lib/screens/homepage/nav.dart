@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_personal_shopper/constants.dart';
-import 'package:smart_personal_shopper/screens/chat/List_of_Past_discussions.dart';
 import 'package:smart_personal_shopper/screens/login_registration/login.dart';
-import 'package:smart_personal_shopper/screens/settings.dart';
 
 import '../chat/Chat_With_Personal_shopper.dart';
 import '../profile/profile.dart';
@@ -35,19 +32,19 @@ class NavBar extends StatelessWidget {
               leading: Icon(Icons.person),
               title: Text('chat'),
               onTap: () => Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => Listof()))),
+                  .push(MaterialPageRoute(builder: (context) => Chat()))),
           ListTile(
             leading: Icon(Icons.notifications),
             title: Text('Request'),
             onTap: () => null,
             trailing: ClipOval(
               child: Container(
-                color: PrimaryRed,
+                color: Colors.red,
                 width: 20,
                 height: 20,
                 child: Center(
                   child: Text(
-                    '2',
+                    '8',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 12,
@@ -61,8 +58,7 @@ class NavBar extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.settings),
             title: Text('Settings'),
-            onTap: () => Navigator.of(context)
-                .push(MaterialPageRoute(builder: (context) => Setting())),
+            onTap: () => null,
           ),
           Divider(),
           ListTile(

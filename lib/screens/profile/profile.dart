@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/constants.dart';
 import 'package:smart_personal_shopper/screens/home.dart';
+import 'package:smart_personal_shopper/screens/homepage/home_screen.dart';
 import 'package:smart_personal_shopper/widget/button.dart';
 import 'edit_profile.dart';
 
@@ -61,7 +62,7 @@ class ProfileState extends State<Profile> {
             size: 40,
           ),
           onPressed: () => Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => Home())),
+              .push(MaterialPageRoute(builder: (context) => HomeScreen())),
         ),
         leadingWidth: 30,
       ),
