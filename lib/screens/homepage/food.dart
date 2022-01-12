@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/screens/Market/details.dart';
+import 'package:smart_personal_shopper/screens/homepage/categorielist.dart';
+import 'package:smart_personal_shopper/widget/appbar.dart';
+import 'package:smart_personal_shopper/widget/bottomnavbar.dart';
+
 import 'discount_card.dart';
 import 'item_card.dart';
+import 'nav.dart';
 
-class house extends StatelessWidget {
+class food extends StatelessWidget {
 
 
   @override
@@ -14,7 +19,7 @@ class house extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             //CategoryList(),
-            house_matriel(),
+            snacke(),
             DiscountCard(),
           ],
         ),
@@ -22,8 +27,8 @@ class house extends StatelessWidget {
     );
   }
 }
-class house_matriel extends StatelessWidget {
-  const house_matriel({
+class snacke extends StatelessWidget {
+  const  snacke ({
     Key? key,
   }) : super(key: key);
 
@@ -36,8 +41,8 @@ class house_matriel extends StatelessWidget {
         child: Row(
           children: <Widget>[
             ItemCard(
-              imgSrc: "images/mixeur.jpg",
-              title: "120W hand mixer",
+              imgSrc: "images/hrissa.png",
+              title: "hrissa",
               shopName: "Carrefour",
               press: () {
                 Navigator.push(
@@ -51,9 +56,9 @@ class house_matriel extends StatelessWidget {
               },
             ),
             ItemCard(
-              imgSrc: "images/omo.jpg",
-              title: "Marseille soap powder machine laundry",
-              shopName: "carrefour",
+              imgSrc: "images/pizza.png",
+              title: "pizza",
+              shopName: "Carrefour",
               press: () {
                 Navigator.push(
                   context,
@@ -66,9 +71,9 @@ class house_matriel extends StatelessWidget {
               },
             ),
             ItemCard(
-              imgSrc: "images/robo.jpg",
-              title: "Blender 1.5L",
-              shopName: "carrefour",
+              imgSrc: "images/riz_blanc.png",
+              title: "Riz",
+              shopName: "Carrefour",
               press: () {
                 Navigator.push(
                   context,

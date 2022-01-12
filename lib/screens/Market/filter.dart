@@ -46,8 +46,10 @@ class _filterState extends State<filter> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       appBar: AppBar(
         title: const Text('search item'),
+        backgroundColor: PrimaryRed,
       ),
       body: Padding(
         padding: const EdgeInsets.all(10),
@@ -70,15 +72,15 @@ class _filterState extends State<filter> {
                 itemCount: _foundUsers.length,
                 itemBuilder: (context, index) => Card(
                   key: ValueKey(_foundUsers[index].id),
-                  color: Colors.redAccent,
+                  color: Colors.grey[50]?.withOpacity(0.01),
                   elevation: 4,
                   margin: const EdgeInsets.symmetric(vertical: 10),
                   child: ListTile(
-                    leading: Text(
-                      _foundUsers[index].id.toString(),
-                      style: const TextStyle(fontSize: 24),
+                    leading: Image.asset( _foundUsers[index].image.toString(),),
+                    title: Text(_foundUsers[index].title,
+                        style: TextStyle(fontSize: 24,color: Colors.white),
                     ),
-                    title: Text(_foundUsers[index].title),
+
 
                   ),
                 ),
