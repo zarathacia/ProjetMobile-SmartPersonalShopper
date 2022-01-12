@@ -1,12 +1,12 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/constants.dart';
-import 'Payment/paycard.dart';
+import '../Payment/paycard.dart';
 import 'package:smart_personal_shopper/screens/login_registration/register.dart';
-import 'Confirm_receival.dart';
-import 'choose_your_personal_shopper.dart';
-import 'login_registration/login.dart';
-import 'profile/profile.dart';
+import '../Confirm_receival.dart';
+import '../choose_your_personal_shopper.dart';
+import '../login_registration/login.dart';
+import '../profile/profile.dart';
 
 class Home1 extends StatefulWidget {
   const Home1({Key? key}) : super(key: key);

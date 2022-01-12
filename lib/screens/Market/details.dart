@@ -1,3 +1,4 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/constants.dart';
 import 'package:smart_personal_shopper/screens/Market/Productscreen.dart';
@@ -54,8 +55,22 @@ class _detailsState extends State<details> {
           TextButton(
             style: style,
             onPressed: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => MyCard()));
+              AwesomeDialog(
+                context: context,
+                headerAnimationLoop: false,
+                dialogType: DialogType.NO_HEADER,
+                title: 'Your have 180.52 DT',
+                desc: 'Do you want to recharge your account?',
+                btnCancelText: "No",
+                btnOkText: "Recharge",
+                btnCancelOnPress: () {},
+                btnOkOnPress: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) => MyCard()));
+                },
+                btnOkColor: SecondaryRed,
+                btnCancelColor: Colors.grey[500],
+              )..show();
             },
             child: const Text('Credit:180.52 DT'),
           ),

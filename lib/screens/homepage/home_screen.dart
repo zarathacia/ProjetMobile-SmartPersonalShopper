@@ -20,6 +20,7 @@ class HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     //return Scaffold(
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: CategoryList(),
       theme: ThemeData(
         // Define the default brightness and colors.
@@ -91,7 +92,7 @@ class CategoryList extends StatelessWidget {
                   btnCancelColor: Colors.grey[500],
                 )..show();
               },
-              child: const Text('Credit:180.52 DT'),
+              child: Text('Credit:180.52 DT'),
             ),
             IconButton(
               onPressed: () {
