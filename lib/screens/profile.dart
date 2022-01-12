@@ -6,6 +6,8 @@ import 'package:smart_personal_shopper/screens/home.dart';
 import 'package:smart_personal_shopper/widget/button.dart';
 import 'edit_profile.dart';
 
+
+
 class Profile extends StatefulWidget {
   @override
   ProfileState createState() => ProfileState();
@@ -18,9 +20,8 @@ class ProfileState extends State<Profile> {
   String _email ="";
   String _fname = "";
   String _lname = "";
-  String _password = "";
-  //String _location ="";
-  //String _credit="";
+  String _location ="";
+  String _credit="";
   String _phonenumber ="";
 
   
@@ -33,13 +34,9 @@ class ProfileState extends State<Profile> {
       _fname =userDoc.get('first name');
       _lname =userDoc.get('last name');
       _email =userDoc.get('email');
-      _password =userDoc.get('password');
-      //_location =userDoc.get('location') ;
-      //_credit =userDoc.get('credit');
+      _location =userDoc.get('location') ;
+      _credit =userDoc.get('credit');
       _phonenumber =userDoc.get('phone number');
-
-      print(_fname);
-      //print(_credit);
 
   }
 
@@ -134,7 +131,7 @@ class ProfileState extends State<Profile> {
                       width: 20,
                     ),
                     Text(
-                      '${_fname}',
+                      _location,
                       style: TextStyle(
                         fontSize: 18.0,
                         fontStyle: FontStyle.italic,
@@ -177,7 +174,7 @@ class ProfileState extends State<Profile> {
                       width: 20,
                     ),
                     Text(
-                      '$_fname',
+                      _credit+ " DT",
                       style: TextStyle(
                         fontSize: 18.0,
                         fontStyle: FontStyle.italic,
