@@ -13,6 +13,7 @@ class CategoryList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool _a = false;
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
@@ -25,26 +26,25 @@ class CategoryList extends StatelessWidget {
           ),
           CategoryItem(
             title: "Groceries",
-            isActive: true,
+            isActive: _a,
             press: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => groceries()));
+              _a = !_a;
+              print(_a);
+              //Navigator.of(context).push(MaterialPageRoute(builder: (context) => groceries()));
             },
           ),
           CategoryItem(
             title: "House materials",
-            isActive: true,
+            isActive: false,
             press: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => house()));
+              // Navigator.of(context).push(MaterialPageRoute(builder: (context) => house()));
             },
           ),
           CategoryItem(
             title: "Snacks & Sides",
-            isActive: true,
+            isActive: false,
             press: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => snackes()));
+              // Navigator.of(context).push(MaterialPageRoute(builder: (context) => snackes()));
             },
           ),
         ],

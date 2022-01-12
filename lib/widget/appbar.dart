@@ -5,6 +5,7 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/constants.dart';
 import 'package:smart_personal_shopper/screens/Payment/paycard.dart';
+import 'package:smart_personal_shopper/screens/homepage/nav.dart';
 import 'package:smart_personal_shopper/screens/profile.dart';
 
 AppBar homeAppBar(BuildContext context) {
@@ -15,9 +16,11 @@ AppBar homeAppBar(BuildContext context) {
     elevation: 0,
     leading: IconButton(
       icon: SvgPicture.asset("assets/logos/menu.svg"),
-      onPressed: () {},
+      onPressed: () {
+        // Navigator.of(context).push(MaterialPageRoute(builder: (context) => NavBar()));
+      },
     ),
-    title: RichText(
+    /*title: RichText(
       text: TextSpan(
         style: Theme.of(context)
             .textTheme
@@ -32,7 +35,7 @@ AppBar homeAppBar(BuildContext context) {
           ),
         ],
       ),
-    ),
+    ),*/
     actions: <Widget>[
       TextButton(
         style: style,
