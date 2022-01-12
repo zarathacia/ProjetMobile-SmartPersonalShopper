@@ -85,14 +85,12 @@ class details extends StatelessWidget {
                           Text(
                               "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor posuere eleifend. Etiam ut imperdiet odio, id euismod nisi. Nunc vulputate quis orci id luctus. Nulla facilisi. Vestibulum vulputate laoreet massa, vitae tempus nulla iaculis nec. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."),
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               Container(
-                                margin:
-                                    EdgeInsets.only(top: size.height * 0.05),
-                                padding: EdgeInsets.only(
-                                  top: size.height * 0.0012,
-                                  left: size.width * 0.05,
+                                margin: EdgeInsets.all(size.height * 0.01),
+                                padding: EdgeInsets.symmetric(
+                                  vertical: size.height * 0.005,
                                 ),
                                 child: CounterWithFavBtn(),
                               ),
@@ -231,7 +229,7 @@ class CounterWithFavBtn extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
         CartCounter(),
-        Container(
+        /* Container(
           margin: EdgeInsets.only(left: size.width * 0.13),
           padding: EdgeInsets.all(8),
           height: 50,
@@ -244,7 +242,7 @@ class CounterWithFavBtn extends StatelessWidget {
             Icons.favorite,
             color: Colors.white,
           ),
-        )
+        )*/
       ],
     );
   }
@@ -260,9 +258,7 @@ class _CartCounterState extends State<CartCounter> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery
-        .of(context)
-        .size;
+    Size size = MediaQuery.of(context).size;
     return Row(
       children: <Widget>[
         SizedBox(
@@ -274,7 +270,7 @@ class _CartCounterState extends State<CartCounter> {
               borderRadius: BorderRadius.circular(13),
             ),
             onPressed: () {
-              if (numOfItems > 1) {
+              if (numOfItems > 0) {
                 setState(() {
                   numOfItems--;
                 });
@@ -288,10 +284,7 @@ class _CartCounterState extends State<CartCounter> {
           child: Text(
             // if our item is less  then 10 then  it shows 01 02 like that
             numOfItems.toString().padLeft(2, "0"),
-            style: Theme
-                .of(context)
-                .textTheme
-                .headline6,
+            style: Theme.of(context).textTheme.headline6,
           ),
         ),
         SizedBox(

@@ -151,6 +151,18 @@ class ProfileState extends State<Profile> {
                         letterSpacing: 2.0,
                       ),
                     ),
+                    SizedBox(
+                      width: 50,
+                    ),
+                    /*Text(
+                      'recharge your account',
+                      style: TextStyle(
+                        fontSize: 15.0,
+                        fontStyle: FontStyle.italic,
+                        fontWeight: FontWeight.w300,
+                        color: Colors.black,
+                      ),
+                    ),*/
                   ],
                 ),
               ],
