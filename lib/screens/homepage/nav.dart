@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:smart_personal_shopper/constants.dart';
+import 'package:smart_personal_shopper/screens/List_of_Past_discussions.dart';
 import 'package:smart_personal_shopper/screens/login_registration/login.dart';
+import 'package:smart_personal_shopper/screens/settings.dart';
 
 import '../Chat_With_Personal_shopper.dart';
 import '../profile.dart';
@@ -19,10 +22,9 @@ class NavBar extends StatelessWidget {
               child: ClipRRect(
                 child: Image.asset('images/pouya.jfif'),
                 borderRadius: BorderRadius.circular(150),
-                  ),
-                   radius: 100.0,
-                ),
-
+              ),
+              radius: 100.0,
+            ),
           ),
           ListTile(
             leading: Icon(Icons.favorite),
@@ -30,24 +32,22 @@ class NavBar extends StatelessWidget {
             onTap: () => null,
           ),
           ListTile(
-            leading: Icon(Icons.person),
-            title: Text('chat'),
-            onTap: () =>
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => Chat()))
-          ),
+              leading: Icon(Icons.person),
+              title: Text('chat'),
+              onTap: () => Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => Listof()))),
           ListTile(
             leading: Icon(Icons.notifications),
             title: Text('Request'),
             onTap: () => null,
             trailing: ClipOval(
               child: Container(
-                color: Colors.red,
+                color: PrimaryRed,
                 width: 20,
                 height: 20,
                 child: Center(
                   child: Text(
-                    '8',
+                    '2',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 12,
@@ -57,20 +57,19 @@ class NavBar extends StatelessWidget {
               ),
             ),
           ),
-
           Divider(),
           ListTile(
             leading: Icon(Icons.settings),
             title: Text('Settings'),
-            onTap: () => null,
+            onTap: () => Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => Settings())),
           ),
           Divider(),
           ListTile(
-            title: Text('Exit'),
-            leading: Icon(Icons.exit_to_app),
-            onTap: () =>  Navigator.of(context)
-             .push(MaterialPageRoute(builder: (context) => Login()))
-          ),
+              title: Text('Exit'),
+              leading: Icon(Icons.exit_to_app),
+              onTap: () => Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => Login()))),
         ],
       ),
     );
