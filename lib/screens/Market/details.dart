@@ -11,6 +11,7 @@ import '../home.dart';
 
 class details extends StatefulWidget{
   Product currentProduct=Product(
+      id:"001",
       name:"harissa",
       description: "lorem",
       price: "0.8",

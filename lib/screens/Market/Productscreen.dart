@@ -9,6 +9,7 @@ import 'package:smart_personal_shopper/screens/home.dart';
   import 'details.dart';
 
   Product currentProduct= Product(
+      id:"001",
       name:"harissa",
       description: "lorem",
       price: "0.8",
