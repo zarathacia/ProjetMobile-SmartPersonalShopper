@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/constants.dart';
 import 'package:smart_personal_shopper/screens/Payment/paycard.dart';
 
-class Settings extends StatefulWidget {
+class Setting extends StatefulWidget {
   @override
-  _SettingsState createState() => _SettingsState();
+  _SettingState createState() => _SettingState();
 }
 
-class _SettingsState extends State<Settings> {
+class _SettingState extends State<Setting> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

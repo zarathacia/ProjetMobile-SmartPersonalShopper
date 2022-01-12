@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:smart_personal_shopper/constants.dart';
@@ -15,6 +17,31 @@ class EditProfile extends StatefulWidget {
 
 class _EditProfileState extends State<EditProfile> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
+  User? user = FirebaseAuth.instance.currentUser;
+  String _userID = "";
+  String _email ="";
+  String _fname = "";
+  String _lname = "";
+  String _password = "";
+  String _location ="";
+  String _credit="";
+  String _phonenumber ="";
+
+
+  void getData() async{
+    _userID=user!.uid;
+    final DocumentSnapshot userDoc=
+    await FirebaseFirestore.instance.collection('userdata').doc(_userID).get();
+    _fname =userDoc.get('first name');
+    _lname =userDoc.get('last name');
+    _email =userDoc.get('email');
+    _password =userDoc.get('password');
+    _location =userDoc.get('location') ;
+    _credit =userDoc.get('credit');
+    _phonenumber =userDoc.get('phone number');
+    print(_fname);
+
+  }
   //same here XD
   /* TextEditingController displayNameController = TextEditingController();
   TextEditingController bioController = TextEditingController();
@@ -67,7 +94,9 @@ class _EditProfileState extends State<EditProfile> {
             ),
             onPressed: () {
               Navigator.of(context).push(MaterialPageRoute(
-                  builder: (BuildContext context) => Settings()));
+                  builder: (BuildContext context) => Setting()));
+              print(_password);
+              print(_email);
             },
           ),
         ],
@@ -146,10 +175,10 @@ class _EditProfileState extends State<EditProfile> {
               SizedBox(
                 height: 35,
               ),
-              buildTextField("Full Name", "Kevin Pouya", false),
-              buildTextField("E-mail", 'kevin.pouya56@gmail.com', false),
+              buildTextField("Full Name", "$_fname", false),
+              buildTextField("E-mail", '$_email', false),
               buildTextField("Password", "********", true),
-              buildTextField("Location", "Florida, USA", false),
+              buildTextField("Location", "$_location", false),
               SizedBox(
                 height: 35,
               ),

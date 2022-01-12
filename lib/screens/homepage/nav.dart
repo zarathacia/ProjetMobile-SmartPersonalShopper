@@ -62,7 +62,7 @@ class NavBar extends StatelessWidget {
             leading: Icon(Icons.settings),
             title: Text('Settings'),
             onTap: () => Navigator.of(context)
-                .push(MaterialPageRoute(builder: (context) => Settings())),
+                .push(MaterialPageRoute(builder: (context) => Setting())),
           ),
           Divider(),
           ListTile(

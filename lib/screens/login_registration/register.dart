@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
@@ -42,42 +43,42 @@ class _registerState extends State<register> {
   TextEditingController phoneController= TextEditingController();
   TextEditingController passwordController= TextEditingController();*/
 
-  void signUp(String fname, String lname, String email, String phone,
-      String password) async {
-    var jsonData = null;
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    try {
-      var response = await http.post(
-        Uri.parse("http://127.0.0.1/Projects/ShopilyAPI/register.php"),
-        headers: <String, String>{
-          'Content-Type': 'application/json; charset=UTF-8',
-        },
-        body: jsonEncode(<String, String>{
-          'Firstname': fname,
-          'Lastname': lname,
-          'Email': email,
-          'Phone': phone,
-          'Password': password
-        }),
-      );
-
-      if (response.statusCode == 200) {
-        jsonData = json.decode(response.body);
-        setState(() {
-          sharedPreferences.setString("token", jsonData('token'));
-          Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(builder: (context) => Login()),
-              (Route<dynamic> route) => false);
-        });
-      } else {
-        print(response.body);
-      }
-    } catch (Exception) {
-      Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (context) => Login()),
-          (Route<dynamic> route) => false);
-    }
-  }
+  // void signUp(String fname, String lname, String email, String phone,
+  //     String password) async {
+  //   var jsonData = null;
+  //   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  //   try {
+  //     var response = await http.post(
+  //       Uri.parse("http://127.0.0.1/Projects/ShopilyAPI/register.php"),
+  //       headers: <String, String>{
+  //         'Content-Type': 'application/json; charset=UTF-8',
+  //       },
+  //       body: jsonEncode(<String, String>{
+  //         'Firstname': fname,
+  //         'Lastname': lname,
+  //         'Email': email,
+  //         'Phone': phone,
+  //         'Password': password
+  //       }),
+  //     );
+  //
+  //     if (response.statusCode == 200) {
+  //       jsonData = json.decode(response.body);
+  //       setState(() {
+  //         sharedPreferences.setString("token", jsonData('token'));
+  //         Navigator.of(context).pushAndRemoveUntil(
+  //             MaterialPageRoute(builder: (context) => Login()),
+  //             (Route<dynamic> route) => false);
+  //       });
+  //     } else {
+  //       print(response.body);
+  //     }
+  //   } catch (Exception) {
+  //     Navigator.of(context).pushAndRemoveUntil(
+  //         MaterialPageRoute(builder: (context) => Login()),
+  //         (Route<dynamic> route) => false);
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -156,6 +157,11 @@ class _registerState extends State<register> {
                               setState(() => fname = val);
 
                             },
+                            validator: (val) {
+                            if (val!.isEmpty) {
+                            return "First name can't be empty";
+                            }
+                            },
                             //controller: fnameController,
                             decoration: ThemeHelper().textInputDecoration(
                                 'First Name', 'Enter your first name'),
@@ -170,6 +176,11 @@ class _registerState extends State<register> {
                             onChanged: (val){
                               setState(() => lname = val);
 
+                            },
+                            validator: (val) {
+                              if (val!.isEmpty) {
+                                return "Last name can't be empty";
+                              };
                             },
                             // controller: lnameController,
                             decoration: ThemeHelper().textInputDecoration(
@@ -189,9 +200,11 @@ class _registerState extends State<register> {
                                 "E-mail address", "Enter your email"),
                             keyboardType: TextInputType.emailAddress,
                             validator: (val) {
-                              if (!(val!.isEmpty) &&
-                                  !RegExp(r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$")
-                                      .hasMatch(val)) {
+                              if (val!.isEmpty) {
+                                return "Email can't be empty";
+                              } else if (!RegExp(
+                                  r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$")
+                                  .hasMatch(val)) {
                                 return "Enter a valid email address";
                               }
                               return null;
@@ -211,11 +224,9 @@ class _registerState extends State<register> {
                                 "Mobile Number", "Enter your mobile number"),
                             keyboardType: TextInputType.phone,
                             validator: (val) {
-                              if (!(val!.isEmpty) &&
-                                  !RegExp(r"^(\d+)*$").hasMatch(val)) {
-                                return "Enter a valid phone number";
-                              }
-                              return null;
+                              if (val!.isEmpty) {
+                                return "Phone number can't be empty";
+                              };
                             },
                           ),
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
@@ -303,7 +314,13 @@ class _registerState extends State<register> {
                             onPressed: () async {
                               if (_formKey.currentState!.validate()){
                                 
-                                auth.createUserWithEmailAndPassword(email: email, password: password).then((_){
+                                auth.createUserWithEmailAndPassword(email: email, password: password).then((value){
+                                  FirebaseFirestore.instance.collection('userdata').doc(value.user!.uid).set(
+                                      {'email': value.user!.email,
+                                        'first name': fname,
+                                        'last name': lname,
+                                        'phone number': phone,
+                                        'password': password});
 
                                   Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => VerifyScreen()));
                                 });

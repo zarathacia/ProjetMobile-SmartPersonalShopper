@@ -31,19 +31,4 @@ List<Market> markets = [
     title: "Géant",
     image: "images/geant.jpg",
   ),
-  Market(
-    id: 5,
-    title: "Papa John's",
-    image: "images/papaj.png",
-  ),
-  /*Market(
-    id: 6,
-    title: "Carrefour",
-    image: "images/carrefour.png",
-  ),
-  Market(
-    id: 7,
-    title: "Aziza",
-    image: "images/aziza.png",
-  ),*/
 ];

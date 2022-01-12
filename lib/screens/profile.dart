@@ -1,8 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/constants.dart';
 import 'package:smart_personal_shopper/screens/home.dart';
 import 'package:smart_personal_shopper/widget/button.dart';
 import 'edit_profile.dart';
+
+
 
 class Profile extends StatefulWidget {
   @override
@@ -10,9 +14,36 @@ class Profile extends StatefulWidget {
 }
 
 class ProfileState extends State<Profile> {
+  final Stream<QuerySnapshot> userdata = FirebaseFirestore.instance.collection('userdata').snapshots();
+  User? user = FirebaseAuth.instance.currentUser;
+  String _userID = "";
+  String _email ="";
+  String _fname = "";
+  String _lname = "";
+  String _location ="";
+  String _credit="";
+  String _phonenumber ="";
+
+  
+
+  void getData() async{
+  _userID=user!.uid;
+
+  final DocumentSnapshot userDoc=
+      await FirebaseFirestore.instance.collection('userdata').doc(_userID).get();
+      _fname =userDoc.get('first name');
+      _lname =userDoc.get('last name');
+      _email =userDoc.get('email');
+      _location =userDoc.get('location') ;
+      _credit =userDoc.get('credit');
+      _phonenumber =userDoc.get('phone number');
+
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size; //responsive sized
+     getData();
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -84,7 +115,7 @@ class ProfileState extends State<Profile> {
               //crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Kevin Pouya",
+                  "${_lname} ${_fname}",
                   style: TextStyle(
                       color: Color(0xFFff4d6d),
                       fontStyle: FontStyle.normal,
@@ -100,7 +131,7 @@ class ProfileState extends State<Profile> {
                       width: 20,
                     ),
                     Text(
-                      'Florida, USA',
+                      _location,
                       style: TextStyle(
                         fontSize: 18.0,
                         fontStyle: FontStyle.italic,
@@ -114,6 +145,7 @@ class ProfileState extends State<Profile> {
                 SizedBox(
                   height: 20,
                 ),
+
                 Row(
                   children: <Widget>[
                     Icon(Icons.mail),
@@ -121,7 +153,7 @@ class ProfileState extends State<Profile> {
                       width: 20,
                     ),
                     Text(
-                      'kevin.pouya56@gmail.com',
+                      '${_email}',
                       style: TextStyle(
                         fontSize: 18.0,
                         fontStyle: FontStyle.italic,
@@ -142,7 +174,7 @@ class ProfileState extends State<Profile> {
                       width: 20,
                     ),
                     Text(
-                      '180.50',
+                      _credit+ " DT",
                       style: TextStyle(
                         fontSize: 18.0,
                         fontStyle: FontStyle.italic,
@@ -178,5 +210,6 @@ class ProfileState extends State<Profile> {
         ],
       ),
     );
+
   }
 }

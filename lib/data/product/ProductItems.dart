@@ -4,10 +4,10 @@ class Product {
   final double price;
   Product(
       {required this.id,
-      required this.image,
-      required this.title,
-      required this.description,
-      required this.price});
+        required this.image,
+        required this.title,
+        required this.description,
+        required this.price});
 }
 
 List<Product> products = [
