@@ -24,11 +24,6 @@ class NavBar extends StatelessWidget {
             ),
           ),
           ListTile(
-            leading: Icon(Icons.favorite),
-            title: Text('Favorites'),
-            onTap: () => null,
-          ),
-          ListTile(
               leading: Icon(Icons.person),
               title: Text('chat'),
               onTap: () => Navigator.of(context)
