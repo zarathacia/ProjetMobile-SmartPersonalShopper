@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/constants.dart';
-import 'package:smart_personal_shopper/screens/Market/Productscreen.dart';
-import 'package:smart_personal_shopper/screens/Market/cart.dart';
+import 'package:smart_personal_shopper/screens/Market/product_screen.dart';
+import 'package:smart_personal_shopper/screens/Market/cart_screen.dart';
 import 'package:smart_personal_shopper/screens/profile.dart';
 import 'package:smart_personal_shopper/data/product/product.dart';
 import '../Payment/paycard.dart';
 import '../home.dart';
-
-
 
 class details extends StatefulWidget{
   Product currentProduct=Product(
@@ -213,7 +211,7 @@ class AddToCart extends StatelessWidget {
               color: Color(0xFFff4d6d),
               onPressed: () {
                 Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => Cart()));
+                    .push(MaterialPageRoute(builder: (context) => CartScreen()));
               },
             ),
           ),

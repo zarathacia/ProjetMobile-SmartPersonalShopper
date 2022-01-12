@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:smart_personal_shopper/provider/feedback.dart';
 import 'package:smart_personal_shopper/screens/Landing/intro.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:smart_personal_shopper/services/database.dart';
 import 'package:smart_personal_shopper/screens/test.dart';
 
 

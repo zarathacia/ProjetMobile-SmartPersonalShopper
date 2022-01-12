@@ -116,7 +116,7 @@ import 'package:smart_personal_shopper/screens/home.dart';
 
         return Column(children: <Widget>[
             Text(
-              'choose your products',
+              'Choose your products',
               textAlign: TextAlign.center,
               style: TextStyle(
                 height: 2,
