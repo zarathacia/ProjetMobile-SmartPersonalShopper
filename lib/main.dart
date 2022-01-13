@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:path/path.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_personal_shopper/provider/feedback.dart';
 import 'package:smart_personal_shopper/screens/Landing/intro.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:smart_personal_shopper/screens/test.dart';
+import 'package:sqflite/sqflite.dart';
 
 
 
@@ -26,6 +28,7 @@ void main() async{
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) => ChangeNotifierProvider(
+
         create: (context) => FeedbackPositionProvider(),
         child: MaterialApp(
           debugShowCheckedModeBanner: false,

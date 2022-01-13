@@ -1,19 +1,22 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/constants.dart';
+import 'package:smart_personal_shopper/controller/cart_controller.dart';
 import 'package:smart_personal_shopper/data/cart/cart.dart';
-
 import 'package:smart_personal_shopper/screens/profile/profile.dart';
 import 'package:smart_personal_shopper/data/product/product.dart';
+import 'package:smart_personal_shopper/services/cart_item_service.dart';
 import '../Payment/paycard.dart';
-import '../home.dart';
 import 'cart_screen.dart';
+
+ItemServices itemServices= ItemServices();
+final  CartController controller=CartController();
 
 class details extends StatefulWidget {
   Product currentProduct = Product(
       id: "001",
       name: "harissa",
-      description: "135g",
+      description: "lorem",
       price: "0.8",
       review: "8",
       image: "images/hrissa.png");
@@ -29,9 +32,12 @@ class details extends StatefulWidget {
 class _detailsState extends State<details> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _priceController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     var screensize = MediaQuery.of(context).size;
+
+    controller.onInit();
 
     final ButtonStyle style =
         TextButton.styleFrom(primary: Theme.of(context).colorScheme.onPrimary);
@@ -131,7 +137,7 @@ class _detailsState extends State<details> {
                               ),
                             ],
                           ),
-                          AddToCart(),
+                          AddToCart(current:widget.currentProduct,),
                         ],
                       ),
                     ),
@@ -198,8 +204,16 @@ class _detailsState extends State<details> {
   }
 }
 
-class AddToCart extends StatelessWidget {
+class AddToCart extends StatefulWidget {
+Product current;
   @override
+  AddToCart({required this.current});
+
+  @override
+  State<AddToCart> createState() => _AddToCartState();
+}
+
+class _AddToCartState extends State<AddToCart> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 16.0),
@@ -222,9 +236,27 @@ class AddToCart extends StatelessWidget {
               ),
               color: Color(0xFFff4d6d),
               onPressed: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => CartScreen()));
-              },
+                CartItem item=CartItem(
+                    id: widget.current.id,
+                    name: widget.current.name,
+                    quantity: numOfItems,
+                    price: double.parse(widget.current.price),
+                    image: widget.current.image,
+                    datetime: DateTime.now().toString());
+                  print("pressed");
+                  controller.addToCart(item);
+                  controller.onInit();
+                  AwesomeDialog(
+                    context: context,
+                    animType: AnimType.LEFTSLIDE,
+                    headerAnimationLoop: false,
+                    dialogType: DialogType.SUCCES,
+                    showCloseIcon: true,
+                    title: 'Alert',
+                    desc: numOfItems.toString() + "Items Added Successfully",
+                  ).show();
+
+                },
             ),
           ),
           Expanded(
@@ -234,7 +266,10 @@ class AddToCart extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(18)),
                 color: SecondaryRed,
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) => CartScreen.cartList(cartItems:controller.cartItems)));
+                },
                 child: Text(
                   "Buy  Now".toUpperCase(),
                   style: TextStyle(
@@ -243,6 +278,7 @@ class AddToCart extends StatelessWidget {
                     color: Colors.white,
                   ),
                 ),
+
               ),
             ),
           ),
@@ -287,9 +323,9 @@ class CartCounter extends StatefulWidget {
   @override
   _CartCounterState createState() => _CartCounterState();
 }
-
+int numOfItems = 1;
 class _CartCounterState extends State<CartCounter> {
-  int numOfItems = 1;
+
 
   @override
   Widget build(BuildContext context) {
