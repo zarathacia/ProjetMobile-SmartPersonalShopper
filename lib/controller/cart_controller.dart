@@ -52,9 +52,9 @@ class CartController{
     return result;
   }
 
-  removeFromCart(int shopId) async {
-    itemServices.removeFromCart(shopId);
-    int index = cartItems.indexWhere((element) => element.id == shopId);
+  removeFromCart(String id) async {
+    itemServices.removeFromCart(id);
+    int index = cartItems.indexWhere((element) => element.id == id);
     cartItems.removeAt(index);
   }
 }

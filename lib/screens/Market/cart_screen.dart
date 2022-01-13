@@ -11,6 +11,8 @@ import 'package:smart_personal_shopper/services/cart_item_service.dart';
 import 'address.dart';
 
 
+ItemServices itemServices= ItemServices();
+final  CartController controller=CartController();
 
 User? user = FirebaseAuth.instance.currentUser;
 final cartsRef = FirebaseFirestore.instance.collection('carts')
@@ -20,22 +22,22 @@ final cartsRef = FirebaseFirestore.instance.collection('carts')
     toFirestore: (cart, _) => cart.toJson()
 );
 
-
 class CartScreen extends StatefulWidget {
+  List<CartItem> cartItems = [];
+  CartScreen.cartList({required this.cartItems});
 
-  const CartScreen({Key? key}):super(key:key);
+  CartScreen({Key? key}):super(key:key);
   @override
   State<StatefulWidget> createState() => LunchState();
 }
 
 class LunchState extends State<CartScreen> {
-  ItemServices itemServices= ItemServices();
-  final  CartController controller=CartController();
-  Widget build(BuildContext context) {
 
+  Widget build(BuildContext context) {
     controller.onInit();
     print("Size of cartItems");
     print(controller.cartItems.length);
+
 
     return Scaffold(
       appBar: AppBar(
@@ -59,7 +61,7 @@ class LunchState extends State<CartScreen> {
         ),
       ),
       body:
-            initScreen(controller.cartItems),
+            initScreen(widget.cartItems),
 
     );
   }
@@ -70,8 +72,9 @@ class LunchState extends State<CartScreen> {
           children: <Widget>[
             ListView.builder(
             itemCount: cartItems.length,
-          itemBuilder: (context,index){
+            itemBuilder: (context,index){
               return CartItemView(
+                cartItems[index].id,
                 cartItems[index].image,
                 cartItems[index].name,
                 "Item Category",
@@ -103,8 +106,12 @@ class LunchState extends State<CartScreen> {
 
   }
 
-  CartItemView(String imgSrc, String itemName, String itemCategory,
+  CartItemView(String id,String imgSrc, String itemName, String itemCategory,
       String itemPrice, int itemCount) {
+
+    if(itemName.length>20){
+    itemName=itemName.substring(0,15);
+    }
     return Container(
         child: Card(
           margin: EdgeInsets.only(top: 10.0, left: 20.0, right: 20.0),
@@ -131,21 +138,21 @@ class LunchState extends State<CartScreen> {
                   Container(
                     padding: EdgeInsets.only(bottom: 2.0),
                     child: Text(
-                      "Item Name",
+                      itemName,
                       style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
                     ),
                   ),
                   Container(
                     padding: EdgeInsets.only(bottom: 3.0),
                     child: Text(
-                      "Item Cetegory",
+                      "Category",
                       style: TextStyle(),
                     ),
                   ),
                   Container(
                     padding: EdgeInsets.only(bottom: 3.0),
                     child: Text(
-                      "500 RS",
+                      itemPrice,
                       style: TextStyle(color: Color(0xff374ABE)),
                     ),
                   ),
@@ -192,7 +199,17 @@ class LunchState extends State<CartScreen> {
                 )),
 
             // trailing shows the widget on the right corner of the list item
-            trailing: Icon(Icons.cancel),
+            trailing:
+            GestureDetector(
+              onTap: () {
+                controller.removeFromCart(id);
+                controller.onInit();
+              },
+              child: Icon(
+                Icons.cancel,
+                size: 25,
+              ),
+            ),
           ),
         ));
   }

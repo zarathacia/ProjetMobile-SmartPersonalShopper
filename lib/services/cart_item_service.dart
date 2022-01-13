@@ -43,7 +43,7 @@ class ItemServices {
     return await sqlService.addToCart(data);
   }
 
-  removeFromCart(int itemId) async {
+  removeFromCart(String itemId) async {
     return await sqlService.removeFromCart(itemId);
   }
 }

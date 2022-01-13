@@ -92,8 +92,8 @@ class SQLService {
     });
   }
 
-  Future removeFromCart(int itemId) async {
-    var qry = "DELETE FROM cart_list where id = ${itemId}";
+  Future removeFromCart(String itemId) async {
+    var qry = "DELETE FROM cart where id = '${itemId}'";
     return await this.db?.rawDelete(qry);
   }
 }

@@ -243,21 +243,9 @@ class _AddToCartState extends State<AddToCart> {
                     price: double.parse(widget.current.price),
                     image: widget.current.image,
                     datetime: DateTime.now().toString());
-                if (controller.getItem(item.id)==null)
-                  {
-                    AwesomeDialog(
-                      context: context,
-                      animType: AnimType.LEFTSLIDE,
-                      headerAnimationLoop: false,
-                      dialogType: DialogType.ERROR,
-                      showCloseIcon: true,
-                      title: 'Alert',
-                      desc: 'Item Already in Cart',
-                      ).show();
-                  }
-                  else{
                   print("pressed");
                   controller.addToCart(item);
+                  controller.onInit();
                   AwesomeDialog(
                     context: context,
                     animType: AnimType.LEFTSLIDE,
@@ -267,7 +255,6 @@ class _AddToCartState extends State<AddToCart> {
                     title: 'Alert',
                     desc: numOfItems.toString() + "Items Added Successfully",
                   ).show();
-                }
 
                 },
             ),
@@ -281,7 +268,7 @@ class _AddToCartState extends State<AddToCart> {
                 color: SecondaryRed,
                 onPressed: () {
                   Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) => CartScreen()));
+                      .push(MaterialPageRoute(builder: (context) => CartScreen.cartList(cartItems:controller.cartItems)));
                 },
                 child: Text(
                   "Buy  Now".toUpperCase(),
