@@ -76,4 +76,58 @@ List<Product> products = [
     price: 1.86,
     image: 'images/riz_blanc.png',
   ),
+  Product(
+      id: 14,
+      title: "120W hand mixer",
+      image: "images/mixeur.jpg",
+      description: "Lorem ipsum dolor sit amet",
+      price: 52.850),
+  Product(
+      id: 15,
+      title: "Marseille soap powder machine laundry",
+      image: "images/omo.jpg",
+      description: "Lorem ipsum dolor sit amet",
+      price: 2.850),
+  Product(
+      id: 16,
+      title: "Blender 1.5L",
+      image: "images/robo.jpg",
+      description: "Lorem ipsum dolor sit amet",
+      price: 82.850),
+  Product(
+      id: 17,
+      title: "Deluxe 2-ply napkins 30x30cm",
+      image: "images/papier.jpg",
+      description: "Lorem ipsum dolor sit amet",
+      price: 2.850),
+  Product(
+      id: 18,
+      title: "Aluminum container 160x160cm",
+      image: "images/alu.jpg",
+      description: "Lorem ipsum dolor sit amet",
+      price: 3.850),
+  Product(
+      id: 19,
+      title: "Ice cube bags",
+      image: "images/sahet.jpg",
+      description: "Lorem ipsum dolor sit amet",
+      price: 1.850),
+  Product(
+      id: 20,
+      title: "Chilli and lemon potato chips",
+      image: "images/chips.jpg",
+      description: "Lorem ipsum dolor sit amet",
+      price: 1.850),
+  Product(
+      id: 21,
+      title: "Ham Turkey",
+      image: "images/jambon.jpg",
+      description: "Lorem ipsum dolor sit amet",
+      price: 1.850),
+  Product(
+      id: 22,
+      title: "Cheese and crispy cookies Snack",
+      image: "images/kaki.jpg",
+      description: "Lorem ipsum dolor sit amet",
+      price: 1.850),
 ];
