@@ -38,13 +38,13 @@ class ProfileState extends State<Profile> {
       _credit = userDoc.get('credit');
       _phonenumber = userDoc.get('phone number');
       _imageurl = userDoc.get('imageurl');
-      print('tdsdqdsest');
+      //print('tdsdqdsest');
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    print('profile now');
+    //print('profile now');
     Size size = MediaQuery.of(context).size; //responsive sized
     getData();
     //print(_userID);

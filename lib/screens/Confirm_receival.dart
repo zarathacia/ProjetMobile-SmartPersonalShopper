@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/constants.dart';
+import 'package:smart_personal_shopper/screens/homepage/home_screen.dart';
 import 'package:smart_personal_shopper/screens/profile/profile.dart';
 import 'package:smart_personal_shopper/widget/rating.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
@@ -59,13 +60,13 @@ class Confirm extends StatelessWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(100.0),
                         child: Image.asset(
-                          'images/shopper1.png',
+                          'images/user5.jpg',
                           width: 120,
                         ),
                       ),
                     ),
                     Text(
-                      'Fred Gentelman',
+                      'Emma',
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
@@ -154,15 +155,9 @@ class Confirm extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 50,
+              height: 30,
             ),
-            /* Text(
-              'Review personal shopper',
-              style: TextStyle(
-                  fontSize: 20,
-                  decoration: TextDecoration.underline,
-                  fontWeight: FontWeight.bold),
-            ),*/
+
           ],
         ),
       ),
