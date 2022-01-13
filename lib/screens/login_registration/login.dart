@@ -166,30 +166,7 @@ class _LoginState extends State<Login> {
                               ),
 
                               //direct button
-                              Container(
-                                decoration:
-                                    ThemeHelper().buttonBoxDecoration(context),
-                                child: ElevatedButton(
-                                  style: ThemeHelper().buttonStyle(),
-                                  child: Padding(
-                                    padding:
-                                        EdgeInsets.fromLTRB(40, 10, 40, 10),
-                                    child: Text(
-                                      'Sign In'.toUpperCase(),
-                                      style: TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white),
-                                    ),
-                                  ),
-                                  onPressed: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => Home()));
-                                  },
-                                ),
-                              ),
+
                               //
                               Container(
                                 margin: EdgeInsets.fromLTRB(10, 20, 10, 20),

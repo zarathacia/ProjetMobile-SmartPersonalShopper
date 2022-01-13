@@ -2,22 +2,27 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:smart_personal_shopper/screens/Market/cart_screen.dart';
+
+import 'package:smart_personal_shopper/screens/chat/List_of_Past_discussions.dart';
 import 'package:smart_personal_shopper/screens/login_registration/login.dart';
+import 'package:smart_personal_shopper/screens/settings.dart';
 
 import '../../widget/textfield.dart';
 import '../chat/Chat_With_Personal_shopper.dart';
 import 'package:smart_personal_shopper/screens/profile/profile.dart';
-class NavBar extends StatefulWidget {
 
+class NavBar extends StatefulWidget {
   @override
   State<NavBar> createState() => _NavBarState();
 }
 
 class _NavBarState extends State<NavBar> {
-  String email ="hamdi@gmail.com";
+  String email = "hamdi@gmail.com";
   String fname = "hamdi";
   String lname = "harzallah";
-  String imageurl="https://firebasestorage.googleapis.com/v0/b/shopili-mobile-project.appspot.com/o/profilepics%2F20211117-122907%20(4).jpg?alt=media&token=d832fc87-0175-400c-ac39-17a6fad2834d";
+  String imageurl =
+      "https://firebasestorage.googleapis.com/v0/b/shopili-mobile-project.appspot.com/o/profilepics%2F20211117-122907%20(4).jpg?alt=media&token=d832fc87-0175-400c-ac39-17a6fad2834d";
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -40,11 +45,12 @@ class _NavBarState extends State<NavBar> {
               leading: Icon(Icons.person),
               title: Text('chat'),
               onTap: () => Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => Chat()))),
+                  .push(MaterialPageRoute(builder: (context) => Listof()))),
           ListTile(
-            leading: Icon(Icons.notifications),
-            title: Text('Request'),
-            onTap: () => null,
+            leading: Icon(Icons.shopping_cart),
+            title: Text('Cart'),
+            onTap: () => Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => CartScreen())),
             trailing: ClipOval(
               child: Container(
                 color: Colors.red,
@@ -66,14 +72,16 @@ class _NavBarState extends State<NavBar> {
           ListTile(
             leading: Icon(Icons.settings),
             title: Text('Settings'),
-            onTap: () => null,
+            onTap: () => Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => Setting())),
           ),
           Divider(),
           ListTile(
-              title: Text('Exit'),
-              leading: Icon(Icons.exit_to_app),
-              onTap: () => SystemNavigator.pop(),
-          )],
+            title: Text('Exit'),
+            leading: Icon(Icons.exit_to_app),
+            onTap: () => SystemNavigator.pop(),
+          )
+        ],
       ),
     );
   }

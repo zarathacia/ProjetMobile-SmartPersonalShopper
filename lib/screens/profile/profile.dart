@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/constants.dart';
+
 import 'package:smart_personal_shopper/screens/home.dart';
 import 'package:smart_personal_shopper/screens/homepage/home_screen.dart';
 import 'package:smart_personal_shopper/widget/button.dart';
@@ -37,13 +38,13 @@ class ProfileState extends State<Profile> {
       _credit = userDoc.get('credit');
       _phonenumber = userDoc.get('phone number');
       _imageurl = userDoc.get('imageurl');
-      print('tdsdqdsest');
+      //print('tdsdqdsest');
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    print('profile now');
+    //print('profile now');
     Size size = MediaQuery.of(context).size; //responsive sized
     getData();
     //print(_userID);
@@ -66,7 +67,7 @@ class ProfileState extends State<Profile> {
             size: 40,
           ),
           onPressed: () => Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => Home())),
+              .push(MaterialPageRoute(builder: (context) => HomeScreen())),
         ),
         leadingWidth: 30,
       ),
