@@ -10,25 +10,6 @@ final productsRef = FirebaseFirestore.instance
   toFirestore: (product, _) => product.toJson(),
 );
 
-enum ProductQuery {
-  name,
-  priceAsc,
-  priceDesc
-}
-
-extension on Query<Product> {
-  Query<Product> queryBy(ProductQuery query) {
-    switch (query) {
-      case ProductQuery.priceAsc:
-      case ProductQuery.priceDesc:
-        return orderBy('price', descending: query == ProductQuery.priceDesc);
-
-      case ProductQuery.name:
-        return orderBy('name', descending: true);
-
-    }
-  }
-}
 
 /// Holds all example app films
 class ProductList extends StatefulWidget {
@@ -39,7 +20,6 @@ class ProductList extends StatefulWidget {
 }
 
 class _ProductListState extends State<ProductList> {
-  ProductQuery query = ProductQuery.name;
 
   @override
   Widget build(BuildContext context) {
@@ -62,33 +42,10 @@ class _ProductListState extends State<ProductList> {
             )
           ],
         ),
-        actions: <Widget>[
-          PopupMenuButton<ProductQuery>(
-            onSelected: (value) => setState(() => query = value),
-            icon: const Icon(Icons.sort),
-            itemBuilder: (BuildContext context) {
-              return [
-                const PopupMenuItem(
-                  value: ProductQuery.name,
-                  child: Text('Sort by name'),
-                ),
-                const PopupMenuItem(
-                  value: ProductQuery.priceAsc,
-                  child: Text('Sort by ascending price'),
-                ),
-                const PopupMenuItem(
-                  value: ProductQuery.priceDesc,
-                  child: Text('Sort by price descending'),
-                ),
-
-              ];
-            },
-          ),
-        ],
       ),
       body:
       StreamBuilder<QuerySnapshot<Product>>(
-        stream: productsRef.queryBy(query).snapshots(),
+        stream: productsRef.snapshots(),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return Center(

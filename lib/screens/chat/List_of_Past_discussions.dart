@@ -20,16 +20,16 @@ class _ListofState extends State<Listof> {
   //     _name =delivdoc.get('name');
   //   });
   // }
-  final CollectionReference _collectionRef = FirebaseFirestore.instance.collection('delivery');
-
+  final CollectionReference _collectionRef = FirebaseFirestore.instance.collection('deliv');
+  List<Object?> lista=[];
   Future<void> getData() async {
     // Get docs from collection reference
     QuerySnapshot querySnapshot = await _collectionRef.get();
 
     // Get data from docs and convert map to List
     final allData = querySnapshot.docs.map((doc) => doc.data()).toList();
-
-    print(allData);
+    lista= allData;
+    //print(allData);
   }
 
 
@@ -38,7 +38,9 @@ class _ListofState extends State<Listof> {
     getData();
    // List<ChatUsers> chatUsers =allda
 
-    //print('$_name');
+    // print(lista);
+    // print(lista[1]);
+
     final size = MediaQuery.of(context).size;
     return MaterialApp(
       debugShowCheckedModeBanner: false,

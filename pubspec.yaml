@@ -29,6 +29,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  sqflite: ^2.0.2
+  path:
   material_floating_search_bar: ^0.2.6
   flutter_rating_bar: ^4.0.0
   http: ^0.13.4
@@ -44,6 +46,7 @@ dependencies:
   flutter_credit_card: ^3.0.1
   salomon_bottom_bar: ^3.1.0
   image_picker: ^0.8.4+4
+  firebase_storage: ^10.2.5
 
   particles_flutter: ^0.1.4
   hexcolor: ^2.0.5

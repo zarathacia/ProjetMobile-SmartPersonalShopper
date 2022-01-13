@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:smart_personal_shopper/screens/chat/List_of_Past_discussions.dart';
 import 'package:smart_personal_shopper/screens/login_registration/login.dart';
 import 'package:smart_personal_shopper/screens/settings.dart';
 
@@ -16,41 +15,20 @@ class NavBar extends StatefulWidget {
 }
 
 class _NavBarState extends State<NavBar> {
-  User? user = FirebaseAuth.instance.currentUser;
-  String userID = "";
-  String email = "";
-  String fname = "";
-  String lname = "";
-  String credit = "";
-  String imageurl = "";
-  void getData() async {
-    userID = user!.uid;
-    final DocumentSnapshot userDoc = await FirebaseFirestore.instance
-        .collection('userdata')
-        .doc(userID)
-        .get();
-    setState(() {
-      fname = userDoc.get('first name');
-      lname = userDoc.get('last name');
-      email = userDoc.get('email');
-      credit = userDoc.get('credit');
-      imageurl = userDoc.get('imageurl');
-      //print('tdsdqdsest');
-    });
-  }
-
+  String email = "hamdi@gmail.com";
+  String fname = "hamdi";
+  String lname = "harzallah";
+  String imageurl =
+      "https://firebasestorage.googleapis.com/v0/b/shopili-mobile-project.appspot.com/o/profilepics%2F20211117-122907%20(4).jpg?alt=media&token=d832fc87-0175-400c-ac39-17a6fad2834d";
   @override
   Widget build(BuildContext context) {
-    //print('nav now');
-    //getData();
-    print('$fname');
     return Drawer(
       child: ListView(
         // Remove padding
         padding: EdgeInsets.zero,
         children: [
           UserAccountsDrawerHeader(
-            accountName: Text('$userID $lname'),
+            accountName: Text('$fname $lname'),
             accountEmail: Text('$email'),
             currentAccountPicture: CircleAvatar(
               child: ClipRRect(
@@ -95,9 +73,10 @@ class _NavBarState extends State<NavBar> {
           ),
           Divider(),
           ListTile(
-              title: Text('Exit'),
-              leading: Icon(Icons.exit_to_app),
-              onTap: () => SystemNavigator.pop()),
+            title: Text('Exit'),
+            leading: Icon(Icons.exit_to_app),
+            onTap: () => SystemNavigator.pop(),
+          )
         ],
       ),
     );
