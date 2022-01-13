@@ -2,11 +2,10 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import 'package:smart_personal_shopper/constants.dart';
-import 'package:smart_personal_shopper/screens/home1.dart';
 import 'package:smart_personal_shopper/screens/homepage/home_screen.dart';
 import 'Market/Market_screen.dart';
-import 'List_of_Past_discussions.dart';
-import 'profile.dart';
+import 'chat/List_of_Past_discussions.dart';
+import 'profile/profile.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -18,6 +17,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   int selectedPage = 0;
   final _pageOptions = [HomeScreen(), marketScreen(), Listof(), Profile()];
+  //final _pageOptions = [HomeScreen(), marketScreen(), ChatScreen(), Profile()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(

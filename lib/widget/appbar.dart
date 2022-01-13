@@ -4,7 +4,7 @@ import 'package:smart_personal_shopper/constants.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:smart_personal_shopper/screens/Payment/paycard.dart';
 import 'package:smart_personal_shopper/screens/homepage/nav.dart';
-import 'package:smart_personal_shopper/screens/profile.dart';
+import 'package:smart_personal_shopper/screens/profile/profile.dart';
 
 AppBar homeAppBar(BuildContext context) {
   final ButtonStyle style =

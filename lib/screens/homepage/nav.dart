@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/screens/login_registration/login.dart';
 
-import '../Chat_With_Personal_shopper.dart';
-import '../profile.dart';
+import '../chat/Chat_With_Personal_shopper.dart';
+import '../profile/profile.dart';
 
 class NavBar extends StatelessWidget {
   @override
@@ -19,23 +19,15 @@ class NavBar extends StatelessWidget {
               child: ClipRRect(
                 child: Image.asset('images/pouya.jfif'),
                 borderRadius: BorderRadius.circular(150),
-                  ),
-                   radius: 100.0,
-                ),
-
+              ),
+              radius: 100.0,
+            ),
           ),
           ListTile(
-            leading: Icon(Icons.favorite),
-            title: Text('Favorites'),
-            onTap: () => null,
-          ),
-          ListTile(
-            leading: Icon(Icons.person),
-            title: Text('chat'),
-            onTap: () =>
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => Chat()))
-          ),
+              leading: Icon(Icons.person),
+              title: Text('chat'),
+              onTap: () => Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => Chat()))),
           ListTile(
             leading: Icon(Icons.notifications),
             title: Text('Request'),
@@ -57,7 +49,6 @@ class NavBar extends StatelessWidget {
               ),
             ),
           ),
-
           Divider(),
           ListTile(
             leading: Icon(Icons.settings),
@@ -66,11 +57,10 @@ class NavBar extends StatelessWidget {
           ),
           Divider(),
           ListTile(
-            title: Text('Exit'),
-            leading: Icon(Icons.exit_to_app),
-            onTap: () =>  Navigator.of(context)
-             .push(MaterialPageRoute(builder: (context) => Login()))
-          ),
+              title: Text('Exit'),
+              leading: Icon(Icons.exit_to_app),
+              onTap: () => Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => Login()))),
         ],
       ),
     );
