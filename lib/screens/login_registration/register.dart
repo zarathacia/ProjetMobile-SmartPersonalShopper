@@ -12,7 +12,6 @@ import 'package:smart_personal_shopper/widget/header.dart';
 import 'package:smart_personal_shopper/widget/theme_helper.dart';
 import 'package:image_picker/image_picker.dart';
 
-
 class register extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -35,13 +34,6 @@ class _registerState extends State<register> {
   String imageurl="https://firebasestorage.googleapis.com/v0/b/shopili-mobile-project.appspot.com/o/profilepics%2Fprof.jpg?alt=media&token=b098ba99-e782-4378-963e-692514d84e8d";
   bool checkedValue = false;
   bool checkboxValue = false;
-  //late File  _pickedimage;
-  late String url;
-  late File _pickedimage;
-
-  //late File _imageFile;
-  final ImagePicker _picker = ImagePicker();
-
 
   @override
   Widget build(BuildContext context) {
@@ -102,11 +94,6 @@ class _registerState extends State<register> {
                                     // Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => SettingsPage()));
                                   },
                                 ), // Ic
-                                /*Icon(
-                                  Icons.add_circle,
-                                  color: Colors.grey.shade700,
-                                  size: 25.0,
-                                ),*/
                               ),
                             ],
                           ),
@@ -274,34 +261,23 @@ class _registerState extends State<register> {
                             ),
                             onPressed: () async {
                               if (_formKey.currentState!.validate()) {
-                                if (_pickedimage == null){
-
-                                }else{
-                                  final ref =FirebaseStorage.instance.ref().child('userimages').child('$fname $lname .jpg');
-                                  await ref.putFile((_pickedimage));
-                                  url= await ref.getDownloadURL();
-                                  
-                                }
                                 auth.createUserWithEmailAndPassword(email: email, password: password).then((value) {
-                                  FirebaseFirestore.instance
-                                      .collection('userdata')
-                                      .doc(value.user!.uid)
-                                      .set({
+                                  FirebaseFirestore.instance.collection('userdata').doc(value.user!.uid).set({
                                     'email': value.user!.email,
                                     'first name': fname,
                                     'last name': lname,
                                     'phone number': phone,
                                     'password': password,
-                                    'location': location,
-                                    'credit':credit,
-                                    'imageurl':url ,
+                                    'location' : location,
+                                    'credit' : credit,
+                                    'imageurl': imageurl,
 
                                   });
 
-                                  // Navigator.of(context).pushReplacement(
-                                  //     MaterialPageRoute(
-                                  //         builder: (context) =>
-                                  //             VerifyScreen()));
+                                  Navigator.of(context).pushReplacement(
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              VerifyScreen()));
                                 });
                                 print(fname);
                                 print(lname);
@@ -309,11 +285,6 @@ class _registerState extends State<register> {
                                 print(phone);
                                 print(password);
                               }
-
-                              //if (_formKey.currentState.validate()){
-                              //print(email);
-
-                              //}
                             },
                           ),
                         ),
@@ -344,26 +315,6 @@ class _registerState extends State<register> {
                           style: TextStyle(color: Colors.grey),
                         ),
                         SizedBox(height: 25.0),
-                        // Row(
-                        //   mainAxisAlignment: MainAxisAlignment.center,
-                        //   children: [
-                        //     buildSocialBtn(
-                        //       () => print('Login with Facebook'),
-                        //       AssetImage(
-                        //         'assets/logos/facebook.jpg',
-                        //       ),
-                        //     ),
-                        //     SizedBox(
-                        //       width: 30,
-                        //     ),
-                        //     buildSocialBtn(
-                        //       () => print('Login with Google'),
-                        //       AssetImage(
-                        //         'assets/logos/google.jpg',
-                        //       ),
-                        //     ),
-                        //   ],
-                        // ),
                       ],
                     ),
                   ),
@@ -399,14 +350,14 @@ class _registerState extends State<register> {
             FlatButton.icon(
               icon: Icon(Icons.camera),
               onPressed: () {
-                takePhoto(ImageSource.camera);
+                //takePhoto(ImageSource.camera);
               },
               label: Text("Camera"),
             ),
             FlatButton.icon(
               icon: Icon(Icons.image),
               onPressed: () {
-                takePhoto(ImageSource.gallery);
+                //akePhoto(ImageSource.gallery);
               },
               label: Text("Gallery"),
             ),
@@ -416,16 +367,12 @@ class _registerState extends State<register> {
     );
   }
 
-  void takePhoto(ImageSource source) async {
-    final pickedFile = await _picker.getImage(source: source,);
-    setState(() {
-      _pickedimage = pickedFile! as File;
-    });
-  }
-
-
-
-
-
-
+  // void takePhoto(ImageSource source) async {
+  //   final pickedFile = await _picker.getImage(
+  //     source: source,
+  //   );
+  //   setState(() {
+  //     _pickedimage = pickedFile! as File;
+  //   });
+  // }
 }
