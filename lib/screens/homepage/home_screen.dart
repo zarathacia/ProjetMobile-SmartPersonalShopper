@@ -18,11 +18,14 @@ class HomeScreen extends StatefulWidget {
 
   @override
   HomeScreenState createState() => HomeScreenState();
-
 }
 
 class HomeScreenState extends State<HomeScreen> {
+
+
   Widget build(BuildContext context) {
+
+
 
     //return Scaffold(
     return MaterialApp(
@@ -55,33 +58,10 @@ class CategoryList extends StatefulWidget {
 }
 
 class _CategoryListState extends State<CategoryList> {
-  User? user = FirebaseAuth.instance.currentUser;
-  String _userID = "";
-  String _email ="";
-  String _fname = "";
-  String _lname = "";
-  String _password = "";
-  String _location ="";
-  String _credit="";
-  String _phonenumber ="";
-  String _imageurl="";
 
-  void getData() async {
-    _userID = user!.uid;
-    final DocumentSnapshot userDoc = await FirebaseFirestore.instance.collection('userdata').doc(_userID).get();
-    setState(() {
-      _fname = userDoc.get('first name');
-      _lname = userDoc.get('last name');
-      _email = userDoc.get('email');
-      _location = userDoc.get('location');
-      _credit = userDoc.get('credit');
-      _phonenumber = userDoc.get('phone number');
-      _imageurl = userDoc.get('imageurl');
-      _password = userDoc.get('password');
-      //print('$_password');
-    });
 
-  }
+
+
   final List<Tab> myTabs = <Tab>[
     Tab(text: 'Food'),
     Tab(text: 'Groceries'),
@@ -100,8 +80,8 @@ class _CategoryListState extends State<CategoryList> {
 
   @override
   Widget build(BuildContext context) {
-    getData();
-    print(_fname);
+
+
     return DefaultTabController(
       length: myTabs.length,
       child: Scaffold(
@@ -159,7 +139,8 @@ class _CategoryListState extends State<CategoryList> {
                       shape: BoxShape.circle,
                       image: new DecorationImage(
                           fit: BoxFit.contain,
-                          image: NetworkImage('$_imageurl'))),
+                          image: NetworkImage('https://firebasestorage.googleapis.com/v0/b/shopili-mobile-project.appspot.com/o/profilepics%2F20211117-122907%20(4).jpg?alt=media&token=d832fc87-0175-400c-ac39-17a6fad2834d'))),
+
                 ))
           ],
         ),
