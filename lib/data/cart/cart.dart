@@ -1,27 +1,28 @@
-//import './cart_item.dart';
+import './cart_item.dart';
 
-/*class Cart {
+class Cart {
 
   final String id;
-  final DateTime time;
-  final String userId;
-  List<CartItem> items = <CartItem>[];
+  final String time;
 
-  Cart(this.id);
+  Cart({
+    required this.id,
+    required this.time,
+  });
+
 
   Cart.fromJson(Map<String, Object?> json)
       : this(
       id: json['id']! as String,
-      time: json['time']! as DateTime,
-      userId: json['userid']! as String
+      time: json['time']! as String,
+
   );
 
   Map<String, Object?> toJson() {
     return {
-      'id': name,
-      'time':description,
-      'userId':image,
+      'id': id,
+      'time':time,
     };
   }
 
-}*/
+}

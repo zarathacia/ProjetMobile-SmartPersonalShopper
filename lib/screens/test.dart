@@ -86,7 +86,8 @@ class _ProductListState extends State<ProductList> {
           ),
         ],
       ),
-      body: StreamBuilder<QuerySnapshot<Product>>(
+      body:
+      StreamBuilder<QuerySnapshot<Product>>(
         stream: productsRef.queryBy(query).snapshots(),
         builder: (context, snapshot) {
           if (snapshot.hasError) {

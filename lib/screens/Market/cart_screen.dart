@@ -1,16 +1,25 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/constants.dart';
+import 'package:smart_personal_shopper/data/cart/cart.dart';
 import 'package:smart_personal_shopper/screens/choose_your_personal_shopper.dart';
 import 'package:smart_personal_shopper/screens/Market/details.dart';
 import 'address.dart';
 
-class Cart extends StatefulWidget {
+final productsRef =
+    FirebaseFirestore.instance.collection('carts').withConverter<Cart>(
+          fromFirestore: (snapshots, _) => Cart.fromJson(snapshots.data()!),
+          toFirestore: (cart, _) => cart.toJson(),
+        );
+
+class CartScreen extends StatefulWidget {
+  const CartScreen({Key? key}) : super(key: key);
   @override
   State<StatefulWidget> createState() => LunchState();
 }
 
-class LunchState extends State<Cart> {
-  @override
+class LunchState extends State<CartScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -44,13 +53,13 @@ class LunchState extends State<Cart> {
         ListView(
           children: <Widget>[
             dummyDataOfListView(
-                "images/pizza.png", "pizza neptune", "Cloths", "500Rs", 4),
+                "images/pizza.png", "pizza neptune", "food", "5 DT", 2),
             dummyDataOfListView(
-                "images/tomate.png", "1kg tomate", "Cloths", "600Rs", 1),
+                "images/tomate.png", "1kg tomate", "food", "0.9 DT", 1),
             dummyDataOfListView(
-                "images/hrissa.png", "hrissa sicam", "Cloths", "800Rs", 3),
+                "images/hrissa.png", "hrissa sicam", "food", "0.8 DT", 1),
             dummyDataOfListView(
-                "images/boga.png", "Boga 1.5L", "Cloths", "100Rs", 4),
+                "images/boga.png", "Boga 1.5L", "food", "2.850 DT", 1),
           ],
         ),
         Container(
@@ -105,21 +114,21 @@ class LunchState extends State<Cart> {
               Container(
                 padding: EdgeInsets.only(bottom: 2.0),
                 child: Text(
-                  "Item Name",
+                  itemName,
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
                 ),
               ),
               Container(
                 padding: EdgeInsets.only(bottom: 3.0),
                 child: Text(
-                  "Item Cetegory",
+                  itemCategory,
                   style: TextStyle(),
                 ),
               ),
               Container(
                 padding: EdgeInsets.only(bottom: 3.0),
                 child: Text(
-                  "500 RS",
+                  itemPrice,
                   style: TextStyle(color: Color(0xff374ABE)),
                 ),
               ),

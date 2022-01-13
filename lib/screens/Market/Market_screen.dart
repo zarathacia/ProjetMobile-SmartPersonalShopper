@@ -1,10 +1,10 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/constants.dart';
+import 'package:smart_personal_shopper/screens/Market/product_screen.dart';
 import 'package:smart_personal_shopper/screens/Payment/paycard.dart';
 import 'package:smart_personal_shopper/screens/home.dart';
 import 'package:smart_personal_shopper/screens/profile/profile.dart';
-import 'Productscreen.dart';
 import 'Market_items.dart';
 import 'package:smart_personal_shopper/screens/Market/Market_items.dart';
 

@@ -1,18 +1,19 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/constants.dart';
-import 'package:smart_personal_shopper/screens/Market/Productscreen.dart';
-import 'package:smart_personal_shopper/screens/Market/cart.dart';
+import 'package:smart_personal_shopper/data/cart/cart.dart';
+
 import 'package:smart_personal_shopper/screens/profile/profile.dart';
 import 'package:smart_personal_shopper/data/product/product.dart';
 import '../Payment/paycard.dart';
 import '../home.dart';
+import 'cart_screen.dart';
 
 class details extends StatefulWidget {
   Product currentProduct = Product(
       id: "001",
       name: "harissa",
-      description: "lorem",
+      description: "135g",
       price: "0.8",
       review: "8",
       image: "images/hrissa.png");
@@ -221,8 +222,8 @@ class AddToCart extends StatelessWidget {
               ),
               color: Color(0xFFff4d6d),
               onPressed: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => Cart()));
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => CartScreen()));
               },
             ),
           ),

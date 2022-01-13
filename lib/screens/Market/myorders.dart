@@ -1,6 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/constants.dart';
 import 'package:smart_personal_shopper/screens/Confirm_receival.dart';
+
 
 class MyOrders extends StatefulWidget {
   @override
@@ -8,6 +11,24 @@ class MyOrders extends StatefulWidget {
 }
 
 class LunchState extends State<MyOrders> {
+  final Stream<QuerySnapshot> userdata = FirebaseFirestore.instance.collection('carts').snapshots();
+  User? user = FirebaseAuth.instance.currentUser;
+  String _userID = "";
+  String _id = "";
+  String _time = "";
+
+  void getData() async{
+    _userID=user!.uid;
+
+    final DocumentSnapshot userCart=
+    await FirebaseFirestore.instance.collection('carts').doc(_userID).get();
+    _id =userCart.get('id');
+    _time =userCart.get('time');
+    print(_id+" " + _time);
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
