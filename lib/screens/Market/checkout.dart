@@ -35,6 +35,12 @@ class LunchState extends State<Checkout> {
   }
 
   initScreen() {
+    double total = 2 * 5 + 0.9 + 0.8 + 2.85;
+    double totalf = 0;
+    double discount = 10;
+    double shipping = 2;
+    totalf = (total * (1 - discount / 100) + shipping);
+    String totalfs = (totalf).toStringAsFixed(3);
     return new Container(
         child: Wrap(
       children: <Widget>[
@@ -43,13 +49,13 @@ class LunchState extends State<Checkout> {
           child: ListView(
             children: <Widget>[
               dummyDataOfListView(
-                  "images/pizza.png", "pizza neptune", "Cloths", "500Rs", 4),
+                  "images/pizza.png", "pizza neptune", "food", 5, 2),
               dummyDataOfListView(
-                  "images/tomate.png", "1kg tomate", "Cloths", "600Rs", 1),
+                  "images/tomate.png", "1kg tomate", "food", 0.9, 1),
               dummyDataOfListView(
-                  "images/hrissa.png", "hrissa sicam", "Cloths", "800Rs", 3),
+                  "images/hrissa.png", "hrissa sicam", "food", 0.8, 1),
               dummyDataOfListView(
-                  "images/boga.png", "Boga 1.5L", "Cloths", "100Rs", 4),
+                  "images/boga.png", "Boga 1.5L", "food", 2.850, 1),
             ],
           ),
         ),
@@ -72,7 +78,7 @@ class LunchState extends State<Checkout> {
                 ),
               ),
               Text(
-                "160.00",
+                "$total",
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 18.0,
@@ -94,7 +100,7 @@ class LunchState extends State<Checkout> {
                 ),
               ),
               Text(
-                "10%",
+                "$discount %",
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 18.0,
@@ -103,7 +109,7 @@ class LunchState extends State<Checkout> {
             ],
           ),
         ),
-        /*Container(
+        Container(
           margin: EdgeInsets.only(left: 30.0, right: 30.0, top: 10.0),
           child: Row(
             children: <Widget>[
@@ -116,7 +122,7 @@ class LunchState extends State<Checkout> {
                 ),
               ),
               Text(
-                "10.00",
+                "$shipping",
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 18.0,
@@ -124,7 +130,7 @@ class LunchState extends State<Checkout> {
               ),
             ],
           ),
-        ),*/
+        ),
         Container(
           margin: EdgeInsets.only(left: 30.0, right: 30.0, top: 30.0),
           child: Row(
@@ -136,7 +142,7 @@ class LunchState extends State<Checkout> {
                 ),
               ),
               Text(
-                "170.00",
+                "$totalfs DT",
                 style: TextStyle(
                     color: Colors.black,
                     fontSize: 18.0,
@@ -162,7 +168,7 @@ class LunchState extends State<Checkout> {
                       title: 'Continue to pay?',
                       // padding: const EdgeInsets.all(5.0),
                       desc:
-                          'Please confirm that you will pay 1500 dt . Creating orders without paying will create penalty charges, and your account may be disabled.',
+                          'Please confirm that you will pay $totalfs dt . Creating orders without paying will create penalty charges, and your account may be disabled.',
                       btnCancelOnPress: () {},
                       btnOkOnPress: () {
                         Navigator.of(context).push(MaterialPageRoute(
@@ -201,7 +207,7 @@ class LunchState extends State<Checkout> {
   }
 
   dummyDataOfListView(String imgSrc, String itemName, String itemCategory,
-      String itemPrice, int itemCount) {
+      double itemPrice, int itemCount) {
     return Container(
         child: Card(
       elevation: 4.0,
@@ -229,21 +235,21 @@ class LunchState extends State<Checkout> {
               Container(
                 padding: EdgeInsets.only(bottom: 2.0),
                 child: Text(
-                  "Item Name",
+                  itemName,
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
                 ),
               ),
               Container(
                 padding: EdgeInsets.only(bottom: 3.0),
                 child: Text(
-                  "Item Cetegory",
+                  itemCategory,
                   style: TextStyle(),
                 ),
               ),
               Container(
                 padding: EdgeInsets.only(bottom: 3.0),
                 child: Text(
-                  "500 dt",
+                  '$itemPrice DT',
                   style: TextStyle(color: Color(0xff374ABE)),
                 ),
               ),

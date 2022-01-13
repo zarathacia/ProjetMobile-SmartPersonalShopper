@@ -2,20 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_personal_shopper/provider/feedback.dart';
-import 'package:smart_personal_shopper/screens/Confirm_receival.dart';
 import 'package:smart_personal_shopper/screens/Market/address.dart';
 import 'package:smart_personal_shopper/screens/profile/profile.dart';
 
 import 'package:smart_personal_shopper/data/user.dart';
 import 'package:smart_personal_shopper/data/users.dart';
-import 'package:smart_personal_shopper/widget/navbar.dart';
 
 import 'package:smart_personal_shopper/widget/user_card.dart';
 
-import 'chat/List_of_Past_discussions.dart';
-import 'Market/Market_screen.dart';
 import 'Payment/paycard.dart';
-import 'home.dart';
 
 class Choose extends StatefulWidget {
   const Choose({Key? key}) : super(key: key);
@@ -42,7 +37,7 @@ class _ChooseState extends State<Choose> {
             onPressed: () => Navigator.of(context).pop(),
           ),
           leadingWidth: 30,
-          actions: <Widget>[
+          /*actions: <Widget>[
             TextButton(
               style: TextButton.styleFrom(
                   primary: Theme.of(context).colorScheme.primary),
@@ -68,7 +63,7 @@ class _ChooseState extends State<Choose> {
                           fit: BoxFit.contain,
                           image: AssetImage('images/pouya.jfif'))),
                 ))
-          ],
+          ],*/
         ),
         body: Padding(
           padding: const EdgeInsets.only(top: 20, left: 10, right: 10),
