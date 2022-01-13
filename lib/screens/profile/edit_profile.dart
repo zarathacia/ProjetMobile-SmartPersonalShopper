@@ -46,7 +46,7 @@ class _EditProfileState extends State<EditProfile> {
       _phonenumber = userDoc.get('phone number');
       _imageurl = userDoc.get('imageurl');
       _password = userDoc.get('password');
-      print('$_password');
+      //print('$_password');
     });
 
   }

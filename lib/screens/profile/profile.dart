@@ -35,7 +35,7 @@ class ProfileState extends State<Profile> {
       _credit = userDoc.get('credit');
       _phonenumber = userDoc.get('phone number');
       _imageurl = userDoc.get('imageurl');
-      print('tdsdqdsest');
+      //print('tdsdqdsest');
     });
 
   }
@@ -44,7 +44,7 @@ class ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size; //responsive sized
     getData();
-    print(_userID);
+    //print(_userID);
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
