@@ -5,7 +5,7 @@ import 'package:smart_personal_shopper/screens/login_registration/login.dart';
 
 import '../../widget/textfield.dart';
 import '../chat/Chat_With_Personal_shopper.dart';
-
+import 'package:smart_personal_shopper/screens/profile/profile.dart';
 class NavBar extends StatefulWidget {
 
   @override
@@ -14,47 +14,32 @@ class NavBar extends StatefulWidget {
 
 class _NavBarState extends State<NavBar> {
   User? user = FirebaseAuth.instance.currentUser;
-  String _userID = "";
-  String _email ="";
-  String _fname = "";
-  String _lname = "";
-  String _password = "";
-  String _location ="";
-  String _credit="";
-  String _phonenumber ="";
-  String _imageurl="";
-
-  void getData() async {
-    _userID = user!.uid;
-    final DocumentSnapshot userDoc = await FirebaseFirestore.instance.collection('userdata').doc(_userID).get();
-    setState(() {
-      _fname = userDoc.get('first name');
-      _lname = userDoc.get('last name');
-      _email = userDoc.get('email');
-      _location = userDoc.get('location');
-      _credit = userDoc.get('credit');
-      _phonenumber = userDoc.get('phone number');
-      _imageurl = userDoc.get('imageurl');
-      _password = userDoc.get('password');
-      //print('$_password');
-    });
-  }
-
+  String userID = "";
+  String email ="";
+  String fname = "";
+  String lname = "";
+  String credit="";
+  String imageurl="";
+void func(){
+  return ProfileState().getData();
+}
   @override
   Widget build(BuildContext context) {
-    getData();
-    print('_fname');
+  //print('nav now');
+  //getData();
+    func();
+    print('$fname');
     return Drawer(
       child: ListView(
         // Remove padding
         padding: EdgeInsets.zero,
         children: [
           UserAccountsDrawerHeader(
-            accountName: Text('$_fname $_lname'),
-            accountEmail: Text('$_email'),
+            accountName: Text('$userID $lname'),
+            accountEmail: Text('$email'),
             currentAccountPicture: CircleAvatar(
               child: ClipRRect(
-                child: Image.network('$_imageurl'),
+                child: Image.network('$imageurl'),
                 borderRadius: BorderRadius.circular(150),
               ),
               radius: 100.0,
