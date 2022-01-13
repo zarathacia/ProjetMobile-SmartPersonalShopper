@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:smart_personal_shopper/screens/Market/cart_screen.dart';
+
 import 'package:smart_personal_shopper/screens/chat/List_of_Past_discussions.dart';
 import 'package:smart_personal_shopper/screens/login_registration/login.dart';
 import 'package:smart_personal_shopper/screens/settings.dart';
@@ -45,9 +47,10 @@ class _NavBarState extends State<NavBar> {
               onTap: () => Navigator.of(context)
                   .push(MaterialPageRoute(builder: (context) => Listof()))),
           ListTile(
-            leading: Icon(Icons.notifications),
-            title: Text('Request'),
-            onTap: () => null,
+            leading: Icon(Icons.shopping_cart),
+            title: Text('Cart'),
+            onTap: () => Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => CartScreen())),
             trailing: ClipOval(
               child: Container(
                 color: Colors.red,

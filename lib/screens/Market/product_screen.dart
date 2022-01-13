@@ -2,9 +2,11 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/constants.dart';
+import 'package:smart_personal_shopper/data/cart/cart.dart';
 import 'package:smart_personal_shopper/data/product/product.dart';
 import 'package:smart_personal_shopper/screens/Payment/paycard.dart';
 import 'package:smart_personal_shopper/screens/home.dart';
+import 'package:smart_personal_shopper/screens/homepage/home_screen.dart';
 import 'package:smart_personal_shopper/screens/profile/profile.dart';
 import 'details.dart';
 
@@ -44,8 +46,9 @@ class _ProductScreenState extends State<ProductScreen> {
   Widget build(BuildContext context) {
     var screensize = MediaQuery.of(context).size;
 
-    final ButtonStyle style =
-        TextButton.styleFrom(primary: Theme.of(context).colorScheme.primary);
+    final ButtonStyle style = TextButton.styleFrom(
+      primary: PrimaryRed,
+    );
     return Scaffold(
       appBar: AppBar(
         //toolbarHeight: screensize.height * 0.1,
@@ -57,8 +60,7 @@ class _ProductScreenState extends State<ProductScreen> {
             color: Colors.red,
             size: 40,
           ),
-          onPressed: () => Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => Home())),
+          onPressed: () => Navigator.of(context).pop(),
         ),
         leadingWidth: 30,
         actions: <Widget>[
@@ -97,7 +99,8 @@ class _ProductScreenState extends State<ProductScreen> {
                     shape: BoxShape.circle,
                     image: new DecorationImage(
                         fit: BoxFit.contain,
-                        image: AssetImage('images/pouya.jfif'))),
+                        image: NetworkImage(
+                            'https://firebasestorage.googleapis.com/v0/b/shopili-mobile-project.appspot.com/o/profilepics%2F20211117-122907%20(4).jpg?alt=media&token=d832fc87-0175-400c-ac39-17a6fad2834d'))),
               ))
         ],
       ),
@@ -267,15 +270,42 @@ class ItemCard extends StatelessWidget {
                                       .copyWith(fontWeight: FontWeight.w700),
                                 ),
                                 Container(
-                                  padding: const EdgeInsets.all(7),
+                                  width: 40,
+                                  height: 40,
+                                  padding: const EdgeInsets.all(0),
                                   decoration: BoxDecoration(
                                     color: PrimaryRed,
                                     borderRadius: BorderRadius.circular(10),
                                   ),
-                                  child: Icon(
-                                    Icons.add,
-                                    size: 20,
-                                    color: Colors.white,
+                                  child: IconButton(
+                                    //////////////////
+                                    icon: Icon(
+                                      Icons.add,
+                                      size: 20,
+                                      color: Colors.white,
+                                    ),
+                                    onPressed: () {
+                                      CartItem item = CartItem(
+                                          id: product.id,
+                                          name: product.name,
+                                          quantity: numOfItems,
+                                          price: double.parse(product.price),
+                                          image: product.image,
+                                          datetime: DateTime.now().toString());
+                                      print("pressed");
+                                      controller.addToCart(item);
+                                      controller.onInit();
+                                      AwesomeDialog(
+                                        context: context,
+                                        animType: AnimType.LEFTSLIDE,
+                                        headerAnimationLoop: false,
+                                        dialogType: DialogType.SUCCES,
+                                        showCloseIcon: true,
+                                        title: 'Alert',
+                                        desc: numOfItems.toString() +
+                                            "Items Added Successfully",
+                                      ).show();
+                                    },
                                   ),
                                 ),
                               ],
