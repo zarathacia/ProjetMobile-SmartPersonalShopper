@@ -13,36 +13,38 @@ class Profile extends StatefulWidget {
 }
 
 class ProfileState extends State<Profile> {
-  final Stream<QuerySnapshot> userdata =
-      FirebaseFirestore.instance.collection('userdata').snapshots();
+
   User? user = FirebaseAuth.instance.currentUser;
   String _userID = "";
-  String _email = "";
+  String _email = "test";
   String _fname = "";
   String _lname = "";
   String _location = "";
   String _credit = "";
   String _phonenumber = "";
+  String _imageurl="";
 
   void getData() async {
     _userID = user!.uid;
+    final DocumentSnapshot userDoc = await FirebaseFirestore.instance.collection('userdata').doc(_userID).get();
+    setState(() {
+      _fname = userDoc.get('first name');
+      _lname = userDoc.get('last name');
+      _email = userDoc.get('email');
+      _location = userDoc.get('location');
+      _credit = userDoc.get('credit');
+      _phonenumber = userDoc.get('phone number');
+      _imageurl = userDoc.get('imageurl');
+      print('tdsdqdsest');
+    });
 
-    final DocumentSnapshot userDoc = await FirebaseFirestore.instance
-        .collection('userdata')
-        .doc(_userID)
-        .get();
-    _fname = userDoc.get('first name');
-    _lname = userDoc.get('last name');
-    _email = userDoc.get('email');
-    _location = userDoc.get('location');
-    _credit = userDoc.get('credit');
-    _phonenumber = userDoc.get('phone number');
   }
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size; //responsive sized
     getData();
+    print(_userID);
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -97,7 +99,7 @@ class ProfileState extends State<Profile> {
                       //height: 100,
                       child: CircleAvatar(
                         child: ClipRRect(
-                          child: Image.asset('images/pouya.jfif'),
+                          child: Image.network(_imageurl),
                           borderRadius: BorderRadius.circular(150),
                         ),
                         radius: 100.0,

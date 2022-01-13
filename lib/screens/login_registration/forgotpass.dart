@@ -3,10 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/screens/login_registration/passverif.dart';
-
 import 'package:smart_personal_shopper/widget/header.dart';
 import 'package:smart_personal_shopper/widget/theme_helper.dart';
-
 import 'login.dart';
 
 class ForgotPasswordPage extends StatefulWidget {

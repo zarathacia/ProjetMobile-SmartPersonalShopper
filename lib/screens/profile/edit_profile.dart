@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:smart_personal_shopper/constants.dart';
 import 'package:smart_personal_shopper/screens/settings.dart';
+
+import '../../widget/theme_helper.dart';
 //import 'package:smart_personal_shopper/widget/textfield.dart';
 //import 'package:settings_ui/pages/settings.dart';
 //final StorageReference storageRef = FirebaseStorage.instance.ref();
@@ -26,54 +28,39 @@ class _EditProfileState extends State<EditProfile> {
   String _location ="";
   String _credit="";
   String _phonenumber ="";
+  String _imageurl="";
+  String _newemail ="";
+  String _newfname = "";
+  String _newlname = "";
+  String _newpassword = "";
+  String _newlocation ="";
+  String _newcredit="";
+  String _newphonenumber ="";
 
 
-  void getData() async{
-    _userID=user!.uid;
-    final DocumentSnapshot userDoc=
-    await FirebaseFirestore.instance.collection('userdata').doc(_userID).get();
-    _fname =userDoc.get('first name');
-    _lname =userDoc.get('last name');
-    _email =userDoc.get('email');
-    _password =userDoc.get('password');
-    _location =userDoc.get('location') ;
-    _credit =userDoc.get('credit');
-    _phonenumber =userDoc.get('phone number');
-    print(_fname);
+  void getData() async {
+    _userID = user!.uid;
+    final DocumentSnapshot userDoc = await FirebaseFirestore.instance.collection('userdata').doc(_userID).get();
+    setState(() {
+      _fname = userDoc.get('first name');
+      _lname = userDoc.get('last name');
+      _email = userDoc.get('email');
+      _location = userDoc.get('location');
+      _credit = userDoc.get('credit');
+      _phonenumber = userDoc.get('phone number');
+      _imageurl = userDoc.get('imageurl');
+      print('$_imageurl');
+    });
 
   }
-  //same here XD
-  /* TextEditingController displayNameController = TextEditingController();
-  TextEditingController bioController = TextEditingController();
-  bool isLoading = false;
-  late User user;
-  bool _displayNameValid = true;
-  bool _bioValid = true;
-  final _globalkey = GlobalKey<FormState>();*/
   late PickedFile _imageFile;
   final ImagePicker _picker = ImagePicker();
 
   bool showPassword = false;
   @override
-  //backend fonctionalities xD
-  /*void initState() {
-    super.initState();
-    getUser();
-  }
 
-  getUser() async {
-    setState(() {
-      isLoading = true;
-    });
-    DocumentSnapshot doc = await usersRef.document(widget.currentUserId).get();
-    user = User.fromDocument(doc);
-    displayNameController.text = user.displayName;
-    bioController.text = user.bio;
-    setState(() {
-      isLoading = false;
-    });
-  }*/
   Widget build(BuildContext context) {
+    getData();
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -137,7 +124,7 @@ class _EditProfileState extends State<EditProfile> {
                           shape: BoxShape.circle,
                           image: DecorationImage(
                             fit: BoxFit.cover,
-                            image: AssetImage('images/pouya.jfif'),
+                            image: NetworkImage(_imageurl),
                           )),
                     ),
                     Positioned(
@@ -175,10 +162,52 @@ class _EditProfileState extends State<EditProfile> {
               SizedBox(
                 height: 35,
               ),
-              buildTextField("Full Name", "$_fname", false),
-              buildTextField("E-mail", '$_email', false),
-              buildTextField("Password", "********", true),
-              buildTextField("Location", "$_location", false),
+
+              TextFormField(
+                onChanged: (val) {
+                  setState(() => _newfname= val);
+                },
+                // controller: emailController,
+                decoration: ThemeHelper().textInputDecoration(
+                    "$_fname", "Enter your first name"),
+              ),
+              SizedBox(height: 15,),
+              TextFormField(
+                onChanged: (val) {
+                  setState(() => _newlname = val);
+                },
+                // controller: emailController,
+                decoration: ThemeHelper().textInputDecoration(
+                    "$_lname", "Enter your last name"),
+              ),
+              SizedBox(height: 15,),
+              TextFormField(
+                onChanged: (val) {
+                  setState(() => _newemail = val);
+                },
+                // controller: emailController,
+                decoration: ThemeHelper().textInputDecoration(
+                    "$_email", "Enter your email"),
+              ),
+              SizedBox(height: 15,),
+              TextFormField(
+                onChanged: (val) {
+                  setState(() => _location = val);
+                },
+                // controller: emailController,
+                decoration: ThemeHelper().textInputDecoration(
+                    "$_location", "Enter your location"),
+              ),
+              SizedBox(height: 15,),
+              TextFormField(
+                onChanged: (val) {
+                  setState(() => _newphonenumber = val);
+                },
+                // controller: emailController,
+                decoration: ThemeHelper().textInputDecoration(
+                    "$_phonenumber", "Enter your number"),
+              ),
+              SizedBox(height: 15,),
               SizedBox(
                 height: 35,
               ),
