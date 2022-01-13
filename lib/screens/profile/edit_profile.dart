@@ -6,10 +6,6 @@ import 'package:smart_personal_shopper/constants.dart';
 import 'package:smart_personal_shopper/screens/settings.dart';
 
 import '../../widget/theme_helper.dart';
-//import 'package:smart_personal_shopper/widget/textfield.dart';
-//import 'package:settings_ui/pages/settings.dart';
-//final StorageReference storageRef = FirebaseStorage.instance.ref();
-//final usersRef = Firestore.instance.collection('users');
 
 class EditProfile extends StatefulWidget {
   final String currentUserId = '';
@@ -49,7 +45,8 @@ class _EditProfileState extends State<EditProfile> {
       _credit = userDoc.get('credit');
       _phonenumber = userDoc.get('phone number');
       _imageurl = userDoc.get('imageurl');
-      print('$_imageurl');
+      _password = userDoc.get('password');
+      print('$_password');
     });
 
   }
@@ -165,6 +162,7 @@ class _EditProfileState extends State<EditProfile> {
 
               TextFormField(
                 onChanged: (val) {
+                  _newfname=_fname;
                   setState(() => _newfname= val);
                 },
                 // controller: emailController,
@@ -174,6 +172,7 @@ class _EditProfileState extends State<EditProfile> {
               SizedBox(height: 15,),
               TextFormField(
                 onChanged: (val) {
+                  _newlname=_lname;
                   setState(() => _newlname = val);
                 },
                 // controller: emailController,
@@ -183,6 +182,7 @@ class _EditProfileState extends State<EditProfile> {
               SizedBox(height: 15,),
               TextFormField(
                 onChanged: (val) {
+                  _newemail=_email;
                   setState(() => _newemail = val);
                 },
                 // controller: emailController,
@@ -192,7 +192,18 @@ class _EditProfileState extends State<EditProfile> {
               SizedBox(height: 15,),
               TextFormField(
                 onChanged: (val) {
-                  setState(() => _location = val);
+                  _newpassword=_password;
+                  setState(() => _newpassword = val);
+                },
+                // controller: emailController,
+                decoration: ThemeHelper().textInputDecoration(
+                    "$_password", "Enter your password"),
+              ),
+              SizedBox(height: 15,),
+              TextFormField(
+                onChanged: (val) {
+                  _newlocation=_location;
+                  setState(() => _newlocation = val);
                 },
                 // controller: emailController,
                 decoration: ThemeHelper().textInputDecoration(
@@ -201,13 +212,16 @@ class _EditProfileState extends State<EditProfile> {
               SizedBox(height: 15,),
               TextFormField(
                 onChanged: (val) {
+                  _newphonenumber=_phonenumber;
                   setState(() => _newphonenumber = val);
                 },
                 // controller: emailController,
                 decoration: ThemeHelper().textInputDecoration(
                     "$_phonenumber", "Enter your number"),
               ),
+
               SizedBox(height: 15,),
+
               SizedBox(
                 height: 35,
               ),
@@ -230,7 +244,18 @@ class _EditProfileState extends State<EditProfile> {
                             color: Colors.black)),
                   ),
                   RaisedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                              FirebaseFirestore.instance.collection('userdata').doc(_userID).update({
+                                  'email': _newemail,
+                                  'first name': _newfname,
+                                  'last name': _newlname,
+                                  'phone number': _newphonenumber,
+                                  'password': _newpassword,
+                                  'location': _newlocation,
+
+                                });
+
+                    },
                     color: SecondaryRed,
                     padding: EdgeInsets.symmetric(horizontal: 50),
                     elevation: 10,
