@@ -1,4 +1,6 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/controller/cart_controller.dart';
 import 'package:smart_personal_shopper/screens/Market/filter.dart';
@@ -13,6 +15,7 @@ import 'package:smart_personal_shopper/screens/profile/profile.dart';
 import 'package:smart_personal_shopper/services/cart_item_service.dart';
 import 'package:smart_personal_shopper/services/sql_service.dart';
 import '../../constants.dart';
+import '../../widget/textfield.dart';
 
 ItemServices itemServices= ItemServices();
 
@@ -40,20 +43,28 @@ class HomeScreenState extends State<HomeScreen> {
   }
 }
 
-class CategoryList extends StatelessWidget {
+class CategoryList extends StatefulWidget {
+  @override
+  State<CategoryList> createState() => _CategoryListState();
+}
+
+class _CategoryListState extends State<CategoryList> {
   final List<Tab> myTabs = <Tab>[
     Tab(text: 'Food'),
     Tab(text: 'Groceries'),
     Tab(text: 'House materials'),
     Tab(text: 'Snacks & Sides'),
   ];
+
   final List<Widget> myTabs_widget = <Widget>[
     food(),
     groceries(),
     house(),
     snackes(),
   ];
+
   final ButtonStyle style = TextButton.styleFrom(primary: Color(0xff8e1d1e));
+
   @override
   Widget build(BuildContext context) {
 
@@ -114,7 +125,8 @@ class CategoryList extends StatelessWidget {
                       shape: BoxShape.circle,
                       image: new DecorationImage(
                           fit: BoxFit.contain,
-                          image: AssetImage('images/pouya.jfif'))),
+                          image: NetworkImage(
+                              'https://firebasestorage.googleapis.com/v0/b/shopili-mobile-project.appspot.com/o/profilepics%2F20211117-122907%20(4).jpg?alt=media&token=d832fc87-0175-400c-ac39-17a6fad2834d'))),
                 ))
           ],
         ),

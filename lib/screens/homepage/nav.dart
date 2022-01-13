@@ -1,10 +1,22 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/screens/login_registration/login.dart';
 
+import '../../widget/textfield.dart';
 import '../chat/Chat_With_Personal_shopper.dart';
-import '../profile/profile.dart';
+import 'package:smart_personal_shopper/screens/profile/profile.dart';
+class NavBar extends StatefulWidget {
 
-class NavBar extends StatelessWidget {
+  @override
+  State<NavBar> createState() => _NavBarState();
+}
+
+class _NavBarState extends State<NavBar> {
+  String email ="hamdi@gmail.com";
+  String fname = "hamdi";
+  String lname = "harzallah";
+  String imageurl="https://firebasestorage.googleapis.com/v0/b/shopili-mobile-project.appspot.com/o/profilepics%2F20211117-122907%20(4).jpg?alt=media&token=d832fc87-0175-400c-ac39-17a6fad2834d";
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -13,11 +25,11 @@ class NavBar extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: [
           UserAccountsDrawerHeader(
-            accountName: Text('Kevin Pouya'),
-            accountEmail: Text('kevin.pouya56@gmail.com'),
+            accountName: Text('$fname $lname'),
+            accountEmail: Text('$email'),
             currentAccountPicture: CircleAvatar(
               child: ClipRRect(
-                child: Image.asset('images/pouya.jfif'),
+                child: Image.network('$imageurl'),
                 borderRadius: BorderRadius.circular(150),
               ),
               radius: 100.0,

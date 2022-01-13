@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/constants.dart';
 import 'package:smart_personal_shopper/screens/home.dart';
@@ -5,9 +6,41 @@ import 'package:smart_personal_shopper/screens/home.dart';
 import '../../models/chatUsersModel.dart';
 import '../../widget/conversationList.dart';
 
-class Listof extends StatelessWidget {
+class Listof extends StatefulWidget {
+  @override
+  State<Listof> createState() => _ListofState();
+}
+
+class _ListofState extends State<Listof> {
+  // String _delivid = "2ZEXx3G9TPrsk93dzgHj";
+  // String _name="";
+  // void getdeliv()async{
+  //   final DocumentSnapshot delivdoc = await FirebaseFirestore.instance.collection('delivery').doc(_delivid).get();
+  //   setState(() {
+  //     _name =delivdoc.get('name');
+  //   });
+  // }
+  final CollectionReference _collectionRef = FirebaseFirestore.instance.collection('deliv');
+  List<Object?> lista=[];
+  Future<void> getData() async {
+    // Get docs from collection reference
+    QuerySnapshot querySnapshot = await _collectionRef.get();
+
+    // Get data from docs and convert map to List
+    final allData = querySnapshot.docs.map((doc) => doc.data()).toList();
+    lista= allData;
+    //print(allData);
+  }
+
+
   @override
   Widget build(BuildContext context) {
+    getData();
+   // List<ChatUsers> chatUsers =allda
+
+    // print(lista);
+    // print(lista[1]);
+
     final size = MediaQuery.of(context).size;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -27,7 +60,9 @@ class Listof extends StatelessWidget {
                 .push(MaterialPageRoute(builder: (context) => Home())),
           ),
         ),
-        body: Center(
+        body:
+
+        Center(
           child: SingleChildScrollView(
             child:
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
@@ -147,9 +182,12 @@ class Listof extends StatelessWidget {
         ),
       ),
     );
+
   }
 
-  List<ChatUsers> chatUsers = [
+
+  List<ChatUsers> chatUsers =
+  [
     ChatUsers(
         name: "Jane Russel",
         messageText: "Awesome Setup",

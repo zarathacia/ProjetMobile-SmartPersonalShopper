@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smart_personal_shopper/constants.dart';
+import 'package:smart_personal_shopper/screens/Market/Market_screen.dart';
+import 'package:smart_personal_shopper/widget/button.dart';
 
 class DiscountCard extends StatelessWidget {
   const DiscountCard({
@@ -75,6 +77,10 @@ class DiscountCard extends StatelessWidget {
                 ),
               ),
             ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(30),
+            child: buttonCustome('Start Shopping', marketScreen(), context),
           ),
         ],
       ),
