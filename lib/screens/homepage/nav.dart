@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:smart_personal_shopper/screens/chat/List_of_Past_discussions.dart';
 import 'package:smart_personal_shopper/screens/login_registration/login.dart';
 import 'package:smart_personal_shopper/screens/settings.dart';
 
