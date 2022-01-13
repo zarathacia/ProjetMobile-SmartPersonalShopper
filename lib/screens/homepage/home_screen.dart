@@ -1,5 +1,6 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_personal_shopper/controller/cart_controller.dart';
 import 'package:smart_personal_shopper/screens/Market/filter.dart';
 import 'package:smart_personal_shopper/screens/Payment/paycard.dart';
 import 'package:smart_personal_shopper/screens/homepage/food.dart';
@@ -9,7 +10,13 @@ import 'package:smart_personal_shopper/screens/homepage/nav.dart';
 import 'package:smart_personal_shopper/screens/homepage/snackes.dart';
 import 'package:smart_personal_shopper/constants.dart';
 import 'package:smart_personal_shopper/screens/profile/profile.dart';
+import 'package:smart_personal_shopper/services/cart_item_service.dart';
+import 'package:smart_personal_shopper/services/sql_service.dart';
 import '../../constants.dart';
+
+ItemServices itemServices= ItemServices();
+
+
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -17,7 +24,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class HomeScreenState extends State<HomeScreen> {
+
   Widget build(BuildContext context) {
+
     //return Scaffold(
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -28,16 +37,6 @@ class HomeScreenState extends State<HomeScreen> {
         primaryColor: PrimaryRed,
       ),
     );
-    /*body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-
-            CategoryList(),
-          ],
-        ),
-      ),
-    );*/
   }
 }
 
@@ -57,6 +56,7 @@ class CategoryList extends StatelessWidget {
   final ButtonStyle style = TextButton.styleFrom(primary: Color(0xff8e1d1e));
   @override
   Widget build(BuildContext context) {
+
     return DefaultTabController(
       length: myTabs.length,
       child: Scaffold(

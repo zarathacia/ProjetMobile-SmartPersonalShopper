@@ -2,26 +2,41 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/constants.dart';
+import 'package:smart_personal_shopper/controller/cart_controller.dart';
+import 'package:smart_personal_shopper/data/cart/cart.dart';
 import 'package:smart_personal_shopper/data/cart/cart.dart';
 import 'package:smart_personal_shopper/screens/choose_your_personal_shopper.dart';
 import 'package:smart_personal_shopper/screens/Market/details.dart';
+import 'package:smart_personal_shopper/services/cart_item_service.dart';
 import 'address.dart';
 
-final productsRef = FirebaseFirestore.instance
-    .collection('carts')
-    .withConverter<Cart>(
-  fromFirestore: (snapshots, _) => Cart.fromJson(snapshots.data()!),
-  toFirestore: (cart, _) => cart.toJson(),
+
+
+User? user = FirebaseAuth.instance.currentUser;
+final cartsRef = FirebaseFirestore.instance.collection('carts')
+  .withConverter<Cart>
+  (
+    fromFirestore: (snapshots, _) => Cart.fromJson(snapshots.data()!),
+    toFirestore: (cart, _) => cart.toJson()
 );
 
+
 class CartScreen extends StatefulWidget {
+
   const CartScreen({Key? key}):super(key:key);
   @override
   State<StatefulWidget> createState() => LunchState();
 }
 
 class LunchState extends State<CartScreen> {
+  ItemServices itemServices= ItemServices();
+  final  CartController controller=CartController();
   Widget build(BuildContext context) {
+
+    controller.onInit();
+    print("Size of cartItems");
+    print(controller.cartItems.length);
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -43,26 +58,28 @@ class LunchState extends State<CartScreen> {
           ),
         ),
       ),
-      body: initScreen(),
+      body:
+            initScreen(controller.cartItems),
+
     );
   }
 
-  initScreen() {
-    return new Container(
+  initScreen(List<CartItem> cartItems) {
+    return Container(
         child: Stack(
           children: <Widget>[
-            ListView(
-              children: <Widget>[
-                dummyDataOfListView(
-                    "images/pizza.png", "pizza neptune", "Cloths", "500Rs", 4),
-                dummyDataOfListView(
-                    "images/tomate.png", "1kg tomate", "Cloths", "600Rs", 1),
-                dummyDataOfListView(
-                    "images/hrissa.png", "hrissa sicam", "Cloths", "800Rs", 3),
-                dummyDataOfListView(
-                    "images/boga.png", "Boga 1.5L", "Cloths", "100Rs", 4),
-              ],
-            ),
+            ListView.builder(
+            itemCount: cartItems.length,
+          itemBuilder: (context,index){
+              return CartItemView(
+                cartItems[index].image,
+                cartItems[index].name,
+                "Item Category",
+                cartItems[index].price.toString(),
+                cartItems[index].quantity,
+              );
+          },
+          ),
             Container(
               margin: EdgeInsets.all(20.0),
               alignment: Alignment.bottomCenter,
@@ -80,11 +97,13 @@ class LunchState extends State<CartScreen> {
                 ),
               ),
             )
-          ],
-        ));
+          ]
+    ),
+    );
+
   }
 
-  dummyDataOfListView(String imgSrc, String itemName, String itemCategory,
+  CartItemView(String imgSrc, String itemName, String itemCategory,
       String itemPrice, int itemCount) {
     return Container(
         child: Card(
@@ -92,16 +111,13 @@ class LunchState extends State<CartScreen> {
           color: Color(0xffEEEEEE),
           child: ListTile(
             // on ListItem clicked
-            onTap: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => details()));
-            },
+            onTap: () {},
 
             // Image of ListItem
             leading: Container(
-              child: Image(
-                fit: BoxFit.fitHeight,
-                image: AssetImage(imgSrc),
+              child:SizedBox(
+                    width:100,
+                    child:Image.network(imgSrc),
               ),
             ),
 
@@ -137,7 +153,6 @@ class LunchState extends State<CartScreen> {
               ),
             ),
 
-            // Item Add and Remove Container
             subtitle: Container(
                 child: Wrap(
                   direction: Axis.horizontal,

@@ -29,6 +29,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  sqflite: ^2.0.2
+  path:
   material_floating_search_bar: ^0.2.6
   flutter_rating_bar: ^4.0.0
   http: ^0.13.4
