@@ -4,6 +4,7 @@ import 'package:smart_personal_shopper/constants.dart';
 import 'package:smart_personal_shopper/screens/Market/product_screen.dart';
 import 'package:smart_personal_shopper/screens/Payment/paycard.dart';
 import 'package:smart_personal_shopper/screens/home.dart';
+import 'package:smart_personal_shopper/screens/homepage/home_screen.dart';
 import 'package:smart_personal_shopper/screens/profile/profile.dart';
 import 'Market_items.dart';
 import 'package:smart_personal_shopper/screens/Market/Market_items.dart';
@@ -12,14 +13,15 @@ class marketScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var screensize = MediaQuery.of(context).size;
-    final ButtonStyle style =
-        TextButton.styleFrom(primary: Theme.of(context).colorScheme.primary);
+    final ButtonStyle style = TextButton.styleFrom(
+      primary: PrimaryRed,
+    );
     return Scaffold(
       appBar: AppBar(
         //toolbarHeight: screensize.height * 0.1,
         backgroundColor: Colors.white,
         elevation: 0.0,
-        leading: IconButton(
+        /* leading: IconButton(
           icon: Icon(
             Icons.arrow_back_rounded,
             color: Colors.red,
@@ -27,7 +29,7 @@ class marketScreen extends StatelessWidget {
           ),
           onPressed: () => Navigator.of(context)
               .push(MaterialPageRoute(builder: (context) => Home())),
-        ),
+        ),*/
         leadingWidth: 30,
         actions: <Widget>[
           TextButton(
@@ -66,7 +68,8 @@ class marketScreen extends StatelessWidget {
                     shape: BoxShape.circle,
                     image: new DecorationImage(
                         fit: BoxFit.contain,
-                        image: AssetImage('images/pouya.jfif'))),
+                        image: NetworkImage(
+                            'https://firebasestorage.googleapis.com/v0/b/shopili-mobile-project.appspot.com/o/profilepics%2F20211117-122907%20(4).jpg?alt=media&token=d832fc87-0175-400c-ac39-17a6fad2834d'))),
               ))
         ],
       ),
