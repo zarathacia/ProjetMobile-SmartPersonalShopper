@@ -63,43 +63,55 @@ class LunchState extends State<CartScreen> {
   }
 
   initScreen(List<CartItem> cartItems) {
-    return Container(
+    if(cartItems.isEmpty)
+    {
+      return Container(
+        child: Text(
+          "You have an empty Cart back to shopping",
+          style: TextStyle(color: Colors.black54, fontSize: 18.0),
+        ),
+      );
+    }
+    else {
+      return Container(
         child: Stack(
-          children: <Widget>[
-            ListView.builder(
-            itemCount: cartItems.length,
-            itemBuilder: (context,index){
-              return CartItemView(
-                cartItems[index].id,
-                cartItems[index].image,
-                cartItems[index].name,
-                "Item Category",
-                cartItems[index].price.toString(),
-                cartItems[index].quantity,
-              );
-          },
-          ),
-            Container(
-              margin: EdgeInsets.all(20.0),
-              alignment: Alignment.bottomCenter,
-              child: MaterialButton(
-                height: 50.0,
-                onPressed: () {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) => Choose()));
-                },
-                color: SecondaryRed,
-                minWidth: double.maxFinite,
-                child: Text(
-                  "Continue",
-                  style: TextStyle(color: Colors.white, fontSize: 18.0),
-                ),
-              ),
-            )
-          ]
-    ),
-    );
+            children: <Widget>[
 
+              ListView.builder(
+                itemCount: cartItems.length,
+                itemBuilder: (context, index) {
+                  return CartItemView(
+                    cartItems[index].id,
+                    cartItems[index].image,
+                    cartItems[index].name,
+                    "Item Category",
+                    cartItems[index].price.toString(),
+                    cartItems[index].quantity,
+                  );
+                },
+              ),
+              Container(
+                margin: EdgeInsets.all(20.0),
+                alignment: Alignment.bottomCenter,
+                child: MaterialButton(
+                  height: 50.0,
+                  onPressed: () {
+                    Navigator.of(context)
+                        .push(
+                        MaterialPageRoute(builder: (context) => Choose()));
+                  },
+                  color: SecondaryRed,
+                  minWidth: double.maxFinite,
+                  child: Text(
+                    "Continue",
+                    style: TextStyle(color: Colors.white, fontSize: 18.0),
+                  ),
+                ),
+              )
+            ]
+        ),
+      );
+    }
   }
 
   CartItemView(String id,String imgSrc, String itemName, String itemCategory,
