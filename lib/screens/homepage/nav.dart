@@ -1,13 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:smart_personal_shopper/screens/chat/List_of_Past_discussions.dart';
 import 'package:smart_personal_shopper/screens/login_registration/login.dart';
+import 'package:smart_personal_shopper/screens/settings.dart';
 
 import '../../widget/textfield.dart';
 import '../chat/Chat_With_Personal_shopper.dart';
 import 'package:smart_personal_shopper/screens/profile/profile.dart';
-class NavBar extends StatefulWidget {
 
+class NavBar extends StatefulWidget {
   @override
   State<NavBar> createState() => _NavBarState();
 }
@@ -15,14 +18,17 @@ class NavBar extends StatefulWidget {
 class _NavBarState extends State<NavBar> {
   User? user = FirebaseAuth.instance.currentUser;
   String userID = "";
-  String email ="";
+  String email = "";
   String fname = "";
   String lname = "";
-  String credit="";
-  String imageurl="";
+  String credit = "";
+  String imageurl = "";
   void getData() async {
     userID = user!.uid;
-    final DocumentSnapshot userDoc = await FirebaseFirestore.instance.collection('userdata').doc(userID).get();
+    final DocumentSnapshot userDoc = await FirebaseFirestore.instance
+        .collection('userdata')
+        .doc(userID)
+        .get();
     setState(() {
       fname = userDoc.get('first name');
       lname = userDoc.get('last name');
@@ -31,12 +37,12 @@ class _NavBarState extends State<NavBar> {
       imageurl = userDoc.get('imageurl');
       //print('tdsdqdsest');
     });
-
   }
+
   @override
   Widget build(BuildContext context) {
-  //print('nav now');
-  //getData();
+    //print('nav now');
+    //getData();
     print('$fname');
     return Drawer(
       child: ListView(
@@ -58,7 +64,7 @@ class _NavBarState extends State<NavBar> {
               leading: Icon(Icons.person),
               title: Text('chat'),
               onTap: () => Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => Chat()))),
+                  .push(MaterialPageRoute(builder: (context) => Listof()))),
           ListTile(
             leading: Icon(Icons.notifications),
             title: Text('Request'),
@@ -84,14 +90,14 @@ class _NavBarState extends State<NavBar> {
           ListTile(
             leading: Icon(Icons.settings),
             title: Text('Settings'),
-            onTap: () => null,
+            onTap: () => Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => Setting())),
           ),
           Divider(),
           ListTile(
               title: Text('Exit'),
               leading: Icon(Icons.exit_to_app),
-              onTap: () => Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => Login()))),
+              onTap: () => SystemNavigator.pop()),
         ],
       ),
     );

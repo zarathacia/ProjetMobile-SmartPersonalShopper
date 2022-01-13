@@ -41,7 +41,7 @@ class CategoryList extends StatelessWidget {
             },
           ),
           CategoryItem(
-            title: "Snacks & Sides",
+            title: "Snacks",
             isActive: false,
             press: () {
               // Navigator.of(context).push(MaterialPageRoute(builder: (context) => snackes()));
