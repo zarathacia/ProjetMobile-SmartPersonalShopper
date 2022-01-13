@@ -15,13 +15,13 @@ class Profile extends StatefulWidget {
 class ProfileState extends State<Profile> {
   User? user = FirebaseAuth.instance.currentUser;
   String _userID = "";
-  String email = "test";
-  String fname = "";
-  String lname = "";
-  String location = "";
-  String credit = "";
-  String phonenumber = "";
-  String imageurl = "";
+  String _email = "test";
+  String _fname = "";
+  String _lname = "";
+  String _location = "";
+  String _credit = "";
+  String _phonenumber = "";
+  String _imageurl = "";
 
   void getData() async {
     _userID = user!.uid;
@@ -30,20 +30,20 @@ class ProfileState extends State<Profile> {
         .doc(_userID)
         .get();
     setState(() {
-      fname = userDoc.get('first name');
-      lname = userDoc.get('last name');
-      email = userDoc.get('email');
-      location = userDoc.get('location');
-      credit = userDoc.get('credit');
-      phonenumber = userDoc.get('phone number');
-      imageurl = userDoc.get('imageurl');
-      //print('tdsdqdsest');
+      _fname = userDoc.get('first name');
+      _lname = userDoc.get('last name');
+      _email = userDoc.get('email');
+      _location = userDoc.get('location');
+      _credit = userDoc.get('credit');
+      _phonenumber = userDoc.get('phone number');
+      _imageurl = userDoc.get('imageurl');
+      print('tdsdqdsest');
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    //print('profile now');
+    print('profile now');
     Size size = MediaQuery.of(context).size; //responsive sized
     getData();
     //print(_userID);
@@ -101,7 +101,7 @@ class ProfileState extends State<Profile> {
                       //height: 100,
                       child: CircleAvatar(
                         child: ClipRRect(
-                          child: Image.network(imageurl),
+                          child: Image.network(_imageurl),
                           borderRadius: BorderRadius.circular(150),
                         ),
                         radius: 100.0,
@@ -118,7 +118,7 @@ class ProfileState extends State<Profile> {
               //crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "${fname} ${fname}",
+                  "${_lname} ${_fname}",
                   style: TextStyle(
                       color: Color(0xFFff4d6d),
                       fontStyle: FontStyle.normal,
@@ -134,7 +134,7 @@ class ProfileState extends State<Profile> {
                       width: 20,
                     ),
                     Text(
-                      location,
+                      _location,
                       style: TextStyle(
                         fontSize: 18.0,
                         fontStyle: FontStyle.italic,
@@ -155,7 +155,7 @@ class ProfileState extends State<Profile> {
                       width: 20,
                     ),
                     Text(
-                      '${email}',
+                      '${_email}',
                       style: TextStyle(
                         fontSize: 18.0,
                         fontStyle: FontStyle.italic,
@@ -176,7 +176,7 @@ class ProfileState extends State<Profile> {
                       width: 20,
                     ),
                     Text(
-                      credit + " DT",
+                      _credit + " DT",
                       style: TextStyle(
                         fontSize: 18.0,
                         fontStyle: FontStyle.italic,
