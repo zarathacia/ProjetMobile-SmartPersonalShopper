@@ -253,6 +253,7 @@ class _EditProfileState extends State<EditProfile> {
                                   'password': _newpassword,
                                   'location': _newlocation,
 
+
                                 });
 
                     },

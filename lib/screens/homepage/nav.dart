@@ -20,14 +20,23 @@ class _NavBarState extends State<NavBar> {
   String lname = "";
   String credit="";
   String imageurl="";
-void func(){
-  return ProfileState().getData();
-}
+  void getData() async {
+    userID = user!.uid;
+    final DocumentSnapshot userDoc = await FirebaseFirestore.instance.collection('userdata').doc(userID).get();
+    setState(() {
+      fname = userDoc.get('first name');
+      lname = userDoc.get('last name');
+      email = userDoc.get('email');
+      credit = userDoc.get('credit');
+      imageurl = userDoc.get('imageurl');
+      //print('tdsdqdsest');
+    });
+
+  }
   @override
   Widget build(BuildContext context) {
   //print('nav now');
   //getData();
-    func();
     print('$fname');
     return Drawer(
       child: ListView(

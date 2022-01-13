@@ -25,6 +25,10 @@ class _registerState extends State<register> {
   String email = '';
   String phone = '';
   String password = '';
+  String location = "";
+  String credit = "0.0";
+  String phonenumber = "";
+  String imageurl="https://firebasestorage.googleapis.com/v0/b/shopili-mobile-project.appspot.com/o/profilepics%2Fprof.jpg?alt=media&token=b098ba99-e782-4378-963e-692514d84e8d";
   bool checkedValue = false;
   bool checkboxValue = false;
   late PickedFile _imageFile;
@@ -303,10 +307,7 @@ class _registerState extends State<register> {
                             ),
                             onPressed: () async {
                               if (_formKey.currentState!.validate()) {
-                                auth
-                                    .createUserWithEmailAndPassword(
-                                        email: email, password: password)
-                                    .then((value) {
+                                auth.createUserWithEmailAndPassword(email: email, password: password).then((value) {
                                   FirebaseFirestore.instance
                                       .collection('userdata')
                                       .doc(value.user!.uid)
@@ -315,7 +316,11 @@ class _registerState extends State<register> {
                                     'first name': fname,
                                     'last name': lname,
                                     'phone number': phone,
-                                    'password': password
+                                    'password': password,
+                                    'location': location,
+                                    'credit':credit,
+                                    'imageurl':imageurl,
+
                                   });
 
                                   Navigator.of(context).pushReplacement(
