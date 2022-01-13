@@ -271,6 +271,7 @@ class _registerState extends State<register> {
                                     'location' : location,
                                     'credit' : credit,
                                     'imageurl': imageurl,
+                                    //
 
                                   });
 
