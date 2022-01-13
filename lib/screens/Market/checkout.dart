@@ -29,12 +29,13 @@ class _checkout extends State<Checkout> {
 
   @override
   Widget build(BuildContext context) {
-    controller.onInit();
+
     setState(() {
+      controller.onInit();
       widget.cartItems=controller.cartItems;
     });
 
-    widget.cartItems=controller.cartItems;
+
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,
@@ -60,6 +61,7 @@ class _checkout extends State<Checkout> {
   initScreen(List<CartItem> cartItems) {
     double total = 0;
     double discount = 10;
+    cartItems=controller.cartItems;
 
     if(cartItems.isEmpty)
     {
