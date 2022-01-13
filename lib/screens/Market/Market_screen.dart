@@ -3,11 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/constants.dart';
 import 'package:smart_personal_shopper/screens/Payment/paycard.dart';
 import 'package:smart_personal_shopper/screens/home.dart';
-import 'package:smart_personal_shopper/screens/profile.dart';
-import 'product_screen.dart';
+import 'package:smart_personal_shopper/screens/profile/profile.dart';
+import 'Productscreen.dart';
 import 'Market_items.dart';
 import 'package:smart_personal_shopper/screens/Market/Market_items.dart';
-
 
 class marketScreen extends StatelessWidget {
   @override

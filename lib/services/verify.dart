@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:smart_personal_shopper/screens/home1.dart';
+import 'package:smart_personal_shopper/screens/zebla/home1.dart';
 import 'package:smart_personal_shopper/widget/theme_helper.dart';
 
 import '../screens/home.dart';
@@ -21,7 +21,6 @@ class _VerifyScreenState extends State<VerifyScreen> {
 
   @override
   void initState() {
-
     //user = auth.currentUser!;
     user?.sendEmailVerification();
 
@@ -52,7 +51,6 @@ class _VerifyScreenState extends State<VerifyScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-
                 Container(
                   height: screensize.height * 0.6,
                   child: PageView(
@@ -77,36 +75,44 @@ class _VerifyScreenState extends State<VerifyScreen> {
                             ),
                             SizedBox(height: screensize.width * 0.06),
                             Text(
-                              'please verify your email', textAlign: TextAlign.center,
+                              'please verify your email',
+                              textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: screensize.width * 0.04,
                                 color: Color(0xFFff4d6d),
                               ),
                             ),
-                            SizedBox(height: 10,),
+                            SizedBox(
+                              height: 10,
+                            ),
                             Text(
-                              'or ', textAlign: TextAlign.center,
+                              'or ',
+                              textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: screensize.width * 0.04,
                                 color: Color(0xFFff4d6d),
                               ),
                             ),
-                            SizedBox(height: 10,),
-                            GestureDetector(
-                              child: Text(
-                                'go back to login page ', textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: screensize.width * 0.04,
-                                  fontWeight: FontWeight.bold,
-                                  color: Color(0xFFff4d6d),
-                                ),
-                              ),
-                              onTap: (){Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) => Login()));}
+                            SizedBox(
+                              height: 10,
                             ),
-
+                            GestureDetector(
+                                child: Text(
+                                  'go back to login page ',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: screensize.width * 0.04,
+                                    fontWeight: FontWeight.bold,
+                                    color: Color(0xFFff4d6d),
+                                  ),
+                                ),
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => Login()));
+                                }),
                           ],
-
                         ),
                       ),
                       Padding(
@@ -127,7 +133,6 @@ class _VerifyScreenState extends State<VerifyScreen> {
                               ),
                             ),
                             SizedBox(height: screensize.width * 0.06),
-
                           ],
                         ),
                       ),
@@ -148,20 +153,17 @@ class _VerifyScreenState extends State<VerifyScreen> {
                                 width: screensize.width * 0.8,
                               ),
                             ),
-
                           ],
                         ),
                       ),
                     ],
                   ),
                 ),
-
               ],
             ),
           ),
         ),
       ),
-
     );
   }
 
@@ -170,8 +172,8 @@ class _VerifyScreenState extends State<VerifyScreen> {
     await user?.reload();
     if (user!.emailVerified) {
       timer.cancel();
-      Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => Home()));
+      Navigator.of(context)
+          .pushReplacement(MaterialPageRoute(builder: (context) => Home()));
     }
   }
 }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/screens/homepage/house.dart';
 import 'package:smart_personal_shopper/screens/homepage/snackes.dart';
 
-import '../profile.dart';
+import '../profile/profile.dart';
 import 'categorieitem.dart';
 import 'groceries.dart';
 

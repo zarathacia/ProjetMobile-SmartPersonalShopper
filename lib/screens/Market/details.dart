@@ -1,29 +1,28 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/constants.dart';
-import 'package:smart_personal_shopper/screens/Market/product_screen.dart';
-import 'package:smart_personal_shopper/screens/Market/cart_screen.dart';
-import 'package:smart_personal_shopper/screens/profile.dart';
+import 'package:smart_personal_shopper/screens/Market/Productscreen.dart';
+import 'package:smart_personal_shopper/screens/Market/cart.dart';
+import 'package:smart_personal_shopper/screens/profile/profile.dart';
 import 'package:smart_personal_shopper/data/product/product.dart';
 import '../Payment/paycard.dart';
 import '../home.dart';
 
-class details extends StatefulWidget{
-  Product currentProduct=Product(
-      id:"001",
-      name:"harissa",
+class details extends StatefulWidget {
+  Product currentProduct = Product(
+      id: "001",
+      name: "harissa",
       description: "lorem",
       price: "0.8",
       review: "8",
       image: "images/hrissa.png");
   details() {
-
     print("Non-parameterized constructor invoked");
   }
   details.product({required this.currentProduct});
 
-
   @override
-  _detailsState createState()=>_detailsState();
+  _detailsState createState() => _detailsState();
 }
 
 class _detailsState extends State<details> {
@@ -43,21 +42,35 @@ class _detailsState extends State<details> {
         backgroundColor: SecondaryRed,
         elevation: 0.0,
         leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back_rounded,
-            color: Colors.white,
-            size: 40,
-          ),
-          onPressed: () => Navigator.of(context).pop()
-              //.push(MaterialPageRoute(builder: (context) => ProductScreen())),
-        ),
+            icon: Icon(
+              Icons.arrow_back_rounded,
+              color: Colors.white,
+              size: 40,
+            ),
+            onPressed: () => Navigator.of(context).pop()
+            //.push(MaterialPageRoute(builder: (context) => ProductScreen())),
+            ),
         leadingWidth: 30,
         actions: <Widget>[
           TextButton(
             style: style,
             onPressed: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => MyCard()));
+              AwesomeDialog(
+                context: context,
+                headerAnimationLoop: false,
+                dialogType: DialogType.NO_HEADER,
+                title: 'Your have 180.52 DT',
+                desc: 'Do you want to recharge your account?',
+                btnCancelText: "No",
+                btnOkText: "Recharge",
+                btnCancelOnPress: () {},
+                btnOkOnPress: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) => MyCard()));
+                },
+                btnOkColor: SecondaryRed,
+                btnCancelColor: Colors.grey[500],
+              )..show();
             },
             child: const Text('Credit:180.52 DT'),
           ),
@@ -104,9 +117,7 @@ class _detailsState extends State<details> {
                           left: size.width * 0.12, right: size.width * 0.05),
                       child: Column(
                         children: <Widget>[
-                          Text(
-                            widget.currentProduct.description
-                          ),
+                          Text(widget.currentProduct.description),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
@@ -151,7 +162,7 @@ class _detailsState extends State<details> {
                               text: TextSpan(
                                 children: [
                                   TextSpan(
-                                    text: widget.currentProduct.price+"  DT",
+                                    text: widget.currentProduct.price + "  DT",
                                     style: TextStyle(
                                         fontSize: 18, color: Colors.white),
                                   ),
@@ -165,8 +176,8 @@ class _detailsState extends State<details> {
                                       top: screensize.height * 0.002,
                                       right: screensize.height * 0.00,
                                     ),
-                                    child:
-                                      Image.network(widget.currentProduct.image,
+                                    child: Image.network(
+                                      widget.currentProduct.image,
                                       width: screensize.width * 0.9,
                                       height: screensize.height * 0.3,
                                       fit: BoxFit.fill,
@@ -211,7 +222,7 @@ class AddToCart extends StatelessWidget {
               color: Color(0xFFff4d6d),
               onPressed: () {
                 Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => CartScreen()));
+                    .push(MaterialPageRoute(builder: (context) => Cart()));
               },
             ),
           ),

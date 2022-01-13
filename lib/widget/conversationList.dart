@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/constants.dart';
-import 'package:smart_personal_shopper/screens/Chat_With_Personal_shopper.dart';
+import 'package:smart_personal_shopper/screens/chat/Chat_With_Personal_shopper.dart';
+import 'package:smart_personal_shopper/screens/chat/delete_it_after/chat_screen.dart';
 import 'package:smart_personal_shopper/widget/ratingstat.dart';
 
 class ConversationList extends StatefulWidget {
@@ -27,7 +28,7 @@ class _ConversationListState extends State<ConversationList> {
     return GestureDetector(
       onTap: () {
         Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return Chat();
+          return Chat(); //return ChatScreen();
         }));
       },
       child: Padding(

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/constants.dart';
 import 'package:smart_personal_shopper/screens/Market/Market_screen.dart';
 import 'package:smart_personal_shopper/screens/home.dart';
-import 'package:smart_personal_shopper/screens/profile.dart';
+import 'package:smart_personal_shopper/screens/profile/profile.dart';
 
-import '../widget/navbar.dart';
+import '../../widget/navbar.dart';
 import 'List_of_Past_discussions.dart';
 import '/models/chatMessageModel.dart';
 

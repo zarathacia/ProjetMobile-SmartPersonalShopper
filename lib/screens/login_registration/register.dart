@@ -1,21 +1,13 @@
-import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:smart_personal_shopper/screens/home.dart';
-import 'package:smart_personal_shopper/screens/home1.dart';
 import 'package:smart_personal_shopper/screens/login_registration/login.dart';
-import 'package:smart_personal_shopper/screens/profile.dart';
 import 'package:smart_personal_shopper/services/verify.dart';
-import 'package:smart_personal_shopper/widget/bottomsheet.dart';
 import 'package:smart_personal_shopper/widget/header.dart';
-import 'package:smart_personal_shopper/widget/socialbtn.dart';
 import 'package:smart_personal_shopper/widget/theme_helper.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:http/http.dart' as http;
 
 class register extends StatefulWidget {
   @override
@@ -28,11 +20,11 @@ class _registerState extends State<register> {
   final _formKey = GlobalKey<FormState>();
   final auth = FirebaseAuth.instance;
 
-  String fname='';
-  String lname='';
-  String email='';
-  String phone='';
-  String password='';
+  String fname = '';
+  String lname = '';
+  String email = '';
+  String phone = '';
+  String password = '';
   bool checkedValue = false;
   bool checkboxValue = false;
   late PickedFile _imageFile;
@@ -153,14 +145,13 @@ class _registerState extends State<register> {
                         ),
                         Container(
                           child: TextFormField(
-                            onChanged: (val){
+                            onChanged: (val) {
                               setState(() => fname = val);
-
                             },
                             validator: (val) {
-                            if (val!.isEmpty) {
-                            return "First name can't be empty";
-                            }
+                              if (val!.isEmpty) {
+                                return "First name can't be empty";
+                              }
                             },
                             //controller: fnameController,
                             decoration: ThemeHelper().textInputDecoration(
@@ -173,14 +164,14 @@ class _registerState extends State<register> {
                         ),
                         Container(
                           child: TextFormField(
-                            onChanged: (val){
+                            onChanged: (val) {
                               setState(() => lname = val);
-
                             },
                             validator: (val) {
                               if (val!.isEmpty) {
                                 return "Last name can't be empty";
-                              };
+                              }
+                              ;
                             },
                             // controller: lnameController,
                             decoration: ThemeHelper().textInputDecoration(
@@ -191,9 +182,8 @@ class _registerState extends State<register> {
                         SizedBox(height: 20.0),
                         Container(
                           child: TextFormField(
-                            onChanged: (val){
+                            onChanged: (val) {
                               setState(() => email = val);
-
                             },
                             // controller: emailController,
                             decoration: ThemeHelper().textInputDecoration(
@@ -203,7 +193,7 @@ class _registerState extends State<register> {
                               if (val!.isEmpty) {
                                 return "Email can't be empty";
                               } else if (!RegExp(
-                                  r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$")
+                                      r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$")
                                   .hasMatch(val)) {
                                 return "Enter a valid email address";
                               }
@@ -215,9 +205,8 @@ class _registerState extends State<register> {
                         SizedBox(height: 20.0),
                         Container(
                           child: TextFormField(
-                            onChanged: (val){
+                            onChanged: (val) {
                               setState(() => phone = val);
-
                             },
                             // controller: phoneController,
                             decoration: ThemeHelper().textInputDecoration(
@@ -226,7 +215,8 @@ class _registerState extends State<register> {
                             validator: (val) {
                               if (val!.isEmpty) {
                                 return "Phone number can't be empty";
-                              };
+                              }
+                              ;
                             },
                           ),
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
@@ -234,16 +224,15 @@ class _registerState extends State<register> {
                         SizedBox(height: 20.0),
                         Container(
                           child: TextFormField(
-                            onChanged: (val){
+                            onChanged: (val) {
                               setState(() => password = val);
-
                             },
                             //  controller: passwordController,
                             obscureText: true,
                             decoration: ThemeHelper().textInputDecoration(
                                 "Password*", "Enter your password"),
                             validator: (val) {
-                              if (val!.length < 6 ){
+                              if (val!.length < 6) {
                                 return "Please enter your password";
                               }
                               return null;
@@ -303,7 +292,8 @@ class _registerState extends State<register> {
                             child: Padding(
                               padding:
                                   const EdgeInsets.fromLTRB(40, 10, 40, 10),
-                              child: Text("Register".toUpperCase(),
+                              child: Text(
+                                "Register".toUpperCase(),
                                 style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
@@ -312,17 +302,26 @@ class _registerState extends State<register> {
                               ),
                             ),
                             onPressed: () async {
-                              if (_formKey.currentState!.validate()){
-                                
-                                auth.createUserWithEmailAndPassword(email: email, password: password).then((value){
-                                  FirebaseFirestore.instance.collection('userdata').doc(value.user!.uid).set(
-                                      {'email': value.user!.email,
-                                        'first name': fname,
-                                        'last name': lname,
-                                        'phone number': phone,
-                                        'password': password});
+                              if (_formKey.currentState!.validate()) {
+                                auth
+                                    .createUserWithEmailAndPassword(
+                                        email: email, password: password)
+                                    .then((value) {
+                                  FirebaseFirestore.instance
+                                      .collection('userdata')
+                                      .doc(value.user!.uid)
+                                      .set({
+                                    'email': value.user!.email,
+                                    'first name': fname,
+                                    'last name': lname,
+                                    'phone number': phone,
+                                    'password': password
+                                  });
 
-                                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => VerifyScreen()));
+                                  Navigator.of(context).pushReplacement(
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              VerifyScreen()));
                                 });
                                 print(fname);
                                 print(lname);
@@ -331,9 +330,8 @@ class _registerState extends State<register> {
                                 print(password);
                               }
 
-
                               //if (_formKey.currentState.validate()){
-                                //print(email);
+                              //print(email);
 
                               //}
                             },
@@ -351,8 +349,7 @@ class _registerState extends State<register> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) =>
-                                              Login()));
+                                          builder: (context) => Login()));
                                 },
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,

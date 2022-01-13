@@ -8,11 +8,8 @@ import 'package:smart_personal_shopper/screens/homepage/house.dart';
 import 'package:smart_personal_shopper/screens/homepage/nav.dart';
 import 'package:smart_personal_shopper/screens/homepage/snackes.dart';
 import 'package:smart_personal_shopper/constants.dart';
-import 'package:smart_personal_shopper/screens/profile.dart';
+import 'package:smart_personal_shopper/screens/profile/profile.dart';
 import '../../constants.dart';
-import '../profile.dart';
-
-
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -23,14 +20,15 @@ class HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     //return Scaffold(
     return MaterialApp(
-    home:
-          CategoryList(),
-    theme: ThemeData(
-    // Define the default brightness and colors.
-    brightness: Brightness.light,
-    primaryColor:PrimaryRed,),
+      debugShowCheckedModeBanner: false,
+      home: CategoryList(),
+      theme: ThemeData(
+        // Define the default brightness and colors.
+        brightness: Brightness.light,
+        primaryColor: PrimaryRed,
+      ),
     );
-      /*body: SingleChildScrollView(
+    /*body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -42,6 +40,7 @@ class HomeScreenState extends State<HomeScreen> {
     );*/
   }
 }
+
 class CategoryList extends StatelessWidget {
   final List<Tab> myTabs = <Tab>[
     Tab(text: 'Food'),
@@ -55,15 +54,14 @@ class CategoryList extends StatelessWidget {
     house(),
     snackes(),
   ];
-  final ButtonStyle style =
-  TextButton.styleFrom(primary: Color(0xff8e1d1e));
+  final ButtonStyle style = TextButton.styleFrom(primary: Color(0xff8e1d1e));
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: myTabs.length,
       child: Scaffold(
         drawer: NavBar(),
-        backgroundColor: PrimaryRed ,
+        backgroundColor: PrimaryRed,
         appBar: AppBar(
           iconTheme: IconThemeData(color: PrimaryRed),
           backgroundColor: Colors.white,
@@ -72,25 +70,7 @@ class CategoryList extends StatelessWidget {
             labelColor: PrimaryRed,
             indicatorColor: PrimaryRed,
           ),
-          title: RichText(
-            text: TextSpan(
-              style: Theme.of(context)
-                  .textTheme
-                  .headline6
-                  ?.copyWith(fontWeight: FontWeight.bold),
-              children: [
-                TextSpan(
-                  text: "Shopily",
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: PrimaryRed,
-                  ),
-                ),
-              ],
-            ),
-          ),
           actions: <Widget>[
-
             TextButton(
               style: style,
               onPressed: () {
@@ -105,17 +85,20 @@ class CategoryList extends StatelessWidget {
                   btnOkText: "Recharge",
                   btnCancelOnPress: () {},
                   btnOkOnPress: () {
-                    Navigator.of(context)
-                        .push(MaterialPageRoute(builder: (context) => MyCard()));
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => MyCard()));
                   },
                   btnOkColor: SecondaryRed,
                   btnCancelColor: Colors.grey[500],
                 )..show();
               },
-              child: const Text('Credit:180.52 DT'),
+              child: Text('Credit:180.52 DT'),
             ),
             IconButton(
-              onPressed: () {Navigator.of(context).push(MaterialPageRoute(builder: (context) => filter()));},
+              onPressed: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => filter()));
+              },
               icon: const Icon(Icons.search),
             ),
             TextButton(
@@ -135,13 +118,12 @@ class CategoryList extends StatelessWidget {
                 ))
           ],
         ),
-
         body: TabBarView(
           children: myTabs.map((Tab tab) {
             final String? label = tab.text;
-            final index1 = myTabs.indexOf(tab );
+            final index1 = myTabs.indexOf(tab);
             return Center(
-              child:myTabs_widget[index1],
+              child: myTabs_widget[index1],
             );
           }).toList(),
         ),
@@ -149,4 +131,3 @@ class CategoryList extends StatelessWidget {
     );
   }
 }
-
