@@ -13,7 +13,6 @@ class Profile extends StatefulWidget {
 }
 
 class ProfileState extends State<Profile> {
-
   User? user = FirebaseAuth.instance.currentUser;
   String _userID = "";
   String _email = "test";
@@ -22,11 +21,14 @@ class ProfileState extends State<Profile> {
   String _location = "";
   String _credit = "";
   String _phonenumber = "";
-  String _imageurl="";
+  String _imageurl = "";
 
   void getData() async {
     _userID = user!.uid;
-    final DocumentSnapshot userDoc = await FirebaseFirestore.instance.collection('userdata').doc(_userID).get();
+    final DocumentSnapshot userDoc = await FirebaseFirestore.instance
+        .collection('userdata')
+        .doc(_userID)
+        .get();
     setState(() {
       _fname = userDoc.get('first name');
       _lname = userDoc.get('last name');
@@ -37,7 +39,6 @@ class ProfileState extends State<Profile> {
       _imageurl = userDoc.get('imageurl');
       print('tdsdqdsest');
     });
-
   }
 
   @override
@@ -65,7 +66,7 @@ class ProfileState extends State<Profile> {
             size: 40,
           ),
           onPressed: () => Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => HomeScreen())),
+              .push(MaterialPageRoute(builder: (context) => Home())),
         ),
         leadingWidth: 30,
       ),

@@ -95,9 +95,25 @@ class Confirm extends StatelessWidget {
             SizedBox(
               height: 80,
             ),
+            Container(
+              margin: EdgeInsets.only(top: 20.0, left: 30.0, right: 30.0),
+              child: TextFormField(
+                decoration: InputDecoration(
+                  labelText: "Feedback", // Set text upper animation
+                  border: OutlineInputBorder(),
+                ),
+                minLines: 1,
+                autofocus: false,
+                keyboardType: TextInputType.text,
+              ),
+            ),
+            SizedBox(
+              height: 50,
+            ),
             RaisedButton(
               onPressed: () {
                 //Navigator.of(context).push(MaterialPageRoute(builder: (context) => Confirm()));
+
                 AwesomeDialog(
                   context: context,
                   animType: AnimType.LEFTSLIDE,
@@ -138,7 +154,7 @@ class Confirm extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 100,
+              height: 50,
             ),
             /* Text(
               'Review personal shopper',
@@ -147,9 +163,6 @@ class Confirm extends StatelessWidget {
                   decoration: TextDecoration.underline,
                   fontWeight: FontWeight.bold),
             ),*/
-            SizedBox(
-              height: 50,
-            ),
           ],
         ),
       ),

@@ -15,18 +15,12 @@ import '../../constants.dart';
 import '../../widget/textfield.dart';
 
 class HomeScreen extends StatefulWidget {
-
   @override
   HomeScreenState createState() => HomeScreenState();
 }
 
 class HomeScreenState extends State<HomeScreen> {
-
-
   Widget build(BuildContext context) {
-
-
-
     //return Scaffold(
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -51,17 +45,11 @@ class HomeScreenState extends State<HomeScreen> {
 }
 
 class CategoryList extends StatefulWidget {
-
-
   @override
   State<CategoryList> createState() => _CategoryListState();
 }
 
 class _CategoryListState extends State<CategoryList> {
-
-
-
-
   final List<Tab> myTabs = <Tab>[
     Tab(text: 'Food'),
     Tab(text: 'Groceries'),
@@ -80,8 +68,6 @@ class _CategoryListState extends State<CategoryList> {
 
   @override
   Widget build(BuildContext context) {
-
-
     return DefaultTabController(
       length: myTabs.length,
       child: Scaffold(
@@ -139,8 +125,8 @@ class _CategoryListState extends State<CategoryList> {
                       shape: BoxShape.circle,
                       image: new DecorationImage(
                           fit: BoxFit.contain,
-                          image: NetworkImage('https://firebasestorage.googleapis.com/v0/b/shopili-mobile-project.appspot.com/o/profilepics%2F20211117-122907%20(4).jpg?alt=media&token=d832fc87-0175-400c-ac39-17a6fad2834d'))),
-
+                          image: NetworkImage(
+                              'https://firebasestorage.googleapis.com/v0/b/shopili-mobile-project.appspot.com/o/profilepics%2F20211117-122907%20(4).jpg?alt=media&token=d832fc87-0175-400c-ac39-17a6fad2834d'))),
                 ))
           ],
         ),

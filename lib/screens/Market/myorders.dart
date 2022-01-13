@@ -4,30 +4,28 @@ import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/constants.dart';
 import 'package:smart_personal_shopper/screens/Confirm_receival.dart';
 
-
 class MyOrders extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => LunchState();
 }
 
 class LunchState extends State<MyOrders> {
-  final Stream<QuerySnapshot> userdata = FirebaseFirestore.instance.collection('carts').snapshots();
+  final Stream<QuerySnapshot> userdata =
+      FirebaseFirestore.instance.collection('carts').snapshots();
   User? user = FirebaseAuth.instance.currentUser;
   String _userID = "";
   String _id = "";
   String _time = "";
 
-  void getData() async{
-    _userID=user!.uid;
+  void getData() async {
+    _userID = user!.uid;
 
-    final DocumentSnapshot userCart=
-    await FirebaseFirestore.instance.collection('carts').doc(_userID).get();
-    _id =userCart.get('id');
-    _time =userCart.get('time');
-    print(_id+" " + _time);
+    final DocumentSnapshot userCart =
+        await FirebaseFirestore.instance.collection('carts').doc(_userID).get();
+    _id = userCart.get('id');
+    _time = userCart.get('time');
+    print(_id + " " + _time);
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -65,13 +63,13 @@ class LunchState extends State<MyOrders> {
           child: ListView(
             children: <Widget>[
               dummyDataOfListView(
-                  "images/pizza.png", "pizza neptune", "Cloths", "500dt", 4),
+                  "images/pizza.png", "pizza neptune", "food", "5 DT", 2),
               dummyDataOfListView(
-                  "images/tomate.png", "1kg tomate", "Cloths", "500dt", 1),
+                  "images/tomate.png", "1kg tomate", "food", "0.9 DT", 1),
               dummyDataOfListView(
-                  "images/hrissa.png", "hrissa sicam", "Cloths", "500dt", 3),
+                  "images/hrissa.png", "hrissa sicam", "food", "0.8 DT", 1),
               dummyDataOfListView(
-                  "images/boga.png", "Boga 1.5L", "Cloths", "500dt", 4),
+                  "images/boga.png", "Boga 1.5L", "food", "2.850 DT", 1),
             ],
           ),
         ),
@@ -154,21 +152,21 @@ class LunchState extends State<MyOrders> {
               Container(
                 padding: EdgeInsets.only(bottom: 2.0),
                 child: Text(
-                  "Item Name",
+                  itemName,
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
                 ),
               ),
               Container(
                 padding: EdgeInsets.only(bottom: 3.0),
                 child: Text(
-                  "Item Cetegory",
+                  itemCategory,
                   style: TextStyle(),
                 ),
               ),
               Container(
                 padding: EdgeInsets.only(bottom: 3.0),
                 child: Text(
-                  "500 RS",
+                  itemPrice,
                   style: TextStyle(color: Color(0xff374ABE)),
                 ),
               ),
