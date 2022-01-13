@@ -1,34 +1,39 @@
+import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/constants.dart';
+import 'package:smart_personal_shopper/data/cart/cart.dart';
 import 'package:smart_personal_shopper/screens/Confirm_receival.dart';
 
 class MyOrders extends StatefulWidget {
+  List<CartItem> cartItems = [];
+  String address;
+  String deliveryName;
+  MyOrders({required this.cartItems, required this.address,required this.deliveryName});
+
   @override
-  State<StatefulWidget> createState() => LunchState();
+  _myOrders createState() => _myOrders();
 }
 
-class LunchState extends State<MyOrders> {
-  final Stream<QuerySnapshot> userdata =
-      FirebaseFirestore.instance.collection('carts').snapshots();
+class _myOrders extends State<MyOrders> {
   User? user = FirebaseAuth.instance.currentUser;
-  String _userID = "";
-  String _id = "";
-  String _time = "";
-
-  void getData() async {
+  String _userID="";
+  Future<void> addLitem( List<CartItem> cartItems, String address,String deliveryName) async {
     _userID = user!.uid;
-
-    final DocumentSnapshot userCart =
-        await FirebaseFirestore.instance.collection('carts').doc(_userID).get();
-    _id = userCart.get('id');
-    _time = userCart.get('time');
-    print(_id + " " + _time);
+    final _fireStore = FirebaseFirestore.instance;
+    _fireStore.collection('orders').add({
+      'id': _userID,
+      'address': address,
+      'items': [jsonEncode(cartItems)]
+      ,
+    });
   }
 
   @override
   Widget build(BuildContext context) {
+    addLitem(widget.cartItems,widget.address,widget.deliveryName);
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -58,21 +63,6 @@ class LunchState extends State<MyOrders> {
     return new Container(
         child: Wrap(
       children: <Widget>[
-        Container(
-          height: 370.0,
-          child: ListView(
-            children: <Widget>[
-              dummyDataOfListView(
-                  "images/pizza.png", "pizza neptune", "food", "5 DT", 2),
-              dummyDataOfListView(
-                  "images/tomate.png", "1kg tomate", "food", "0.9 DT", 1),
-              dummyDataOfListView(
-                  "images/hrissa.png", "hrissa sicam", "food", "0.8 DT", 1),
-              dummyDataOfListView(
-                  "images/boga.png", "Boga 1.5L", "food", "2.850 DT", 1),
-            ],
-          ),
-        ),
         Container(
           margin: EdgeInsets.only(left: 30.0, right: 30.0, top: 30.0),
           child: Row(
@@ -119,6 +109,8 @@ class LunchState extends State<MyOrders> {
                     ),
                   ),
                 ))),
+
+
       ],
     ));
   }
@@ -127,10 +119,10 @@ class LunchState extends State<MyOrders> {
       String itemPrice, int itemCount) {
     return Container(
         child: Card(
-      elevation: 4.0,
-      margin: EdgeInsets.only(top: 10.0, left: 20.0, right: 20.0, bottom: 5.0),
-      color: Color(0xffFFFFFF),
-      child: ListTile(
+       elevation: 4.0,
+       margin: EdgeInsets.only(top: 10.0, left: 20.0, right: 20.0, bottom: 5.0),
+        color: Color(0xffFFFFFF),
+        child: ListTile(
         // on ListItem clicked
         onTap: () {},
 

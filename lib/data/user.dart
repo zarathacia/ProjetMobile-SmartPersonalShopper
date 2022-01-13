@@ -12,13 +12,36 @@ class User {
   bool isSwipedOff;
 
   User({
-    @required this.rating = 't',
-    @required this.name = 't',
-    @required this.age = 18,
-    @required this.imgUrl = 'x',
-    @required this.location = 'a',
-    @required this.bio = 'b',
+    required this.rating,
+    required this.name,
+    required this.age,
+    required this.imgUrl,
+    required this.location,
+    required this.bio,
     this.isLiked = false,
     this.isSwipedOff = false,
   });
+
+  User.fromJson(Map<String, Object?> json)
+      : this(
+      rating:json['rating']! as String,
+      name: json['name']! as String,
+      age: json['age']! as int,
+      imgUrl: json['imgUrl']! as String,
+      location: json['location']! as String,
+      bio: json['bio']! as String
+
+  );
+
+  Map<String, Object?> toJson() {
+    return {
+      'rating':rating,
+      'name': name,
+      'bio':bio,
+      'imgUrl':imgUrl,
+      'age':age,
+      'location':location,
+    };
+
+}
 }

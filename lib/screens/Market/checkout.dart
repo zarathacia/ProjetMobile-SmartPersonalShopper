@@ -1,17 +1,40 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/constants.dart';
+import 'package:smart_personal_shopper/controller/cart_controller.dart';
+import 'package:smart_personal_shopper/data/cart/cart.dart';
+import 'package:smart_personal_shopper/data/user.dart';
+import 'package:smart_personal_shopper/services/cart_item_service.dart';
 
 import 'myorders.dart';
 
+ItemServices itemServices= ItemServices();
+final  CartController controller=CartController();
+
+
 class Checkout extends StatefulWidget {
+  List<CartItem> cartItems = [];
+
+  User chosenUser;
+  String address="Florida, Miami, House no:938";
+  Checkout({
+    required this.chosenUser,required this.address});
+
+
   @override
-  State<StatefulWidget> createState() => LunchState();
+  _checkout createState() => _checkout();
 }
 
-class LunchState extends State<Checkout> {
+class _checkout extends State<Checkout> {
+
   @override
   Widget build(BuildContext context) {
+    controller.onInit();
+    setState(() {
+      widget.cartItems=controller.cartItems;
+    });
+
+    widget.cartItems=controller.cartItems;
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,
@@ -31,38 +54,49 @@ class LunchState extends State<Checkout> {
             style: TextStyle(color: Colors.black),
           ),
         ),
-        body: initScreen());
+        body: initScreen(widget.cartItems));
   }
 
-  initScreen() {
-    double total = 2 * 5 + 0.9 + 0.8 + 2.85;
-    double totalf = 0;
+  initScreen(List<CartItem> cartItems) {
+    double total = 0;
     double discount = 10;
-    double shipping = 2;
-    totalf = (total * (1 - discount / 100) + shipping);
-    String totalfs = (totalf).toStringAsFixed(3);
+
+    if(cartItems.isEmpty)
+    {
+      return Container(
+        child: Text(
+          "You have an empty Cart back to shopping",
+          style: TextStyle(color: Colors.black54, fontSize: 18.0),
+        ),
+      );
+    }
+    cartItems.forEach((element) {
+      total+=element.price*element.quantity;
+    });
+    total = (total * (1 - discount / 100));
     return new Container(
         child: Wrap(
       children: <Widget>[
         Container(
           height: 370.0,
-          child: ListView(
-            children: <Widget>[
-              dummyDataOfListView(
-                  "images/pizza.png", "pizza neptune", "food", 5, 2),
-              dummyDataOfListView(
-                  "images/tomate.png", "1kg tomate", "food", 0.9, 1),
-              dummyDataOfListView(
-                  "images/hrissa.png", "hrissa sicam", "food", 0.8, 1),
-              dummyDataOfListView(
-                  "images/boga.png", "Boga 1.5L", "food", 2.850, 1),
-            ],
+          child: ListView.builder(
+              itemCount: cartItems.length,
+              itemBuilder: (context, index) {
+                return CartItemView(
+                  cartItems[index].id,
+                  cartItems[index].image,
+                  cartItems[index].name,
+                  "Item Category",
+                  cartItems[index].price.toString(),
+                  cartItems[index].quantity,
+              );
+            },
           ),
         ),
         Container(
             padding: EdgeInsets.only(top: 20.0, right: 25.0, left: 25.0),
             child: Text(
-              "Florida, Miami, House no:938, Road: 9",
+              widget.address,
               style: TextStyle(color: Colors.black, fontSize: 20.0),
             )),
         Container(
@@ -71,14 +105,14 @@ class LunchState extends State<Checkout> {
             children: <Widget>[
               Expanded(
                 child: Text(
-                  "Best Sale: ",
+                  "Your personal shopper is: " ,
                   style: TextStyle(
                     fontSize: 18.0,
                   ),
                 ),
               ),
               Text(
-                "$total",
+                widget.chosenUser.name,
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 18.0,
@@ -109,28 +143,7 @@ class LunchState extends State<Checkout> {
             ],
           ),
         ),
-        Container(
-          margin: EdgeInsets.only(left: 30.0, right: 30.0, top: 10.0),
-          child: Row(
-            children: <Widget>[
-              Expanded(
-                child: Text(
-                  "Shipping: ",
-                  style: TextStyle(
-                    fontSize: 18.0,
-                  ),
-                ),
-              ),
-              Text(
-                "$shipping",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 18.0,
-                ),
-              ),
-            ],
-          ),
-        ),
+
         Container(
           margin: EdgeInsets.only(left: 30.0, right: 30.0, top: 30.0),
           child: Row(
@@ -142,7 +155,7 @@ class LunchState extends State<Checkout> {
                 ),
               ),
               Text(
-                "$totalfs DT",
+                "$total DT",
                 style: TextStyle(
                     color: Colors.black,
                     fontSize: 18.0,
@@ -168,11 +181,16 @@ class LunchState extends State<Checkout> {
                       title: 'Continue to pay?',
                       // padding: const EdgeInsets.all(5.0),
                       desc:
-                          'Please confirm that you will pay $totalfs dt . Creating orders without paying will create penalty charges, and your account may be disabled.',
+                          'Please confirm that you will pay $total dt . Creating orders without paying will create penalty charges, and your account may be disabled.',
                       btnCancelOnPress: () {},
                       btnOkOnPress: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => MyOrders()));
+                            builder: (context) => MyOrders(
+                              cartItems: widget.cartItems,
+                              address: widget.address,
+                              deliveryName: widget.chosenUser.name,
+
+                            )));
                       },
                       btnOkColor: SecondaryRed,
                       btnCancelColor: Colors.grey[500],
@@ -200,14 +218,18 @@ class LunchState extends State<Checkout> {
                         style: TextStyle(color: Colors.white, fontSize: 18.0),
                       ),
                     ),
+
                   ),
                 ))),
       ],
     ));
   }
 
-  dummyDataOfListView(String imgSrc, String itemName, String itemCategory,
-      double itemPrice, int itemCount) {
+  CartItemView(String id,String imgSrc, String itemName, String itemCategory,
+      String itemPrice, int itemCount) {
+    if(itemName.length>20){
+      itemName=itemName.substring(0,15);
+    }
     return Container(
         child: Card(
       elevation: 4.0,
@@ -218,10 +240,11 @@ class LunchState extends State<Checkout> {
         onTap: () {},
 
         // Image of ListItem
+
         leading: Container(
-          child: Image(
-            fit: BoxFit.fitHeight,
-            image: AssetImage(imgSrc),
+          child:SizedBox(
+            width:100,
+            child:Image.network(imgSrc),
           ),
         ),
 

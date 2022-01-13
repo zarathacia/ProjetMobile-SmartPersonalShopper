@@ -1,15 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:smart_personal_shopper/constants.dart';
+import 'package:smart_personal_shopper/data/user.dart';
 
 import 'checkout.dart';
 //import 'checkout_screen.dart';
 
 class Address extends StatefulWidget {
+  User chosenUser= User(
+      rating: "",
+      name: "", age: 0, imgUrl: "", location: "", bio: "");
   @override
   State<StatefulWidget> createState() => LunchState();
+
+  Address({required this.chosenUser});
 }
 
 class LunchState extends State<Address> {
+  String address="";
+  final nameController = TextEditingController();
+  final lineController = TextEditingController();
+  final cityController = TextEditingController();
+  final postalController = TextEditingController();
+  final phoneController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,6 +57,7 @@ class LunchState extends State<Address> {
         Container(
           margin: EdgeInsets.only(top: 30.0, left: 30.0, right: 30.0),
           child: TextFormField(
+            controller: nameController,
             decoration: InputDecoration(
               labelText: "Name", // Set text upper animation
               border: OutlineInputBorder(),
@@ -59,6 +72,7 @@ class LunchState extends State<Address> {
         Container(
           margin: EdgeInsets.only(top: 30.0, left: 30.0, right: 30.0),
           child: TextFormField(
+            controller: lineController,
             decoration: InputDecoration(
                 labelText: "Address Line", border: OutlineInputBorder()),
             minLines: 1,
@@ -71,6 +85,7 @@ class LunchState extends State<Address> {
         Container(
           margin: EdgeInsets.only(top: 30.0, left: 30.0, right: 30.0),
           child: TextFormField(
+            controller: cityController,
             decoration: InputDecoration(
               labelText: "City", // Set text upper animation
               border: OutlineInputBorder(),
@@ -85,6 +100,7 @@ class LunchState extends State<Address> {
         Container(
           margin: EdgeInsets.only(top: 30.0, left: 30.0, right: 30.0),
           child: TextFormField(
+            controller: postalController,
             decoration: InputDecoration(
               labelText: "Postal Code", // Set text upper animation
               border: OutlineInputBorder(),
@@ -99,6 +115,7 @@ class LunchState extends State<Address> {
         Container(
           margin: EdgeInsets.only(top: 30.0, left: 30.0, right: 30.0),
           child: TextFormField(
+            controller: phoneController,
             decoration: InputDecoration(
               labelText: "Phone Number", // Set text upper animation
               border: OutlineInputBorder(),
@@ -115,8 +132,14 @@ class LunchState extends State<Address> {
                 margin: EdgeInsets.only(top: 50.0, bottom: 10.0),
                 child: RaisedButton(
                   onPressed: () {
+                    address=lineController.text+" , "+
+                            cityController.text+" , "+
+                            postalController.text;
                     Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => Checkout()));
+                        MaterialPageRoute(builder: (context) => Checkout(
+                            chosenUser:widget.chosenUser,
+                            address: address
+                        )));
                   }, // Click Listener
 
                   shape: RoundedRectangleBorder(
