@@ -15,15 +15,11 @@ ItemServices itemServices= ItemServices();
 final  CartController controller=CartController();
 
 User? user = FirebaseAuth.instance.currentUser;
-final cartsRef = FirebaseFirestore.instance.collection('carts')
-  .withConverter<Cart>
-  (
-    fromFirestore: (snapshots, _) => Cart.fromJson(snapshots.data()!),
-    toFirestore: (cart, _) => cart.toJson()
-);
+
 
 class CartScreen extends StatefulWidget {
   List<CartItem> cartItems = [];
+
   CartScreen.cartList({required this.cartItems});
 
   CartScreen({Key? key}):super(key:key);
@@ -203,6 +199,10 @@ class LunchState extends State<CartScreen> {
             GestureDetector(
               onTap: () {
                 controller.removeFromCart(id);
+                controller.onInit();
+                setState(() {
+                    widget.cartItems=controller.cartItems;
+                });
                 controller.onInit();
               },
               child: Icon(
