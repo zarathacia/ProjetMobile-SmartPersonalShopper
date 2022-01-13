@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +11,7 @@ import 'package:smart_personal_shopper/services/verify.dart';
 import 'package:smart_personal_shopper/widget/header.dart';
 import 'package:smart_personal_shopper/widget/theme_helper.dart';
 import 'package:image_picker/image_picker.dart';
+
 
 class register extends StatefulWidget {
   @override
@@ -31,50 +35,13 @@ class _registerState extends State<register> {
   String imageurl="https://firebasestorage.googleapis.com/v0/b/shopili-mobile-project.appspot.com/o/profilepics%2Fprof.jpg?alt=media&token=b098ba99-e782-4378-963e-692514d84e8d";
   bool checkedValue = false;
   bool checkboxValue = false;
-  late PickedFile _imageFile;
-  final ImagePicker _picker = ImagePicker();
-  /* TextEditingController fnameController= TextEditingController();
-  TextEditingController lnameController= TextEditingController();
-  TextEditingController emailController= TextEditingController();
-  TextEditingController phoneController= TextEditingController();
-  TextEditingController passwordController= TextEditingController();*/
+  //late File  _pickedimage;
+  late String url;
+  late File _pickedimage;
 
-  // void signUp(String fname, String lname, String email, String phone,
-  //     String password) async {
-  //   var jsonData = null;
-  //   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-  //   try {
-  //     var response = await http.post(
-  //       Uri.parse("http://127.0.0.1/Projects/ShopilyAPI/register.php"),
-  //       headers: <String, String>{
-  //         'Content-Type': 'application/json; charset=UTF-8',
-  //       },
-  //       body: jsonEncode(<String, String>{
-  //         'Firstname': fname,
-  //         'Lastname': lname,
-  //         'Email': email,
-  //         'Phone': phone,
-  //         'Password': password
-  //       }),
-  //     );
-  //
-  //     if (response.statusCode == 200) {
-  //       jsonData = json.decode(response.body);
-  //       setState(() {
-  //         sharedPreferences.setString("token", jsonData('token'));
-  //         Navigator.of(context).pushAndRemoveUntil(
-  //             MaterialPageRoute(builder: (context) => Login()),
-  //             (Route<dynamic> route) => false);
-  //       });
-  //     } else {
-  //       print(response.body);
-  //     }
-  //   } catch (Exception) {
-  //     Navigator.of(context).pushAndRemoveUntil(
-  //         MaterialPageRoute(builder: (context) => Login()),
-  //         (Route<dynamic> route) => false);
-  //   }
-  // }
+  //late File _imageFile;
+  final ImagePicker _picker = ImagePicker();
+
 
   @override
   Widget build(BuildContext context) {
@@ -307,6 +274,14 @@ class _registerState extends State<register> {
                             ),
                             onPressed: () async {
                               if (_formKey.currentState!.validate()) {
+                                if (_pickedimage == null){
+
+                                }else{
+                                  final ref =FirebaseStorage.instance.ref().child('userimages').child('$fname $lname .jpg');
+                                  await ref.putFile((_pickedimage));
+                                  url= await ref.getDownloadURL();
+                                  
+                                }
                                 auth.createUserWithEmailAndPassword(email: email, password: password).then((value) {
                                   FirebaseFirestore.instance
                                       .collection('userdata')
@@ -319,14 +294,14 @@ class _registerState extends State<register> {
                                     'password': password,
                                     'location': location,
                                     'credit':credit,
-                                    'imageurl':imageurl,
+                                    'imageurl':url ,
 
                                   });
 
-                                  Navigator.of(context).pushReplacement(
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              VerifyScreen()));
+                                  // Navigator.of(context).pushReplacement(
+                                  //     MaterialPageRoute(
+                                  //         builder: (context) =>
+                                  //             VerifyScreen()));
                                 });
                                 print(fname);
                                 print(lname);
@@ -442,11 +417,15 @@ class _registerState extends State<register> {
   }
 
   void takePhoto(ImageSource source) async {
-    final pickedFile = await _picker.getImage(
-      source: source,
-    );
+    final pickedFile = await _picker.getImage(source: source,);
     setState(() {
-      _imageFile = pickedFile!;
+      _pickedimage = pickedFile! as File;
     });
   }
+
+
+
+
+
+
 }

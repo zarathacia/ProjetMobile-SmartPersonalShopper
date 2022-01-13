@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:smart_personal_shopper/screens/login_registration/login.dart';
 
 import '../../widget/textfield.dart';
@@ -71,9 +72,8 @@ class _NavBarState extends State<NavBar> {
           ListTile(
               title: Text('Exit'),
               leading: Icon(Icons.exit_to_app),
-              onTap: () => Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => Login()))),
-        ],
+              onTap: () => SystemNavigator.pop(),
+          )],
       ),
     );
   }
