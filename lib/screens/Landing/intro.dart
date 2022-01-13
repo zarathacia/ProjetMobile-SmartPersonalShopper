@@ -108,7 +108,7 @@ class _IntroScreenState extends State<IntroScreen> {
                             ),
                             SizedBox(height: screensize.width * 0.06),
                             Text(
-                              'Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
+                              'Online Presence, Reviews, and Ratings',
                               style: TextStyle(
                                 fontSize: screensize.width * 0.04,
                                 color: Color(0xFFff4d6d),
@@ -145,7 +145,7 @@ class _IntroScreenState extends State<IntroScreen> {
                             ),
                             SizedBox(height: screensize.width * 0.06),
                             Text(
-                              'Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
+                              'Easy and Smooth Customer Experience',
                               style: TextStyle(
                                 fontSize: screensize.width * 0.04,
                                 color: Color(0xFFff4d6d),
@@ -173,7 +173,7 @@ class _IntroScreenState extends State<IntroScreen> {
                             ),
                             SizedBox(height: screensize.height * 0.01),
                             Text(
-                              'Get a new experience\nof imagination',
+                              'Get a new delivery experience\n',
                               style: TextStyle(
                                 fontSize: screensize.width * 0.04,
                                 fontWeight: FontWeight.bold,
@@ -182,7 +182,7 @@ class _IntroScreenState extends State<IntroScreen> {
                             ),
                             SizedBox(height: screensize.height * 0.01),
                             Text(
-                              'Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
+                              'You can choose and rate your delivrer!',
                               style: TextStyle(
                                 fontSize: screensize.width * 0.04,
                                 color: Color(0xFFff4d6d),
